@@ -19,7 +19,7 @@
             <div class="card-body">
                 <div class="mb-24 flex-between gap-16 flex-wrap-reverse">
                     <ul class="nav nav-pills common-tab gap-20" id="pills-tab" role="tablist">
-                        <li class="nav-item" role="presentation">
+                        {{--  <li class="nav-item" role="presentation">
                           <button class="nav-link active" id="pills-onGoing-tab" data-bs-toggle="pill" data-bs-target="#pills-onGoing" type="button" role="tab" aria-controls="pills-onGoing" aria-selected="true">Ongoing (08)</button>
                         </li>
                         <li class="nav-item" role="presentation">
@@ -30,7 +30,7 @@
                         </li>
                         <li class="nav-item" role="presentation">
                           <button class="nav-link" id="pills-favourite-tab" data-bs-toggle="pill" data-bs-target="#pills-favourite" type="button" role="tab" aria-controls="pills-favourite" aria-selected="false">Favorite (25)</button>
-                        </li>
+                        </li>  --}}
                     </ul>
                     <a href="{{url('/create-formations')}}" class="btn btn-main rounded-pill py-7 flex-align gap-4 fw-normal">
                         <span class="d-flex text-md"><i class="ph ph-plus"></i></span>
@@ -44,7 +44,7 @@
                            <div class="col-xxl-3 col-lg-4 col-sm-6">
                             <div class="card border border-gray-100">
                                 <div class="card-body p-8">
-                                    <a href="course-details.html" class="bg-main-100 rounded-8 overflow-hidden text-center mb-8 h-164 flex-center p-8">
+                                    <a href="{{url('/admin-cours-detail')}}" class="bg-main-100 rounded-8 overflow-hidden text-center mb-8 h-164 flex-center p-8">
                                         {{--  <img src="admin/assets/images/thumbs/course-img1.png" alt="Course Image">  --}}
                                         <img src="{{ asset('assets/uploads/formation_images/'.$value->image_url) }}" alt="Course Image">
                                     </a>
@@ -71,7 +71,7 @@
                                                 </div>
                                             </div>
                                         </div>  --}}
-                                        <a href="{{url('/admin-cours-detail')}}" class="btn btn-outline-main rounded-pill py-9 w-100 mt-24">Continue Classes</a>
+                                        <a href="{{url('/create-chapitres')}}" class="btn btn-outline-main rounded-pill py-9 w-100 mt-24">Ajouter un chapitre</a>
                                     </div>
                                 </div>
                             </div>
@@ -975,7 +975,7 @@
 
             </div>
         </div>
-        
+
     </div>
 
 @endsection

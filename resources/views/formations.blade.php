@@ -28,7 +28,7 @@
 <section class="courses style2 section">
     <div class="container">
         <div class="row">
-            <div class="col-12">
+            <div class="col-12 ">
                 <div class="section-title">
                     {{--  <span class="wow zoomIn" data-wow-delay="0.2s"></span>  --}}
                     <h2 class="wow fadeInUp" data-wow-delay=".4s">Formation</h2>
@@ -38,25 +38,28 @@
         </div>
         <div class="single-head">
             <div class="row">
-                <div class="col-lg-4 col-md-6 col-12">
-                    <!-- Start Single Course -->
-                    <div class="single-course wow fadeInUp" data-wow-delay=".2s">
-                        <div class="course-image">
-                            <a href="course-details.html"><img src="assets/images/courses/courses-7.jpg"
-                                    alt="#">
-                                </a>
-                                {{--  <p class="price">Categorie</p>     --}}
-                        </div>
-                        <div class="content">
-                            <p class="date">Categorie</p>   
-                            
-                            <p class="date">Difficulté</p>
-                            <h3><a href="course-details.html">Spécialiste en télécommunications aériennes</a></h3>
-                        </div>
+               @foreach($formation as $value)
+               <div class="col-lg-3 col-md-6 col-12">
+                <!-- Start Single Course -->
+                <div class="single-course wow fadeInUp" data-wow-delay=".2s">
+                    <div class="course-image">
+                        <a href="#"><img src="{{ asset('assets/uploads/formation_images/'.$value->image_url) }}"
+                                alt="#">
+                            </a>
+                            {{--  <p class="price">Categorie</p>     --}}
                     </div>
-                    <!-- End Single Course -->
+                    <div class="content">
+                        <p class="date">{{$value->category->name}} </p>
+
+                        <p class="date"> {{$value->difficulete->name}}</p>
+                        <h6> {{$value->titre}}</h6>
+                        <h3><a href="#">{{$value->description}}</a></h3>
+                    </div>
                 </div>
-                <div class="col-lg-4 col-md-6 col-12">
+                <!-- End Single Course -->
+            </div>
+               @endforeach
+                {{--  <div class="col-lg-4 col-md-6 col-12">
                     <!-- Start Single Course -->
                     <div class="single-course wow fadeInUp" data-wow-delay=".4s">
                         <div class="course-image">
@@ -64,8 +67,8 @@
                                     alt="#"></a>
                         </div>
                         <div class="content">
-                            <p class="date">Categorie</p>   
-                            
+                            <p class="date">Categorie</p>
+
                             <p class="date">Difficulté</p>
                             <h3><a href="course-details.html">Contrôleur aérien </a></h3>
                         </div>
@@ -80,15 +83,15 @@
                                     alt="#"></a>
                         </div>
                         <div class="content">
-                            <p class="date">Categorie</p>   
-                            
+                            <p class="date">Categorie</p>
+
                             <p class="date">Difficulté</p>
                             <h3><a href="#">Équipier des forces spéciales de l'air</a></h3>
                         </div>
                     </div>
                     <!-- End Single Course -->
-                </div>
-                <div class="col-lg-4 col-md-6 col-12">
+                </div>  --}}
+                {{--  <div class="col-lg-4 col-md-6 col-12">
                     <!-- Start Single Course -->
                     <div class="single-course wow fadeInUp" data-wow-delay=".2s">
                         <div class="course-image">
@@ -96,10 +99,10 @@
                                     alt="#"></a>
                         </div>
                         <div class="content">
-                            {{--  <p class="price">$300</p>
-                            <p class="date">FEb 10, 2023</p>  --}}
-                            <p class="date">Categorie</p>   
-                            
+                            <p class="price">$300</p>
+                            <p class="date">FEb 10, 2023</p>
+                            <p class="date">Categorie</p>
+
                             <p class="date">Difficulté</p>
                             <h3><a href="course-details.html">Spécialiste en cybersécurité</a></h3>
                         </div>
@@ -114,10 +117,10 @@
                                     alt="#"></a>
                         </div>
                         <div class="content">
-                            {{--  <p class="price">Free</p>
-                            <p class="date">MAR 05, 2023</p>  --}}
-                            <p class="date">Categorie</p>   
-                            
+                            <p class="price">Free</p>
+                            <p class="date">MAR 05, 2023</p>
+                            <p class="date">Categorie</p>
+
                             <p class="date">Difficulté</p>
                             <h3><a href="#">Spécialiste des systèmes d'armes navales</a></h3>
                         </div>
@@ -132,14 +135,14 @@
                                     alt="#"></a>
                         </div>
                         <div class="content">
-                            <p class="date">Categorie</p>   
-                            
+                            <p class="date">Categorie</p>
+
                             <p class="date">Difficulté</p>
                             <h3><a href="#">Technicien de maintenance navale</a></h3>
                         </div>
                     </div>
                     <!-- End Single Course -->
-                </div>
+                </div>  --}}
             </div>
             {{--  <div class="row">
                 <div class="col-12">

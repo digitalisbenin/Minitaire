@@ -12,7 +12,7 @@
 <ul class="flex-align gap-4">
 <li><a href="index.html" class="text-gray-200 fw-normal text-15 hover-text-main-600">Accueil</a></li>
 <li> <span class="text-gray-500 fw-normal d-flex"><i class="ph ph-caret-right"></i></span> </li>
-<li><span class="text-main-600 fw-normal text-15">Créer une catégorie</span></li>
+<li><span class="text-main-600 fw-normal text-15">Modifier une catégorie</span></li>
 </ul>
 </div>
 <!-- Breadcrumb End -->
@@ -66,6 +66,8 @@
         <div class="card-body">
             <form action="{{ url('categories') }}" method="post" enctype="multipart/form-data">
                         @csrf
+                        @method('PUT')
+  
                 <div class="row gy-20">
                     {{--  <div class="col-xxl-3 col-md-4 col-sm-5">
                         <div class="mb-20">

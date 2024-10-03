@@ -1,5 +1,6 @@
 <?php
 use App\Models\User;
+use App\Models\Formation;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CertificateController;
@@ -64,7 +65,8 @@ Route::get('/formateurs', function () {
     return view('formateurs');
 });
 Route::get('/formation', function () {
-    return view('formations');
+    $formation=Formation::all();
+    return view('formations',compact('formation'));
 });
 Route::get('/documents', function () {
     return view('documents');
@@ -95,7 +97,7 @@ require __DIR__.'/auth.php';
 Route::get('categories', [CategoryController::class, 'index']);
 Route::get('create-categories', [CategoryController::class, 'create']);
 Route::get('categories/{id}', [CategoryController::class, 'show']);
-Route::get('categories/{id}/edit', [CategoryController::class, 'edit']);
+Route::get('categories/{id}/edit', [CategoryController::class, 'edit'])->name('categories.edit');
 Route::post('categories', [CategoryController::class, 'store']);
 Route::put('categories/{id}', [CategoryController::class, 'update']);
 Route::get('categories/{id}/destroy', [CategoryController::class, 'destroy']);
@@ -118,11 +120,11 @@ Route::get('chapitres/{id}', [ChapitreController::class, 'show']);
 Route::get('chapitres/{id}', [ChapitreController::class, 'edit']);
 Route::post('chapitres', [ChapitreController::class, 'store']);
 Route::put('chapitres/{id}', [ChapitreController::class, 'update']);
-Route::get('chapitres/{id}', [ChapitreController::class, 'destroy']);
+Route::get('chapitres/{id}/destroy', [ChapitreController::class, 'destroy']);
 
 /*-----------------Commentaire--------------------------*/
 Route::get('commentaires', [CommentaireController::class, 'index']);
-Route::get('create-commentaires', [CommentaireController::class, 'crate']);
+Route::get('create-commentaires', [CommentaireController::class, 'create']);
 Route::get('commentaires/{id}', [CommentaireController::class, 'show']);
 Route::get('commentaires/{id}', [CommentaireController::class, 'edit']);
 Route::post('commentaires', [CommentaireController::class, 'store']);
@@ -131,10 +133,11 @@ Route::get('commentaires/{id}', [CommentaireController::class, 'destroy']);
 
 /*-----------------Difficulte--------------------------*/
 Route::get('difficultes', [DifficuleteController::class, 'index']);
+Route::get('create-difficultes', [DifficuleteController::class, 'create']);
 Route::get('difficultes/{id}', [DifficuleteController::class, 'show']);
 Route::post('difficultes', [DifficuleteController::class, 'store']);
 Route::put('difficultes/{id}', [DifficuleteController::class, 'update']);
-Route::get('difficultes/{id}', [DifficuleteController::class, 'destroy']);
+Route::get('difficultes/{id}/destroy', [DifficuleteController::class, 'destroy']);
 
 /*-----------------Discussion--------------------------*/
 Route::get('discussions', [DiscutionController::class, 'index']);
@@ -143,7 +146,7 @@ Route::get('discussions/{id}', [DiscutionController::class, 'show']);
 Route::get('discussions/{id}', [DiscutionController::class, 'edit']);
 Route::post('discussions', [DiscutionController::class, 'store']);
 Route::put('discussions/{id}', [DiscutionController::class, 'update']);
-Route::delete('discussions/{id}', [DiscutionController::class, 'destroy']);
+Route::get('discussions/{id}', [DiscutionController::class, 'destroy']);
 
 /*-----------------Discussion Reponse--------------------------*/
 Route::get('discussions-reponses', [DiscutionReponseController::class, 'index']);
@@ -152,7 +155,7 @@ Route::get('discussions-reponses/{id}', [DiscutionReponseController::class, 'sho
 Route::get('discussions-reponses/{id}', [DiscutionReponseController::class, 'edit']);
 Route::post('discussions-reponses', [DiscutionReponseController::class, 'store']);
 Route::put('discussions-reponses/{id}', [DiscutionReponseController::class, 'update']);
-Route::delete('discussions-reponses/{id}', [DiscutionReponseController::class, 'destroy']);
+Route::get('discussions-reponses/{id}', [DiscutionReponseController::class, 'destroy']);
 
 /*-----------------Evaluation--------------------------*/
 Route::get('evaluations', [EvaluationController::class, 'index']);
@@ -161,7 +164,7 @@ Route::get('evaluations/{id}', [EvaluationController::class, 'show']);
 Route::get('evaluations/{id}', [EvaluationController::class, 'edit']);
 Route::post('evaluations', [EvaluationController::class, 'store']);
 Route::put('evaluations/{id}', [EvaluationController::class, 'update']);
-Route::delete('evaluations/{id}', [EvaluationController::class, 'destroy']);
+Route::get('evaluations/{id}', [EvaluationController::class, 'destroy']);
 
 
 /*-----------------Formation--------------------------*/
@@ -171,7 +174,7 @@ Route::get('formations/{id}', [FormationController::class, 'show']);
 Route::get('formations/{id}', [FormationController::class, 'edit']);
 Route::post('formations', [FormationController::class, 'store']);
 Route::put('formations/{id}', [FormationController::class, 'update']);
-Route::delete('formations/{id}', [FormationController::class, 'destroy']);
+Route::get('formations/{id}/destroy', [FormationController::class, 'destroy']);
 
 /*-----------------Mes cours--------------------------*/
 Route::get('mes-cours', [MesCourController::class, 'index']);
@@ -180,7 +183,7 @@ Route::get('mes-cours/{id}', [MesCourController::class, 'show']);
 Route::get('mes-cours/{id}', [MesCourController::class, 'edit']);
 Route::post('mes-cours', [MesCourController::class, 'store']);
 Route::put('mes-cours/{id}', [MesCourController::class, 'update']);
-Route::delete('mes-cours/{id}', [MesCourController::class, 'destroy']);
+Route::get('mes-cours/{id}', [MesCourController::class, 'destroy']);
 
 /*-----------------Notification--------------------------*/
 Route::get('notifications', [NotificationController::class, 'index']);
@@ -189,7 +192,7 @@ Route::get('notifications/{id}', [NotificationController::class, 'show']);
 Route::get('notifications/{id}', [NotificationController::class, 'edit']);
 Route::post('notifications', [NotificationController::class, 'store']);
 Route::put('notifications/{id}', [NotificationController::class, 'update']);
-Route::delete('notifications/{id}', [NotificationController::class, 'destroy']);
+Route::get('notifications/{id}', [NotificationController::class, 'destroy']);
 
 /*-----------------Resource--------------------------*/
 Route::get('ressources', [ResourceController::class, 'index']);
@@ -198,7 +201,7 @@ Route::get('ressources/{id}', [ResourceController::class, 'show']);
 Route::get('ressources/{id}', [ResourceController::class, 'edit']);
 Route::post('ressources', [ResourceController::class, 'store']);
 Route::put('ressources/{id}', [ResourceController::class, 'update']);
-Route::delete('ressources/{id}', [ResourceController::class, 'destroy']);
+Route::get('ressources/{id}', [ResourceController::class, 'destroy']);
 
 /*-----------------Role--------------------------*/
 Route::get('roles', [RoleController::class, 'index']);
@@ -207,7 +210,7 @@ Route::get('roles/{id}', [RoleController::class, 'show']);
 Route::get('roles/{id}', [RoleController::class, 'edit']);
 Route::post('roles', [RoleController::class, 'store']);
 Route::put('roles/{id}', [RoleController::class, 'update']);
-Route::delete('roles/{id}', [RoleController::class, 'destroy']);
+Route::get('roles/{id}', [RoleController::class, 'destroy']);
 
 /*-----------------Suivi--------------------------*/
 Route::get('suivis', [SuivyController::class, 'index']);
@@ -216,7 +219,7 @@ Route::get('suivis/{id}', [SuivyController::class, 'show']);
 Route::get('suivis/{id}', [SuivyController::class, 'edit']);
 Route::post('suivis', [SuivyController::class, 'store']);
 Route::put('suivis/{id}', [SuivyController::class, 'update']);
-Route::delete('suivis/{id}', [SuivyController::class, 'destroy']);
+Route::get('suivis/{id}', [SuivyController::class, 'destroy']);
 
 /*-----------------User--------------------------*/
 Route::get('users', [UserController::class, 'index']);
@@ -225,7 +228,7 @@ Route::get('users/{id}', [UserController::class, 'show']);
 Route::get('users/{id}', [UserController::class, 'edit']);
 Route::post('users', [UserController::class, 'store']);
 Route::put('users/{id}', [UserController::class, 'update']);
-Route::delete('users/{id}', [UserController::class, 'destroy']);
+Route::get('users/{id}', [UserController::class, 'destroy']);
 
 /*-----------------User categories--------------------------*/
 Route::get('user-categories', [UserCategoryController::class, 'index']);
@@ -234,7 +237,7 @@ Route::get('user-categories/{id}', [UserCategoryController::class, 'show']);
 Route::get('user-categories/{id}', [UserCategoryController::class, 'edit']);
 Route::post('user-categories', [UserCategoryController::class, 'store']);
 Route::put('user-categories/{id}', [UserCategoryController::class, 'update']);
-Route::delete('user-categories/{id}', [UserCategoryController::class, 'destroy']);
+Route::get('user-categories/{id}', [UserCategoryController::class, 'destroy']);
 
 /*-----------------Video--------------------------*/
 Route::get('videos', [VideoController::class, 'index']);
@@ -243,4 +246,4 @@ Route::get('videos/{id}', [VideoController::class, 'show']);
 Route::get('videos/{id}', [VideoController::class, 'edit']);
 Route::post('videos', [VideoController::class, 'store']);
 Route::put('videos/{id}', [VideoController::class, 'update']);
-Route::delete('videos/{id}', [VideoController::class, 'destroy']);
+Route::get('videos/{id}', [VideoController::class, 'destroy']);

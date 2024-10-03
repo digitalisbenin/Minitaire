@@ -38,13 +38,13 @@
                     </a>
                 </li>
                 <li class="sidebar-menu__item">
-                    <a href="" class="sidebar-menu__link">
+                    <a href="{{url('chapitres')}}" class="sidebar-menu__link">
                         <span class="icon"><i class="ph ph-users"></i></span>
                         <span class="text">Chapitres</span>
                     </a>
                 </li>
                 <li class="sidebar-menu__item">
-                    <a href="library.html" class="sidebar-menu__link">
+                    <a href="{{url('difficultes')}}" class="sidebar-menu__link">
                         <span class="icon"><i class="ph ph-books"></i></span>
                         <span class="text">Difficultés</span>
                     </a>

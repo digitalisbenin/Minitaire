@@ -15,7 +15,7 @@ class DifficuleteController extends Controller
     public function index()
     {
         $difficulete=Difficulete::all();
-        return view('',compact('difficulete'));
+        return view('admin.difficulte.index',compact('difficulete'));
     }
 
     /**
@@ -25,7 +25,7 @@ class DifficuleteController extends Controller
      */
     public function create()
     {
-        return view();
+        return view('admin.difficulte.create');
     }
 
     /**
@@ -90,10 +90,11 @@ class DifficuleteController extends Controller
      * @param  \App\Models\Difficulete  $difficulete
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Difficulete $difficulete)
+    public function destroy(Difficulete $difficulete, $id)
     {
-        $difficulete->delete();
-
+        $categori = Difficulete::findOrfail($id);
+        $categori->delete();
+        session()->flash('success', 'Suppression de la difficulté réussie !');
         return redirect('/difficultes')->with('success', 'Difficulté supprimée avec succès!');
     }
 }

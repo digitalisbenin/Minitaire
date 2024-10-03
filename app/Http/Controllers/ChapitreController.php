@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Chapitre;
+use App\Models\Formation;
 use Illuminate\Http\Request;
 
 class ChapitreController extends Controller
@@ -15,7 +16,7 @@ class ChapitreController extends Controller
     public function index()
     {
         $chapitre=Chapitre::all();
-        return view('',compact('chapitre'));
+        return view('admin.chapitre.index',compact('chapitre'));
     }
 
     /**
@@ -25,7 +26,8 @@ class ChapitreController extends Controller
      */
     public function create()
     {
-        return view();
+        $formation=Formation::all();
+        return view('admin.chapitre.create',compact('formation'));
     }
 
     /**
@@ -36,6 +38,8 @@ class ChapitreController extends Controller
      */
     public function store(Request $request)
     {
+        //dd($request);
+
         $validatedData = $request->validate([
             'titre' => 'required|max:255',
             'description' => 'nullable',
@@ -45,7 +49,35 @@ class ChapitreController extends Controller
             'formation_id' => 'required|exists:formations,id',
 
         ]);
-        $chapitre = Chapitre::create($validatedData);
+        //$chapitre = Chapitre::create($validatedData);
+        $chapitre = new Chapitre();
+
+        if ($request->hasFile('image_url')) {
+            $file = $request->file('image_url');
+            $ext = $file->getClientOriginalExtension();
+            $filename = time().'.'.$ext;
+            $file->move('assets/uploads/chapitre_images',$filename);
+            $chapitre->image_url = $filename;
+        }
+        if ($request->hasFile('document_url')) {
+            $file = $request->file('document_url');
+            $ext = $file->getClientOriginalExtension();
+            $filename = time().'.'.$ext;
+            $file->move('assets/uploads/chapitre_documents',$filename);
+            $chapitre->document_url = $filename;
+        }
+        if ($request->hasFile('video_url')) {
+            $file = $request->file('video_url');
+            $ext = $file->getClientOriginalExtension();
+            $filename = time().'.'.$ext;
+            $file->move('assets/uploads/chapitre_video',$filename);
+            $chapitre->video_url = $filename;
+        }
+        
+        $chapitre->titre = $request->titre;
+        $chapitre->description = $request->description;
+        $chapitre->formation_id = $request->formation_id;
+        $chapitre->save();
 
         return redirect('/chapitres')->with('success', 'Chapitre créée avec succès!');
     }
@@ -99,10 +131,12 @@ class ChapitreController extends Controller
      * @param  \App\Models\Chapitre  $chapitre
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Chapitre $chapitre)
+    public function destroy(Chapitre $chapitre, $id)
     {
-        $chapitre->delete();
-
-        return redirect('/certificates')->with('success', 'Chapitre supprimée avec succès!');
+      $chapitr = Chapitre::findOrfail($id);
+        $chapitr->delete();
+        session()->flash('success', 'Suppression du chapitre réussie !');
+       
+        return redirect('/chapitres')->with('success', 'Chapitre supprimée avec succès!');
     }
 }
