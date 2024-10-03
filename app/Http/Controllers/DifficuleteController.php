@@ -62,9 +62,10 @@ class DifficuleteController extends Controller
      * @param  \App\Models\Difficulete  $difficulete
      * @return \Illuminate\Http\Response
      */
-    public function edit(Difficulete $difficulete)
+    public function edit( $id)
     {
-        return view('', compact('difficulete'));
+        $difficulte = Difficulete::findOrFail($id);
+        return view('admin.difficulte.edit',compact('difficulte')); 
     }
 
     /**
@@ -74,13 +75,16 @@ class DifficuleteController extends Controller
      * @param  \App\Models\Difficulete  $difficulete
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Difficulete $difficulete)
+    public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
             'name' => 'required|max:255',
              'description' => 'nullable',
          ]);
-         $difficulete->update($validatedData);
+         $difficulte = Difficulete::findOrfail($id);
+         $difficulte->name = $request->name;
+         $difficulte->description = $request->description;
+         $difficulte->save();
          return redirect('/difficultes')->with('success', 'Difficulté mise à jour avec succès!');
     }
 

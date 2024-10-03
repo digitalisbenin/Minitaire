@@ -135,9 +135,9 @@ Route::get('commentaires/{id}', [CommentaireController::class, 'destroy']);
 /*-----------------Difficulte--------------------------*/
 Route::get('difficultes', [DifficuleteController::class, 'index']);
 Route::get('create-difficultes', [DifficuleteController::class, 'create']);
-Route::get('difficultes/{id}', [DifficuleteController::class, 'show']);
+Route::get('difficultes/{id}/edit', [DifficuleteController::class, 'edit']);
 Route::post('difficultes', [DifficuleteController::class, 'store']);
-Route::put('difficultes/{id}', [DifficuleteController::class, 'update']);
+Route::put('difficultes/{id}/update', [DifficuleteController::class, 'update']);
 Route::get('difficultes/{id}/destroy', [DifficuleteController::class, 'destroy']);
 
 /*-----------------Discussion--------------------------*/
