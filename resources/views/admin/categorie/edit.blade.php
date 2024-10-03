@@ -19,40 +19,12 @@
 
         <!-- Buttons Start -->
 <div class="flex-align justify-content-end gap-8">
-{{--  <button type="button" class="btn btn-outline-main bg-main-100 border-main-100 text-main-600 rounded-pill py-9">Save as Draft</button>
-<button type="button" class="btn btn-main rounded-pill py-9" disabled>Publish Course</button>  --}}
+
 </div>
 <!-- Buttons End -->
     </div>
 
-        <!-- Create Course Step List Start -->
-{{--  <ul class="step-list mb-24">
-<li class="step-list__item py-15 px-24 text-15 text-heading fw-medium flex-center gap-6  active">
-    <span class="icon text-xl d-flex"><i class="ph ph-circle"></i></span> 
-    Course Details
-    <span class="line position-relative"></span>
-</li>
-<li class="step-list__item py-15 px-24 text-15 text-heading fw-medium flex-center gap-6  ">
-    <span class="icon text-xl d-flex"><i class="ph ph-circle"></i></span> 
-    Upload Videos
-    <span class="line position-relative"></span>
-</li>
-<li class="step-list__item py-15 px-24 text-15 text-heading fw-medium flex-center gap-6  ">
-    <span class="icon text-xl d-flex"><i class="ph ph-circle"></i></span> 
-    About Course
-    <span class="line position-relative"></span>
-</li>
-<li class="step-list__item py-15 px-24 text-15 text-heading fw-medium flex-center gap-6  ">
-    <span class="icon text-xl d-flex"><i class="ph ph-circle"></i></span> 
-    Create Quiz
-    <span class="line position-relative"></span>
-</li>
-<li class="step-list__item py-15 px-24 text-15 text-heading fw-medium flex-center gap-6  ">
-    <span class="icon text-xl d-flex"><i class="ph ph-circle"></i></span> 
-    Publish Course
-    <span class="line position-relative"></span>
-</li>
-</ul>  --}}
+ 
 <!-- Create Course Step List End -->
 
     <!-- Course Tab Start -->
@@ -64,23 +36,17 @@
             </button>
         </div>
         <div class="card-body">
-            <form action="{{ url('categories') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ url('categories/' . $category->id.'/update') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
-  
                 <div class="row gy-20">
-                    {{--  <div class="col-xxl-3 col-md-4 col-sm-5">
-                        <div class="mb-20">
-                            <label class="h5 fw-semibold font-heading mb-0">Thumbnail Image <span class="text-13 text-gray-400 fw-medium">(Required)</span> </label>
-                        </div>
-                        <div id="fileUpload" class="fileUpload image-upload"></div>
-                    </div>  --}}
+                  
                     <div class="col-xxl-12 col-md-12 col-sm-7">
                         <div class="row g-20 mb-6">
                             <div class="col-sm-6">
                                 <label for="courseTitle" class="h5 mb-8 fw-semibold font-heading">Nom de la catégorie <span class="text-13 text-gray-400 fw-medium">(Requis)</span> </label>
                                 <div class="position-relative">
-                                    <input type="text" class="text-counter placeholder-13 form-control py-11 pe-76" name="name" maxlength="200" id="courseTitle" placeholder="">
+                                    <input type="text" class="text-counter placeholder-13 form-control py-11 pe-76" name="name" value="{{ old('name', $category->name) }}"  maxlength="200" id="courseTitle" placeholder="">
                                     <div class="text-gray-400 position-absolute inset-inline-end-0 top-50 translate-middle-y me-16">
                                         <span id="current">3</span>
                                         <span id="maximum">/ 200</span>
@@ -90,10 +56,9 @@
                             <div class="col-sm-6">
                                 <label for="courseTitle" class="h5 mb-8 fw-semibold font-heading">Description <span class="text-13 text-gray-400 fw-medium"></span> </label>
                                 <div class="position-relative">
-                                    <input type="text" class="text-counte placeholder-13 form-control py-11 pe-76" name="description" maxlength="500" id="courseTitle" placeholder="">
+                                    <input type="text" class="text-counte placeholder-13 form-control py-11 pe-76" name="description"value="{{ old('description', $category->description) }}"  maxlength="500" id="courseTitle" placeholder="">
                                     <div class="text-gray-400 position-absolute inset-inline-end-0 top-50 translate-middle-y me-16">
-                                        {{--  <span id="current">3</span>
-                                        <span id="maximum">/ 300</span>  --}}
+                                      
                                     </div>
                                 </div>
                             </div>
@@ -103,7 +68,7 @@
                     </div>
                     <div class="flex-align justify-content-end gap-8">
                         <a href="{{url('create-categories')}}" class="btn btn-outline-main rounded-pill py-9">Cancel</a>
-                        <button type="submit" class="btn btn-success rounded-pill py-9">Envoyer</button>
+                        <button type="submit" class="btn btn-success rounded-pill py-9">Mettre à jour</button>
                     </div>
                 </div>
             </form>

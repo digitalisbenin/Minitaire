@@ -9,29 +9,29 @@
     <!-- Title -->
     <title>Admin</title>
     <!-- Favicon -->
-    <link rel="shortcut icon" href="admin/assets/images/logo/favicon.png">
+    <link rel="shortcut icon" href="{{ asset('admin/assets/images/logo/favicon.png') }}">
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="admin/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ asset('admin/assets/css/bootstrap.min.css') }}">
     <!-- file upload -->
-    <link rel="stylesheet" href="admin/assets/css/file-upload.css">
+    <link rel="stylesheet" href="{{ asset('admin/assets/css/file-upload.css') }}">
     <!-- file upload -->
-    <link rel="stylesheet" href="admin/assets/css/plyr.css">
+    <link rel="stylesheet" href="{{ asset('admin/assets/css/plyr.css') }}">
     <!-- DataTables -->
-    <link rel="stylesheet" href="admin/cdn.datatables.net/2.0.8/css/dataTables.dataTables.min.css">
+    <link rel="stylesheet" href="{{ asset('admin/cdn.datatables.net/2.0.8/css/dataTables.dataTables.min.css') }}">
     <!-- full calendar -->
-    <link rel="stylesheet" href="admin/assets/css/full-calendar.css">
+    <link rel="stylesheet" href="{{ asset('admin/assets/css/full-calendar.css') }}">
     <!-- jquery Ui -->
-    <link rel="stylesheet" href="admin/assets/css/jquery-ui.css">
+    <link rel="stylesheet" href="{{ asset('admin/assets/css/jquery-ui.css') }}">
     <!-- editor quill Ui -->
-    <link rel="stylesheet" href="admin/assets/css/editor-quill.css">
+    <link rel="stylesheet" href="{{ asset('admin/assets/css/editor-quill.css') }}">
     <!-- apex charts Css -->
-    <link rel="stylesheet" href="admin/assets/css/apexcharts.css">
+    <link rel="stylesheet" href="{{ asset('admin/assets/css/apexcharts.css') }}">
     <!-- calendar Css -->
-    <link rel="stylesheet" href="admin/assets/css/calendar.css">
+    <link rel="stylesheet" href="{{ asset('admin/assets/css/calendar.css') }}">
     <!-- jvector map Css -->
-    <link rel="stylesheet" href="admin/assets/css/jquery-jvectormap-2.0.5.css">
+    <link rel="stylesheet" href="{{ asset('admin/assets/css/jquery-jvectormap-2.0.5.css') }}">
     <!-- Main css -->
-    <link rel="stylesheet" href="admin/assets/css/main.css">
+    <link rel="stylesheet" href="{{ asset('admin/assets/css/main.css') }}">
 </head>
 <body>
 
@@ -215,7 +215,7 @@
         <div class="dropdown">
             <button class="users arrow-down-icon border border-gray-200 rounded-pill p-4 d-inline-block pe-40 position-relative" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <span class="position-relative">
-                    <img src="admin/assets/images/thumbs/user-img.png" alt="Image" class="h-32 w-32 rounded-circle">
+                    <img src="{{asset('admin/assets/images/thumbs/user-img.png')}}" alt="Image" class="h-32 w-32 rounded-circle">
                     <span class="activation-badge w-8 h-8 position-absolute inset-block-end-0 inset-inline-end-0"></span>
                 </span>
             </button>
@@ -223,7 +223,7 @@
                 <div class="card border border-gray-100 rounded-12 box-shadow-custom">
                     <div class="card-body">
                         <div class="flex-align gap-8 mb-20 pb-20 border-bottom border-gray-100">
-                            <img src="admin/assets/images/thumbs/user-img.png" alt="" class="w-54 h-54 rounded-circle">
+                            <img src="{{asset('admin/assets/images/thumbs/user-img.png')}}" alt="" class="w-54 h-54 rounded-circle">
                             <div class="">
                                 <h4 class="mb-0">{{Auth::user()->name}} {{Auth::user()->prenom}} </h4>
                                 <p class="fw-medium text-13 text-gray-200">{{Auth::user()->email}}</p>
@@ -296,34 +296,47 @@
     </div>
 
         <!-- Jquery js -->
-    <script src="admin/assets/js/jquery-3.7.1.min.js"></script>
+    <script src="{{ asset('admin/assets/js/jquery-3.7.1.min.js') }}"></script>
     <!-- Bootstrap Bundle Js -->
-    <script src="admin/assets/js/boostrap.bundle.min.js"></script>
+    <script src="{{ asset('admin/assets/js/boostrap.bundle.min.js') }}"></script>
     <!-- Phosphor Js -->
-    <script src="admin/assets/js/phosphor-icon.js"></script>
+    <script src="{{ asset('admin/assets/js/phosphor-icon.js') }}"></script>
     <!-- file upload -->
-    <script src="admin/assets/js/file-upload.js"></script>
+    <script src="{{ asset('admin/assets/js/file-upload.js') }}"></script>
     <!-- file upload -->
-    <script src="admin/assets/js/plyr.js"></script>
+    <script src="{{ asset('admin/assets/js/plyr.js') }}"></script>
     <!-- dataTables -->
-    <script src="admin/cdn.datatables.net/2.0.8/js/dataTables.min.js"></script>
+    <script src="{{ asset('admin/cdn.datatables.net/2.0.8/js/dataTables.min.js') }}"></script>
     <!-- full calendar -->
-    <script src="admin/assets/js/full-calendar.js"></script>
+    <script src="{{ asset('admin/assets/js/full-calendar.js') }}"></script>
     <!-- jQuery UI -->
-    <script src="admin/assets/js/jquery-ui.js"></script>
+    <script src="{{ asset('admin/assets/js/jquery-ui.js') }}"></script>
     <!-- jQuery UI -->
-    <script src="admin/assets/js/editor-quill.js"></script>
+    <script src="{{ asset('admin/assets/js/editor-quill.js') }}"></script>
     <!-- apex charts -->
-    <script src="admin/assets/js/apexcharts.min.js"></script>
+    <script src="{{ asset('admin/assets/js/apexcharts.min.js') }}"></script>
     <!-- jvectormap Js -->
-    <script src="admin/assets/js/jquery-jvectormap-2.0.5.min.js"></script>
+    <script src="{{ asset('admin/assets/js/jquery-jvectormap-2.0.5.min.js') }}"></script>
     <!-- jvectormap world Js -->
-    <script src="admin/assets/js/jquery-jvectormap-world-mill-en.js"></script>
+    <script src="{{ asset('admin/assets/js/jquery-jvectormap-world-mill-en.js') }}"></script>
 
     <!-- main js -->
-    <script src="admin/assets/js/main.js"></script>
+    <script src="{{ asset('admin/assets/js/main.js') }}"></script>
 
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    @if (Session::has('success'))
+    <script>
+    
+            swal( "{!!Session::get('success')!!}","", 'success', {
+                button: true,
+                button:"OK",
+                timer: 5000,
+            });
+    
+    
+    
+    </script>
+    @endif
 
 
     <script>

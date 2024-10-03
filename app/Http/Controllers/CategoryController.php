@@ -63,11 +63,11 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category, $id)
+    public function edit( $id)
     {
-        
-        //$category = Category::findOrFail($id);
-        return view('admin.categorie.edite');
+
+        $category = Category::findOrFail($id);
+        return view('admin.categorie.edit',compact('category'));
     }
 
     /**
@@ -77,13 +77,16 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
-            'name' => 'required|unique:news|max:255',
+            'name' => 'required|max:255',
             'description' => 'nullable',
         ]);
-        $category->update($validatedData);
+        $category = Category::findOrfail($id);
+        $category->name = $request->name;
+        $category->description = $request->description;
+        $category->save();
         return redirect('/categories')->with('success', 'Catégorie mise à jour avec succès!');
     }
 
@@ -95,7 +98,7 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category, $id)
     {
-    
+
         $categorie = Category::findOrfail($id);
         $categorie->delete();
         session()->flash('success', 'Suppression de la catégorie réussie !');

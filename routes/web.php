@@ -100,7 +100,7 @@ Route::get('create-categories', [CategoryController::class, 'create']);
 Route::get('categories/{id}', [CategoryController::class, 'show']);
 Route::get('categories/{id}/edit', [CategoryController::class, 'edit'])->name('categories.edit');
 Route::post('categories', [CategoryController::class, 'store']);
-Route::put('categories/{id}', [CategoryController::class, 'update']);
+Route::put('categories/{id}/update', [CategoryController::class, 'update']);
 Route::get('categories/{id}/destroy', [CategoryController::class, 'destroy']);
 
 
