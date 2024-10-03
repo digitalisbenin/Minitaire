@@ -152,37 +152,38 @@
         </div>
         <div class="single-head">
             <div class="row">
-                <div class="col-lg-4 col-md-6 col-12">
-                    <!-- Start Single Course -->
-                    <div class="single-course wow fadeInUp" data-wow-delay=".2s">
-                        <div class="course-image">
-                            <a href="{{url('/details-cours')}}"><img src="assets/images/courses/courses-1.jpg"
-                                    alt="#"></a>
-                            <p class="price"></p>
-                        </div>
-                        <div class="content">
-                            <h3><a href="{{url('/details-cours')}}">Infanterie</a></h3>
-                            <p>Infanterie ou soldat d'infanterie est un  soldat spécialisé dans le combat au sol,
-                                 souvent en première ligne, utilisant des armes légères et opérant à pied ou en véhicules.</p>
-                        </div>
-                        <div class="bottom-content">
-                            <ul class="review">
-                                <li><i class="lni lni-star-filled"></i></li>
-                                <li><i class="lni lni-star-filled"></i></li>
-                                <li><i class="lni lni-star-filled"></i></li>
-                                <li><i class="lni lni-star-filled"></i></li>
-                                <li><i class="lni lni-star-filled"></i></li>
-                                {{--  <li>22 Reviews</li>  --}}
-                            </ul>
-                            <span class="tag">
-                                <i class="lni lni-tag"></i>
-                                <a href="javascript:void(0)">Armée</a>
-                            </span>
-                        </div>
+               @foreach( $formation as $value)
+               <div class="col-lg-3 col-md-6 col-12">
+                <!-- Start Single Course -->
+                <div class="single-course wow fadeInUp" data-wow-delay=".2s">
+                    <div class="course-image">
+                        <a href="{{url('/details-cours')}}"><img src="{{ asset('assets/uploads/formation_images/'.$value->image_url) }}"
+                                alt="#"></a>
+                        <p class="price">{{$value->difficulete->name}}</p>
                     </div>
-                    <!-- End Single Course -->
+                    <div class="content">
+                        <h3><a href="{{url('/details-cours')}}">{{$value->titre}}</a></h3>
+                        <p>{{$value->description}}</p>
+                    </div>
+                    <div class="bottom-content">
+                        <ul class="review">
+                            <li><i class="lni lni-star-filled"></i></li>
+                            <li><i class="lni lni-star-filled"></i></li>
+                            <li><i class="lni lni-star-filled"></i></li>
+                            <li><i class="lni lni-star-filled"></i></li>
+                            <li><i class="lni lni-star-filled"></i></li>
+
+                        </ul>
+                        <span class="tag">
+                            <i class="lni lni-tag"></i>
+                            <a href="javascript:void(0)">{{$value->category->name}}</a>
+                        </span>
+                    </div>
                 </div>
-                <div class="col-lg-4 col-md-6 col-12">
+                <!-- End Single Course -->
+            </div>
+               @endforeach
+                {{--  <div class="col-lg-4 col-md-6 col-12">
                     <!-- Start Single Course -->
                     <div class="single-course wow fadeInUp" data-wow-delay=".4s">
                         <div class="course-image">
@@ -201,7 +202,7 @@
                                 <li><i class="lni lni-star-filled"></i></li>
                                 <li><i class="lni lni-star-filled"></i></li>
                                 <li><i class="lni lni-star-filled"></i></li>
-                                {{--  <li>10 Reviews</li>  --}}
+
                             </ul>
                             <span class="tag">
                                 <i class="lni lni-tag"></i>
@@ -210,8 +211,8 @@
                         </div>
                     </div>
                     <!-- End Single Course -->
-                </div>
-                <div class="col-lg-4 col-md-6 col-12">
+                </div>  --}}
+                {{--  <div class="col-lg-4 col-md-6 col-12">
                     <!-- Start Single Course -->
                     <div class="single-course wow fadeInUp" data-wow-delay=".6s">
                         <div class="course-image">
@@ -230,7 +231,7 @@
                                 <li><i class="lni lni-star-filled"></i></li>
                                 <li><i class="lni lni-star-filled"></i></li>
                                 <li><i class="lni lni-star-filled"></i></li>
-                                {{--  <li>55 Reviews</li>  --}}
+
                             </ul>
                             <span class="tag">
                                 <i class="lni lni-tag"></i>
@@ -239,8 +240,8 @@
                         </div>
                     </div>
                     <!-- End Single Course -->
-                </div>
-                <div class="col-lg-4 col-md-6 col-12">
+                </div>  --}}
+                {{--  <div class="col-lg-4 col-md-6 col-12">
                     <!-- Start Single Course -->
                     <div class="single-course wow fadeInUp" data-wow-delay=".2s">
                         <div class="course-image">
@@ -259,7 +260,7 @@
                                 <li><i class="lni lni-star-filled"></i></li>
                                 <li><i class="lni lni-star-filled"></i></li>
                                 <li><i class="lni lni-star-filled"></i></li>
-                                {{--  <li>60 Reviews</li>  --}}
+
                             </ul>
                             <span class="tag">
                                 <i class="lni lni-tag"></i>
@@ -268,8 +269,8 @@
                         </div>
                     </div>
                     <!-- End Single Course -->
-                </div>
-                <div class="col-lg-4 col-md-6 col-12">
+                </div>  --}}
+                {{--  <div class="col-lg-4 col-md-6 col-12">
                     <!-- Start Single Course -->
                     <div class="single-course wow fadeInUp" data-wow-delay=".4s">
                         <div class="course-image">
@@ -291,7 +292,7 @@
                                 <li><i class="lni lni-star-filled"></i></li>
                                 <li><i class="lni lni-star-filled"></i></li>
                                 <li><i class="lni lni-star-filled"></i></li>
-                                {{--  <li>25 Reviews</li>  --}}
+
                             </ul>
                             <span class="tag">
                                 <i class="lni lni-tag"></i>
@@ -300,8 +301,8 @@
                         </div>
                     </div>
                     <!-- End Single Course -->
-                </div>
-                <div class="col-lg-4 col-md-6 col-12">
+                </div>  --}}
+                {{--  <div class="col-lg-4 col-md-6 col-12">
                     <!-- Start Single Course -->
                     <div class="single-course wow fadeInUp" data-wow-delay=".6s">
                         <div class="course-image">
@@ -320,7 +321,7 @@
                                 <li><i class="lni lni-star-filled"></i></li>
                                 <li><i class="lni lni-star-filled"></i></li>
                                 <li><i class="lni lni-star-filled"></i></li>
-                                {{--  <li>35 Reviews</li>  --}}
+
                             </ul>
                             <span class="tag">
                                 <i class="lni lni-tag"></i>
@@ -329,8 +330,8 @@
                         </div>
                     </div>
                     <!-- End Single Course -->
-                </div>
-                <div class="col-lg-4 col-md-6 col-12">
+                </div>  --}}
+                {{--  <div class="col-lg-4 col-md-6 col-12">
                     <!-- Start Single Course -->
                     <div class="single-course wow fadeInUp" data-wow-delay=".2s">
                         <div class="course-image">
@@ -351,7 +352,7 @@
                                 <li><i class="lni lni-star-filled"></i></li>
                                 <li><i class="lni lni-star-filled"></i></li>
                                 <li><i class="lni lni-star-filled"></i></li>
-                                {{--  <li>60 Reviews</li>  --}}
+
                             </ul>
                             <span class="tag">
                                 <i class="lni lni-tag"></i>
@@ -360,8 +361,8 @@
                         </div>
                     </div>
                     <!-- End Single Course -->
-                </div>
-                <div class="col-lg-4 col-md-6 col-12">
+                </div>  --}}
+                {{--  <div class="col-lg-4 col-md-6 col-12">
                     <!-- Start Single Course -->
                     <div class="single-course wow fadeInUp" data-wow-delay=".4s">
                         <div class="course-image">
@@ -380,7 +381,7 @@
                                 <li><i class="lni lni-star-filled"></i></li>
                                 <li><i class="lni lni-star-filled"></i></li>
                                 <li><i class="lni lni-star-filled"></i></li>
-                                {{--  <li>25 Reviews</li>  --}}
+                                
                             </ul>
                             <span class="tag">
                                 <i class="lni lni-tag"></i>
@@ -389,8 +390,8 @@
                         </div>
                     </div>
                     <!-- End Single Course -->
-                </div>
-                <div class="col-lg-4 col-md-6 col-12">
+                </div>  --}}
+                {{--  <div class="col-lg-4 col-md-6 col-12">
                     <!-- Start Single Course -->
                     <div class="single-course wow fadeInUp" data-wow-delay=".6s">
                         <div class="course-image">
@@ -412,7 +413,7 @@
                                 <li><i class="lni lni-star-filled"></i></li>
                                 <li><i class="lni lni-star-filled"></i></li>
                                 <li><i class="lni lni-star-filled"></i></li>
-                                {{--  <li>35 Reviews</li>  --}}
+                               
                             </ul>
                             <span class="tag">
                                 <i class="lni lni-tag"></i>
@@ -421,7 +422,7 @@
                         </div>
                     </div>
                     <!-- End Single Course -->
-                </div>
+                </div>  --}}
             </div>
         </div>
     </div>

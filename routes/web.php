@@ -33,7 +33,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $formation=Formation::all();
+    return view('welcome',compact('formation'));
 });
 Route::get('/cours', function () {
     return view('cours');
