@@ -104,8 +104,10 @@ class VideoController extends Controller
      * @param  \App\Models\Video  $video
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Video $video)
+    public function destroy(Video $video,$id)
     {
-        //
+        $videos = Video::findOrfail($id);
+        $videos->delete();
+        return redirect('/videos')->with('success', 'Video supprimée avec succès!');
     }
 }

@@ -1,6 +1,8 @@
 <?php
 use App\Models\User;
+use App\Models\Certificate;
 use App\Models\Formation;
+use App\Models\Resource;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CertificateController;
@@ -70,11 +72,15 @@ Route::get('/formation', function () {
     return view('formations',compact('formation'));
 });
 Route::get('/documents', function () {
-    return view('documents');
+    $resource=Resource::all();
+    return view('documents',compact('resource'));
 });
 Route::get('/dashboard', function () {
-
-    return view('dashboard');
+    $formation=Formation::all();
+    $apprenants=User::where('role_id',3)->get();
+    $formateurs=User::where('role_id',2)->get();
+    $certificate=Certificate::all();
+    return view('dashboard', compact('formation','apprenants','formateurs','certificate'));
 
 })->middleware(['auth', 'verified'])->name('dashboard');
 
@@ -208,7 +214,7 @@ Route::get('ressources/{id}', [ResourceController::class, 'show']);
 Route::get('ressources/{id}', [ResourceController::class, 'edit']);
 Route::post('ressources', [ResourceController::class, 'store']);
 Route::put('ressources/{id}', [ResourceController::class, 'update']);
-Route::get('ressources/{id}', [ResourceController::class, 'destroy']);
+Route::get('ressources/{id}/destroy', [ResourceController::class, 'destroy']);
 
 /*-----------------Role--------------------------*/
 Route::get('roles', [RoleController::class, 'index']);
@@ -253,4 +259,4 @@ Route::get('videos/{id}', [VideoController::class, 'show']);
 Route::get('videos/{id}', [VideoController::class, 'edit']);
 Route::post('videos', [VideoController::class, 'store']);
 Route::put('videos/{id}', [VideoController::class, 'update']);
-Route::get('videos/{id}', [VideoController::class, 'destroy']);
+Route::get('videos/{id}/destroy', [VideoController::class, 'destroy']);

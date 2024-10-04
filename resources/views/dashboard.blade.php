@@ -29,7 +29,14 @@
                 <div class="col-xxl-3 col-sm-6">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="mb-2">155+</h4>
+                            @if($formateurs->count()> 0)
+                            <h4 class="mb-2">{{$formateurs->count()}}</h4>
+                         
+                            @else
+                            <h4 class="mb-2">0</h4>
+                            
+                            @endif
+
                             <span class="text-gray-600">Formateurs</span>
                             <div class="flex-between gap-8 mt-16">
                                 <span class="flex-shrink-0 w-48 h-48 flex-center rounded-circle bg-main-600 text-white text-2xl"><i class="ph-fill ph-book-open"></i></span>
@@ -41,7 +48,13 @@
                 <div class="col-xxl-3 col-sm-6">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="mb-2">39+</h4>
+                            @if($certificate->count()> 0)
+                            <h4 class="mb-2">{{$certificate->count()}}</h4>
+                         
+                            @else
+                            <h4 class="mb-2">0</h4>
+                            
+                            @endif
                             <span class="text-gray-600">Certificat obtenu</span>
                             <div class="flex-between gap-8 mt-16">
                                 <span class="flex-shrink-0 w-48 h-48 flex-center rounded-circle bg-main-two-600 text-white text-2xl"><i class="ph-fill ph-certificate"></i></span>
@@ -53,7 +66,13 @@
                 <div class="col-xxl-3 col-sm-6">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="mb-2">25+</h4>
+                            @if($formation->count()> 0)
+                            <h4 class="mb-2">{{$formation->count()}}</h4>
+                         
+                            @else
+                            <h4 class="mb-2">0</h4>
+                            
+                            @endif
                             <span class="text-gray-600">Cours</span>
                             <div class="flex-between gap-8 mt-16">
                                 <span class="flex-shrink-0 w-48 h-48 flex-center rounded-circle bg-purple-600 text-white text-2xl"> <i class="ph-fill ph-graduation-cap"></i></span>
@@ -65,7 +84,13 @@
                 <div class="col-xxl-3 col-sm-6">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="mb-2">18k+</h4>
+                            @if($apprenants->count()> 0)
+                            <h4 class="mb-2">{{$apprenants->count()}}</h4>
+                         
+                            @else
+                            <h4 class="mb-2">0</h4>
+                            
+                            @endif
                             <span class="text-gray-600">Apprenants</span>
                             <div class="flex-between gap-8 mt-16">
                                 <span class="flex-shrink-0 w-48 h-48 flex-center rounded-circle bg-warning-600 text-white text-2xl"><i class="ph-fill ph-users-three"></i></span>

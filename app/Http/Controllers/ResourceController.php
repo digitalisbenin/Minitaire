@@ -129,10 +129,10 @@ class ResourceController extends Controller
      * @param  \App\Models\Resource  $resource
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Resource $resource)
+    public function destroy(Resource $resource, $id)
     {
-        $resource->delete();
-
-        return redirect('/resources')->with('success', 'Resources supprimée avec succès!');
+        $resoures = Resource::findOrfail($id);
+        $resoures->delete();
+        return redirect('/ressources')->with('success', 'Resources supprimée avec succès!');
     }
 }
