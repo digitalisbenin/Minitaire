@@ -73,7 +73,9 @@ Route::get('/documents', function () {
     return view('documents');
 });
 Route::get('/dashboard', function () {
+
     return view('dashboard');
+    
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -84,6 +86,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/apprenants', function () {
         $apprenants=User::where('role_id',3)->get();
         return view('admin.student',compact('apprenants'));
+    });
+    Route::get('/admin-formateurs', function () {
+        $formateurs=User::where('role_id',2)->get();
+        return view('admin.formateurs',compact('formateurs'));
     });
     Route::get('/cours', function () {
         return view('admin.cours');

@@ -50,12 +50,12 @@
                     </a>
                 </li>
                 <li class="sidebar-menu__item">
-                    <a href="resources.html" class="sidebar-menu__link">
+                    <a href="{{url('admin-formateurs')}}" class="sidebar-menu__link">
                         <span class="icon"><i class="ph ph-bookmarks"></i></span>
-                        <span class="text">Resources</span>
+                        <span class="text">Formateurs</span>
                     </a>
                 </li>
-                <li class="sidebar-menu__item">
+                {{--  <li class="sidebar-menu__item">
                     <a href="message.html" class="sidebar-menu__link">
                         <span class="icon"><i class="ph ph-chats-teardrop"></i></span>
                         <span class="text">Messages</span>
@@ -94,15 +94,15 @@
                         <span class="icon"><i class="ph ph-gear"></i></span>
                         <span class="text">Account Settings</span>
                     </a>
-                </li>
+                </li>  --}}
 
-                <li class="sidebar-menu__item has-dropdown">
+               {{-- <li class="sidebar-menu__item has-dropdown">
                     <a href="javascript:void(0)" class="sidebar-menu__link">
                         <span class="icon"><i class="ph ph-shield-check"></i></span>
                         <span class="text">Authetication</span>
                     </a>
                     <!-- Submenu start -->
-                    <ul class="sidebar-submenu">
+                      <ul class="sidebar-submenu">
                         <li class="sidebar-submenu__item">
                             <a href="sign-in.html" class="sidebar-submenu__link">Sign In</a>
                         </li>
@@ -121,13 +121,13 @@
                         <li class="sidebar-submenu__item">
                             <a href="two-step-verification.html" class="sidebar-submenu__link">Two Step Verification</a>
                         </li>
-                    </ul>
+                    </ul>  
                     <!-- Submenu End -->
                 </li>
-
+                    --}}
             </ul>
         </div>
-        <div class="p-20 pt-80">
+        {{--  <div class="p-20 pt-80">
             <div class="bg-main-50 p-20 pt-0 rounded-16 text-center mt-74">
                 <span class="border border-5 bg-white mx-auto border-primary-50 w-114 h-114 rounded-circle flex-center text-success-600 text-2xl translate-n74">
                     <img src="admin/assets/images/icons/certificate.png" alt="" class="centerised-img">
@@ -138,7 +138,7 @@
                     <a href="pricing-plan.html" class="btn btn-main mt-16 rounded-pill">Get Access</a>
                 </div>
             </div>
-        </div>
+        </div>  --}}
     </div>
 
 </aside>

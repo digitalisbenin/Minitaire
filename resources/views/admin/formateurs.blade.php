@@ -10,7 +10,7 @@
             <ul class="flex-align gap-4">
                 <li><a href="index.html" class="text-gray-200 fw-normal text-15 hover-text-main-600">Accueil</a></li>
                 <li> <span class="text-gray-500 fw-normal d-flex"><i class="ph ph-caret-right"></i></span> </li>
-                <li><span class="text-main-600 fw-normal text-15">Apprenants</span></li>
+                <li><span class="text-main-600 fw-normal text-15">Formateurs</span></li>
             </ul>
         </div>
                     <!-- Breadcrumb End -->
@@ -19,22 +19,9 @@
         <div class="flex-align gap-8 flex-wrap">
             <div class="position-relative text-gray-500 flex-align gap-4 text-13">
                 <span class="text-inherit"> </span>
-                {{--  <div class="flex-align text-gray-500 text-13 border border-gray-100 rounded-4 ps-20 focus-border-main-600 bg-white">
-                    <span class="text-lg"><i class="ph ph-funnel-simple"></i></span>
-                    <select class="form-control ps-8 pe-20 py-16 border-0 text-inherit rounded-4 text-center">
-                        <option value="1" selected>Populaire</option>
-
-                    </select>
-                </div>  --}}
+               
             </div>
-            {{--  <div class="flex-align text-gray-500 text-13 border border-gray-100 rounded-4 ps-20 focus-border-main-600 bg-white">
-                <span class="text-lg"><i class="ph ph-layout"></i></span>
-                <select class="form-control ps-8 pe-20 py-16 border-0 text-inherit rounded-4 text-center" id="exportOptions">
-                    <option value="" selected disabled>Exporter</option>
-                    <option value="csv">CSV</option>
-                    <option value="json">JSON</option>
-                </select>
-            </div>  --}}
+            
         </div>
         <!-- Breadcrumb Right End -->
     </div>
@@ -50,7 +37,7 @@
                                 <input class="form-check-input border-gray-200 rounded-4" type="checkbox" id="selectAll">
                             </div>
                         </th>
-                        <th class="h6 text-gray-300">Apprenants</th>
+                        <th class="h6 text-gray-300">Formateurs</th>
                         <th class="h6 text-gray-300">Email</th>
                         <th class="h6 text-gray-300">Adresse</th>
                         <th class="h6 text-gray-300">Téléphone</th>
@@ -59,7 +46,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($apprenants as $value )
+                    @foreach ($formateurs as $value )
                     <tr>
                         <td class="fixed-width">
                             <div class="form-check">

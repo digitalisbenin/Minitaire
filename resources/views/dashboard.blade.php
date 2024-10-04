@@ -30,7 +30,7 @@
                     <div class="card">
                         <div class="card-body">
                             <h4 class="mb-2">155+</h4>
-                            <span class="text-gray-600">Cours terminés</span>
+                            <span class="text-gray-600">Formateurs</span>
                             <div class="flex-between gap-8 mt-16">
                                 <span class="flex-shrink-0 w-48 h-48 flex-center rounded-circle bg-main-600 text-white text-2xl"><i class="ph-fill ph-book-open"></i></span>
                                 <div id="complete-course" class="remove-tooltip-title rounded-tooltip-value"></div>
@@ -270,7 +270,7 @@
             <!-- Calendar End -->
 
             <!-- Assignment Start -->
-            <div class="card mt-24">
+            {{--  <div class="card mt-24">
                 <div class="card-body">
                     <div class="mb-20 flex-between flex-wrap gap-8">
                         <h4 class="mb-0">Assignments</h4>
@@ -307,7 +307,7 @@
                         <a href="assignment.html" class="text-gray-900 hover-text-main-600"><i class="ph ph-caret-right"></i></a>
                     </div>
                 </div>
-            </div>
+            </div>  --}}
             <!-- Assignment End -->
 
             <!-- Progress Bar Start -->
