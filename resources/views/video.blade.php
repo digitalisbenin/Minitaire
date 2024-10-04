@@ -2,7 +2,7 @@
 @section('title','Videos')
 
 @section('content')
-@include ('partial.navbar2')
+@include ('partial.navbar')
 
 
 <!-- Start Breadcrumbs -->

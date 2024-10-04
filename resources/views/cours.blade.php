@@ -2,7 +2,7 @@
 @section('title','Cours')
 
 @section('content')
-@include ('partial.navbar2')
+@include ('partial.navbar')
 
 <!-- Start Breadcrumbs -->
 <div class="breadcrumbs overlay">

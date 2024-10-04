@@ -75,7 +75,7 @@ Route::get('/documents', function () {
 Route::get('/dashboard', function () {
 
     return view('dashboard');
-    
+
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -91,9 +91,9 @@ Route::middleware('auth')->group(function () {
         $formateurs=User::where('role_id',2)->get();
         return view('admin.formateurs',compact('formateurs'));
     });
-    Route::get('/cours', function () {
-        return view('admin.cours');
-    });
+    // Route::get('/cours', function () {
+    //     return view('admin.cours');
+    // });
     Route::get('/categories', function () {
         return view('admin.type');
     });

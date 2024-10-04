@@ -52,13 +52,13 @@
                                     >Accueil</a>
 
                             </li>
-                            <li class="nav-item">
+                            {{--  <li class="nav-item">
                                 <a class=" " href="{{url('/cours')}}"
 
                                     aria-controls="navbarSupportedContent" aria-expanded="false"
                                    >Cours</a>
 
-                            </li>
+                            </li>  --}}
                             <li class="nav-item"><a href="{{url('/formation')}}">Formations</a></li>
                             <li class="nav-item"><a href="{{url('/')}}">Forums</a></li>
                            
