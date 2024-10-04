@@ -1,9 +1,9 @@
 @extends('layouts.base')
-@section('title','Accueil')
+@section('title','Forums')
 
 @section('content')
 @include ('partial.navbar')
-<section class="hero-area">
+{{--  <section class="hero-area">
     <div class="hero-slider">
         <!-- Single Slider -->
         <div class="hero-inner overlay" style="background-image: url('assets/images/hero/slider1.jpg');">
@@ -13,12 +13,12 @@
                         <div class="home-slider">
                             <div class="hero-text">
                                 {{--  <h5 class="wow fadeInUp" data-wow-delay=".3s">Start to Learning Today</h5>  --}}
-                                <h1 class="wow fadeInUp" data-wow-delay=".5s">Bienvenue sur la platforme <br> de formation des militaires</h1>
+                                {{--  <h1 class="wow fadeInUp" data-wow-delay=".5s">Bienvenue sur la platforme <br> de formation des militaires</h1>
                                 <p class="wow fadeInUp" data-wow-delay=".7s"> <br> .</p>
-                                <div class="button wow fadeInUp" data-wow-delay=".9s">
+                                <div class="button wow fadeInUp" data-wow-delay=".9s">  --}}
                                     {{--  <a href="about-us.html" class="btn">Learn More</a>
                                     <a href="courses-grid.html" class="btn alt-btn">Our Courses</a>  --}}
-                                </div>
+                                {{--  </div>
                             </div>
                         </div>
                     </div>
@@ -28,7 +28,24 @@
 
         <!--/ End Single Slider -->
     </div>
-</section>
+</section>    --}}
+
+<div class="breadcrumbs overlay">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8 offset-lg-2 col-md-12 col-12">
+                <div class="breadcrumbs-content">
+                    <h1 class="page-title"> forums</h1>
+                    <p>Forums de discussion</p>
+                </div>
+                <ul class="breadcrumb-nav">
+                    <li><a href="{{url('/')}}">Accueil</a></li>
+                    <li>Forums</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
 <div class=" h-screen">
     <div class="mt-5 " style="margin-left: 6rem; margin-right: 6rem;">
         <div class="d-flex mx-5">
@@ -39,7 +56,7 @@
               </svg>
               <p class="ms-2 mt-2">Posez votre question</p>
             </div>
-          
+
             <!-- Champ de recherche -->
             <div class="ms-auto mt-3">
               <div class="d-flex align-items-center border border-secondary rounded-pill bg-white px-3 py-2">
@@ -54,7 +71,7 @@
               </div>
             </div>
           </div>
-          
+
       {{-- <div
         class="flex ml-32 mr-32 mt-9  rounded-lg text-black px-4 py-2"
       >
@@ -69,7 +86,7 @@
           </a>
           <p class="text-left">Par Zar447, 27 janvier 2014</p>
         </div>
-      
+
         <!-- Informations supplémentaires -->
         <div class="ms-auto d-flex">
           <!-- Section réponses et vues -->
@@ -77,7 +94,7 @@
             <p class="text-left mb-1">7 réponses</p>
             <p class="text-left">1,3k vues</p>
           </div>
-      
+
           <!-- Section image et auteur -->
           <div class="d-flex">
             <div class="me-2">
@@ -95,7 +112,7 @@
           </div>
         </div>
       </div>
-      
+
       <hr class="border-b border-gray-300 my-4 ml-32 mr-32" />
       <div class="d-flex mx-5 mt-4">
         <!-- Texte principal -->
@@ -105,7 +122,7 @@
           </a>
           <p class="text-left">Par Zar447, 27 janvier 2014</p>
         </div>
-      
+
         <!-- Informations supplémentaires -->
         <div class="ms-auto d-flex">
           <!-- Section réponses et vues -->
@@ -113,7 +130,7 @@
             <p class="text-left mb-1">7 réponses</p>
             <p class="text-left">1,3k vues</p>
           </div>
-      
+
           <!-- Section image et auteur -->
           <div class="d-flex">
             <div class="me-2">
@@ -131,7 +148,7 @@
           </div>
         </div>
       </div>
-      
+
       <hr class="border-b border-gray-300 my-4 ml-32 mr-32" />
       <div class="d-flex mx-5 mt-4">
         <!-- Texte principal -->
@@ -141,7 +158,7 @@
           </a>
           <p class="text-left">Par Zar447, 27 janvier 2014</p>
         </div>
-      
+
         <!-- Informations supplémentaires -->
         <div class="ms-auto d-flex">
           <!-- Section réponses et vues -->
@@ -149,7 +166,7 @@
             <p class="text-left mb-1">7 réponses</p>
             <p class="text-left">1,3k vues</p>
           </div>
-      
+
           <!-- Section image et auteur -->
           <div class="d-flex">
             <div class="me-2">
@@ -167,7 +184,7 @@
           </div>
         </div>
       </div>
-      
+
       <hr class="border-b border-gray-300 my-4 ml-32 mr-32" />
       <div class="d-flex mx-5 mt-4">
         <!-- Texte principal -->
@@ -177,7 +194,7 @@
           </a>
           <p class="text-left">Par Zar447, 27 janvier 2014</p>
         </div>
-      
+
         <!-- Informations supplémentaires -->
         <div class="ms-auto d-flex">
           <!-- Section réponses et vues -->
@@ -185,7 +202,7 @@
             <p class="text-left mb-1">7 réponses</p>
             <p class="text-left">1,3k vues</p>
           </div>
-      
+
           <!-- Section image et auteur -->
           <div class="d-flex">
             <div class="me-2">
@@ -203,7 +220,7 @@
           </div>
         </div>
       </div>
-      
+
       <hr class="border-b border-gray-300 my-4 ml-32 mr-32" />
       <div class="d-flex mx-5 mt-4">
         <!-- Texte principal -->
@@ -213,7 +230,7 @@
           </a>
           <p class="text-left">Par Zar447, 27 janvier 2014</p>
         </div>
-      
+
         <!-- Informations supplémentaires -->
         <div class="ms-auto d-flex">
           <!-- Section réponses et vues -->
@@ -221,7 +238,7 @@
             <p class="text-left mb-1">7 réponses</p>
             <p class="text-left">1,3k vues</p>
           </div>
-      
+
           <!-- Section image et auteur -->
           <div class="d-flex">
             <div class="me-2">
@@ -240,7 +257,7 @@
         </div>
       </div>
       <div style="height: 20px;"></div>
- 
+
     </div>
   </div>
 
