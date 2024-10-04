@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Resource;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 class ResourceController extends Controller
 {
     /**
@@ -15,7 +16,7 @@ class ResourceController extends Controller
     public function index()
     {
         $resource=Resource::all();
-        return view('',compact('resource'));
+        return view('admin.ressource.index',compact('resource'));
     }
 
     /**
@@ -25,7 +26,7 @@ class ResourceController extends Controller
      */
     public function create()
     {
-        return view('');
+        return view('admin.ressource.create');
     }
 
     /**
@@ -36,18 +37,46 @@ class ResourceController extends Controller
      */
     public function store(Request $request)
     {
-
+        
         $validatedData = $request->validate([
             'titre' => 'required|max:255',
             'description' => 'required|max:255',
-            'image_url' => 'required|max:255',
-            'video_url' => 'required|max:255',
-            'document_url' => 'required|max:255',
-            'user_id' => 'nullable|exists:users,id',
+            'image_url' => 'required',
+            'video_url' => 'required',
+            'document_url' => 'required',
+           
         ]);
-        $formation = Resource::create($validatedData);
+       
+        $resource = new Resource();
 
-        return redirect('/resources')->with('success', 'Resources créée avec succès!');
+        if ($request->hasFile('image_url')) {
+            $file = $request->file('image_url');
+            $ext = $file->getClientOriginalExtension();
+            $filename = time().'.'.$ext;
+            $file->move('assets/uploads/resource_images',$filename);
+            $resource->image_url = $filename;
+        }
+        if ($request->hasFile('document_url')) {
+            $file = $request->file('document_url');
+            $ext = $file->getClientOriginalExtension();
+            $filename = time().'.'.$ext;
+            $file->move('assets/uploads/resource_documents',$filename);
+            $resource->document_url = $filename;
+        }
+        if ($request->hasFile('video_url')) {
+            $file = $request->file('video_url');
+            $ext = $file->getClientOriginalExtension();
+            $filename = time().'.'.$ext;
+            $file->move('assets/uploads/resource_video',$filename);
+            $resource->video_url = $filename;
+        }
+        
+        $resource->titre = $request->titre;
+        $resource->description = $request->description;
+        $resource->user_id= Auth::id();
+        $resource->save();
+
+        return redirect('/ressources')->with('success', 'Resources créée avec succès!');
 
     }
 
