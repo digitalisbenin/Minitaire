@@ -146,8 +146,8 @@
                        <div class="col-lg-4 col-sm-6">
                         <div class="card border border-gray-100">
                             <div class="card-body p-8">
-                                <a href="course-details.html" class="bg-main-100 rounded-8 overflow-hidden text-center mb-8 h-164 flex-center p-8">
-                                    <img src="admin/assets/images/thumbs/course-img1.png" alt="Course Image">
+                                <a href="#" class="bg-main-100 rounded-8 overflow-hidden text-center mb-8 h-164 flex-center p-8">
+                                    <img src="{{ asset('assets/uploads/formation_images/'.$value->image_url) }}" alt="Course Image">
                                 </a>
                                 <div class="p-8">
                                     <span class="text-13 py-2 px-10 rounded-pill bg-success-50 text-success-600 mb-16">{{$value->category->name}}</span> 
