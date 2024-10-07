@@ -3,6 +3,7 @@ use App\Models\User;
 use App\Models\Certificate;
 use App\Models\Formation;
 use App\Models\Resource;
+use App\Models\Chapitre;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CertificateController;
@@ -50,8 +51,9 @@ Route::get('/admin-cours-detail', function () {
 // Route::get('/admin-create', function () {
 //     return view('admin.cours.create');
 // });
-Route::get('/details-cours', function () {
-    return view('details_cours');
+Route::get('/details-cours/{id}', function ($id) {
+    $chapitre = Chapitre::where('formation_id',$id)->get();
+    return view('details_cours',compact('chapitre'));
 });
 Route::get('/video', function () {
     return view('video');
@@ -77,10 +79,11 @@ Route::get('/documents', function () {
 });
 Route::get('/dashboard', function () {
     $formation=Formation::all();
+    $formations = Formation::orderBy('created_at', 'desc')->take(3)->get();
     $apprenants=User::where('role_id',3)->get();
     $formateurs=User::where('role_id',2)->get();
     $certificate=Certificate::all();
-    return view('dashboard', compact('formation','apprenants','formateurs','certificate'));
+    return view('dashboard', compact('formation','formations','apprenants','formateurs','certificate'));
 
 })->middleware(['auth', 'verified'])->name('dashboard');
 
@@ -130,9 +133,9 @@ Route::get('certificates/{id}', [CertificateController::class, 'destroy']);
 Route::get('chapitres', [ChapitreController::class, 'index']);
 Route::get('create-chapitres', [ChapitreController::class, 'create']);
 Route::get('chapitres/{id}', [ChapitreController::class, 'show']);
-Route::get('chapitres/{id}', [ChapitreController::class, 'edit']);
+Route::get('chapitres/{id}/edit', [ChapitreController::class, 'edit']);
 Route::post('chapitres', [ChapitreController::class, 'store']);
-Route::put('chapitres/{id}', [ChapitreController::class, 'update']);
+Route::put('chapitres/{id}/update', [ChapitreController::class, 'update']);
 Route::get('chapitres/{id}/destroy', [ChapitreController::class, 'destroy']);
 
 /*-----------------Commentaire--------------------------*/
@@ -211,9 +214,9 @@ Route::get('notifications/{id}', [NotificationController::class, 'destroy']);
 Route::get('ressources', [ResourceController::class, 'index']);
 Route::get('create-ressources', [ResourceController::class, 'create']);
 Route::get('ressources/{id}', [ResourceController::class, 'show']);
-Route::get('ressources/{id}', [ResourceController::class, 'edit']);
+Route::get('ressources/{id}/edit', [ResourceController::class, 'edit']);
 Route::post('ressources', [ResourceController::class, 'store']);
-Route::put('ressources/{id}', [ResourceController::class, 'update']);
+Route::put('ressources/{id}/update', [ResourceController::class, 'update']);
 Route::get('ressources/{id}/destroy', [ResourceController::class, 'destroy']);
 
 /*-----------------Role--------------------------*/

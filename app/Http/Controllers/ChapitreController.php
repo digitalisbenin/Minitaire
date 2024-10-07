@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Chapitre;
 use App\Models\Formation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class ChapitreController extends Controller
 {
@@ -99,9 +100,11 @@ class ChapitreController extends Controller
      * @param  \App\Models\Chapitre  $chapitre
      * @return \Illuminate\Http\Response
      */
-    public function edit(Chapitre $chapitre)
+    public function edit( $id)
     {
-        return view('', compact('chapitre'));
+        $chapitre= Chapitre::findOrfail($id);
+        $formation=Formation::all();
+        return view('admin.chapitre.edit', compact('chapitre','formation'));
     }
 
     /**
@@ -111,8 +114,10 @@ class ChapitreController extends Controller
      * @param  \App\Models\Chapitre  $chapitre
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Chapitre $chapitre)
+    public function update(Request $request,  $id)
+
     {
+      
         $validatedData = $request->validate([
             'titre' => 'required|max:255',
             'description' => 'nullable',
@@ -121,8 +126,53 @@ class ChapitreController extends Controller
             'document_url' => 'nullable',
             'formation_id' => 'required|exists:formations,id',
         ]);
-        $chapitre->update($validatedData);
-        return redirect('/certificates')->with('success', 'Chapitre mise à jour avec succès!');
+        
+        $chapitre = Chapitre::findOrfail($id);
+    
+
+        if ($request->hasFile('image_url')) {
+            $path='assets/uploads/chapitre_images'.$chapitre->image_url;
+            if (File::exists($path)) {
+                File::delete($path);
+            }
+            $file =$request->file('image_url');
+            $ext=$file->getClientOriginalExtension();
+            $filename = time().'.'.$ext;
+            $file->move('assets/uploads/chapitre_images',$filename);
+            $chapitre->image_url= $filename;
+        }
+
+        if ($request->hasFile('document_url')) {
+            $path='assets/uploads/chapitre_documents'.$chapitre->document_url;
+            if (File::exists($path)) {
+                File::delete($path);
+            }
+            $file =$request->file('document_url');
+            $ext=$file->getClientOriginalExtension();
+            $filename = time().'.'.$ext;
+            $file->move('assets/uploads/chapitre_documents',$filename);
+            $chapitre->document_url= $filename;
+        }
+
+        if ($request->hasFile('video_url')) {
+            $path='assets/uploads/chapitre_video'.$chapitre->video_url;
+            if (File::exists($path)) {
+                File::delete($path);
+            }
+            $file =$request->file('video_url');
+            $ext=$file->getClientOriginalExtension();
+            $filename = time().'.'.$ext;
+            $file->move('assets/uploads/chapitre_video',$filename);
+            $chapitre->video_url= $filename;
+        }
+       
+
+
+        $chapitre->titre = $request->titre;
+        $chapitre->description = $request->description;
+        $chapitre->formation_id = $request->formation_id;
+        $chapitre->save();
+        return redirect('/chapitres')->with('success', 'Chapitre mise à jour avec succès!');
     }
 
     /**

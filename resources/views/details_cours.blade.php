@@ -10,8 +10,7 @@
             <div class="col-lg-8 offset-lg-2 col-md-12 col-12">
                 <div class="breadcrumbs-content">
                     <h1 class="page-title"> Détails Cours</h1>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
-                        been the industry's standard dummy text</p>
+                    <p>Détails sur la formation</p>
                 </div>
                 <ul class="breadcrumb-nav">
                     <li><a href="index.html">Accueil</a></li>
@@ -28,7 +27,70 @@
     <div class="container">
         <div class="row">
             <!-- Course Details Wrapper Start -->
-            <div class="col-lg-8 col-12">
+
+            <div class="col-lg-12 col-12">
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    
+                    @foreach($chapitre as $index => $chapter)
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link {{ $index == 0 ? 'active' : '' }}" id="chapter-{{ $chapter->id }}-tab" data-bs-toggle="tab"
+                                data-bs-target="#chapter-{{ $chapter->id }}" type="button" role="tab" aria-controls="chapter-{{ $chapter->id }}"
+                                aria-selected="{{ $index == 0 ? 'true' : 'false' }}">{{ $chapter->titre }}</button>
+                        </li>
+                    @endforeach
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                    @foreach($chapitre as $index => $chapter)
+                        <div class="tab-pane fade {{ $index == 0 ? 'show active' : '' }}" id="chapter-{{ $chapter->id }}" role="tabpanel"
+                            aria-labelledby="chapter-{{ $chapter->id }}-tab">
+                            <div class="course-content">
+                                <h3 class="title">Titre de la formation: {{ $chapter->formation->titre }}</h3>
+                                <br>
+                                
+                                <div class="course-overview">
+                                    <h3 class="title"> {{ $chapter->titre }}</h3>
+        
+                                    <p>{{ $chapter->description }}
+                                    </p>
+        
+        
+                                    <div class="overview-course-video">
+                                        <iframe title="{{ $chapter->formation->titre }}"
+                                            src="/assets/uploads/chapitre_video/{{$chapter->video_url}}"></iframe>
+                                    </div>
+        
+                                    <p><a target="bank" href="/assets/uploads/chapitre_documents/{{$chapter->document_url}}">lien du document</a>
+                                    </p>
+        
+                                   
+        
+                                    {{--  <p>We’ll talk about all that in more in this course.</p>
+                                    <div class="bottom-content">
+                                        <div class="row align-items-center">
+                                            <div class="col-lg-6 col-md-6 col-12">
+                                                <div class="button">
+                                                    <a href="#0" class="btn">Buy this course</a>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-12">
+                                                <ul class="share">
+                                                    <li><span>Share this course:</span></li>
+                                                    <li><a href="javascript:void(0)"><i class="lni lni-facebook-original"></i></a></li>
+                                                    <li><a href="javascript:void(0)"><i class="lni lni-twitter-original"></i></a></li>
+                                                    <li><a href="javascript:void(0)"><i class="lni lni-linkedin-original"></i></a></li>
+                                                    <li><a href="javascript:void(0)"><i class="lni lni-google"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>  --}}
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+            
+            {{--  <div class="col-lg-12 col-12">
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item" role="presentation">
                         <button class="nav-link active" id="overview-tab" data-bs-toggle="tab"
@@ -71,15 +133,11 @@
                             </div>
 
                             <p>jQuery is monstrous in its popularity and ubiquity on the web. It doesn’t do
-                                everything, but what it does it does very well and that makes it part of nearly
-                                every major websites toolkit.</p>
+                                everything
+                            </p>
 
                             <p>It is great at all the “DOM” stuff – selecting and manipulating elements on the
-                                page. It’s great at handling events. It has a nice API for all kinds of stuff –
-                                the “chaining” idea is very nice. It helps tremendously with Ajax. It helps with
-                                animation. The world of plugins around it is vast. While doing all this, perhaps
-                                the most compelling feature is that it handles the cross-browser problems for
-                                you.</p>
+                                page..</p>
 
                             <p>We’ll talk about all that in more in this course.</p>
                             <div class="bottom-content">
@@ -559,10 +617,10 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>  --}}
             <!-- End Course Details Wrapper -->
             <!-- Start Course Sidebar -->
-            <div class="col-lg-4 col-12">
+            {{--  <div class="col-lg-4 col-12">
                 <div class="course-sidebar">
                     <div class="sidebar-widget">
                         <h3 class="sidebar-widget-title">Search</h3>
@@ -628,7 +686,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>  --}}
             <!-- End Course Sidebar -->
         </div>
     </div>

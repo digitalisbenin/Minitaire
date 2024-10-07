@@ -97,9 +97,11 @@ class ResourceController extends Controller
      * @param  \App\Models\Resource  $resource
      * @return \Illuminate\Http\Response
      */
-    public function edit(Resource $resource)
+    public function edit( $id)
     {
-        return view('',compact('resource'));
+        $resource=Resource::findOrfail($id);
+    
+        return view('admin.ressource.edit',compact('resource'));
     }
 
     /**
@@ -109,18 +111,64 @@ class ResourceController extends Controller
      * @param  \App\Models\Resource  $resource
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Resource $resource)
+    public function update(Request $request, $id)
     {
+       
         $validatedData = $request->validate([
             'titre' => 'required|max:255',
             'description' => 'required|max:255',
-            'image_url' => 'required|max:255',
-            'video_url' => 'required|max:255',
-            'document_url' => 'required|max:255',
+            'image_url' => 'nullable|max:255',
+            'video_url' => 'nullable|max:255',
+            'document_url' => 'nullable|max:255',
             'user_id' => 'nullable|exists:users,id',
         ]);
-        $resource->update($validatedData);
-        return redirect('/resources')->with('success', 'Resource mise à jour avec succès!');
+      
+        $resource = Resource::findOrfail($id);
+    
+
+        if ($request->hasFile('image_url')) {
+            $path='assets/uploads/resource_images'.$resource->image_url;
+            if (File::exists($path)) {
+                File::delete($path);
+            }
+            $file =$request->file('image_url');
+            $ext=$file->getClientOriginalExtension();
+            $filename = time().'.'.$ext;
+            $file->move('assets/uploads/resource_images',$filename);
+            $resource->image_url= $filename;
+        }
+
+        if ($request->hasFile('document_url')) {
+            $path='assets/uploads/resource_documents'.$resource->document_url;
+            if (File::exists($path)) {
+                File::delete($path);
+            }
+            $file =$request->file('document_url');
+            $ext=$file->getClientOriginalExtension();
+            $filename = time().'.'.$ext;
+            $file->move('assets/uploads/resource_documents',$filename);
+            $resource->document_url= $filename;
+        }
+
+        if ($request->hasFile('video_url')) {
+            $path='assets/uploads/resource_video'.$resource->video_url;
+            if (File::exists($path)) {
+                File::delete($path);
+            }
+            $file =$request->file('video_url');
+            $ext=$file->getClientOriginalExtension();
+            $filename = time().'.'.$ext;
+            $file->move('assets/uploads/resource_video',$filename);
+            $resource->video_url= $filename;
+        }
+       
+
+
+        $resource->titre = $request->titre;
+        $resource->description = $request->description;
+       
+        $resource->save();
+        return redirect('/ressources')->with('success', 'Resource mise à jour avec succès!');
     }
 
     /**

@@ -43,7 +43,7 @@
                 <!-- Start Single Course -->
                 <div class="single-course wow fadeInUp" data-wow-delay=".2s">
                     <div class="course-image">
-                        <a href="#"><img src="{{ asset('assets/uploads/formation_images/'.$value->image_url) }}"
+                        <a href="{{url('details-cours/'.$value->id)}}"><img src="{{ asset('assets/uploads/formation_images/'.$value->image_url) }}"
                                 alt="#">
                             </a>
                             {{--  <p class="price">Categorie</p>     --}}
@@ -53,7 +53,7 @@
 
                         <p class="date"> {{$value->difficulete->name}}</p>
                         <h6> {{$value->titre}}</h6>
-                        <h3><a href="#">{{$value->description}}</a></h3>
+                        <h3><a href="{{url('details-cours/'.$value->id)}}">{{$value->description}}</a></h3>
                     </div>
                 </div>
                 <!-- End Single Course -->

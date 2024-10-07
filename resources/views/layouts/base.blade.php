@@ -16,12 +16,12 @@
         rel="stylesheet">
 
     <!-- ========================= CSS here ========================= -->
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="assets/css/LineIcons.2.0.css" />
-    <link rel="stylesheet" href="assets/css/animate.css" />
-    <link rel="stylesheet" href="assets/css/tiny-slider.css" />
-    <link rel="stylesheet" href="assets/css/glightbox.min.css" />
-    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}" />
+    <link rel="stylesheet" href="{{asset('assets/css/LineIcons.2.0.css')}}" />
+    <link rel="stylesheet" href="{{asset('assets/css/animate.css')}}" />
+    <link rel="stylesheet" href="{{asset('assets/css/tiny-slider.css')}}" />
+    <link rel="stylesheet" href="{{asset('assets/css/glightbox.min.css')}}" />
+    <link rel="stylesheet" href="{{asset('assets/css/main.css')}}" />
 
 </head>
 
@@ -59,7 +59,7 @@
                         <!-- Single Widget -->
                         <div class="f-about single-footer">
                             <div class="logo">
-                                <a href="{{url('/')}}"><img src="assets/images/logo/Logos.png" alt="Logo"></a>
+                                <a href="{{url('/')}}"><img src="{{asset('assets/images/logo/Logos.png')}}" alt="Logo"></a>
                             </div>
                             <p>Ce projet a pour ambition de développer une plateforme e-learning accessible et conviviale
                                  pour permettre l’atteinte des objectifs pédagogiques . </p>
@@ -80,13 +80,13 @@
                             <h3>Cours Terminé</h3>
                             <ul>
                                 <li>
-                                    <a href="#"><img src="assets/images/blog/footer-news1.jpg" alt="#">
+                                    <a href="#"><img src="{{asset('assets/images/blog/footer-news1.jpg')}}" alt="#">
                                         Gestion administrative
                                     </a>
                                     <span class="date"><i class="lni lni-calendar"></i>15 Juin 2023</span>
                                 </li>
                                 <li>
-                                    <a href="#"><img src="assets/images/blog/footer-news2.jpg" alt="#">
+                                    <a href="#"><img src="{{asset('assets/images/blog/footer-news2.jpg')}}" alt="#">
                                         Logistique 
                                     </a>
                                     <span class="date"><i class="lni lni-calendar"></i> 1 Juillet 2023</span>
@@ -154,12 +154,12 @@
     </a>
 
     <!-- ========================= JS here ========================= -->
-    <script src="assets/js/bootstrap.min.js"></script>
-    <script src="assets/js/count-up.min.js"></script>
-    <script src="assets/js/wow.min.js"></script>
-    <script src="assets/js/tiny-slider.js"></script>
-    <script src="assets/js/glightbox.min.js"></script>
-    <script src="assets/js/main.js"></script>
+    <script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
+    <script src="{{asset('assets/js/count-up.min.js')}}"></script>
+    <script src="{{asset('assets/js/wow.min.js')}}"></script>
+    <script src="{{asset('assets/js/tiny-slider.js')}}"></script>
+    <script src="{{asset('assets/js/glightbox.min.js')}}"></script>
+    <script src="{{asset('assets/js/main.js')}}"></script>
     <script type="text/javascript">
         //========= Hero Slider
         tns({

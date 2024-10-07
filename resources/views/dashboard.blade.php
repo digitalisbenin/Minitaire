@@ -138,51 +138,55 @@
                 <div class="card-body">
                     <div class="mb-20 flex-between flex-wrap gap-8">
                         <h4 class="mb-0"> Les meilleurs cours</h4>
-                        <a href="student-courses.html" class="text-13 fw-medium text-main-600 hover-text-decoration-underline">Voir plus</a>
+                        <a href="{{url('formations')}}" class="text-13 fw-medium text-main-600 hover-text-decoration-underline">Voir plus</a>
                     </div>
 
                     <div class="row g-20">
-                        <div class="col-lg-4 col-sm-6">
-                            <div class="card border border-gray-100">
-                                <div class="card-body p-8">
-                                    <a href="course-details.html" class="bg-main-100 rounded-8 overflow-hidden text-center mb-8 h-164 flex-center p-8">
-                                        <img src="admin/assets/images/thumbs/course-img1.png" alt="Course Image">
-                                    </a>
-                                    <div class="p-8">
-                                        <span class="text-13 py-2 px-10 rounded-pill bg-success-50 text-success-600 mb-16">Development</span>
-                                        <h5 class="mb-0"><a href="course-details.html" class="hover-text-main-600">Full Stack Web Development</a></h5>
+                       @foreach( $formations as $value)
+                       <div class="col-lg-4 col-sm-6">
+                        <div class="card border border-gray-100">
+                            <div class="card-body p-8">
+                                <a href="course-details.html" class="bg-main-100 rounded-8 overflow-hidden text-center mb-8 h-164 flex-center p-8">
+                                    <img src="admin/assets/images/thumbs/course-img1.png" alt="Course Image">
+                                </a>
+                                <div class="p-8">
+                                    <span class="text-13 py-2 px-10 rounded-pill bg-success-50 text-success-600 mb-16">{{$value->category->name}}</span> 
+                                    
+                                    <h5 class="mb-0"><a href="" class="hover-text-main-600">{{$value->titre}}</a></h5>
 
-                                        <div class="flex-align gap-8 flex-wrap mt-16">
-                                            <img src="admin/assets/images/thumbs/user-img1.png" class="w-28 h-28 rounded-circle object-fit-cover" alt="User Image">
-                                            <div>
-                                                <span class="text-gray-600 text-13">Created by <a href="profile.html" class="fw-semibold text-gray-700 hover-text-main-600 hover-text-decoration-underline">Albert James</a> </span>
-                                            </div>
+                                    <div class="flex-align gap-8 flex-wrap mt-16">
+                                        {{--  <img src="admin/assets/images/thumbs/user-img1.png" class="w-28 h-28 rounded-circle object-fit-cover" alt="User Image">  --}}
+                                        <div>
+                                            <span class="text-gray-600 text-13">Difficulte: <a href="#" class="fw-semibold text-gray-700 hover-text-main-600 hover-text-decoration-underline">{{$value->difficulete->name}}</a> </span>
                                         </div>
+                                    </div>
 
-                                        <div class="flex-align gap-8 mt-12 pt-12 border-top border-gray-100">
-                                            <div class="flex-align gap-4">
-                                                <span class="text-sm text-main-600 d-flex"><i class="ph ph-video-camera"></i></span>
-                                                <span class="text-13 text-gray-600">24 Lesson</span>
-                                            </div>
-                                            <div class="flex-align gap-4">
-                                                <span class="text-sm text-main-600 d-flex"><i class="ph ph-clock"></i></span>
-                                                <span class="text-13 text-gray-600">40 Hours</span>
-                                            </div>
-                                        </div>
+                                    <div class="flex-align gap-8 mt-12 pt-12 border-top border-gray-100">
+                                        {{--  <div class="flex-align gap-4">
+                                            <span class="text-sm text-main-600 d-flex"><i class="ph ph-video-camera"></i></span>
+                                            <span class="text-13 text-gray-600"></span>
+                                        </div>  --}}
+                                        {{--  <div class="flex-align gap-4">
+                                            <span class="text-sm text-main-600 d-flex"><i class="ph ph-clock"></i></span>
+                                            <span class="text-13 text-gray-600">40 Hours</span>
+                                        </div>  --}}
+                                    </div>
 
-                                        <div class="flex-between gap-4 flex-wrap mt-24">
-                                            <div class="flex-align gap-4">
-                                                <span class="text-15 fw-bold text-warning-600 d-flex"><i class="ph-fill ph-star"></i></span>
-                                                <span class="text-13 fw-bold text-gray-600">4.9</span>
-                                                <span class="text-13 fw-bold text-gray-600">(12k)</span>
-                                            </div>
-                                            <a href="course-details.html" class="btn btn-outline-main rounded-pill py-9">View Details</a>
-                                        </div>
+                                    <div class="flex-between gap-4 flex-wrap mt-4">
+                                        <span class="text-15  d-flex">{{$value->description}}</span>
+                                        {{--  <div class="flex-align gap-4">
+                                            <span class="text-15 fw-bold text-warning-600 d-flex"><i class="ph-fill ph-star"></i></span>
+                                            <span class="text-13 fw-bold text-gray-600">4.9</span>
+                                            <span class="text-13 fw-bold text-gray-600">(12k)</span>
+                                        </div>  --}}
+                                        {{--  <a href="course-details.html" class="btn btn-outline-main rounded-pill py-9">Voir plus</a>  --}}
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-sm-6">
+                    </div>
+                       @endforeach
+                        {{--  <div class="col-lg-4 col-sm-6">
                             <div class="card border border-gray-100">
                                 <div class="card-body p-8">
                                     <a href="course-details.html" class="bg-main-100 rounded-8 overflow-hidden text-center mb-8 h-164 flex-center p-8">
@@ -261,7 +265,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div>  --}}
                     </div>
                 </div>
             </div>
