@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Auth;
 use App\Models\MesCour;
+use App\Models\Formation;
 use Illuminate\Http\Request;
 
 class MesCourController extends Controller
@@ -14,8 +15,12 @@ class MesCourController extends Controller
      */
     public function index()
     {
-        $mesCour=MesCour::all();
-        return view('',compact('mesCour'));
+        $mesCours=MesCour::where('user_id', Auth::id())->get();
+        $mesCourIds = $mesCours->pluck('formation_id');
+    $mesCour = Formation::whereIn('id', $mesCourIds)->get(); 
+    
+     
+        return view('mescours',compact('mesCour'));
     }
 
     /**
@@ -36,13 +41,43 @@ class MesCourController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'formation_id' => 'required|exists:formations,id',
-            'user_id' => 'nullable|exists:users,id',
-        ]);
-        $mesCour = MesCour::create($validatedData);
+        // $validatedData = $request->validate([
+        //     'formation_id' => 'required|exists:formations,id',
+        //     'user_id' => 'nullable|exists:users,id',
+        // ]);
+        // $mesCour = MesCour::create($validatedData);
 
-        return redirect('/mes-cours')->with('success', 'Formation ajouté a mes cours avec succès!');
+        // return redirect('/mes-cours')->with('success', 'Formation ajouté a mes cours avec succès!');
+        $formations_id = $request->input('formation_id');
+       
+        $user_id = Auth::id();
+
+
+
+        if (Auth::check()) {
+
+
+            $formation_check = Formation::find($formations_id);
+
+            if ($formation_check) {
+                if (MesCour::where('formation_id', $formations_id)->where('user_id', Auth::id())->exists()) {
+                    return response()->json(['status'=> $formation_check->titre . " déjà ajouté à mes cours"],200);
+                } else {
+                    $mesCour= new MesCour();
+                    $mesCour->formation_id = $formations_id;
+                    $mesCour->user_id = Auth::id();
+                    
+
+                    $mesCour->save();
+
+                    return response()->json(['status'=> $formation_check->titre . " ajouté à mes cours"] ,201);
+                }
+            }    
+
+        } else {
+            return response()->json(['status'=>"Connectez-vous pour ajouter ce cours"]);
+
+        }
     }
 
     /**

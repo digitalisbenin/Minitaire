@@ -1,5 +1,5 @@
 @extends('layouts.base')
-@section('title','Formations')
+@section('title','MesCours')
 
 @section('content')
 @include ('partial.navbar')
@@ -10,12 +10,12 @@
         <div class="row align-items-center">
             <div class="col-lg-8 offset-lg-2 col-md-12 col-12">
                 <div class="breadcrumbs-content">
-                    <h1 class="page-title"> formations</h1>
+                    <h1 class="page-title"> Mes Cours</h1>
                     <p>Des formations de qualités</p>
                 </div>
                 <ul class="breadcrumb-nav">
                     <li><a href="{{url('/')}}">Accueil</a></li>
-                    <li>Formations</li>
+                    <li>Mes Cours</li>
                 </ul>
             </div>
         </div>
@@ -31,14 +31,14 @@
             <div class="col-12 ">
                 <div class="section-title">
                     {{--  <span class="wow zoomIn" data-wow-delay="0.2s"></span>  --}}
-                    <h2 class="wow fadeInUp" data-wow-delay=".4s">Formation</h2>
+                    <h2 class="wow fadeInUp" data-wow-delay=".4s">Mes Cours</h2>
                     <p class="wow fadeInUp" data-wow-delay=".6s"></p>
                 </div>
             </div>
         </div>
         <div class="single-head">
             <div class="row">
-               @foreach($formation as $value)
+               @foreach($mesCour as $value)
                <div class="col-lg-3 col-md-6 col-12">
                 <!-- Start Single Course -->
                 <div class="single-course wow fadeInUp" data-wow-delay=".2s">
@@ -55,9 +55,9 @@
                         <h6> {{$value->titre}}</h6>
                         <h3><a href="{{url('details-cours/'.$value->id)}}">{{$value->description}}</a></h3>
 
-                        <div>
+                        {{--  <div>
                             <button class="btn btn-success ajouter-formation" data-id="{{ $value->id }}">Ajouter</button>
-                        </div>
+                        </div>  --}}
                     </div>
                 </div>
                 <!-- End Single Course -->

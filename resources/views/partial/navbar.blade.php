@@ -17,11 +17,15 @@
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 col-12">
+
                     <div class="toolbar-login">
-                        <div class="button">
-                            {{--  <a href="registration.html">Create an Account</a>  --}}
-                            <a href="/login" class="btn">Connexion</a>
-                        </div>
+                       @guest
+                       <div class="button">
+                        {{--  <a href="registration.html">Create an Account</a>   --}}
+                      <a href="/login" class="btn">Connexion</a>
+                  </div>
+                       @endguest
+
                     </div>
                 </div>
             </div>
@@ -44,7 +48,7 @@
                         <span class="toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
-                        <ul id="nav" class="navbar-nav ms-auto">
+                        <ul id="nav" class="navbar-nav ms-auto me-3">
                             <li class="nav-item">
                                 <a class="" href="{{url('/')}}"
 
@@ -99,6 +103,7 @@
                             <li class="nav-item"><a href="{{url('/contact')}}">Contact</a></li>
                         </ul>
 
+
                         {{--  <div class="toolbar-login">
                             <div class="button ">
                                 {{--  <a href="registration.html">Create an Account</a>
@@ -111,7 +116,34 @@
                             <button class="btn btn-outline-success" type="submit"><i
                                     class="lni lni-search-alt"></i></button>
                         </form>  --}}
-                    </div> <!-- navbar collapse -->
+                      @auth
+                      <div class="dropdown ">
+                        <a class=" dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="12" cy="7" r="4"></circle>
+                            </svg>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                          <li><a class="dropdown-item" href="#">{{ Auth::user()->name }} {{ Auth::user()->prenom }}</a></li>
+                          <li><a class="dropdown-item" href="#">Profil</a></li>
+                          <li><a class="dropdown-item" href="{{url('mes-cours')}}"> Mes Cours</a></li>
+                          @if (Auth::user()->role_id == '1'||Auth::user()->role_id == '2' )
+                          <li><a class="dropdown-item" href="{{url('dashboard')}}">Tableau de bord</a></li>
+                           @endif
+
+                          <li><a class="dropdown-item" href="#"></a></li>
+                          <li><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Déconnexion</a></li>
+                          <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                              @csrf
+                          </form>
+                        </ul>
+                      </div>
+                </div>
+                      @endauth
+
+
+                    <!-- navbar collapse -->
                 </nav> <!-- navbar -->
             </div>
             </div>

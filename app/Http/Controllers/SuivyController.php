@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Suivy;
+use App\Models\Chapitre;
 use Illuminate\Http\Request;
 
 class SuivyController extends Controller
@@ -43,13 +44,24 @@ class SuivyController extends Controller
 
         if (Auth::check()) {
 
-            $suivy= new Suivy();
-            $suivy->chapitre_id = $chapitres_id;
-            $suivy->user_id = Auth::id();
-            $suivy->tauxprogression = $taux;
 
-            $suivy->save();
-return response()->json(['status'=>"progresion ajouter avec succes"]);
+            $suivy_check = Chapitre::find($chapitres_id);
+
+            if ($suivy_check) {
+                if (Suivy::where('chapitre_id', $chapitres_id)->where('user_id', Auth::id())->exists()) {
+                    return response()->json(['status'=> $suivy_check->titre . " déjà ajouté à ma progression"],200);
+                } else {
+                    $suivy= new Suivy();
+                    $suivy->chapitre_id = $chapitres_id;
+                    $suivy->user_id = Auth::id();
+                    $suivy->tauxprogression = $taux;
+        
+                    $suivy->save();
+
+                    return response()->json(['status'=> $suivy_check->titre . "ajouter avec success "] ,201);
+                }
+            }  
+
 
         } else {
             return response()->json(['status'=>"Connectez-vous pour ajouter votre progression"]);
