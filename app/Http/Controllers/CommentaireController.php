@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Commentaire;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CommentaireController extends Controller
 {
@@ -36,15 +37,23 @@ class CommentaireController extends Controller
      */
     public function store(Request $request)
     {
+        //dd($request);
         $validatedData = $request->validate([
             'content' => 'required|max:255',
-            'chapitre_id' => 'nullabe|exists:chapitres,id',
+            'chapitre_id' => 'nullable|exists:chapitres,id',
             'user_id' => 'nullable|exists:users,id',
 
         ]);
-        $commentaire = Commentaire::create($validatedData);
+       
+        $commentaire= new Commentaire();
+       
+        
+        $commentaire->content = $request->content;
+        $commentaire->chapitre_id = $request->chapitre_id;
+        $commentaire->user_id= Auth::id();
+        $commentaire->save();
 
-        return redirect('/chapitres')->with('success', 'Commentaire créée avec succès!');
+        return redirect('/formation')->with('success', 'Commentaire envoyer avec succès!');
     }
 
     /**

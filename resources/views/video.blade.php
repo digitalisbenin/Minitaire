@@ -43,24 +43,30 @@
         </div>  --}}
         <div class="single-head">
             <div class="row">
-                <div class="col-lg-4 col-md-6 col-12">
-                    <!-- Start Single Course -->
-                    <div class="single-course wow fadeInUp" data-wow-delay=".2s">
-                        <div class="course-image">
-                            <a href="{{url('/details-cours')}}"><img src="assets/images/courses/courses-1.jpg"
-                                    alt="#"></a>
-                            <p class="price"></p>
-                        </div>
-                        <div class="content">
-                            <h3><a href="{{url('/details-cours')}}">L'informatique</a></h3>
-                            <p>L'informatique est la science qui traite du traitement, du stockage et de la transmission de
-                                 l'information par des moyens électroniques</p>
-                        </div>
-                       
+               @foreach($video as $value)
+               <div class="col-lg-4 col-md-6 col-12">
+                <!-- Start Single Course -->
+                <div class="single-course wow fadeInUp" data-wow-delay=".2s">
+                    <div class="">
+
+                        <iframe title="{{ $value->titre }}"
+                            src="/assets/uploads/video_video/{{$value->video_url}}"
+                            style="width: 100%; height: auto;" frameborder="0" allowfullscreen></iframe>
+
+
+
+
                     </div>
-                    <!-- End Single Course -->
+                    <div class="content">
+                        <h3><a href="#">{{$value->titre}}</a></h3>
+                        <p>{{$value->description}}</p>
+                    </div>
+
                 </div>
-                <div class="col-lg-4 col-md-6 col-12">
+
+            </div>
+               @endforeach
+                {{--  <div class="col-lg-4 col-md-6 col-12">
                     <!-- Start Single Course -->
                     <div class="single-course wow fadeInUp" data-wow-delay=".4s">
                         <div class="course-image">
@@ -72,7 +78,7 @@
                             <h3><a href="{{url('/details-cours')}}">Gestion d'entreprise</a></h3>
                             <p>La gestion d'entreprise est la pratique consistant à diriger et à administrer les opérations d'une organisation pour atteindre ses objectifs</p>
                         </div>
-                      
+
                     </div>
                     <!-- End Single Course -->
                 </div>
@@ -88,13 +94,13 @@
                             <h3><a href="{{url('/details-cours')}}">Aéronautique</a></h3>
                             <p>L'aéronautique est la science et la pratique de la conception, de la construction, et de l'exploitation des aéronefs.</p>
                         </div>
-                     
+
                     </div>
                     <!-- End Single Course -->
                 </div>
-               
-               
-        
+                 --}}
+
+
             </div>
         </div>
     </div>

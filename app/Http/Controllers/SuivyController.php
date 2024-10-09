@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Auth;
 use App\Models\Suivy;
 use Illuminate\Http\Request;
 
@@ -35,7 +35,26 @@ class SuivyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $chapitres_id = $request->input('chapitreId');
+        $taux = $request->input('taux');
+        $user_id = Auth::id();
+
+
+
+        if (Auth::check()) {
+
+            $suivy= new Suivy();
+            $suivy->chapitre_id = $chapitres_id;
+            $suivy->user_id = Auth::id();
+            $suivy->tauxprogression = $taux;
+
+            $suivy->save();
+return response()->json(['status'=>"progresion ajouter avec succes"]);
+
+        } else {
+            return response()->json(['status'=>"Connectez-vous pour ajouter votre progression"]);
+
+        }
     }
 
     /**

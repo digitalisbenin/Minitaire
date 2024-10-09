@@ -30,12 +30,24 @@
 
             <div class="col-lg-12 col-12">
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
-                    
+
                     @foreach($chapitre as $index => $chapter)
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link {{ $index == 0 ? 'active' : '' }}" id="chapter-{{ $chapter->id }}-tab" data-bs-toggle="tab"
+                            <button class="nav-link {{ $index == 0 ? 'active' : '' }}" 
+                            id="chapter-{{ $chapter->id }}-tab" 
+                            data-bs-toggle="tab"
+                            data-bs-target="#chapter-{{ $chapter->id }}" 
+                            type="button" 
+                            role="tab" 
+                            aria-controls="chapter-{{ $chapter->id }}" 
+                            aria-selected="{{ $index == 0 ? 'true' : 'false' }}"
+                            data-id="{{ $chapter->id }}" 
+                            data-title="{{ $chapter->titre }}"> 
+                        {{ $chapter->titre }}
+                    </button>
+                            {{--  <button class="nav-link {{ $index == 0 ? 'active' : '' }}" id="chapter-{{ $chapter->id }}-tab" data-bs-toggle="tab"
                                 data-bs-target="#chapter-{{ $chapter->id }}" type="button" role="tab" aria-controls="chapter-{{ $chapter->id }}"
-                                aria-selected="{{ $index == 0 ? 'true' : 'false' }}">{{ $chapter->titre }}</button>
+                                aria-selected="{{ $index == 0 ? 'true' : 'false' }}">{{ $chapter->titre }}</button>  --}}
                         </li>
                     @endforeach
                 </ul>
@@ -46,50 +58,77 @@
                             <div class="course-content">
                                 <h3 class="title">Titre de la formation: {{ $chapter->formation->titre }}</h3>
                                 <br>
-                                
+
                                 <div class="course-overview">
                                     <h3 class="title"> {{ $chapter->titre }}</h3>
-        
-                                    <p>{{ $chapter->description }}
-                                    </p>
-        
-        
+
                                     <div class="overview-course-video">
                                         <iframe title="{{ $chapter->formation->titre }}"
                                             src="/assets/uploads/chapitre_video/{{$chapter->video_url}}"></iframe>
                                     </div>
-        
+
+                                    <p>
+                                        {{ $chapter->description }}
+                                    </p>
+
                                     <p><a target="bank" href="/assets/uploads/chapitre_documents/{{$chapter->document_url}}">lien du document</a>
                                     </p>
+
+                                    <!-- Button trigger modal -->
+                              @if(Auth::check())
+                              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal-{{ $chapter->id }}">
+                                Faire un commentaire
+                                </button>
+                              @endif
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="exampleModal-{{ $chapter->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Faire un commentaire sur ce chapitre</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form action="{{ url('commentaires') }}" method="post" enctype="multipart/form-data">
+                                            @csrf
+                                            <div class="mb-3">
+                                                <label for="exampleInputEmail1" class="form-label">Titre du chapitre</label>
+                                                <input type="text" class="form-control" value="{{$chapter->titre}}" id="" disabled>
+
+                                              </div>
         
-                                   
-        
-                                    {{--  <p>We’ll talk about all that in more in this course.</p>
-                                    <div class="bottom-content">
-                                        <div class="row align-items-center">
-                                            <div class="col-lg-6 col-md-6 col-12">
-                                                <div class="button">
-                                                    <a href="#0" class="btn">Buy this course</a>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-md-6 col-12">
-                                                <ul class="share">
-                                                    <li><span>Share this course:</span></li>
-                                                    <li><a href="javascript:void(0)"><i class="lni lni-facebook-original"></i></a></li>
-                                                    <li><a href="javascript:void(0)"><i class="lni lni-twitter-original"></i></a></li>
-                                                    <li><a href="javascript:void(0)"><i class="lni lni-linkedin-original"></i></a></li>
-                                                    <li><a href="javascript:void(0)"><i class="lni lni-google"></i></a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>  --}}
+                                            <div class="mb-3">
+                                                <label for="exampleFormControlTextarea1" class="form-label">Commentaire</label>
+                                                <textarea class="form-control" name="content" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                              </div>
+                                            <div class="mb-3">
+                                               
+                                                <input type="hidden" class="form-control" name="chapitre_id" value="{{$chapter->id}}" id="exampleInputEmail1" aria-describedby="emailHelp">
+  
+                                              </div>
+
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-success">Envoyer</button>
+                                    </div>
+                                </form>
+                                    </div>
+                                </div>
+                                </div>
+
                                 </div>
                             </div>
+                           
                         </div>
                     @endforeach
+
+                  
                 </div>
             </div>
-            
+
             {{--  <div class="col-lg-12 col-12">
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item" role="presentation">
@@ -694,3 +733,36 @@
 <!-- Course Details Section End -->
 
 @endsection
+
+@section('scripts')
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        // Écouter l'événement de clic sur les boutons 
+        $('.nav-link').on('click', function() {
+            var chapterId = $(this).data('id');    
+            var chapterTitle = 100; // Récupérer le titre du chapitre
+           
+            
+            // Requête AJAX pour envoyer les données au serveur
+            $.ajax({
+                url: '/suivis',           // URL de la route Laravel
+                type: 'POST',
+                data: {
+                    _token: '{{ csrf_token() }}',  // Inclure le token CSRF
+                    chapitreId: chapterId,                 // ID du chapitre
+                    taux: chapterTitle            // Titre du chapitre
+                },
+                success: function(response) {
+                    
+                    swal("",response.status,"success")
+                },
+                error: function(xhr, status, error) {
+                    // Gestion des erreurs
+                   // alert('Erreur lors de l\'enregistrement de la progression.');
+                    swal("","Erreur lors de l'enregistrement de la progression.","error")
+                }
+            });
+        });
+    });
+</script>

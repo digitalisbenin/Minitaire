@@ -81,9 +81,10 @@ class VideoController extends Controller
      * @param  \App\Models\Video  $video
      * @return \Illuminate\Http\Response
      */
-    public function edit(Video $video)
+    public function edit( $id)
     {
-        //
+        $video = Video::findOrfail($id);
+        return view('admin.video.edit', compact('video'));
     }
 
     /**
@@ -93,9 +94,38 @@ class VideoController extends Controller
      * @param  \App\Models\Video  $video
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Video $video)
+    public function update(Request $request, $id)
     {
-        //
+         
+        $validatedData = $request->validate([
+            'titre' => 'required|max:255',
+            'description' => 'nullable',
+            'video_url' => 'nullable',
+        ]);
+        
+        $video = Video::findOrfail($id);
+    
+
+       
+
+        if ($request->hasFile('video_url')) {
+            $path='assets/uploads/video_video'.$video->video_url;
+            if (File::exists($path)) {
+                File::delete($path);
+            }
+            $file =$request->file('video_url');
+            $ext=$file->getClientOriginalExtension();
+            $filename = time().'.'.$ext;
+            $file->move('assets/uploads/video_video',$filename);
+            $video->video_url= $filename;
+        }
+       
+
+
+        $video->titre = $request->titre;
+        $video->description = $request->description;
+        $video->save();
+        return redirect('/videos')->with('success', 'Video mise à jour avec succès!');
     }
 
     /**

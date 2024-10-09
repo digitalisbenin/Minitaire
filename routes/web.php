@@ -4,6 +4,7 @@ use App\Models\Certificate;
 use App\Models\Formation;
 use App\Models\Resource;
 use App\Models\Chapitre;
+use App\Models\Video;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CertificateController;
@@ -56,7 +57,8 @@ Route::get('/details-cours/{id}', function ($id) {
     return view('details_cours',compact('chapitre'));
 });
 Route::get('/video', function () {
-    return view('video');
+    $video= Video::all();
+    return view('video',compact('video'));
 });
 
 Route::get('/contact', function () {
@@ -259,7 +261,7 @@ Route::get('user-categories/{id}', [UserCategoryController::class, 'destroy']);
 Route::get('videos', [VideoController::class, 'index']);
 Route::get('create-videos', [VideoController::class, 'create']);
 Route::get('videos/{id}', [VideoController::class, 'show']);
-Route::get('videos/{id}', [VideoController::class, 'edit']);
+Route::get('videos/{id}/edit', [VideoController::class, 'edit']);
 Route::post('videos', [VideoController::class, 'store']);
-Route::put('videos/{id}', [VideoController::class, 'update']);
+Route::put('videos/{id}/update', [VideoController::class, 'update']);
 Route::get('videos/{id}/destroy', [VideoController::class, 'destroy']);
