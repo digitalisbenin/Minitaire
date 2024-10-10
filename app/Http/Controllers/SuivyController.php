@@ -15,7 +15,8 @@ class SuivyController extends Controller
      */
     public function index()
     {
-        //
+        $suivy=Suivy::all();
+        return view('admin.suivi', compact('suivy'));
     }
 
     /**

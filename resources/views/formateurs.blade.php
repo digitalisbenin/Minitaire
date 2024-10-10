@@ -31,48 +31,48 @@
                 <div class="section-title align-center gray-bg">
                     <span>Formateurs</span>
                     <h2 class="wow fadeInUp" data-wow-delay=".4s">Les formateurs certifiés</h2>
-                    <p class="wow fadeInUp" data-wow-delay=".6s">There are many variations of passages of Lorem
-                        Ipsum available, but the majority have suffered alteration in some form.</p>
+                    <p class="wow fadeInUp" data-wow-delay=".6s">.</p>
                 </div>
             </div>
         </div>
         <div class="row">
             <!-- Single Team -->
-            <div class="col-lg-6 col-md-6 col-12">
-                <div class="single-team wow fadeInUp" data-wow-delay=".2s">
-                    <div class="row">
-                        <div class="col-lg-5 col-12">
-                            <!-- Image -->
-                            <div class="image">
-                                <img src="assets/images/team/team-1.jpg" alt="#">
-                            </div>
-                            <!-- End Image -->
+           @foreach($formateurs as $value)
+           <div class="col-lg-6 col-md-6 col-12">
+            <div class="single-team wow fadeInUp" data-wow-delay=".2s">
+                <div class="row">
+                    <div class="col-lg-5 col-12">
+                        <!-- Image -->
+                        <div class="image">
+                            <img src="assets/images/team/team-1.jpg" alt="#">
                         </div>
-                        <div class="col-lg-7 col-12">
-                            <div class="info-head">
-                                <!-- Info Box -->
-                                <div class="info-box">
-                                    <span class="designation">Math Teacher</span>
-                                    <h4 class="name"><a href="teacher-details.html">Selena Gomez</a></h4>
-                                    <p>Your chance to be a trending expert in IT industries and make a successful
-                                        career completion.</p>
-                                </div>
-                                <!-- End Info Box -->
-                                <!-- Social -->
-                                <ul class="social">
-                                    <li><a href="javascript:void(0)"><i class="lni lni-facebook-filled"></i></a></li>
-                                    <li><a href="javascript:void(0)"><i class="lni lni-twitter-original"></i></a></li>
-                                    <li><a href="javascript:void(0)"><i class="lni lni-linkedin-original"></i></a></li>
-                                    <li><a href="javascript:void(0)"><i class="lni lni-behance-original"></i></a></li>
-                                </ul>
-                                <!-- End Social -->
+                        <!-- End Image -->
+                    </div>
+                    <div class="col-lg-7 col-12">
+                        <div class="info-head">
+                            <!-- Info Box -->
+                            <div class="info-box">
+                                <span class="designation">Pilote</span>
+                                <h4 class="name"><a href={{  }}me}}     {{$value->prenom}} </a></h4>
+                                <p> Je suis un formateurs de qualité</p>
                             </div>
+                            <!-- End Info Box -->
+                            <!-- Social -->
+                            <ul class="social">
+                                {{--  <li><a href="javascript:void(0)"><i class="lni lni-facebook-filled"></i></a></li>
+                                <li><a href="javascript:void(0)"><i class="lni lni-twitter-original"></i></a></li>
+                                <li><a href="javascript:void(0)"><i class="lni lni-linkedin-original"></i></a></li>
+                                <li><a href="javascript:void(0)"><i class="lni lni-behance-original"></i></a></li>  --}}
+                            </ul>
+                            <!-- End Social -->
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+           @endforeach
             <!-- End Single Team -->
-            <!-- Single Team -->
+            {{--  <!-- Single Team -->
             <div class="col-lg-6 col-md-6 col-12">
                 <div class="single-team wow fadeInUp" data-wow-delay=".4s">
                     <div class="row">
@@ -176,7 +176,7 @@
                     </div>
                 </div>
             </div>
-            <!-- End Single Team -->
+            <!-- End Single Team -->  --}}
         </div>
     </div>
 </section>

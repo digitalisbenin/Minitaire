@@ -69,7 +69,8 @@ Route::get('/forums', function () {
     return view('forum');
 });
 Route::get('/formateurs', function () {
-    return view('formateurs');
+    $formateurs=User::where('role_id',2)->get();
+    return view('formateurs', compact('formateurs'));
 });
 Route::get('/formation', function () {
     $formation=Formation::all();

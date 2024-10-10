@@ -16,7 +16,7 @@ class CommentaireController extends Controller
     public function index()
     {
         $commentaire=Commentaire::all();
-        return view('',compact('commentaire'));
+        return view('admin.commentaire',compact('commentaire'));
     }
 
     /**

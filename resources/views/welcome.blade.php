@@ -91,7 +91,7 @@
                              actuels des apprenants. Ces cours reflètent les évolutions et innovations
                               dans divers domaines, offrant des compétences et connaissances recherchées.</p>
                         <div class="button">
-                            <a href="{{url('/cours')}}" class="btn">Voir plus <i class="lni lni-arrow-right"></i></a>
+                            <a href="{{url('/formation')}}" class="btn">Voir plus <i class="lni lni-arrow-right"></i></a>
                         </div>
                     </div>
                     <!-- End Single Feature -->
@@ -120,7 +120,7 @@
                                variété de matériaux pédagogiques.</p>
 
                         <div class="button">
-                            <a href="javascript:void(0)" class="btn">Voir plus <i class="lni lni-arrow-right"></i></a>
+                            <a href="{{url('documents')}}" class="btn">Voir plus <i class="lni lni-arrow-right"></i></a>
                         </div>
                     </div>
                     <!-- End Single Feature -->
@@ -381,7 +381,7 @@
                                 <li><i class="lni lni-star-filled"></i></li>
                                 <li><i class="lni lni-star-filled"></i></li>
                                 <li><i class="lni lni-star-filled"></i></li>
-                                
+
                             </ul>
                             <span class="tag">
                                 <i class="lni lni-tag"></i>
@@ -413,7 +413,7 @@
                                 <li><i class="lni lni-star-filled"></i></li>
                                 <li><i class="lni lni-star-filled"></i></li>
                                 <li><i class="lni lni-star-filled"></i></li>
-                               
+
                             </ul>
                             <span class="tag">
                                 <i class="lni lni-tag"></i>
