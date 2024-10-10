@@ -48,6 +48,50 @@
 </div>
 <div class=" h-screen">
     <div class="mt-5 " style="margin-left: 6rem; margin-right: 6rem;">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="bi bi-question-circle-fill" style="width: 24px;">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"></path>
+              </svg> 
+              Posez votre question
+            </button>
+         
+
+            <!-- Modal -->
+         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Poser votre question</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="{{ url('commentaire') }}" method="post" enctype="multipart/form-data">
+                        @csrf
+                        {{--  <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Titre du chapitre</label>
+                            <input type="text" class="form-control" value="" id="" disabled>
+
+                          </div>  --}}
+
+                        <div class="mb-3">
+                            
+                            <textarea class="form-control" name="content" id="exampleFormControlTextarea1" rows="3"></textarea>
+                          </div>
+                        
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-success">Envoyer</button>
+                </div>
+            </form>
+                </div>
+            </div>
+            </div>
+
+            </div>
+        </div>
         <div class="d-flex mx-5">
             <!-- Bouton Posez votre question -->
             <div class="d-flex bg-primary text-white rounded-pill py-2 px-3 mt-3">
@@ -56,6 +100,8 @@
               </svg>
               <p class="ms-2 mt-2">Posez votre question</p>
             </div>
+           
+           
 
             <!-- Champ de recherche -->
             <div class="ms-auto mt-3">
@@ -72,6 +118,7 @@
             </div>
           </div>
 
+          
       {{-- <div
         class="flex ml-32 mr-32 mt-9  rounded-lg text-black px-4 py-2"
       >
