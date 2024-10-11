@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Meet;
 use App\Models\User;
 use App\Models\VisioConference;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class MeetController extends Controller
@@ -20,6 +21,15 @@ class MeetController extends Controller
         return view('admin.meet.index',compact('meet'));
     }
 
+
+    public function indexe()
+    {
+        $meet = Meet::where('user_id', Auth::id())
+            ->orderBy('created_at', 'desc')
+            ->get();
+
+        return view('mesreunions',compact('meet'));
+    }
     /**
      * Show the form for creating a new resource.
      *

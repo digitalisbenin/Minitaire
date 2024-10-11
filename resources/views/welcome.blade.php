@@ -463,7 +463,7 @@
 <!-- End Achivement Area -->
 
 <!-- Start Events Area-->
-<section class="events section">
+{{--  <section class="events section">
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -570,7 +570,7 @@
             </div>
         </div>
     </div>
-</section>
+</section>  --}}
 <!-- End Events Area-->
 
 <!-- Start Teachers -->

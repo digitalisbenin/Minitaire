@@ -82,6 +82,9 @@ Route::get('/documents', function () {
     $resource=Resource::all();
     return view('documents',compact('resource'));
 });
+
+
+
 Route::get('/dashboard', function () {
     $formation=Formation::all();
     $formations = Formation::orderBy('created_at', 'desc')->take(3)->get();
@@ -170,6 +173,7 @@ Route::put('discussions/{id}', [DiscutionController::class, 'update']);
 Route::get('discussions/{id}', [DiscutionController::class, 'destroy']);
 
 /*-----------------Meet--------------------------*/
+Route::get('mes-reunions', [MeetController::class, 'indexe']);
 Route::get('meets', [MeetController::class, 'index']);
 Route::get('create-meets', [MeetController::class, 'create']);
 Route::get('meets/{id}', [MeetController::class, 'show']);
