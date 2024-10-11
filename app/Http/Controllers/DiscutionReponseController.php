@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\DiscutionReponse;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 class DiscutionReponseController extends Controller
 {
     /**
@@ -42,9 +42,16 @@ class DiscutionReponseController extends Controller
             'discution_id' => 'nullable|exists:discutions,id',
             'user_id' => 'nullable|exists:users,id',
         ]);
-        $discution = DiscutionReponse::create($validatedData);
+      
+        $discution = new DiscutionReponse();
 
-        return redirect('/discussions-reponses')->with('success', 'Discussions Réponse créée avec succès!');
+        $discution->titre = $request->titre;
+        $discution->content = "Reponse";
+        $discution->discution_id =$request->discution_id ;
+        $discution->user_id= Auth::id();
+        $discution->save();
+
+        return redirect('/forums')->with('success', ' Réponser envoyé avec succès!');
     }
 
     /**

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Discution;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 class DiscutionController extends Controller
 {
     /**
@@ -38,13 +38,16 @@ class DiscutionController extends Controller
     {
         $validatedData = $request->validate([
             'titre' => 'required|max:255',
-            'content' => 'nullable',
-            'image_url' => 'required|max:255',
-            'user_id' => 'nullable|exists:users,id',
         ]);
-        $discution = Discution::create($validatedData);
+        
+        $discution = new Discution();
 
-        return redirect('/discussions')->with('success', 'Discussions créée avec succès!');
+        $discution->titre = $request->titre;
+        $discution->image_url = "Question";
+        $discution->user_id= Auth::id();
+        $discution->save(); 
+
+        return redirect('/forums')->with('success', 'Discussions créée avec succès!');
     }
 
     /**

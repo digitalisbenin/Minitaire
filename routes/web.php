@@ -4,6 +4,7 @@ use App\Models\Certificate;
 use App\Models\Formation;
 use App\Models\Resource;
 use App\Models\Chapitre;
+use App\Models\Discution;
 use App\Models\Video;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
@@ -68,7 +69,8 @@ Route::get('/contact', function () {
 });
 
 Route::get('/forums', function () {
-    return view('forum');
+    $discution=Discution::all();
+    return view('forum', compact('discution'));
 });
 Route::get('/formateurs', function () {
     $formateurs=User::where('role_id',2)->get();
