@@ -167,11 +167,11 @@
                     </div>
                     <div class="bottom-content">
                         <ul class="review">
+                            {{--  <li><i class="lni lni-star-filled"></i></li>
                             <li><i class="lni lni-star-filled"></i></li>
                             <li><i class="lni lni-star-filled"></i></li>
                             <li><i class="lni lni-star-filled"></i></li>
-                            <li><i class="lni lni-star-filled"></i></li>
-                            <li><i class="lni lni-star-filled"></i></li>
+                            <li><i class="lni lni-star-filled"></i></li>  --}}
 
                         </ul>
                         <span class="tag">

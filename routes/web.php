@@ -23,6 +23,8 @@ use App\Http\Controllers\SuivyController;
 use App\Http\Controllers\UserCategoryController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VideoController;
+use App\Http\Controllers\VisioConferenceController;
+use App\Http\Controllers\MeetController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -167,6 +169,15 @@ Route::post('discussions', [DiscutionController::class, 'store']);
 Route::put('discussions/{id}', [DiscutionController::class, 'update']);
 Route::get('discussions/{id}', [DiscutionController::class, 'destroy']);
 
+/*-----------------Meet--------------------------*/
+Route::get('meets', [MeetController::class, 'index']);
+Route::get('create-meets', [MeetController::class, 'create']);
+Route::get('meets/{id}', [MeetController::class, 'show']);
+Route::get('meets/{id}/edit', [MeetController::class, 'edit']);
+Route::post('meets', [MeetController::class, 'store']);
+Route::put('meets/{id}/update', [MeetController::class, 'update']);
+Route::get('meets/{id}/destroy', [MeetController::class, 'destroy']);
+
 /*-----------------Discussion Reponse--------------------------*/
 Route::get('discussions-reponses', [DiscutionReponseController::class, 'index']);
 Route::get('create-discussions-reponses', [DiscutionReponseController::class, 'create']);
@@ -175,6 +186,16 @@ Route::get('discussions-reponses/{id}', [DiscutionReponseController::class, 'edi
 Route::post('discussions-reponses', [DiscutionReponseController::class, 'store']);
 Route::put('discussions-reponses/{id}', [DiscutionReponseController::class, 'update']);
 Route::get('discussions-reponses/{id}', [DiscutionReponseController::class, 'destroy']);
+
+/*-----------------Visio conference--------------------------*/
+Route::get('visio-conferences', [VisioConferenceController::class, 'index']);
+Route::get('create-visio-conferences', [VisioConferenceController::class, 'create']);
+Route::get('visio-conferences/{id}', [VisioConferenceController::class, 'show']);
+Route::get('visio-conferences/{id}/edit', [VisioConferenceController::class, 'edit']);
+Route::post('visio-conferences', [VisioConferenceController::class, 'store']);
+Route::put('visio-conferences/{id}/update', [VisioConferenceController::class, 'update']);
+Route::get('visio-conferences/{id}/destroy', [VisioConferenceController::class, 'destroy']);
+
 
 /*-----------------Evaluation--------------------------*/
 Route::get('evaluations', [EvaluationController::class, 'index']);

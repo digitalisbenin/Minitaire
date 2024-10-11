@@ -13,16 +13,17 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('questions', function (Blueprint $table) {
+        Schema::create('visio_conferences', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->unsignedBigInteger('quiz_id');
-            $table->timestamps();
-
-            $table->foreign('quiz_id')
+            $table->string('lien_meet');
+            $table->string('date');
+            $table->string('titre');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')
             ->references('id')
-            ->on('quizzes')
+            ->on('users')
             ->onDelete('cascade');
+            $table->timestamps();
         });
     }
 
@@ -33,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('questions');
+        Schema::dropIfExists('visio_conferences');
     }
 };

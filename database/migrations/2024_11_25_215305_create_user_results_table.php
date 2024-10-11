@@ -14,11 +14,11 @@ return new class extends Migration
     public function up()
     {
         Schema::create('user_results', function (Blueprint $table) {
-            $table->uuid('id')->primary();
-            $table->uuid('user_id');
-            $table->uuid('quiz_id')->nullable();
-            $table->uuid('answers_id');
-            $table->uuid('question_id')->nullable();
+            $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('quiz_id')->nullable();
+            $table->unsignedBigInteger('answers_id');
+            $table->unsignedBigInteger('question_id')->nullable();
             $table->integer('note')->nullable();
             $table->timestamps();
 

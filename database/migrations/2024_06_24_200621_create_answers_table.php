@@ -14,10 +14,10 @@ return new class extends Migration
     public function up()
     {
         Schema::create('answers', function (Blueprint $table) {
-            $table->uuid('id')->primary();
+            $table->id();
             $table->string('title');
             $table->boolean('is_correct');
-            $table->uuid('question_id');
+            $table->unsignedBigInteger('question_id');
             $table->timestamps();
 
             $table->foreign('question_id')

@@ -88,9 +88,15 @@
                     </a>
                 </li>
                 <li class="sidebar-menu__item">
-                    <a href="#" class="sidebar-menu__link">
+                    <a href="{{url('visio-conferences')}}" class="sidebar-menu__link">
                         <span class="icon"><i class="ph ph-calendar-dots"></i></span>
                         <span class="text">Visio Conférence</span>
+                    </a>
+                </li>
+                <li class="sidebar-menu__item">
+                    <a href="{{url('meets')}}" class="sidebar-menu__link">
+                        <span class="icon"><i class="ph ph-calendar-dots"></i></span>
+                        <span class="text">Meet</span>
                     </a>
                 </li>
                 {{--  <li class="sidebar-menu__item">
