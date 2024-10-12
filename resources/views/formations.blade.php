@@ -52,9 +52,11 @@
                         <p class="date">{{$value->category->name}} </p>
 
                         <p class="date"> {{$value->difficulete->name}}</p>
-                        <h6> {{$value->titre}}</h6>
-                        <h3><a href="{{url('details-cours/'.$value->id)}}">{{$value->description}}</a></h3>
-
+                        <h5> {{$value->titre}}</h5>
+                        <br>
+                        <a href="{{url('details-cours/'.$value->id)}}"></a>
+                        <p>{{$value->description}}</p>
+                            <br>
                         <div>
                             <button class="btn btn-success ajouter-formation" data-id="{{ $value->id }}">Ajouter</button>
                         </div>

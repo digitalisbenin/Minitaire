@@ -184,10 +184,15 @@
           <div class="me-2">
             
           </div>
-          <div class="mt-2">
-            <p class="mb-1"></p>
-            <p></p>
-          </div>
+          <div class="ms-auto d-flex">
+            
+            {{--  <div class="me-4">
+                <h5>Réponses :</h5>
+                @foreach($discution->reponses as $reponse)
+                    <p>{{ $reponse->user->name }} : {{ $reponse->titre }}</p>
+                @endforeach
+            </div>  --}}
+        </div>
         </div>
       </div>
     </div>

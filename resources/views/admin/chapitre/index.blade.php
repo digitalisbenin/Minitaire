@@ -93,10 +93,18 @@
                         </td>
 
                         <td>
-                            <span class="h6 mb-0 fw-medium text-gray-300">
+                            <span class="h6 mb-0 fw-medium text-gray-300" 
+    style="
+        display: block;
+        max-width: 30ch; /* Limite à environ trois colonnes (30 caractères) */
+        white-space: normal; /* Autorise les retours à la ligne */
+        overflow: hidden;
+        text-overflow: ellipsis; /* Ajoute les points de suspension (...) */
+        word-wrap: break-word; /* Coupe le texte si nécessaire */
+    ">
+    {{$value->description}}
+</span>
 
-                                {{$value->description}}
-                            </span>
                         </td>
                         <td>
                             <span class="h6 mb-0 fw-medium text-gray-300">

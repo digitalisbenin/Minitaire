@@ -29,6 +29,12 @@ class Discution extends Model
     {
         return $this->hasMany('App\Models\DiscutionReponse');
     }
+// Modèle Discution.php
+public function reponses()
+{
+    return $this->hasMany(DiscutionReponse::class, 'discution_id');
+}
+
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

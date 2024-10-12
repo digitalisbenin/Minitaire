@@ -162,8 +162,19 @@
                         <p class="price">{{$value->difficulete->name}}</p>
                     </div>
                     <div class="content">
-                        <h3><a href="{{url('/details-cours')}}">{{$value->titre}}</a></h3>
-                        <p>{{$value->description}}</p>
+                        <h5><a href="{{url('/details-cours/'.$value->id)}}">{{$value->titre}}</a></h5>
+                        <br>
+                        {{--  <p>{{$value->description}}</p>  --}}
+                        <p style="
+                                        display: -webkit-box;
+                                        -webkit-line-clamp: 3;
+                                        -webkit-box-orient: vertical;
+                                        overflow: hidden;
+                                        text-overflow: ellipsis;
+                                    ">
+                                        {{$value->description}}
+                                    </p>
+
                     </div>
                     <div class="bottom-content">
                         <ul class="review">

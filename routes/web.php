@@ -5,6 +5,7 @@ use App\Models\Formation;
 use App\Models\Resource;
 use App\Models\Chapitre;
 use App\Models\Discution;
+use App\Models\DiscutionReponse;
 use App\Models\Video;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
@@ -40,7 +41,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    $formation=Formation::all();
+    $formation=Formation::orderBy('created_at', 'desc')->take(12)->get();
     return view('welcome',compact('formation'));
 });
 Route::get('/cours', function () {
@@ -69,7 +70,9 @@ Route::get('/contact', function () {
 });
 
 Route::get('/forums', function () {
-    $discution=Discution::all();
+
+    $discution=Discution::with('reponses')->get();;
+
     return view('forum', compact('discution'));
 });
 Route::get('/formateurs', function () {
