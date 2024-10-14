@@ -48,14 +48,14 @@
                 <div class="col-xxl-3 col-sm-6">
                     <div class="card">
                         <div class="card-body">
-                            @if($certificate->count()> 0)
-                            <h4 class="mb-2">{{$certificate->count()}}</h4>
+                            @if($ressource->count()> 0)
+                            <h4 class="mb-2">{{$ressource->count()}}</h4>
                          
                             @else
                             <h4 class="mb-2">0</h4>
                             
                             @endif
-                            <span class="text-gray-600">Certificat obtenu</span>
+                            <span class="text-gray-600">Ressource</span>
                             <div class="flex-between gap-8 mt-16">
                                 <span class="flex-shrink-0 w-48 h-48 flex-center rounded-circle bg-main-two-600 text-white text-2xl"><i class="ph-fill ph-certificate"></i></span>
                                 <div id="earned-certificate" class="remove-tooltip-title rounded-tooltip-value"></div>

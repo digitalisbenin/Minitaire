@@ -4,7 +4,7 @@
 @section('content')
 @include ('partial.navbar')
 
-<div class="breadcrumbs overlay">
+{{--  <div class="breadcrumbs overlay">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-8 offset-lg-2 col-md-12 col-12">
@@ -19,7 +19,7 @@
             </div>
         </div>
     </div>
-</div>
+</div>  --}}
 
 
 <!-- Course Details Section Start -->

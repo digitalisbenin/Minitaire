@@ -172,29 +172,70 @@
       </div>
 
       <!-- Informations supplémentaires -->
-      <div class="ms-auto d-flex">
+      {{--  <div class="ms-auto d-flex ">
         <!-- Section réponses et vues -->
-        <div class="me-4">
-          <p class="text-left mb-1"></p>
-          <p class="text-left"></p>
-        </div>
+       
 
         <!-- Section image et auteur -->
         <div class="d-flex">
-          <div class="me-2">
+          <div class="me-13">
+            <h5 class="text-right">Réponses :</h5>        
+            @php
+            $reponses = $repose->where('discution_id', $value->id);
+        @endphp
+        
+        @foreach($reponses as $reponse)
+      
+            <p class="text-left"  style="font-size: 20px;">  {{ $reponse->titre }} :  {{ $reponse->user->name }} {{ $reponse->user->prenom }} </p>
+        @endforeach
             
           </div>
           <div class="ms-auto d-flex">
             
-            {{--  <div class="me-4">
+            <div class="me-4">
+               
+        
+
+            </div>
+        </div>
+        </div>
+      </div>  --}}
+      {{--  <div class="ms-auto d-flex">
+        <!-- Section image et auteur -->
+        <div class="d-flex" style="margin-left: auto;">
+            <div class="me-13" style="text-align: right;">
                 <h5>Réponses :</h5>
-                @foreach($discution->reponses as $reponse)
-                    <p>{{ $reponse->user->name }} : {{ $reponse->titre }}</p>
+                @php
+                    $reponses = $repose->where('discution_id', $value->id);
+                @endphp
+    
+                @foreach($reponses as $reponse)
+                    <p style="font-size: 20px;">  
+                        {{ $reponse->titre }} :  {{ $reponse->user->name }} {{ $reponse->user->prenom }} 
+                    </p>
                 @endforeach
-            </div>  --}}
+            </div>
         </div>
+    </div>  --}}
+
+    <div class="ms-auto d-flex">
+    <!-- Section image et auteur -->
+    <div class="d-flex ms-auto me-4"> <!-- Ajout de me-4 pour la marge à droite -->
+        <div class="me-13" style="text-align: right;">
+            <h5>Réponses :</h5>
+            @php
+                $reponses = $repose->where('discution_id', $value->id);
+            @endphp
+
+            @foreach($reponses as $reponse)
+                <p style="font-size: 20px;">  
+                    {{ $reponse->titre }} :  {{ $reponse->user->name }} {{ $reponse->user->prenom }} 
+                </p>
+            @endforeach
         </div>
-      </div>
+    </div>
+</div>
+
     </div>
     @endforeach
 

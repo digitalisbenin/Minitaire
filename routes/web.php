@@ -71,9 +71,10 @@ Route::get('/contact', function () {
 
 Route::get('/forums', function () {
 
-    $discution=Discution::with('reponses')->get();;
+    $discution=Discution::with('reponses')->get();
+    $repose=DiscutionReponse::all();
 
-    return view('forum', compact('discution'));
+    return view('forum', compact('discution','repose'));
 });
 Route::get('/formateurs', function () {
     $formateurs=User::where('role_id',2)->get();
@@ -96,7 +97,8 @@ Route::get('/dashboard', function () {
     $apprenants=User::where('role_id',3)->get();
     $formateurs=User::where('role_id',2)->get();
     $certificate=Certificate::all();
-    return view('dashboard', compact('formation','formations','apprenants','formateurs','certificate'));
+    $ressource=Resource::all();
+    return view('dashboard', compact('formation','formations','apprenants','formateurs','certificate','ressource'));
 
 })->middleware(['auth', 'verified'])->name('dashboard');
 
@@ -220,9 +222,9 @@ Route::get('evaluations/{id}', [EvaluationController::class, 'destroy']);
 Route::get('formations', [FormationController::class, 'index']);
 Route::get('create-formations', [FormationController::class, 'create']);
 Route::get('formations/{id}', [FormationController::class, 'show']);
-Route::get('formations/{id}', [FormationController::class, 'edit']);
+Route::get('formations/{id}/edit', [FormationController::class, 'edit']);
 Route::post('formations', [FormationController::class, 'store']);
-Route::put('formations/{id}', [FormationController::class, 'update']);
+Route::put('formations/{id}/update', [FormationController::class, 'update']);
 Route::get('formations/{id}/destroy', [FormationController::class, 'destroy']);
 
 /*-----------------Mes cours--------------------------*/

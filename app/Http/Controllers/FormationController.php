@@ -96,9 +96,12 @@ class FormationController extends Controller
      * @param  \App\Models\Formation  $formation
      * @return \Illuminate\Http\Response
      */
-    public function edit(Formation $formation)
+    public function edit( $id)
     {
-        return view('',compact('formation'));
+        $formation=Formation::findOrfail($id);
+        $categorie=Category::all();
+        $difficulte=Difficulete::all();
+        return view('admin.cours.edit',compact('formation','categorie','difficulte'));
     }
 
     /**
@@ -108,18 +111,43 @@ class FormationController extends Controller
      * @param  \App\Models\Formation  $formation
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Formation $formation)
+    public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
             'titre' => 'required|max:255',
             'description' => 'required|max:255',
-            'image_url' => 'required|max:255',
+            'image_url' => 'nullable|max:255',
             'status' => 'required|max:255',
             'categorie_id' => 'nullable|exists:categories,id',
             'difficulte_id' => 'nullable|exists:difficuletes,id',
             'user_id' => 'nullable|exists:users,id',
         ]);
-        $formation->update($validatedData);
+       // $formation->update($validatedData);
+        $formation = Formation::findOrfail($id);
+    
+
+        if ($request->hasFile('image_url')) {
+            $path='assets/uploads/formation_images'.$formation->image_url;
+            if (File::exists($path)) {
+                File::delete($path);
+            }
+            $file =$request->file('image_url');
+            $ext=$file->getClientOriginalExtension();
+            $filename = time().'.'.$ext;
+            $file->move('assets/uploads/formation_images',$filename);
+            $formation->image_url= $filename;
+        }
+
+        $formation->titre = $request->titre;
+        $formation->description = $request->description;
+        $formation->categorie_id = $request->categorie_id;
+        $formation->difficulte_id = $request->difficulte_id;
+        $formation->status = $request->status;
+        //$formation->user_id= Auth::id();
+        $formation->save();
+
+
+
         return redirect('/formations')->with('success', 'Formations mise à jour avec succès!');
     }
 
@@ -129,8 +157,9 @@ class FormationController extends Controller
      * @param  \App\Models\Formation  $formation
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Formation $formation)
+    public function destroy( $id)
     {
+        $formation= Formation::findOrfail($id);
         $formation->delete();
 
         return redirect('/formations')->with('success', 'Formations supprimée avec succès!');
