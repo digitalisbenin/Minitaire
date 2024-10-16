@@ -4,33 +4,42 @@
     <div class="toolbar-area">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8 col-md-6 col-12">
-                    <div class="toolbar-social">
-                        <ul>
-                            <li><span class="title"> </span></li>
-                            <li><a href="javascript:void(0)"><i class="lni lni-facebook-original"></i></a></li>
-                            <li><a href="javascript:void(0)"><i class="lni lni-twitter-original"></i></a></li>
-                            <li><a href="javascript:void(0)"><i class="lni lni-instagram"></i></a></li>
-                            <li><a href="javascript:void(0)"><i class="lni lni-linkedin-original"></i></a></li>
-                            <li><a href="javascript:void(0)"><i class="lni lni-google"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-12">
-
-                    <div class="toolbar-login">
-                       @guest
-                       <div class="button">
-                        {{--  <a href="registration.html">Create an Account</a>   --}}
-                      <a href="/login" class="btn">Connexion</a>
-                  </div>
-                       @endguest
-
+                <div class="col-lg-12 col-md-12 col-12">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <!-- Section du texte à gauche -->
+                        <div class="toolbar-text">
+                            <p class="mb-0 text-white" style="text-transform: uppercase;">Direction du Service de l'Intendence des Armées</p>
+                        </div>
+    
+                        <!-- Section des icônes sociales et du bouton Connexion à droite -->
+                        <div class="d-flex justify-content-end align-items-center">
+                            <!-- Section des icônes sociales -->
+                            <div class="toolbar-social me-3">
+                                <ul class="d-flex">
+                                    <li><a href="javascript:void(0)"><i class="lni lni-facebook-original"></i></a></li>
+                                    <li><a href="javascript:void(0)"><i class="lni lni-twitter-original"></i></a></li>
+                                    <li><a href="javascript:void(0)"><i class="lni lni-instagram"></i></a></li>
+                                    <li><a href="javascript:void(0)"><i class="lni lni-linkedin-original"></i></a></li>
+                                    <li><a href="javascript:void(0)"><i class="lni lni-google"></i></a></li>
+                                </ul>
+                            </div>
+    
+                            <!-- Section du bouton Connexion -->
+                            <div class="toolbar-login">
+                                @guest
+                                <div class="button">
+                                    <a href="/login" class="btn">Connexion</a>
+                                </div>
+                                @endguest
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    
+    
     <!-- Toolbar End -->
     <div class="container">
         <div class="row align-items-center">
@@ -64,7 +73,7 @@
 
                             </li>  --}}
                             <li class="nav-item"><a href="{{url('/formation')}}">Formations</a></li>
-                            <li class="nav-item"><a href="{{url('/forums')}}">Forums</a></li>
+                            <li class="nav-item"><a href="{{url('/forums')}}">Forum</a></li>
 
                             {{--  <li class="nav-item">
                                 <a class="page-scroll dd-menu collapsed" href="javascript:void(0)"
@@ -100,7 +109,7 @@
                             <li class="nav-item"><a href="{{url('/documents')}}">Documents</a></li>
                             <li class="nav-item"><a href="{{url('/video')}}">Videos</a></li>
 
-                            <li class="nav-item"><a href="{{url('/contact')}}">Contact</a></li>
+                            <li class="nav-item"><a href="{{url('/contact')}}">Contacts</a></li>
                         </ul>
 
 

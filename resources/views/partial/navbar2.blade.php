@@ -32,7 +32,7 @@
 
                             </li>
                             <li class="nav-item"><a href="{{url('/formation')}}">Formations</a></li>
-                            <li class="nav-item"><a href="{{url('/')}}">Forums</a></li>
+                            <li class="nav-item"><a href="{{url('/')}}">Forum</a></li>
                             {{--  <li class="nav-item">
                                 <a class="page-scroll dd-menu collapsed" href="javascript:void(0)"
                                     data-bs-toggle="collapse" data-bs-target="#submenu-1-4"
@@ -66,7 +66,7 @@
 
                             <li class="nav-item"><a href="{{url('/documents')}}">Documents</a></li>
                             <li class="nav-item"><a href="{{url('/video')}}">Videos</a></li>
-                            <li class="nav-item"><a href="{{url('/contact')}}">Contact</a></li>
+                            <li class="nav-item"><a href="{{url('/contact')}}">Contacts</a></li>
 
                                            </ul>
                         {{--  <form class="d-flex search-form">

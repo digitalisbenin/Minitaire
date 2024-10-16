@@ -11,7 +11,7 @@
             <div class="col-lg-8 offset-lg-2 col-md-12 col-12">
                 <div class="breadcrumbs-content">
                     <h1 class="page-title"> formations</h1>
-                    <p>Des formations de qualités</p>
+                    <p>Des formations de qualifiantes</p>
                 </div>
                 <ul class="breadcrumb-nav">
                     <li><a href="{{url('/')}}">Accueil</a></li>

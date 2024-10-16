@@ -12,7 +12,7 @@
             <div class="col-lg-8 offset-lg-2 col-md-12 col-12">
                 <div class="breadcrumbs-content">
                     <h1 class="page-title">Video </h1>
-                    <p>Voir les vidéo lié au cours</p>
+                    <p>Voir les vidéos liées des cours</p>
                 </div>
                 <ul class="breadcrumb-nav">
                     <li><a href="{{('/')}}">Accueil</a></li>

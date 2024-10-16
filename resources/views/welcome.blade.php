@@ -13,7 +13,7 @@
                         <div class="home-slider">
                             <div class="hero-text">
                                 {{--  <h5 class="wow fadeInUp" data-wow-delay=".3s">Start to Learning Today</h5>  --}}
-                                <h1 class="wow fadeInUp" data-wow-delay=".5s">Bienvenue sur la platforme <br> de formation des militaires</h1>
+                                <h1 class="wow fadeInUp" data-wow-delay=".5s">Bienvenue sur la platforme <br> E-learning de la DSIA</h1>
                                 <p class="wow fadeInUp" data-wow-delay=".7s"> <br> .</p>
                                 <div class="button wow fadeInUp" data-wow-delay=".9s">
                                     {{--  <a href="about-us.html" class="btn">Learn More</a>
@@ -86,7 +86,7 @@
                 <div class="col-lg-4 col-md-4 col-12 padding-zero">
                     <!-- Start Single Feature -->
                     <div class="single-feature">
-                        <h3><a href="javascript:void(0)">Cours en vogue </a></h3>
+                        <h3><a href="javascript:void(0)">Cours en actuel </a></h3>
                         <p>Les cours en vogue sont des formations éducatives qui répondent aux besoins et intérêts
                              actuels des apprenants. Ces cours reflètent les évolutions et innovations
                               dans divers domaines, offrant des compétences et connaissances recherchées.</p>
@@ -99,7 +99,7 @@
                 <div class="col-lg-4 col-md-4 col-12 padding-zero">
                     <!-- Start Single Feature -->
                     <div class="single-feature">
-                        <h3><a href="javascript:void(0)">Professeurs certifiés</a></h3>
+                        <h3><a href="javascript:void(0)">Instructeurs certifiés</a></h3>
                         <p>Les professeurs certifiés sont des éducateurs ayant obtenu une certification officielle attestant
                             de leurs compétences et qualifications dans un domaine spécifique. Cette certification, délivrée
                              par des organismes reconnus.</p>
@@ -114,7 +114,7 @@
                     <!-- Start Single Feature -->
                     <div class="single-feature last">
                         <h3><a href="javascript:void(0)">Documents</a></h3>
-                        <p>Les documents laissés à la portée des apprenants sont des ressources
+                        <p>Les documents laissés à la portée des stagiaires sont des ressources
                              éducatives mises à disposition pour soutenir leur apprentissage et
                               approfondir leurs connaissances. Ces documents peuvent inclure une
                                variété de matériaux pédagogiques.</p>

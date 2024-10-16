@@ -136,8 +136,7 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="left">
-                                <p>Designer et développer par<a href="#" rel="nofollow"
-                                        target="_blank">FAB</a></p>
+                                <p>Tous droits réservés par la DSIA.</p>
                             </div>
                         </div>
                     </div>
