@@ -77,6 +77,24 @@
                 </a>
             </li>
             <li class="sidebar-menu__item">
+                <a href="{{url('quizs')}}" class="sidebar-menu__link">
+                    <span class="icon"><i class="ph ph-coins"></i></span>
+                    <span class="text">Quizz</span>
+                </a>
+            </li>
+            <li class="sidebar-menu__item">
+                <a href="{{url('questions')}}" class="sidebar-menu__link">
+                    <span class="icon"><i class="ph ph-coins"></i></span>
+                    <span class="text">Question</span>
+                </a>
+            </li>
+            <li class="sidebar-menu__item">
+                <a href="{{url('answers')}}" class="sidebar-menu__link">
+                    <span class="icon"><i class="ph ph-coins"></i></span>
+                    <span class="text">Réponse</span>
+                </a>
+            </li>
+            <li class="sidebar-menu__item">
                 <a href="{{url('commentaires')}}" class="sidebar-menu__link">
                     <span class="icon"><i class="ph ph-chart-bar"></i></span>
                     <span class="text">Commentaire</span>

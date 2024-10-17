@@ -18,7 +18,15 @@ return new class extends Migration
             $table->string('title');
             $table->string('description')->nullable();
             $table->enum('status', ['question', 'reponse']);
+            $table->unsignedBigInteger('formation_id');
             $table->timestamps();
+
+
+            $table->foreign('formation_id')
+            ->references('id')
+            ->on('formations')
+            ->onDelete('cascade');
+            
         });
     }
 

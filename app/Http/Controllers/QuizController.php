@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Quiz;
+use App\Models\Formation;
 use Illuminate\Http\Request;
 
 class QuizController extends Controller
@@ -14,7 +15,8 @@ class QuizController extends Controller
      */
     public function index()
     {
-        //
+        $quiz=Quiz::all();
+        return view('admin.quiz.index',compact('quiz'));
     }
 
     /**
@@ -24,7 +26,8 @@ class QuizController extends Controller
      */
     public function create()
     {
-        //
+        $formation=Formation::all();
+        return view('admin.quiz.create',compact('formation'));
     }
 
     /**
@@ -35,7 +38,18 @@ class QuizController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //dd($request);
+        //'title', 'description' ,'status'
+        $validatedData = $request->validate([
+
+            'title' => 'required|max:255',
+            'status' => 'required',
+            'description' => 'nullable',
+            'formation_id' => 'required|exists:formations,id',
+        ]);
+        $quiz=Quiz ::create($validatedData);
+
+        return redirect('/quizs')->with('success', 'Quiz créée avec succès!');
     }
 
     /**
@@ -46,7 +60,7 @@ class QuizController extends Controller
      */
     public function show(Quiz $quiz)
     {
-        //
+        return view('', compact('quiz'));
     }
 
     /**
@@ -55,9 +69,12 @@ class QuizController extends Controller
      * @param  \App\Models\Quiz  $quiz
      * @return \Illuminate\Http\Response
      */
-    public function edit(Quiz $quiz)
+    public function edit( $id)
+
     {
-        //
+        $quiz= Quiz::findOrfail($id);
+        $formation=Formation::all();
+        return view('admin.quiz.edit', compact('quiz','formation'));
     }
 
     /**
@@ -67,9 +84,19 @@ class QuizController extends Controller
      * @param  \App\Models\Quiz  $quiz
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Quiz $quiz)
+    public function update(Request $request,$id)
     {
-        //
+
+        $validatedData = $request->validate([
+
+            'title' => 'required|max:255',
+            'status' => 'required',
+            'description' => 'nullable',
+        ]);
+        $quiz = Quiz::findOrfail($id);
+        $quiz->update($validatedData);
+
+        return redirect('/quizs')->with('success', 'Quiz mise à jour avec succès!');
     }
 
     /**
@@ -80,6 +107,8 @@ class QuizController extends Controller
      */
     public function destroy(Quiz $quiz)
     {
-        //
+        $quiz->delete();
+
+        return redirect('/quizs')->with('success', 'Quiz supprimée avec succès!');
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Answers;
+use App\Models\Question;
 use Illuminate\Http\Request;
 
 class AnswersController extends Controller
@@ -14,7 +15,8 @@ class AnswersController extends Controller
      */
     public function index()
     {
-        //
+        $answers=Answers::all();
+        return view('admin.answers.index',compact('answers'));
     }
 
     /**
@@ -24,7 +26,8 @@ class AnswersController extends Controller
      */
     public function create()
     {
-        //
+        $quiz=Question::all();
+        return view('admin.answers.create',compact('quiz'));
     }
 
     /**
@@ -35,7 +38,14 @@ class AnswersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'title' => 'required|max:255',
+            'is_correct' => 'nullable',
+            'question_id' => 'required|exists:questions,id',
+        ]);
+        $answers=Answers ::create($validatedData);
+
+        return redirect('/answers')->with('success', 'Réponse créée avec succès!');
     }
 
     /**
@@ -46,7 +56,7 @@ class AnswersController extends Controller
      */
     public function show(Answers $answers)
     {
-        //
+        return view('', compact('answers'));
     }
 
     /**
@@ -57,7 +67,7 @@ class AnswersController extends Controller
      */
     public function edit(Answers $answers)
     {
-        //
+        return view('', compact('answers'));
     }
 
     /**
@@ -69,7 +79,13 @@ class AnswersController extends Controller
      */
     public function update(Request $request, Answers $answers)
     {
-        //
+        $validatedData = $request->validate([
+            'title' => 'required|max:255',
+            'is_correct' => 'nullable',
+            'question_id' => 'required|exists:questions,id',
+        ]);
+        $answers->update($validatedData);
+        return redirect('/answers')->with('success', 'Réponse mise à jour avec succès!');
     }
 
     /**
@@ -80,6 +96,8 @@ class AnswersController extends Controller
      */
     public function destroy(Answers $answers)
     {
-        //
+        $answers->delete();
+
+        return redirect('/answers')->with('success', 'Réponse supprimée avec succès!');
     }
 }

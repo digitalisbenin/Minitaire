@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Question;
+use App\Models\Quiz;
 use Illuminate\Http\Request;
 
 class QuestionController extends Controller
@@ -14,7 +15,9 @@ class QuestionController extends Controller
      */
     public function index()
     {
-        //
+         
+        $question=Question::all();
+        return view('admin.question.index',compact('question'));
     }
 
     /**
@@ -24,7 +27,8 @@ class QuestionController extends Controller
      */
     public function create()
     {
-        //
+        $quiz=Quiz::all();
+        return view('admin.question.create',compact('quiz'));
     }
 
     /**
@@ -35,7 +39,14 @@ class QuestionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            
+            'title' => 'required|max:255',
+            'quiz_id' => 'nullable|exists:quizzes,id',
+        ]);
+        $question=Question ::create($validatedData);
+
+        return redirect('/questions')->with('success', 'Question créée avec succès!');
     }
 
     /**
@@ -46,7 +57,7 @@ class QuestionController extends Controller
      */
     public function show(Question $question)
     {
-        //
+        return view('', compact('question'));
     }
 
     /**
@@ -57,7 +68,7 @@ class QuestionController extends Controller
      */
     public function edit(Question $question)
     {
-        //
+        return view('', compact('question')); 
     }
 
     /**
@@ -69,7 +80,12 @@ class QuestionController extends Controller
      */
     public function update(Request $request, Question $question)
     {
-        //
+        $validatedData = $request->validate([
+            'title' => 'required|max:255',
+            'quiz_id' => 'nullable|exists:quizzes,id',
+        ]);
+        $question->update($validatedData);
+        return redirect('/questions')->with('success', 'Question mise à jour avec succès!');
     }
 
     /**
@@ -80,6 +96,8 @@ class QuestionController extends Controller
      */
     public function destroy(Question $question)
     {
-        //
+        $question->delete();
+
+        return redirect('/questions')->with('success', 'Questions supprimée avec succès!');
     }
 }

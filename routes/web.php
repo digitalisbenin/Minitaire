@@ -8,6 +8,7 @@ use App\Models\Discution;
 use App\Models\DiscutionReponse;
 use App\Models\Video;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CertificateController;
 use App\Http\Controllers\ChapitreController;
@@ -27,6 +28,9 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\VideoController;
 use App\Http\Controllers\VisioConferenceController;
 use App\Http\Controllers\MeetController;
+use App\Http\Controllers\AnswersController;
+use App\Http\Controllers\QuizController;
+use App\Models\Answers;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -298,3 +302,32 @@ Route::get('videos/{id}/edit', [VideoController::class, 'edit']);
 Route::post('videos', [VideoController::class, 'store']);
 Route::put('videos/{id}/update', [VideoController::class, 'update']);
 Route::get('videos/{id}/destroy', [VideoController::class, 'destroy']);
+
+
+/*-----------------Ansers --------------------------*/
+Route::get('answers', [AnswersController::class, 'index']);
+Route::get('create-answers', [AnswersController::class, 'create']);
+Route::get('answers/{id}', [AnswersController::class, 'show']);
+Route::get('answers/{id}/edit', [AnswersController::class, 'edit']);
+Route::post('answers', [AnswersController::class, 'store']);
+Route::put('answers/{id}/update', [AnswersController::class, 'update']);
+Route::get('answers/{id}/destroy', [AnswersController::class, 'destroy']);
+
+/*-----------------Video--------------------------*/
+Route::get('questions', [QuestionController::class, 'index']);
+Route::get('create-questions', [QuestionController::class, 'create']);
+Route::get('questions/{id}', [QuestionController::class, 'show']);
+Route::get('questions/{id}/edit', [QuestionController::class, 'edit']);
+Route::post('questions', [QuestionController::class, 'store']);
+Route::put('questions/{id}/update', [QuestionController::class, 'update']);
+Route::get('questions/{id}/destroy', [QuestionController::class, 'destroy']);
+
+
+/*-----------------Video--------------------------*/
+Route::get('quizs', [QuizController::class, 'index']);
+Route::get('create-quizs', [QuizController::class, 'create']);
+Route::get('quizs/{id}', [QuizController::class, 'show']);
+Route::get('quizs/{id}/edit', [QuizController::class, 'edit']);
+Route::post('quizs', [QuizController::class, 'store']);
+Route::put('quizs/{id}/update', [QuizController::class, 'update']);
+Route::get('quizs/{id}/destroy', [QuizController::class, 'destroy']);

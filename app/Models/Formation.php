@@ -22,6 +22,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property User $user
  * @property Difficulete $difficulete
  * @property MesCour[] $mesCours
+ * @property Quiz[] $quizzes
  */
 class Formation extends Model
 {
@@ -84,5 +85,13 @@ class Formation extends Model
     public function mesCours()
     {
         return $this->hasMany('App\Models\MesCour');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function quizzes()
+    {
+        return $this->hasMany('App\Models\Quiz');
     }
 }

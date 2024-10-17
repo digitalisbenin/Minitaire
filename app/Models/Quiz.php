@@ -2,24 +2,48 @@
 
 namespace App\Models;
 
-
-
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @property integer $id
+ * @property integer $formation_id
+ * @property string $title
+ * @property string $description
+ * @property string $status
+ * @property string $created_at
+ * @property string $updated_at
+ * @property Question[] $questions
+ * @property Formation $formation
+ * @property UserResult[] $userResults
+ */
 class Quiz extends Model
 {
-    use HasFactory;
+    /**
+     * @var array
+     */
+    protected $fillable = ['formation_id', 'title', 'description', 'status', 'created_at', 'updated_at'];
 
-    protected $fillable = ['title', 'description' ,'status'];
-
-    public function question()
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function questions()
     {
-        return $this->hasMany(Question::class);
+        return $this->hasMany('App\Models\Question');
     }
 
-    public function userResult()
-        {
-            return $this->hasMany(UserResult::class);
-        }
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function formation()
+    {
+        return $this->belongsTo('App\Models\Formation');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function userResults()
+    {
+        return $this->hasMany('App\Models\UserResult');
+    }
 }
