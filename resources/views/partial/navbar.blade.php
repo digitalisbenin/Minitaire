@@ -138,6 +138,7 @@
                           {{--  <li><a class="dropdown-item" href="#">{{ Auth::user()->name }} {{ Auth::user()->prenom }}</a></li>  --}}
                           <li><a class="dropdown-item" href="#">Profil</a></li>
                           <li><a class="dropdown-item" href="{{url('mes-cours')}}"> Mes Cours</a></li>
+                          <li><a class="dropdown-item" href="{{url('user-resultes')}}"> Mes resultats</a></li>
                           @if (Auth::user()->role_id == '1'||Auth::user()->role_id == '2' )
                           <li><a class="dropdown-item" href="{{url('dashboard')}}">Tableau de bord</a></li>
                            @endif

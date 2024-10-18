@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Auth;
 use App\Models\UserResult;
 use Illuminate\Http\Request;
 
@@ -15,6 +15,13 @@ class UserResultController extends Controller
     public function index()
     {
         //
+    }
+
+    public function indexe()
+    {
+    
+        $userResults= UserResult::where('user_id', Auth::id())->get();
+        return view('userResult',compact('userResults'));
     }
 
     /**

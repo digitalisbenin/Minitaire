@@ -15,7 +15,7 @@ class QuestionController extends Controller
      */
     public function index()
     {
-         
+
         $question=Question::all();
         return view('admin.question.index',compact('question'));
     }
@@ -40,7 +40,7 @@ class QuestionController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            
+
             'title' => 'required|max:255',
             'quiz_id' => 'nullable|exists:quizzes,id',
         ]);
@@ -66,9 +66,11 @@ class QuestionController extends Controller
      * @param  \App\Models\Question  $question
      * @return \Illuminate\Http\Response
      */
-    public function edit(Question $question)
+    public function edit(Question $question, $id)
     {
-        return view('', compact('question')); 
+        $question= Question::findOrfail($id);
+        $quiz=Quiz::all();
+        return view('admin.question.edit', compact('question','quiz'));
     }
 
     /**
@@ -78,12 +80,13 @@ class QuestionController extends Controller
      * @param  \App\Models\Question  $question
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Question $question)
+    public function update(Request $request, Question $question, $id)
     {
         $validatedData = $request->validate([
             'title' => 'required|max:255',
             'quiz_id' => 'nullable|exists:quizzes,id',
         ]);
+        $question= Question::findOrfail($id);
         $question->update($validatedData);
         return redirect('/questions')->with('success', 'Question mise à jour avec succès!');
     }
@@ -94,8 +97,10 @@ class QuestionController extends Controller
      * @param  \App\Models\Question  $question
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Question $question)
+    public function destroy(Question $question, $id)
+
     {
+        $question = Question::findOrfail($id);
         $question->delete();
 
         return redirect('/questions')->with('success', 'Questions supprimée avec succès!');

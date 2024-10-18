@@ -65,9 +65,11 @@ class AnswersController extends Controller
      * @param  \App\Models\Answers  $answers
      * @return \Illuminate\Http\Response
      */
-    public function edit(Answers $answers)
+    public function edit(Answers $answers, $id)
     {
-        return view('', compact('answers'));
+        $question=Question::all();
+        $answers= Answers::findOrfail($id);
+        return view('admin.answers.edit', compact('answers','question'));
     }
 
     /**
@@ -77,13 +79,15 @@ class AnswersController extends Controller
      * @param  \App\Models\Answers  $answers
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Answers $answers)
+    public function update(Request $request, Answers $answers, $id)
     {
+        
         $validatedData = $request->validate([
             'title' => 'required|max:255',
             'is_correct' => 'nullable',
             'question_id' => 'required|exists:questions,id',
         ]);
+        $answers= Answers::findOrfail($id);
         $answers->update($validatedData);
         return redirect('/answers')->with('success', 'Réponse mise à jour avec succès!');
     }
@@ -94,8 +98,9 @@ class AnswersController extends Controller
      * @param  \App\Models\Answers  $answers
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Answers $answers)
+    public function destroy(Answers $answers, $id)
     {
+        $answers = Answers::findOrfail($id);
         $answers->delete();
 
         return redirect('/answers')->with('success', 'Réponse supprimée avec succès!');

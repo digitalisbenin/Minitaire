@@ -105,8 +105,9 @@ class QuizController extends Controller
      * @param  \App\Models\Quiz  $quiz
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Quiz $quiz)
+    public function destroy(Quiz $quiz,$id)
     {
+        $quiz = Quiz::findOrfail($id);
         $quiz->delete();
 
         return redirect('/quizs')->with('success', 'Quiz supprimée avec succès!');
