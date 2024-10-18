@@ -7,6 +7,7 @@ use App\Models\Chapitre;
 use App\Models\Discution;
 use App\Models\DiscutionReponse;
 use App\Models\Video;
+use App\Models\Quiz;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\CategoryController;
@@ -25,6 +26,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SuivyController;
 use App\Http\Controllers\UserCategoryController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\UserResultController;
 use App\Http\Controllers\VideoController;
 use App\Http\Controllers\VisioConferenceController;
 use App\Http\Controllers\MeetController;
@@ -62,7 +64,9 @@ Route::get('/admin-cours-detail', function () {
 // });
 Route::get('/details-cours/{id}', function ($id) {
     $chapitre = Chapitre::where('formation_id',$id)->get();
-    return view('details_cours',compact('chapitre'));
+    $formationId = $id;
+   
+    return view('details_cours',compact('chapitre','formationId'));
 });
 Route::get('/video', function () {
     $video= Video::all();
@@ -73,6 +77,11 @@ Route::get('/contact', function () {
     return view('contact');
 });
 
+Route::get('/quiz/{id}', function ($id) {
+    $quiz = Quiz::where('formation_id',$id)->get();
+    $repose=Answers::all();
+    return view('quiz',compact('quiz','repose'));
+});
 Route::get('/forums', function () {
 
     $discution=Discution::with('reponses')->get();
@@ -125,6 +134,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/categories', function () {
         return view('admin.type');
     });
+
+
+    Route::post('user-results', [UserResultController::class, 'store']);
+
 });
 
 require __DIR__.'/auth.php';

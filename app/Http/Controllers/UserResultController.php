@@ -35,7 +35,39 @@ class UserResultController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       
+  // Tableau pour stocker les réponses liées aux questions
+  $reponsesParQuestion = [];
+
+  // Parcourir toutes les questions pour obtenir leurs réponses
+  foreach ($request->input() as $key => $value) {
+      // Vérifier si l'entrée correspond à un bouton radio d'une question
+      if (strpos($key, 'reponse_') !== false) {
+          // Extraire l'ID de la question à partir de la clé (par ex. 'reponse_1')
+          $questionId = str_replace('reponse_', '', $key);
+
+          // Ajouter la réponse sélectionnée au tableau
+          $reponsesParQuestion[$questionId] = $value;
+      }
+  }
+
+  //dd($reponsesParQuestion);
+
+  // Exemple d'utilisation du tableau (affichage des réponses récupérées)
+  foreach ($reponsesParQuestion as $questionId => $reponseId) {
+      // Sauvegarder chaque réponse dans la base de données, ou traiter comme nécessaire
+      UserResult::create([
+        'question_id' => $questionId,
+            'answers_id' => $reponseId,
+        'user_id' => auth()->user()->id,
+       
+    ]);
+  }
+
+  return back()->with('success', 'Réponses enregistrées avec succès !');
+
+    
+
     }
 
     /**

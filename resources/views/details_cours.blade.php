@@ -29,6 +29,9 @@
             <!-- Course Details Wrapper Start -->
 
             <div class="col-lg-12 col-12">
+                
+                <a href="{{url('quiz/'.$formationId)}}" class="btn btn-primary float-end me-2 ml-3 mb-4">Faire un Quiz</a>
+            
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
 
                     @foreach($chapitre as $index => $chapter)
