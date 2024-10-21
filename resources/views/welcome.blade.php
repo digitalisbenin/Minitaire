@@ -27,7 +27,7 @@
         </div>
         <!--/ End Single Slider -->
         <!-- Single Slider -->
-        <div class="hero-inner overlay" style="background-image: url('assets/images/hero/slider-bg2.jpg');">
+        {{--  <div class="hero-inner overlay" style="background-image: url('assets/images/hero/slider-bg2.jpg');">
             <div class="container">
                 <div class="row ">
                     <div class="col-lg-8 offset-lg-2 col-md-12 co-12">
@@ -48,10 +48,10 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>  --}}
         <!--/ End Single Slider -->
         <!-- Single Slider -->
-        <div class="hero-inner overlay" style="background-image: url('assets/images/hero/slider-bg3.jpg');">
+        {{--  <div class="hero-inner overlay" style="background-image: url('assets/images/hero/slider-bg3.jpg');">
             <div class="container">
                 <div class="row ">
                     <div class="col-lg-8 offset-lg-2 col-md-12 co-12">
@@ -72,7 +72,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>  --}}
         <!--/ End Single Slider -->
     </div>
 </section>
