@@ -1,5 +1,7 @@
 @extends('layouts.admin')
-
+@php
+use Carbon\Carbon;
+@endphp
 @section('content')
 @include ('partial.sidebar')
 <div class="dashboard-body">
@@ -60,7 +62,10 @@
                         <th class="h6 text-gray-300">N°</th>
                         <th class="h6 text-gray-300">Titre</th>
                         <th class="h6 text-gray-300">Date</th>
+                        <th class="h6 text-gray-300">Heure début</th>
+                        <th class="h6 text-gray-300">Heure fin</th>
                         <th class="h6 text-gray-300">Lien du meet</th>
+                        <th class="h6 text-gray-300">Status</th>
 
                         <th class="h6 text-gray-300">Actions</th>
                     </tr>
@@ -83,11 +88,36 @@
                         <td>
                             <span class="h6 mb-0 fw-medium text-gray-300">{{$value->date}}</span>
                         </td>
+                        <td>
+                            <span class="h6 mb-0 fw-medium text-gray-300">{{$value->debut}}</span>
+                        </td>
+                        <td>
+                            <span class="h6 mb-0 fw-medium text-gray-300">{{$value->fin}}</span>
+                        </td>
 
                         <td>
                             <span class="h6 mb-0 fw-medium text-gray-300">
 
                                 {{$value->lien_meet}}
+                            </span>
+                        </td>
+                        <td>
+                            <span class="h6 mb-0 fw-medium text-gray-300">
+
+                                @php
+
+
+                                // Convertir $value->fin en instance de Carbon
+                                $dateTime = Carbon::parse($value->date . ' ' . $value->fin)->setTimezone('Africa/Lagos');
+
+                                $now = Carbon::now()->setTimezone('Africa/Lagos');
+                            @endphp
+                             
+                            @if ($dateTime->isPast())
+                                <span class="badge bg-danger">Terminé</span>
+                            @else
+                                <span class="badge bg-success">En cours</span>
+                            @endif
                             </span>
                         </td>
                         <td>

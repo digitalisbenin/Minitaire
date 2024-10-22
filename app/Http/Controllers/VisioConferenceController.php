@@ -40,6 +40,8 @@ class VisioConferenceController extends Controller
             'titre' => 'required|max:255',
             'lien_meet' => 'required|max:255',
             'date' => 'required|max:255',
+            'debut' => 'required|max:255',
+            'fin' => 'required|max:255',
             
         ]);
         //$formation = Formation::create($validatedData);
@@ -47,6 +49,8 @@ class VisioConferenceController extends Controller
 
         $conference->titre = $request->titre;
         $conference->date = $request->date;
+        $conference->debut = $request->debut;
+        $conference->fin = $request->fin;
         $conference->lien_meet = $request->lien_meet;
         $conference->user_id= Auth::id();
         $conference->save(); 
@@ -90,6 +94,8 @@ class VisioConferenceController extends Controller
             'titre' => 'required|max:255',
             'lien_meet' => 'required|max:255',
             'date' => 'required|max:255',
+            'debut' => 'required|max:255',
+            'fin' => 'required|max:255',
             
         ]);
         //$formation = Formation::create($validatedData);
@@ -98,6 +104,8 @@ class VisioConferenceController extends Controller
         $conference->titre = $request->titre;
         $conference->date = $request->date;
         $conference->lien_meet = $request->lien_meet;
+        $conference->debut = $request->debut;
+        $conference->fin = $request->fin;
         $conference->user_id= Auth::id();
         $conference->save();
 

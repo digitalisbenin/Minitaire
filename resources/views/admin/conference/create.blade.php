@@ -57,7 +57,7 @@
                             <div class="col-sm-4">
                                 <label for="courseTitle" class="h5 mb-8 fw-semibold font-heading">Date <span class="text-13 text-gray-400 fw-medium">(Requis)</span> </label>
                                 <div class="position-relative">
-                                    <input type="datetime-local" class="text-counte placeholder-13 form-control py-11 pe-76" name="date" maxlength="500" id="courseTitle" placeholder="">
+                                    <input type="date" class="text-counte placeholder-13 form-control py-11 pe-76" name="date" maxlength="500" id="courseTitle" placeholder="">
                                     <div class="text-gray-400 position-absolute inset-inline-end-0 top-50 translate-middle-y me-16">
                                         {{--  <span id="current">3</span>
                                         <span id="maximum">/ 300</span>  --}}
@@ -76,7 +76,29 @@
                                 </div>
                             </div>
 
+                            <div class="col-sm-4">
+                                <label for="courseTitle" class="h5 mb-8 fw-semibold font-heading">Heure début <span class="text-13 text-gray-400 fw-medium">(Requis)</span> </label>
+                                <div class="position-relative">
+                                    <input type="time" class="text-counte placeholder-13 form-control py-11 pe-76" name="debut" maxlength="500" id="courseTitle" placeholder="">
+                                    <div class="text-gray-400 position-absolute inset-inline-end-0 top-50 translate-middle-y me-16">
+                                        {{--  <span id="current">3</span>
+                                        <span id="maximum">/ 300</span>  --}}
+                                    </div>
+                                </div>
+                            </div>
 
+
+
+                            <div class="col-sm-4">
+                                <label for="courseTitle" class="h5 mb-8 fw-semibold font-heading">heure fin <span class="text-13 text-gray-400 fw-medium">(Requis)</span> </label>
+                                <div class="position-relative">
+                                    <input type="time" class="text-counte placeholder-13 form-control py-11 pe-76" name="fin" maxlength="500" id="courseTitle" placeholder="">
+                                    <div class="text-gray-400 position-absolute inset-inline-end-0 top-50 translate-middle-y me-16">
+                                        {{--  <span id="current">3</span>
+                                        <span id="maximum">/ 300</span>  --}}
+                                    </div>
+                                </div>
+                            </div>
 
                     </div>
                     <div class="flex-align justify-content-end gap-8">

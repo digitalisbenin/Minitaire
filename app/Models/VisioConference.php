@@ -9,6 +9,9 @@ use Illuminate\Database\Eloquent\Model;
  * @property integer $user_id
  * @property string $lien_meet
  * @property string $date
+ * @property string $debut
+ * @property string $fin
+ * @property string $status
  * @property string $titre
  * @property string $created_at
  * @property string $updated_at
@@ -20,7 +23,7 @@ class VisioConference extends Model
     /**
      * @var array
      */
-    protected $fillable = ['user_id', 'lien_meet', 'date', 'titre', 'created_at', 'updated_at'];
+    protected $fillable = ['user_id', 'lien_meet', 'date', 'debut', 'fin', 'status', 'titre', 'created_at', 'updated_at'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

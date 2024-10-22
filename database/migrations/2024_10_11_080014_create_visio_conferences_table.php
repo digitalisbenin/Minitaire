@@ -17,6 +17,9 @@ return new class extends Migration
             $table->id();
             $table->string('lien_meet');
             $table->string('date');
+            $table->string('debut');
+            $table->string('fin');
+            $table->string('status');
             $table->string('titre');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')

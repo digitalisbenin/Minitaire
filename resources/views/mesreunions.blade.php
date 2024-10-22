@@ -1,4 +1,8 @@
 @extends('layouts.base')
+@php
+use Carbon\Carbon;
+@endphp
+
 @section('title','Mes reunions')
 
 @section('content')
@@ -37,11 +41,11 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-8 offset-lg-2 col-12">
+            <div class="col-lg-12  col-12"  style="font-size: 17px;">
                @foreach($meet as $value)
                <div class="teacher-personal-info">
                 <div class="row align-items-center">
-                    <div class="col-lg-4 col-md-4 col-12">
+                    <div class="col-lg-2 col-md-4 col-12">
                         <div class="image">
                            
                             <h4 class="name">{{$value->visioconference->titre}}
@@ -49,18 +53,66 @@
                             </h4>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-4 col-12">
+                    <div class="col-lg-2 col-md-4 col-12">
                     
                           
                         
                         
-                                <a  target="bank" href="#">{{ \Carbon\Carbon::parse($value->visioconference->date)->format('d/m/Y H:i') }}</a>
+                                <a  target="bank" href="#">{{ \Carbon\Carbon::parse($value->visioconference->date)->format('d/m/Y') }}</a>
                                
 
                          
                         
                     </div>
-                    <div class="col-lg-4 col-md-4 col-12">
+                    <div class="col-lg-2 col-md-4 col-12">
+                    
+                          
+                        
+                        
+                                <a  target="bank" href="#">{{ \Carbon\Carbon::parse($value->visioconference->debut)->format('H:i') }}</a>
+                               
+
+                         
+                        
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-12">
+                    
+                          
+                        
+                        
+                                <a  target="bank" href="#">{{ \Carbon\Carbon::parse($value->visioconference->fin)->format('H:i') }}</a>
+                               
+
+                         
+                        
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-12">
+                    
+                          
+                        
+                        
+                                
+                               
+                        
+                                @php
+
+
+                                // Convertir $value->fin en instance de Carbon
+                                $dateTime = Carbon::parse($value->visioconference->date . ' ' . $value->visioconference->fin)->setTimezone('Africa/Lagos');
+
+                                $now = Carbon::now()->setTimezone('Africa/Lagos');
+                            @endphp
+                             
+                            @if ($dateTime->isPast())
+                                <span class="badge bg-danger">Terminé</span>
+                            @else
+                                <span class="badge bg-success">En cours</span>
+                            @endif
+                            </span>
+                         
+                        
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-12">
                     
                           
                         
