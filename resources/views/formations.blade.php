@@ -39,7 +39,7 @@
         <div class="single-head">
             <div class="row">
                @foreach($formation as $value)
-               <div class="col-lg-3 col-md-6 col-12">
+               <div class="col-lg-4 col-md-6 col-12">
                 <!-- Start Single Course -->
                 <div class="single-course wow fadeInUp" data-wow-delay=".2s">
                     <div class="course-image">
@@ -168,7 +168,7 @@
     $(document).ready(function() {
         $('.ajouter-formation').on('click', function() {
             var formationId = $(this).data('id'); // Récupérer l'ID de la formation
-    
+
 
             $.ajax({
                 url: '/mes-cours',  // URL de la route Laravel pour ajouter la formation

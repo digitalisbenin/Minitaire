@@ -1,6 +1,7 @@
 <?php
 use App\Models\User;
 use App\Models\Certificate;
+use App\Models\Commentaire;
 use App\Models\Formation;
 use App\Models\Resource;
 use App\Models\Chapitre;
@@ -47,7 +48,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    $formation=Formation::orderBy('created_at', 'desc')->take(12)->get();
+    $formation=Formation::orderBy('created_at', 'desc')->take(9)->get();
     return view('welcome',compact('formation'));
 });
 Route::get('/cours', function () {
@@ -65,8 +66,10 @@ Route::get('/admin-cours-detail', function () {
 Route::get('/details-cours/{id}', function ($id) {
     $chapitre = Chapitre::where('formation_id',$id)->get();
     $formationId = $id;
-   
-    return view('details_cours',compact('chapitre','formationId'));
+    $quiz = Quiz::where('formation_id',$id)->get();
+    $commentaire=Commentaire::all();
+
+    return view('details_cours',compact('chapitre','formationId','commentaire' ,'quiz'));
 });
 Route::get('/video', function () {
     $video= Video::all();
@@ -139,6 +142,8 @@ Route::middleware('auth')->group(function () {
     Route::post('user-results', [UserResultController::class, 'store']);
     Route::get('user-resultes', [UserResultController::class, 'indexe']);
 
+    Route::post('commentaires', [CommentaireController::class, 'store']);
+
 });
 
 require __DIR__.'/auth.php';
@@ -176,7 +181,7 @@ Route::get('commentaires', [CommentaireController::class, 'index']);
 Route::get('create-commentaires', [CommentaireController::class, 'create']);
 Route::get('commentaires/{id}', [CommentaireController::class, 'show']);
 Route::get('commentaires/{id}', [CommentaireController::class, 'edit']);
-Route::post('commentaires', [CommentaireController::class, 'store']);
+
 Route::put('commentaires/{id}', [CommentaireController::class, 'update']);
 Route::get('commentaires/{id}', [CommentaireController::class, 'destroy']);
 

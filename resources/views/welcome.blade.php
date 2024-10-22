@@ -86,8 +86,8 @@
                 <div class="col-lg-4 col-md-4 col-12 padding-zero">
                     <!-- Start Single Feature -->
                     <div class="single-feature">
-                        <h3><a href="javascript:void(0)">Cours en actuel </a></h3>
-                        <p>Les cours en vogue sont des formations éducatives qui répondent aux besoins et intérêts
+                        <h3><a href="javascript:void(0)">Cours actuel </a></h3>
+                        <p>Les cours actuel sont des formations éducatives qui répondent aux besoins et intérêts
                              actuels des apprenants. Ces cours reflètent les évolutions et innovations
                               dans divers domaines, offrant des compétences et connaissances recherchées.</p>
                         <div class="button">
@@ -153,7 +153,7 @@
         <div class="single-head">
             <div class="row">
                @foreach( $formation as $value)
-               <div class="col-lg-3 col-md-6 col-12">
+               <div class="col-lg-4 col-md-6 col-12">
                 <!-- Start Single Course -->
                 <div class="single-course wow fadeInUp" data-wow-delay=".2s">
                     <div class="course-image">

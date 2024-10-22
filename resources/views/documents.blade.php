@@ -41,7 +41,7 @@
             <div class="col-lg-4 col-md-6 col-12"> <!-- Ajustement pour les tailles moyennes et petites -->
                 <div class="teacher-personal-info">
                     <div class="row align-items-center">
-                        <div class="col-lg-3 col-md-4 col-12">
+                        <div class="col-lg-5 col-md-4 col-12">
                             <div class="image">
                                 <img src="{{ asset('assets/uploads/resource_images/'.$value->image_url) }}" alt="#">
                                 <h4 class="name">{{$value->titre}}
@@ -49,7 +49,7 @@
                                 </h4>
                             </div>
                         </div>
-                        <div class="col-lg-9 col-md-8 col-12">
+                        <div class="col-lg-7 col-md-8 col-12">
                             <div class="personal-social">
                                 <p>{{$value->description}}</p>
                                 <ul class="social">
@@ -63,7 +63,7 @@
             </div>
             @endforeach
         </div>
-        
+
     </div>
 </div>
 <!-- End teacher Details -->

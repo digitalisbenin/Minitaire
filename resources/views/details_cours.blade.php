@@ -29,23 +29,25 @@
             <!-- Course Details Wrapper Start -->
 
             <div class="col-lg-12 col-12">
-                
+                @if(!$quiz->isEmpty())
                 <a href="{{url('quiz/'.$formationId)}}" class="btn btn-primary float-end me-2 ml-3 mb-4">Faire un Quiz</a>
-            
+                @endif
+
+
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
 
                     @foreach($chapitre as $index => $chapter)
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link {{ $index == 0 ? 'active' : '' }}" 
-                            id="chapter-{{ $chapter->id }}-tab" 
+                            <button class="nav-link {{ $index == 0 ? 'active' : '' }}"
+                            id="chapter-{{ $chapter->id }}-tab"
                             data-bs-toggle="tab"
-                            data-bs-target="#chapter-{{ $chapter->id }}" 
-                            type="button" 
-                            role="tab" 
-                            aria-controls="chapter-{{ $chapter->id }}" 
+                            data-bs-target="#chapter-{{ $chapter->id }}"
+                            type="button"
+                            role="tab"
+                            aria-controls="chapter-{{ $chapter->id }}"
                             aria-selected="{{ $index == 0 ? 'true' : 'false' }}"
-                            data-id="{{ $chapter->id }}" 
-                            data-title="{{ $chapter->titre }}"> 
+                            data-id="{{ $chapter->id }}"
+                            data-title="{{ $chapter->titre }}">
                         {{ $chapter->titre }}
                     </button>
                             {{--  <button class="nav-link {{ $index == 0 ? 'active' : '' }}" id="chapter-{{ $chapter->id }}-tab" data-bs-toggle="tab"
@@ -77,12 +79,37 @@
                                     <p><a target="bank" href="/assets/uploads/chapitre_documents/{{$chapter->document_url}}">lien du document</a>
                                     </p>
 
+                                  <div class="col-4">
+                                    <form  id="feedback-{{ $chapter->id }}" action="{{ url('commentaires') }}" method="post" enctype="multipart/form-data">
+                                        @csrf
+
+
+                                        <div class="mb-3">
+
+                                            <textarea class="form-control" id="feedback-{{ $chapter->id }}" name="content" id="exampleFormControlTextarea1" rows="3" placeholder="Laissez votre commentaire ici..." ></textarea>
+                                          </div>
+                                        <div class="mb-3">
+
+                                            <input type="hidden" id="feedback-{{ $chapter->id }}"  class="form-control" name="chapitre_id" value="{{$chapter->id}}" id="exampleInputEmail1" aria-describedby="emailHelp">
+
+                                          </div>
+
+
+
+                                <div class="float-end">
+
+                                    <button type="submit" class="btn btn-success">Envoyer</button>
+                                </div>
+                            </form>
+                                  </div>
+
+
                                     <!-- Button trigger modal -->
-                              @if(Auth::check())
+                              {{--  @if(Auth::check())
                               <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal-{{ $chapter->id }}">
                                 Faire un commentaire
                                 </button>
-                              @endif
+                              @endif  --}}
 
                                 <!-- Modal -->
                              <div class="modal fade" id="exampleModal-{{ $chapter->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -100,15 +127,15 @@
                                                 <input type="text" class="form-control" value="{{$chapter->titre}}" id="" disabled>
 
                                               </div>
-        
+
                                             <div class="mb-3">
                                                 <label for="exampleFormControlTextarea1" class="form-label">Commentaire</label>
                                                 <textarea class="form-control" name="content" id="exampleFormControlTextarea1" rows="3"></textarea>
                                               </div>
                                             <div class="mb-3">
-                                               
+
                                                 <input type="hidden" class="form-control" name="chapitre_id" value="{{$chapter->id}}" id="exampleInputEmail1" aria-describedby="emailHelp">
-  
+
                                               </div>
 
 
@@ -124,11 +151,26 @@
 
                                 </div>
                             </div>
-                           
+
+
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                            <h5>Les commentaires :</h5>
+                            @php
+                                $comments = $commentaire->where('chapitre_id', $chapter->id);
+                            @endphp
+
+                            @foreach($comments as $comment)
+                                <p style="font-size: 20px;">
+                                    {{ $comment->content }} :  {{ $comment->user->name }} {{ $comment->user->prenom }}
+                                </p>
+                            @endforeach
                         </div>
                     @endforeach
 
-                  
+
                 </div>
             </div>
 
@@ -741,12 +783,12 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     $(document).ready(function() {
-        // Écouter l'événement de clic sur les boutons 
+        // Écouter l'événement de clic sur les boutons
         $('.nav-link').on('click', function() {
-            var chapterId = $(this).data('id');    
+            var chapterId = $(this).data('id');
             var chapterTitle = 100; // Récupérer le titre du chapitre
-           
-            
+
+
             // Requête AJAX pour envoyer les données au serveur
             $.ajax({
                 url: '/suivis',           // URL de la route Laravel
@@ -757,7 +799,7 @@
                     taux: chapterTitle            // Titre du chapitre
                 },
                 success: function(response) {
-                    
+
                     swal("",response.status,"success")
                 },
                 error: function(xhr, status, error) {
