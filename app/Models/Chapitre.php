@@ -48,4 +48,12 @@ class Chapitre extends Model
     {
         return $this->hasMany('App\Models\Suivy');
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function quizzes()
+    {
+        return $this->hasMany('App\Models\Quiz');
+    }
 }
