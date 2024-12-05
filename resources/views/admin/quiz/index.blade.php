@@ -62,6 +62,7 @@
                         <th class="h6 text-gray-300">Titre</th>
                         <th class="h6 text-gray-300">Statut</th>
                         <th class="h6 text-gray-300">Description</th>
+                        <th class="h6 text-gray-300">Chapitre</th>
                         <th class="h6 text-gray-300">Formation</th>
 {{--
                         <th class="h6 text-gray-300">Documents</th>
@@ -107,7 +108,13 @@
                         <td>
                             <span class="h6 mb-0 fw-medium text-gray-300">
 
-                                {{$value->formation->titre}}
+                                {{$value->chapitre->titre ?? ""}}
+                            </span>
+                        </td>
+                        <td>
+                            <span class="h6 mb-0 fw-medium text-gray-300">
+
+                                {{$value->formation->titre ?? ""}}
                             </span>
                         </td>
 

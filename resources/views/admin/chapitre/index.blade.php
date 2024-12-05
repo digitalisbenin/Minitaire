@@ -22,6 +22,10 @@
                     <span class="d-flex text-md"><i class="ph ph-plus"></i></span>
                     Ajouter un chapitre
                 </a>
+                <a href="{{url('/create-quizzs')}}" class="btn btn-success rounded-pill py-7 flex-align gap-4 fw-normal">
+                    <span class="d-flex text-md"><i class="ph ph-plus"></i></span>
+                    Ajouter un quiz
+                </a>
                 <span class="text-inherit"> </span>
                 {{--  <div class="flex-align text-gray-500 text-13 border border-gray-100 rounded-4 ps-20 focus-border-main-600 bg-white">
 
@@ -93,7 +97,7 @@
                         </td>
 
                         <td>
-                            <span class="h6 mb-0 fw-medium text-gray-300" 
+                            <span class="h6 mb-0 fw-medium text-gray-300"
     style="
         display: block;
         max-width: 30ch; /* Limite à environ trois colonnes (30 caractères) */

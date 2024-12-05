@@ -67,9 +67,10 @@ Route::get('/details-cours/{id}', function ($id) {
     $chapitre = Chapitre::where('formation_id',$id)->get();
     $formationId = $id;
     $quiz = Quiz::where('formation_id',$id)->get();
+    $quizz = Quiz::all();
     $commentaire=Commentaire::all();
-
-    return view('details_cours',compact('chapitre','formationId','commentaire' ,'quiz'));
+    $repose=Answers::all();
+    return view('details_cours',compact('chapitre','formationId','commentaire' ,'quiz','quizz','repose'));
 });
 Route::get('/video', function () {
     $video= Video::all();
@@ -345,6 +346,7 @@ Route::get('questions/{id}/destroy', [QuestionController::class, 'destroy']);
 /*-----------------Video--------------------------*/
 Route::get('quizs', [QuizController::class, 'index']);
 Route::get('create-quizs', [QuizController::class, 'create']);
+Route::get('create-quizzs', [QuizController::class, 'creates']);
 Route::get('quizs/{id}', [QuizController::class, 'show']);
 Route::get('quizs/{id}/edit', [QuizController::class, 'edit']);
 Route::post('quizs', [QuizController::class, 'store']);

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Quiz;
 use App\Models\Formation;
+use App\Models\Chapitre;
 use Illuminate\Http\Request;
 
 class QuizController extends Controller
@@ -29,7 +30,11 @@ class QuizController extends Controller
         $formation=Formation::all();
         return view('admin.quiz.create',compact('formation'));
     }
-
+    public function creates()
+    {
+        $chapitre=Chapitre::all();
+        return view('admin.quiz.create2',compact('chapitre'));
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -45,7 +50,8 @@ class QuizController extends Controller
             'title' => 'required|max:255',
             'status' => 'required',
             'description' => 'nullable',
-            'formation_id' => 'required|exists:formations,id',
+            'formation_id' => 'nullable|exists:formations,id',
+            'chapitre_id' => 'nullable|exists:chapitres,id',
         ]);
         $quiz=Quiz ::create($validatedData);
 
