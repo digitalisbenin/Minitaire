@@ -65,14 +65,13 @@
 
             </div>
           </div>
-        
           @foreach($quiz as $value)
           <div class="row">
             <div class="col-12 ">
                 <div class="section-title">
-                    {{--  <span class="wow zoomIn" data-wow-delay="0.2s"></span>  --}}
-                    <h2 class="wow fadeInUp" data-wow-delay=".4s">{{$value->title}}</h2>
-                    <p class="wow fadeInUp" data-wow-delay=".6s">{{$value->formation->titre}}</p>
+                      <span class="wow zoomIn" data-wow-delay="0.2s"></span> 
+                     <h2 class="wow fadeInUp" data-wow-delay=".4s">Quizz par chapitre</h2>
+                    <p class="wow fadeInUp" data-wow-delay=".6s">{{$value->titre}}</p>  
                 </div>
             </div>
         </div>

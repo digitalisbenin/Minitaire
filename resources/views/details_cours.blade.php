@@ -37,6 +37,7 @@
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
 
                     @foreach($chapitre as $index => $chapter)
+
                         <li class="nav-item" role="presentation">
                             <button class="nav-link {{ $index == 0 ? 'active' : '' }}"
                             id="chapter-{{ $chapter->id }}-tab"
@@ -49,15 +50,26 @@
                             data-id="{{ $chapter->id }}"
                             data-title="{{ $chapter->titre }}">
                         {{ $chapter->titre }}
+                        @foreach($quizz as $valur)
+                        @php
+                            $quizze = $valur->where('chapitre_id', $chapter->id)->first();
+                        @endphp
+
+                    @endforeach
                     </button>
                             {{--  <button class="nav-link {{ $index == 0 ? 'active' : '' }}" id="chapter-{{ $chapter->id }}-tab" data-bs-toggle="tab"
                                 data-bs-target="#chapter-{{ $chapter->id }}" type="button" role="tab" aria-controls="chapter-{{ $chapter->id }}"
                                 aria-selected="{{ $index == 0 ? 'true' : 'false' }}">{{ $chapter->titre }}</button>  --}}
                         </li>
+
+
                     @endforeach
                 </ul>
                 <div class="tab-content" id="myTabContent">
-                    @foreach($chapitre as $index => $chapter)
+            @foreach($chapitre as $index => $chapter)
+
+
+
                         <div class="tab-pane fade {{ $index == 0 ? 'show active' : '' }}" id="chapter-{{ $chapter->id }}" role="tabpanel"
                             aria-labelledby="chapter-{{ $chapter->id }}-tab">
                             <div class="course-content">
@@ -74,6 +86,9 @@
 
                                     <p>
                                         {{ $chapter->description }}
+                                    </p>
+                                    <p>
+                                        {{ $chapter->quizzes }}
                                     </p>
 
                                     <p><a target="bank" href="/assets/uploads/chapitre_documents/{{$chapter->document_url}}">lien du document</a>
@@ -169,65 +184,60 @@
                             @endforeach
                         </div>
 
-                            
+                        <a href="{{url('question/'.$chapter->id)}}" class="btn btn-primary float-end me-2 ml-3 mb-4">Faire un Quiz</a>
 
-                        @foreach($quizz as $valur)
-                        @php
-                            $quizze = $valur->where('chapitre_id', $chapter->id)->first();
-                        @endphp
-                            
-                    @endforeach
+
                   {{--  @foreach($quizz as $valur)
-                  
+
                   @php
                   $quizze = $valur->where('chapitre_id', $chapter->id)->first();
               @endphp
-                        
+
                   <div class="col mb-6">
 
                       <form action="{{ url('user-results') }}" method="post" enctype="multipart/form-data">
                       @csrf
                     <!-- Texte principal -->
                     @foreach( $quizze->questions as $valus)
-              
+
                     <div  style="margin-left: 3rem; margin-right: 6rem; margin-bottom: 1rem  " >
                       <a href="" class="text-decoration-none hover text-dark">
                         <h1 class="h3 font-monospace">{{$valus->title}}</h1>
                       </a>
-              
+
                           @php
                                   $reponses = $repose->where('question_id', $valus->id);
                               @endphp
                       @foreach($reponses as $reponse)
-                     
-              
+
+
                       <div class="form-check">
-                         
+
                           <input class="form-check-input" type="radio" name="reponse_{{ $valus->id }}" value="{{ $reponse->id }}" id="reponse_{{ $reponse->id }}"  style="transform: scale(1.5); margin-right: 10px;">
                           <label class="form-check-label fs-5 " for="reponse_{{ $reponse->id }}">
                               {{ $reponse->title }}
                           </label>
                       </div>
                       @endforeach
-              
-              
+
+
                     </div>
                     @endforeach
-              
+
                     <!-- Informations supplémentaires -->
-                    
-              
-              
-              
+
+
+
+
               </div>
               <button type="submit" class="btn btn-success">Envoyer</button>
-              </form>    
+              </form>
               </div>
-                  
+
                   @endforeach  --}}
 
-            
-    @if ($quizze)
+
+    {{--  @if ($quizze)
         <div class="col mb-6">
             <br>
                             <br>
@@ -259,7 +269,7 @@
                 <button type="submit" class="btn btn-success">Envoyer</button>
             </form>
         </div>
-    @endif
+    @endif  --}}
 @endforeach
 
 

@@ -86,6 +86,12 @@ Route::get('/quiz/{id}', function ($id) {
     $repose=Answers::all();
     return view('quiz',compact('quiz','repose'));
 });
+Route::get('/question/{id}', function ($id) {
+    $quize = Quiz::all();
+    $quiz = Quiz::where('chapitre_id',$id)->with('questions')->get();
+    $repose=Answers::all();
+    return view('question',compact('quiz','quize','repose'));
+});
 Route::get('/forums', function () {
 
     $discution=Discution::with('reponses')->get();
