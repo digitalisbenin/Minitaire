@@ -87,9 +87,7 @@
                                     <p>
                                         {{ $chapter->description }}
                                     </p>
-                                    <p>
-                                        {{ $chapter->quizzes }}
-                                    </p>
+                                   
 
                                     <p><a target="bank" href="/assets/uploads/chapitre_documents/{{$chapter->document_url}}">lien du document</a>
                                     </p>
@@ -182,9 +180,13 @@
                                     {{ $comment->content }} :  {{ $comment->user->name }} {{ $comment->user->prenom }}
                                 </p>
                             @endforeach
+                            {{--  <a href="{{url('question/'.$chapter->id)}}" class="btn btn-primary text-center me-2 ml-3 mb-4">Faire un Quiz</a>  --}}
+                            <div class="d-flex justify-content-center">
+                                <a href="{{ url('question/'.$chapter->id) }}" class="btn btn-primary me-2 ml-3 mb-4">Aller au Quiz du chapitre</a>
+                            </div>
+
                         </div>
 
-                        <a href="{{url('question/'.$chapter->id)}}" class="btn btn-primary float-end me-2 ml-3 mb-4">Faire un Quiz</a>
 
 
                   {{--  @foreach($quizz as $valur)
