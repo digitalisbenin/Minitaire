@@ -1,3 +1,12 @@
+
+@php
+use App\Models\Category;
+use App\Models\Difficulete;
+$category = Category::all();
+$difficulte = Difficulete::all();
+
+@endphp
+
 <!-- Start Header Area -->
 <header class="header navbar-area">
     <!-- Toolbar Start -->
@@ -10,7 +19,7 @@
                         <div class="toolbar-text">
                             <p class="mb-0 text-white" style="text-transform: uppercase;">Direction du Service de l'Intendence des Armées</p>
                         </div>
-    
+
                         <!-- Section des icônes sociales et du bouton Connexion à droite -->
                         <div class="d-flex justify-content-end align-items-center">
                             <!-- Section des icônes sociales -->
@@ -23,7 +32,7 @@
                                     <li><a href="javascript:void(0)"><i class="lni lni-google"></i></a></li>
                                 </ul>
                             </div>
-    
+
                             <!-- Section du bouton Connexion -->
                             <div class="toolbar-login">
                                 @guest
@@ -38,8 +47,8 @@
             </div>
         </div>
     </div>
-    
-    
+
+
     <!-- Toolbar End -->
     <div class="container">
         <div class="row align-items-center">
@@ -57,7 +66,33 @@
                         <span class="toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
+
                         <ul id="nav" class="navbar-nav ms-auto me-3">
+
+                                                 <li class="nav-item">
+    <a class="page-scroll dd-menu collapsed" href="javascript:void(0)"
+        data-bs-toggle="collapse" data-bs-target="#submenu-1-4"
+        aria-controls="navbarSupportedContent" aria-expanded="false"
+        aria-label="Toggle navigation">Catalogue</a>
+    <ul class="sub-menu collapse" id="submenu-1-4">
+       
+        
+        <!-- Deuxième niveau du sous-menu -->
+       @foreach($category as $value)
+
+        <li class="nav-item">
+            <a class="collapsed" href="{{ url('categorie/'.$value->id) }}" data-bs-toggle="collapse" data-bs-target="#submenu-1-4-1"
+                aria-expanded="false">{{$value->name}}</a>
+            <ul class="sub-menu collapse" id="submenu-1-4-1">
+                @foreach($difficulte as $valus)
+                <li class="nav-item"><a href="{{ url('categorie/'.$value->id.'/'.$valus->id) }}">{{$valus->name}}</a></li>
+                @endforeach
+                
+            </ul>
+        </li>
+       @endforeach
+    </ul>
+</li>
                             <li class="nav-item">
                                 <a class="" href="{{url('/')}}"
 
@@ -74,23 +109,17 @@
                             </li>  --}}
                             <li class="nav-item"><a href="{{url('/formation')}}">Formations</a></li>
                             <li class="nav-item"><a href="{{url('/forums')}}">Forum</a></li>
+       
+
 
                             {{--  <li class="nav-item">
                                 <a class="page-scroll dd-menu collapsed" href="javascript:void(0)"
                                     data-bs-toggle="collapse" data-bs-target="#submenu-1-4"
                                     aria-controls="navbarSupportedContent" aria-expanded="false"
-                                    aria-label="Toggle navigation">Forums</a>
+                                    aria-label="Toggle navigation">Catalogue</a>
                                 <ul class="sub-menu collapse" id="submenu-1-4">
                                     <li class="nav-item"><a href="about-us.html">About Us</a></li>
-                                    <li class="nav-item"><a href="teachers.html">Teachers</a></li>
-                                    <li class="nav-item"><a href="teacher-details.html">Teacher Details</a></li>
-                                    <li class="nav-item"><a href="our-gallery.html">Our Gallery</a></li>
-                                    <li class="nav-item"><a href="faq.html">FAQ</a></li>
-                                    <li class="nav-item"><a href="login.html">Login</a></li>
-                                    <li class="nav-item"><a href="registration.html">Register</a></li>
-                                    <li class="nav-item"><a href="coming-soon.html">Coming Soon</a></li>
-                                    <li class="nav-item"><a href="404.html">404 Error</a></li>
-                                    <li class="nav-item"><a href="mail-success.html">Mail Success</a></li>
+
                                 </ul>
                             </li>  --}}
                             {{--  <li class="nav-item">

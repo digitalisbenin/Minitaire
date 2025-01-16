@@ -85,7 +85,7 @@
                                     </div>
 
                                     <p>
-                                        {{ $chapter->description }}
+                                        {!! $chapter->description !!}
                                     </p>
                                    
 
