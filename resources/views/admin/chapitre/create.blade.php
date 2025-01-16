@@ -1,3 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TinyMCE Test</title>
+    <script src="https://cdn.tiny.cloud/1/w8rrfindih3k10qkv6rpaduqvi7y4plzgfk56jge394lwlch/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+      tinymce.init({
+        selector: 'textarea',
+        plugins: 'link image media',
+        toolbar: 'undo redo | formatselect | bold italic | alignleft aligncenter alignright | link image media',
+      });
+    </script>
+</head>
+<body>
 @extends('layouts.admin')
 
 @section('content')
@@ -61,13 +77,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-6">
-                                <label for="courseTitle" class="h5 mb-8 fw-semibold font-heading">Description <span class="text-13 text-gray-400 fw-medium"></span> </label>
-                                <div class="position-relative">
-                                    <input type="text" class="text-counte placeholder-13 form-control py-11 pe-76" name="description" maxlength="300" id="course" placeholder="">
-                                   
-                                </div>
-                            </div>
+                           
                             <div class="col-sm-6">
                                 <label for="courseCategory" class="h5 mb-8 fw-semibold font-heading">Formation <span class="text-13 text-gray-400 fw-medium">(Requis)</span></label>
                                 <div class="position-relative">
@@ -94,6 +104,18 @@
                             </div>
                            
                         </div>
+
+                        
+                    </div>
+                    <div class="col-sm-12">
+                        <label for="courseTitle" class="h5 mb-8 fw-semibold font-heading">Description <span class="text-13 text-gray-400 fw-medium"></span> </label>
+                        <div class="position-relative">
+                            <textarea  class="text-counte placeholder-13 form-control py-11 pe-76" name="description" maxlength="300" id="course" placeholder=""> </textarea>
+                           
+                        </div>
+                      
+
+                       
                     </div>
                     <div class="flex-align justify-content-end gap-8">
                         <a href="" class="btn btn-outline-main rounded-pill py-9">Cancel</a>
@@ -106,3 +128,5 @@
     <!-- Course Tab End -->
 </div>
 @endsection
+</body>
+</html>
