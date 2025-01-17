@@ -106,7 +106,8 @@
         text-overflow: ellipsis; /* Ajoute les points de suspension (...) */
         word-wrap: break-word; /* Coupe le texte si nécessaire */
     ">
-    {{$value->description}}
+   
+    {!! $value->description !!}
 </span>
 
                         </td>

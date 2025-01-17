@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TinyMCE Test</title>
+    <title>Admin</title>
     <script src="https://cdn.tiny.cloud/1/w8rrfindih3k10qkv6rpaduqvi7y4plzgfk56jge394lwlch/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
     <script>
       tinymce.init({
@@ -88,7 +88,7 @@
                                        @endforeach
                                         
                                     </select>                                            
-                                </div>
+                                </div><
                             </div>
                             <div class="col-sm-6">
                                 <label for="courseLesson" class="h5 mb-8 fw-semibold font-heading">Documents <span class="text-13 text-gray-400 fw-medium"></span></label>

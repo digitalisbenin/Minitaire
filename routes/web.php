@@ -107,6 +107,16 @@ Route::get('/formation', function () {
     $formation=Formation::all();
     return view('formations',compact('formation'));
 });
+Route::get('/categorie/{id}', function ($id) {
+    $formation=Formation::where('categorie_id',$id)->get();
+    return view('categorie',compact('formation'));
+});
+Route::get('/categorie/{id}/{difficulte}', function ($id, $difficulte) {
+    $formation = Formation::where('categorie_id', $id)
+                           ->where('difficulte_id', $difficulte)
+                           ->get();
+    return view('categorie', compact('formation'));
+});
 Route::get('/documents', function () {
     $resource=Resource::all();
     return view('documents',compact('resource'));

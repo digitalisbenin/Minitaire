@@ -18,7 +18,16 @@ class FormationController extends Controller
      */
     public function index()
     {
-        $formation=Formation::all();
+        $user = Auth::user();
+
+        if ($user->role->name === 'Administrateurs') {
+            
+            $formation = Formation::all();
+        } else {
+
+            $formation = Formation::where('user_id', $user->id)->get();
+        }
+
         return view('admin.cours.index',compact('formation'));
     }
 
