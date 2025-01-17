@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin</title>
-    <script src="https://cdn.tiny.cloud/1/w8rrfindih3k10qkv6rpaduqvi7y4plzgfk56jge394lwlch/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="{{ URL::asset('admin_assets/tinymce/tinymce.min.js') }}"></script>
     <script>
       tinymce.init({
         selector: 'textarea',
@@ -12,6 +12,29 @@
         toolbar: 'undo redo | formatselect | bold italic | alignleft aligncenter alignright | link image media',
       });
     </script>
+    {{-- <script src="{{ URL::asset('admin_assets/tinymce/tinymce.min.js') }}"></script>
+
+    <script type="text/javascript">
+       
+                tinymce.init({
+                    selector: "textarea",
+                    height: 300,
+                    relative_urls: false,
+                    remove_script_host: false,
+                    file_picker_callback: elFinderBrowser,
+                    plugins: [
+                        'advlist', 'autolink', 'lists', 'link', 'image', 'charmap', 'preview',
+                        'anchor', 'searchreplace', 'visualblocks', 'code', 'fullscreen',
+                        'insertdatetime', 'media', 'table', 'help', 'wordcount'
+                    ],
+                    toolbar: 'undo redo | blocks | ' +
+                        'bold italic backcolor | alignleft aligncenter ' +
+                        'alignright alignjustify | bullist numlist outdent indent | ' +
+                        'removeformat | help',
+                    content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:16px }'
+                });
+            
+    </script> --}}
 </head>
 <body>
 @extends('layouts.admin')
@@ -88,7 +111,7 @@
                                        @endforeach
                                         
                                     </select>                                            
-                                </div><
+                                </div>
                             </div>
                             <div class="col-sm-6">
                                 <label for="courseLesson" class="h5 mb-8 fw-semibold font-heading">Documents <span class="text-13 text-gray-400 fw-medium"></span></label>

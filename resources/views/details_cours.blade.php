@@ -33,6 +33,7 @@
                 <a href="{{url('quiz/'.$formationId)}}" class="btn btn-primary float-end me-2 ml-3 mb-4">Faire un Quiz</a>
                 @endif
 
+                
 
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
 
@@ -77,7 +78,7 @@
                                 <br>
 
                                 <div class="course-overview">
-                                    <h3 class="title"> {{ $chapter->titre }}</h3>
+                                    {{-- <h3 class="title"> {{ $chapter->titre }}</h3> --}}
 
                                     <div class="overview-course-video">
                                         <iframe title="{{ $chapter->formation->titre }}"
