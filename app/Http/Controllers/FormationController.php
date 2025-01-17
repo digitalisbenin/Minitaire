@@ -18,7 +18,16 @@ class FormationController extends Controller
      */
     public function index()
     {
-        $formation=Formation::all();
+        $user = Auth::user();
+
+        if ($user->role->name === 'Administrateurs') {
+            // L'admin voit toutes les formations
+            $formation = Formation::all();
+        } else {
+            // Les autres voient uniquement leurs formations
+            $formation = Formation::where('user_id', $user->id)->get();
+        }
+        
         return view('admin.cours.index',compact('formation'));
     }
 
@@ -63,7 +72,7 @@ class FormationController extends Controller
             $file->move('assets/uploads/formation_images',$filename);
             $formation->image_url = $filename;
         }
-        
+
         $formation->titre = $request->titre;
         $formation->description = $request->description;
         $formation->categorie_id = $request->categorie_id;
@@ -73,8 +82,8 @@ class FormationController extends Controller
         $formation->save();
 
         session()->flash('success', 'La Formation à été bien créée !');
-        
-        
+
+
         return redirect('/formations')->with('success', 'Formations créée avec succès!');
 
     }
@@ -124,7 +133,7 @@ class FormationController extends Controller
         ]);
        // $formation->update($validatedData);
         $formation = Formation::findOrfail($id);
-    
+
 
         if ($request->hasFile('image_url')) {
             $path='assets/uploads/formation_images'.$formation->image_url;
