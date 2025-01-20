@@ -343,7 +343,7 @@ Route::get('videos/{id}/destroy', [VideoController::class, 'destroy']);
 
 /*-----------------Ansers --------------------------*/
 Route::get('answers', [AnswersController::class, 'index']);
-Route::get('create-answers', [AnswersController::class, 'create']);
+Route::get('create-answers/{id}', [AnswersController::class, 'create']);
 Route::get('answers/{id}', [AnswersController::class, 'show']);
 Route::get('answers/{id}/edit', [AnswersController::class, 'edit']);
 Route::post('answers', [AnswersController::class, 'store']);
