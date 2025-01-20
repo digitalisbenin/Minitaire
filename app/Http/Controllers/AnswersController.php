@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Answers;
 use App\Models\Question;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 class AnswersController extends Controller
 {
     /**
@@ -13,11 +13,31 @@ class AnswersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    // public function index()
+    // {
+    //     $answers=Answers::all();
+    //     return view('admin.answers.index',compact('answers'));
+    // }
     public function index()
     {
-        $answers=Answers::all();
-        return view('admin.answers.index',compact('answers'));
+        $user = Auth::user(); // Récupère l'utilisateur connecté
+    
+        // Vérifie le rôle de l'utilisateur
+        if ($user->role->name === 'Administrateurs') {
+            // L'utilisateur est un administrateur, récupère toutes les réponses
+            $answers = Answers::all();
+        } else {
+            // L'utilisateur n'est pas un administrateur, filtre les réponses par utilisateur
+            $answers = Answers::whereHas('question.quiz', function ($query) use ($user) {
+                $query->whereHas('formation', function ($subQuery) use ($user) {
+                    $subQuery->where('user_id', $user->id);
+                });
+            })->get();
+        }
+    
+        return view('admin.answers.index', compact('answers'));
     }
+    
 
     /**
      * Show the form for creating a new resource.

@@ -64,7 +64,7 @@
                             <div class="col-sm-6">
                                 <label for="courseTitle" class="h5 mb-8 fw-semibold font-heading">Description <span class="text-13 text-gray-400 fw-medium"></span> </label>
                                 <div class="position-relative">
-                                    <input type="text" class="text-counte placeholder-13 form-control py-11 pe-76" name="description" maxlength="300" id="course" placeholder="">
+                                    <textarea type="text" class="text-counte placeholder-13 form-control py-11 pe-76" name="description" maxlength="300" id="course" placeholder=""></textarea>
                                     {{--  <div class="text-gray-400 position-absolute inset-inline-end-0 top-50 translate-middle-y me-16">
                                         <span id="current">3</span>
                                         <span id="maximum">/ 300</span>

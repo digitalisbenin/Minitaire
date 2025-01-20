@@ -6,7 +6,7 @@ use App\Models\Chapitre;
 use App\Models\Formation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
-
+use Illuminate\Support\Facades\Auth;
 class ChapitreController extends Controller
 {
     /**
@@ -14,12 +14,30 @@ class ChapitreController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    // public function index()
+    // {
+    //     $chapitre=Chapitre::all();
+        
+    //     return view('admin.chapitre.index',compact('chapitre'));
+    // }
+
     public function index()
     {
-        $chapitre=Chapitre::all();
-        return view('admin.chapitre.index',compact('chapitre'));
+        $user = Auth::user(); // Récupère l'utilisateur connecté
+    
+        // Vérifie le rôle de l'utilisateur
+        if ($user->role->name === 'Administrateurs') {
+            // L'utilisateur est un administrateur, récupère tous les chapitres
+            $chapitre = Chapitre::all();
+        } else {
+            // L'utilisateur est un formateur ou autre, récupère les chapitres liés à ses formations
+            $chapitre = Chapitre::whereHas('formation', function ($query) use ($user) {
+                $query->where('user_id', $user->id);
+            })->get();
+        }
+    
+        return view('admin.chapitre.index', compact('chapitre'));
     }
-
     /**
      * Show the form for creating a new resource.
      *
