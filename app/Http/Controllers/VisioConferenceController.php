@@ -14,7 +14,16 @@ class VisioConferenceController extends Controller
      */
     public function index()
     {
-        $conference=VisioConference::all();
+        //$conference=VisioConference::all();
+        $user = Auth::user();
+
+        if ($user->role->name === 'Administrateurs') {
+            
+            $conference = VisioConference::all();
+        } else {
+
+            $conference = VisioConference::where('user_id', $user->id)->get();
+        }
         return view('admin.conference.index',compact('conference'));
     }
 

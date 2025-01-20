@@ -10,8 +10,8 @@
         <div class="row align-items-center">
             <div class="col-lg-8 offset-lg-2 col-md-12 col-12">
                 <div class="breadcrumbs-content">
-                    <h1 class="page-title"> formations par catégorie et niveau de difficultés</h1>
-                    <p>Des formations de qualifiantes</p>
+                    <h1 class="page-title"> Formations </h1>
+                    <p>Formations par catégorie et niveau de difficultés</p>
                 </div>
                 <ul class="breadcrumb-nav">
                     <li><a href="{{url('/')}}">Accueil</a></li>

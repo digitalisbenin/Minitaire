@@ -168,10 +168,12 @@ $difficulte = Difficulete::all();
                           <li><a class="dropdown-item" href="#">Profil</a></li>
                           <li><a class="dropdown-item" href="{{url('mes-cours')}}"> Mes Cours</a></li>
                           <li><a class="dropdown-item" href="{{url('user-resultes')}}"> Mes resultats</a></li>
-                          @if (Auth::user()->role_id == '1'||Auth::user()->role_id == '2' )
+                          @if (Auth::user()->role_id == '1' )
                           <li><a class="dropdown-item" href="{{url('dashboard')}}">Tableau de bord</a></li>
                            @endif
-
+                           @if (Auth::user()->role_id == '2' )
+                           <li><a class="dropdown-item" href="{{url('formations')}}">Tableau de bord</a></li>
+                            @endif
                           <li><a class="dropdown-item" href="{{url('mes-reunions')}}">Mes reunions</a></li>
                           <li><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Déconnexion</a></li>
                           <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

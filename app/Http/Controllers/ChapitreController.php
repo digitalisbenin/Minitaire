@@ -14,33 +14,30 @@ class ChapitreController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function indexe($id)
-    {
-        $user = Auth::user();
+    // public function index()
+    // {
+    //     $chapitre=Chapitre::all();
 
-        if ($user->role->name === 'Administrateurs') {
-            
-            $chapitre = Chapitre::all();
-        } else {
+    //     return view('admin.chapitre.index',compact('chapitre'));
+    // }
 
-            $chapitre = Chapitre::where('formation_id', $id)->get();
-        }     
-
-
-
-        
-        return view('admin.chapitre.index',compact('chapitre'));
-    }
     public function index()
     {
-           
+        $user = Auth::user(); // Récupère l'utilisateur connecté
 
+        // Vérifie le rôle de l'utilisateur
+        if ($user->role->name === 'Administrateurs') {
+            // L'utilisateur est un administrateur, récupère tous les chapitres
+            $chapitre = Chapitre::all();
+        } else {
+            // L'utilisateur est un formateur ou autre, récupère les chapitres liés à ses formations
+            $chapitre = Chapitre::whereHas('formation', function ($query) use ($user) {
+                $query->where('user_id', $user->id);
+            })->get();
+        }
 
-
-        $chapitre=Chapitre::all();
-        return view('admin.chapitre.index',compact('chapitre'));
+        return view('admin.chapitre.index', compact('chapitre'));
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -48,7 +45,7 @@ class ChapitreController extends Controller
      */
     public function create($id)
     {
-        $formation=Formation::where('id', $id)->get();
+        $formation=Formation::where('id',$id)->get();
         return view('admin.chapitre.create',compact('formation'));
     }
 
@@ -113,22 +110,21 @@ class ChapitreController extends Controller
      */
     public function show( $id)
     {
-        $user = Auth::user();
-
+        $user = Auth::user(); // Récupère l'utilisateur connecté
+        $formation=$id;
+        // Vérifie le rôle de l'utilisateur
         if ($user->role->name === 'Administrateurs') {
-            
+            // L'utilisateur est un administrateur, récupère tous les chapitres
             $chapitre = Chapitre::all();
         } else {
+            // L'utilisateur est un formateur ou autre, récupère les chapitres liés à ses formations
+            $chapitre = Chapitre::whereHas('formation', function ($query) use ($user) {
+                $query->where('user_id', $user->id);
+            })->where('formation_id', $id)
+            ->get();
+        }
 
-            $chapitre = Chapitre::where('formation_id', $id)->get();
-        }     
-        $formation=$id;
-
-
-        
-        return view('admin.chapitre.show',compact('chapitre','formation'));
-
-       
+        return view('admin.chapitre.show', compact('chapitre','formation'));
     }
 
     /**
@@ -225,7 +221,6 @@ class ChapitreController extends Controller
         $chapitr->delete();
         session()->flash('success', 'Suppression du chapitre réussie !');
 
-        return redirect('/formations');
-        // ->with('success', 'Chapitre supprimée avec succès!');
+        return redirect('/chapitres')->with('success', 'Chapitre supprimée avec succès!');
     }
 }

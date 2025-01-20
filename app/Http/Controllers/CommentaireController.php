@@ -15,7 +15,16 @@ class CommentaireController extends Controller
      */
     public function index()
     {
-        $commentaire=Commentaire::all();
+        //$commentaire=Commentaire::all();
+        $user = Auth::user();
+
+        if ($user->role->name === 'Administrateurs') {
+            
+            $commentaire = Commentaire::all();
+        } else {
+
+            $commentaire = Commentaire::where('user_id', $user->id)->get();
+        }
         return view('admin.commentaire',compact('commentaire'));
     }
 

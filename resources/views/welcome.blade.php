@@ -13,7 +13,7 @@
                         <div class="home-slider">
                             <div class="hero-text">
                                 {{--  <h5 class="wow fadeInUp" data-wow-delay=".3s">Start to Learning Today</h5>  --}}
-                                <h1 class="wow fadeInUp" data-wow-delay=".5s">Bienvenue sur la platforme <br> E-learning de la DSIA</h1>
+                                <h1 class="wow fadeInUp" data-wow-delay=".5s">Bienvenue sur la plateforme <br> E-learning de la DSIA</h1>
                                 <p class="wow fadeInUp" data-wow-delay=".7s"> <br> .</p>
                                 <div class="button wow fadeInUp" data-wow-delay=".9s">
                                     {{--  <a href="about-us.html" class="btn">Learn More</a>

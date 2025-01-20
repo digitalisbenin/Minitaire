@@ -22,6 +22,11 @@
                     <span class="d-flex text-md"><i class="ph ph-plus"></i></span>
                     Ajouter un chapitre
                 </a>
+
+                <a href="{{url('/create-quizs/'.$formation)}}" class="btn btn-success rounded-pill py-7 flex-align gap-4 fw-normal">
+                    <span class="d-flex text-md"><i class="ph ph-plus"></i></span>
+                    Ajouter un quiz formation
+                </a>
                 
                 <span class="text-inherit"> </span>
                 {{--  <div class="flex-align text-gray-500 text-13 border border-gray-100 rounded-4 ps-20 focus-border-main-600 bg-white">
@@ -126,9 +131,17 @@
                             <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47M8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5"/>
                           </svg></a>
 
-                          <a href="{{url('/create-quizzs')}}" class="btn btn-success rounded-pill  fw-normal">
+                          <a href="{{url('/create-quizzs/'.$value->id)}}" class="bg-primary text-white py-2 px-14 rounded-pill hover-bg-success-800 hover-text-white">
                             <span class=" text-md"><i class="ph ph-plus"></i></span>
-                            Ajouter un quiz
+                             quiz chapitre
+                        </a>
+                          <a href="{{url('/create-questions/'.$formation)}}" class="bg-success-600 text-white py-2 px-14 rounded-pill hover-bg-success-800 hover-text-white">
+                            <span class=" text-md"><i class="ph ph-plus"></i></span>
+                             question
+                        </a>
+                          <a href="{{url('create-answers')}}" class="bg-warning text-white py-2 px-14 rounded-pill hover-bg-success-800 hover-text-white">
+                            <span class=" text-md"><i class="ph ph-plus"></i></span>
+                             Réponse
                         </a>
                         
                         </td>

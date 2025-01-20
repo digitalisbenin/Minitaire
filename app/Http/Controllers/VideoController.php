@@ -15,7 +15,16 @@ class VideoController extends Controller
      */
     public function index()
     {
-        $video=Video::all();
+        //$video=Video::all();
+        $user = Auth::user();
+
+        if ($user->role->name === 'Administrateurs') {
+            
+            $video = Video::all();
+        } else {
+
+            $video = Video::where('user_id', $user->id)->get();
+        }
         return view('admin.video.index',compact('video'));
     }
 

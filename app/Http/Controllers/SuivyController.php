@@ -15,7 +15,16 @@ class SuivyController extends Controller
      */
     public function index()
     {
-        $suivy=Suivy::all();
+        //$suivy=Suivy::all();
+        $user = Auth::user();
+
+        if ($user->role->name === 'Administrateurs') {
+            
+            $suivy = Suivy::all();
+        } else {
+
+            $suivy = Suivy::where('user_id', $user->id)->get();
+        }
         return view('admin.suivi', compact('suivy'));
     }
 

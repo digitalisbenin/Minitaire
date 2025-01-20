@@ -17,7 +17,16 @@ class MeetController extends Controller
      */
     public function index()
     {
-        $meet=Meet::all();
+        //$meet=Meet::all();
+        $user = Auth::user();
+
+        if ($user->role->name === 'Administrateurs') {
+            
+            $meet = Meet::all();
+        } else {
+
+            $meet = Meet::where('user_id', $user->id)->get();
+        }
         return view('admin.meet.index',compact('meet'));
     }
 

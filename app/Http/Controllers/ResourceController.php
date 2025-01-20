@@ -6,6 +6,7 @@ use App\Models\Resource;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+
 class ResourceController extends Controller
 {
     /**
@@ -15,7 +16,16 @@ class ResourceController extends Controller
      */
     public function index()
     {
-        $resource=Resource::all();
+        //$resource=Resource::all();
+        $user = Auth::user();
+
+        if ($user->role->name === 'Administrateurs') {
+            
+            $resource = Resource::all();
+        } else {
+
+            $resource = Resource::where('user_id', $user->id)->get();
+        }
         return view('admin.ressource.index',compact('resource'));
     }
 
