@@ -186,7 +186,8 @@ Route::get('certificates/{id}', [CertificateController::class, 'destroy']);
 
 /*-----------------Chapitre--------------------------*/
 Route::get('chapitres', [ChapitreController::class, 'index']);
-Route::get('create-chapitres', [ChapitreController::class, 'create']);
+Route::get('chapitres/{id}', [ChapitreController::class, 'indexe']);
+Route::get('create-chapitres/{id}', [ChapitreController::class, 'create']);
 Route::get('chapitres/{id}', [ChapitreController::class, 'show']);
 Route::get('chapitres/{id}/edit', [ChapitreController::class, 'edit']);
 Route::post('chapitres', [ChapitreController::class, 'store']);

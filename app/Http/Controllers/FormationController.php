@@ -21,13 +21,13 @@ class FormationController extends Controller
         $user = Auth::user();
 
         if ($user->role->name === 'Administrateurs') {
-            // L'admin voit toutes les formations
+            
             $formation = Formation::all();
         } else {
-            // Les autres voient uniquement leurs formations
+
             $formation = Formation::where('user_id', $user->id)->get();
         }
-        
+
         return view('admin.cours.index',compact('formation'));
     }
 
@@ -84,7 +84,8 @@ class FormationController extends Controller
         session()->flash('success', 'La Formation à été bien créée !');
 
 
-        return redirect('/formations')->with('success', 'Formations créée avec succès!');
+        return redirect('/formations');
+        // ->with('success', 'Formations créée avec succès!');
 
     }
 
