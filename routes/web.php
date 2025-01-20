@@ -186,7 +186,8 @@ Route::get('certificates/{id}', [CertificateController::class, 'destroy']);
 
 /*-----------------Chapitre--------------------------*/
 Route::get('chapitres', [ChapitreController::class, 'index']);
-Route::get('create-chapitres', [ChapitreController::class, 'create']);
+Route::get('chapitres/{id}', [ChapitreController::class, 'indexe']);
+Route::get('create-chapitres/{id}', [ChapitreController::class, 'create']);
 Route::get('chapitres/{id}', [ChapitreController::class, 'show']);
 Route::get('chapitres/{id}/edit', [ChapitreController::class, 'edit']);
 Route::post('chapitres', [ChapitreController::class, 'store']);
@@ -351,7 +352,7 @@ Route::get('answers/{id}/destroy', [AnswersController::class, 'destroy']);
 
 /*-----------------Video--------------------------*/
 Route::get('questions', [QuestionController::class, 'index']);
-Route::get('create-questions', [QuestionController::class, 'create']);
+Route::get('create-questions/{id}', [QuestionController::class, 'create']);
 Route::get('questions/{id}', [QuestionController::class, 'show']);
 Route::get('questions/{id}/edit', [QuestionController::class, 'edit']);
 Route::post('questions', [QuestionController::class, 'store']);
@@ -361,8 +362,8 @@ Route::get('questions/{id}/destroy', [QuestionController::class, 'destroy']);
 
 /*-----------------Video--------------------------*/
 Route::get('quizs', [QuizController::class, 'index']);
-Route::get('create-quizs', [QuizController::class, 'create']);
-Route::get('create-quizzs', [QuizController::class, 'creates']);
+Route::get('create-quizs/{id}', [QuizController::class, 'create']);
+Route::get('create-quizzs/{id}', [QuizController::class, 'creates']);
 Route::get('quizs/{id}', [QuizController::class, 'show']);
 Route::get('quizs/{id}/edit', [QuizController::class, 'edit']);
 Route::post('quizs', [QuizController::class, 'store']);

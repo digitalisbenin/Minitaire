@@ -41,14 +41,14 @@ class QuizController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        $formation=Formation::all();
+        $formation=Formation::where('id', $id)->get();
         return view('admin.quiz.create',compact('formation'));
     }
-    public function creates()
+    public function creates($id)
     {
-        $chapitre=Chapitre::all();
+        $chapitre=Chapitre::where('id', $id)->get();
         return view('admin.quiz.create2',compact('chapitre'));
     }
     /**
@@ -71,7 +71,8 @@ class QuizController extends Controller
         ]);
         $quiz=Quiz ::create($validatedData);
 
-        return redirect('/quizs')->with('success', 'Quiz créée avec succès!');
+        return redirect('/formations');
+        // ->with('success', 'Quiz créée avec succès!');
     }
 
     /**

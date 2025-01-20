@@ -17,14 +17,14 @@ class ChapitreController extends Controller
     // public function index()
     // {
     //     $chapitre=Chapitre::all();
-        
+
     //     return view('admin.chapitre.index',compact('chapitre'));
     // }
 
     public function index()
     {
         $user = Auth::user(); // Récupère l'utilisateur connecté
-    
+
         // Vérifie le rôle de l'utilisateur
         if ($user->role->name === 'Administrateurs') {
             // L'utilisateur est un administrateur, récupère tous les chapitres
@@ -35,7 +35,7 @@ class ChapitreController extends Controller
                 $query->where('user_id', $user->id);
             })->get();
         }
-    
+
         return view('admin.chapitre.index', compact('chapitre'));
     }
     /**
@@ -43,9 +43,9 @@ class ChapitreController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        $formation=Formation::all();
+        $formation=Formation::where('id',$id)->get();
         return view('admin.chapitre.create',compact('formation'));
     }
 
@@ -92,13 +92,14 @@ class ChapitreController extends Controller
             $file->move('assets/uploads/chapitre_video',$filename);
             $chapitre->video_url = $filename;
         }
-        
+
         $chapitre->titre = $request->titre;
         $chapitre->description = $request->description;
         $chapitre->formation_id = $request->formation_id;
         $chapitre->save();
 
-        return redirect('/chapitres')->with('success', 'Chapitre créée avec succès!');
+        return redirect('/formations');
+        // ->with('success', 'Chapitre créée avec succès!');
     }
 
     /**
@@ -107,9 +108,23 @@ class ChapitreController extends Controller
      * @param  \App\Models\Chapitre  $chapitre
      * @return \Illuminate\Http\Response
      */
-    public function show(Chapitre $chapitre)
+    public function show( $id)
     {
-        return view('', compact('chapitre'));
+        $user = Auth::user(); // Récupère l'utilisateur connecté
+        $formation=$id;
+        // Vérifie le rôle de l'utilisateur
+        if ($user->role->name === 'Administrateurs') {
+            // L'utilisateur est un administrateur, récupère tous les chapitres
+            $chapitre = Chapitre::all();
+        } else {
+            // L'utilisateur est un formateur ou autre, récupère les chapitres liés à ses formations
+            $chapitre = Chapitre::whereHas('formation', function ($query) use ($user) {
+                $query->where('user_id', $user->id);
+            })->where('formation_id', $id)
+            ->get();
+        }
+
+        return view('admin.chapitre.show', compact('chapitre','formation'));
     }
 
     /**
@@ -135,7 +150,7 @@ class ChapitreController extends Controller
     public function update(Request $request,  $id)
 
     {
-      
+
         $validatedData = $request->validate([
             'titre' => 'required|max:255',
             'description' => 'nullable',
@@ -144,9 +159,9 @@ class ChapitreController extends Controller
             'document_url' => 'nullable',
             'formation_id' => 'required|exists:formations,id',
         ]);
-        
+
         $chapitre = Chapitre::findOrfail($id);
-    
+
 
         if ($request->hasFile('image_url')) {
             $path='assets/uploads/chapitre_images'.$chapitre->image_url;
@@ -183,14 +198,15 @@ class ChapitreController extends Controller
             $file->move('assets/uploads/chapitre_video',$filename);
             $chapitre->video_url= $filename;
         }
-       
+
 
 
         $chapitre->titre = $request->titre;
         $chapitre->description = $request->description;
         $chapitre->formation_id = $request->formation_id;
         $chapitre->save();
-        return redirect('/chapitres')->with('success', 'Chapitre mise à jour avec succès!');
+        return redirect('/formations');
+        // ->with('success', 'Chapitre mise à jour avec succès!');
     }
 
     /**
@@ -204,7 +220,7 @@ class ChapitreController extends Controller
       $chapitr = Chapitre::findOrfail($id);
         $chapitr->delete();
         session()->flash('success', 'Suppression du chapitre réussie !');
-       
+
         return redirect('/chapitres')->with('success', 'Chapitre supprimée avec succès!');
     }
 }

@@ -72,7 +72,7 @@ class FormationController extends Controller
             $file->move('assets/uploads/formation_images',$filename);
             $formation->image_url = $filename;
         }
-        
+
         $formation->titre = $request->titre;
         $formation->description = $request->description;
         $formation->categorie_id = $request->categorie_id;
@@ -82,9 +82,10 @@ class FormationController extends Controller
         $formation->save();
 
         session()->flash('success', 'La Formation à été bien créée !');
-        
-        
-        return redirect('/formations')->with('success', 'Formations créée avec succès!');
+
+
+        return redirect('/formations');
+        // ->with('success', 'Formations créée avec succès!');
 
     }
 
@@ -133,7 +134,7 @@ class FormationController extends Controller
         ]);
        // $formation->update($validatedData);
         $formation = Formation::findOrfail($id);
-    
+
 
         if ($request->hasFile('image_url')) {
             $path='assets/uploads/formation_images'.$formation->image_url;

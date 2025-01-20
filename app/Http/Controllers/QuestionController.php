@@ -45,9 +45,9 @@ class QuestionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        $quiz=Quiz::all();
+        $quiz=Quiz::where('formation_id',$id)->get();
         return view('admin.question.create',compact('quiz'));
     }
 
