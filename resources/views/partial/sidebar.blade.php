@@ -43,12 +43,12 @@
                 </a>
             </li>
             @endif
-            <li class="sidebar-menu__item">
+            {{-- <li class="sidebar-menu__item">
                 <a href="{{url('chapitres')}}" class="sidebar-menu__link">
                     <span class="icon"><i class="ph ph-users"></i></span>
                     <span class="text">Chapitres</span>
                 </a>
-            </li>
+            </li> --}}
             @if (Auth::user()->role_id == '1' )
             <li class="sidebar-menu__item">
                 <a href="{{url('difficultes')}}" class="sidebar-menu__link">
@@ -76,7 +76,7 @@
                     <span class="text">Vidéos</span>
                 </a>
             </li>
-            <li class="sidebar-menu__item">
+            {{-- <li class="sidebar-menu__item">
                 <a href="{{url('quizs')}}" class="sidebar-menu__link">
                     <span class="icon"><i class="ph ph-coins"></i></span>
                     <span class="text">Quizz</span>
@@ -93,7 +93,7 @@
                     <span class="icon"><i class="ph ph-coins"></i></span>
                     <span class="text">Réponse</span>
                 </a>
-            </li>
+            </li> --}}
             <li class="sidebar-menu__item">
                 <a href="{{url('commentaires')}}" class="sidebar-menu__link">
                     <span class="icon"><i class="ph ph-chart-bar"></i></span>

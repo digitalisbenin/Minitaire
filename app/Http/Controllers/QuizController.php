@@ -81,9 +81,23 @@ class QuizController extends Controller
      * @param  \App\Models\Quiz  $quiz
      * @return \Illuminate\Http\Response
      */
-    public function show(Quiz $quiz)
+    public function show($id)
     {
-        return view('', compact('quiz'));
+        // return view('', compact('quiz'));
+        $user = Auth::user(); // Récupère l'utilisateur connecté
+    
+        // Vérifie le rôle de l'utilisateur
+        if ($user->role->name === 'Administrateurs') {
+            // L'utilisateur est un administrateur, récupère tous les chapitres
+            $quiz = Quiz::all();
+        } else {
+            // L'utilisateur est un formateur ou autre, récupère les chapitres liés à ses formations
+            $quiz = Quiz::whereHas('formation', function ($query) use ($user) {
+                $query->where('user_id', $user->id);
+            })->where('formation_id', $id)->get();
+        }
+            $quizid =$id;
+        return view('admin.quiz.index',compact('quiz','quizid'));
     }
 
     /**

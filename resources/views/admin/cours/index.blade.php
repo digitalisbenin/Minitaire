@@ -50,7 +50,10 @@
                                     </a>
                                     <div class="p-8">
                                         <span class="text-13 py-2 px-10 rounded-pill bg-success-50 text-success-600 mb-16">{{$value->titre}}</span>
-                                        <h5 class="mb-0"><a href="" class="hover-text-main-600">{{$value->description}}</a></h5>
+                                        <h5 class="mb-0 h-80"><a href="" class="hover-text-main-600">
+                                            {{ \Illuminate\Support\Str::words($value->description, 10, '...') }}
+                                        </a></h5>
+                                        
                                         <span class="text-16  text-gray-600"> catégorie: {{$value->category->name}} </span>
 
                                         <div class="flex-align gap-8 mt-12">
@@ -82,6 +85,7 @@
                                        </svg></a>
                                         @endif
                                         <a href="{{url('/chapitres/'.$value->id)}}" class="btn btn-outline-main rounded-pill py-9 w-100 mt-24">Ajouter un chapitre</a>
+                                        <a href="{{url('/quizs/'.$value->id)}}" class="btn btn-outline-main rounded-pill py-9 w-100 mt-24">Quizs</a>
                                     </div>
                                 </div>
                             </div>
