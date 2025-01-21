@@ -56,37 +56,52 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @php
+                            $seenQuestions = [];
+                            $totalQuestions = 0; // Total de questions uniques
+                            $correctAnswers = 0; // Total de réponses correctes
+                        @endphp
+                    
                         @foreach($userResults as $key => $value)
-                        <tr>
-                            {{--  <td class="fixed-width">
-                                <div class="form-check">
-                                    <input class="form-check-input border-gray-200 rounded-4" type="checkbox">
-                                </div>
-                            </td>  --}}
-    
-                            <td>
-                                <span class="h6 mb-0 fw-medium text-gray-300">{{$key + 1}}</span>
-                            </td>
-                            <td>
-                                <span class="h6 mb-0 fw-medium text-gray-300">{{$value->question->title}}</span>
-                            </td>
-    
-                            <td>
-                                <span class="h6 mb-0 fw-medium text-gray-300">
-    
-                                    {{$value->answer->title}}
-                                </span>
-                            </td>
-                            <td>
-                                <span class="h6 mb-0 fw-medium text-gray-300">
-    
-                                    {{$value->answer->is_correct==1 ? "Vrai": "Faux"}}
-                                </span>
-                            </td>
-    
-                        </tr>
+                            @if(!in_array($value->question->id, $seenQuestions))
+                                @php
+                                    $seenQuestions[] = $value->question->id; // Ajouter l'ID de la question au tableau des questions vues
+                                    $totalQuestions++; // Incrémenter le nombre total de questions
+                                    if ($value->answer->is_correct == 1) {
+                                        $correctAnswers++; // Incrémenter le nombre de réponses correctes si la réponse est correcte
+                                    }
+                                @endphp
+                                <tr>
+                                    <td>
+                                        <span class="h6 mb-0 fw-medium text-gray-300">{{ $key + 1 }}</span>
+                                    </td>
+                                    <td>
+                                        <span class="h6 mb-0 fw-medium text-gray-300">{{ $value->question->title }}</span>
+                                    </td>
+                                    <td>
+                                        <span class="h6 mb-0 fw-medium text-gray-300">{{ $value->answer->title }}</span>
+                                    </td>
+                                    <td>
+                                        <span class="h6 mb-0 fw-medium text-gray-300">
+                                            {{ $value->answer->is_correct == 1 ? "Vrai" : "Faux" }}
+                                        </span>
+                                    </td>
+                                </tr>
+                            @endif
                         @endforeach
                     </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="3" class="text-end fw-bold">Total:</td>
+                            <td>
+                                <span class="h6 mb-0 fw-medium text-gray-300">
+                                    {{ $correctAnswers }}/{{ $totalQuestions }} 
+                                    ({{ $totalQuestions > 0 ? round(($correctAnswers / $totalQuestions) * 100, 2) : 0 }}%)
+                                </span>
+                            </td>
+                        </tr>
+                    </tfoot>
+                    
                 </table>
 
             </div>
