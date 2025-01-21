@@ -64,6 +64,7 @@ class UserResultController extends Controller
   foreach ($reponsesParQuestion as $questionId => $reponseId) {
       // Sauvegarder chaque réponse dans la base de données, ou traiter comme nécessaire
       UserResult::create([
+        'quiz_id'=>$request->quiz_id,
         'question_id' => $questionId,
             'answers_id' => $reponseId,
         'user_id' => auth()->user()->id,
@@ -71,7 +72,8 @@ class UserResultController extends Controller
     ]);
   }
 
-  return back()->with('success', 'Réponses enregistrées avec succès !');
+  return redirect('user-resultes');
+//   ->with('success', 'Réponses enregistrées avec succès !');
 
     
 

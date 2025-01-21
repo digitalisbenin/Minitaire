@@ -89,6 +89,7 @@
 
         <form action="{{ url('user-results') }}" method="post" enctype="multipart/form-data">
         @csrf
+        <input type="hidden" name="quiz_id" value="{{$value->id}}">
       <!-- Texte principal -->
       @foreach( $value->questions as $valus)
 
@@ -174,7 +175,11 @@
 
 
 </div>
-<button type="submit" class="btn btn-success">Envoyer</button>
+<div class="text-center">
+    <button type="submit" class="btn btn-success">Envoyer</button>
+</div>
+
+{{--  <button type="submit" class="btn btn-success">Envoyer</button>  --}}
 </form>
     <div class="ms-auto d-flex">
     <!-- Section image et auteur -->

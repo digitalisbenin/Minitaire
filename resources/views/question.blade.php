@@ -85,6 +85,7 @@
 
         <form action="{{ url('user-results') }}" method="post" enctype="multipart/form-data">
         @csrf
+        <input type="hidden" name="quiz_id" value="{{$value->id}}">
       <!-- Texte principal -->
       @foreach( $value->questions as $valus)
 
