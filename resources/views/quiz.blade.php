@@ -181,7 +181,7 @@
 
 
 @php
-    $filteredNotequiz = $notequiz->where('quiz_id', $quizID)->last(); // Récupère le dernier correspondant
+    $filteredNotequiz = $notequiz->where('quiz_id', $quizID)->sortByDesc('created_at')->first();
 @endphp
 
 @if(auth()->check() && $filteredNotequiz && $filteredNotequiz->status == "echouer")

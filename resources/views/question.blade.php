@@ -176,7 +176,7 @@
 </div>
 
 @php
-    $filteredNotequiz = $notequiz->where('quiz_id', $quizID)->last(); // Récupère le dernier enregistrement du quiz
+    $filteredNotequiz = $notequiz->where('quiz_id', $quizID)->sortByDesc('created_at')->first();
 @endphp
 
 @if(auth()->check() && $filteredNotequiz && $filteredNotequiz->status == "echouer")
@@ -184,6 +184,7 @@
         <button type="submit" class="btn btn-success">Envoyer</button>
     </div>
 @endif
+
 
 
 {{--  <button type="submit" class="btn btn-success">Envoyer</button>  --}}
