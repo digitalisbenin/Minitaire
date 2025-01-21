@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class NomDuControleur extends Controller
+class NotequizControleur extends Controller
 {
     /**
      * Display a listing of the resource.
