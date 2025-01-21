@@ -70,7 +70,7 @@ class VideoController extends Controller
         $video->user_id= Auth::id();
         $video->save();
 
-        return redirect('/videos')->with('success', 'Videos créée avec succès!');
+        return redirect('/videos');
     }
 
     /**
@@ -134,7 +134,7 @@ class VideoController extends Controller
         $video->titre = $request->titre;
         $video->description = $request->description;
         $video->save();
-        return redirect('/videos')->with('success', 'Video mise à jour avec succès!');
+        return redirect('/videos');
     }
 
     /**
@@ -147,6 +147,6 @@ class VideoController extends Controller
     {
         $videos = Video::findOrfail($id);
         $videos->delete();
-        return redirect('/videos')->with('success', 'Video supprimée avec succès!');
+        return redirect('/videos');
     }
 }

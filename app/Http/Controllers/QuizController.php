@@ -133,7 +133,7 @@ class QuizController extends Controller
         $quiz = Quiz::findOrfail($id);
         $quiz->update($validatedData);
 
-        return redirect('/quizs')->with('success', 'Quiz mise à jour avec succès!');
+        return redirect('/quizs');
     }
 
     /**
@@ -147,6 +147,6 @@ class QuizController extends Controller
         $quiz = Quiz::findOrfail($id);
         $quiz->delete();
 
-        return redirect('/quizs')->with('success', 'Quiz supprimée avec succès!');
+        return redirect('/quizs');
     }
 }

@@ -19,7 +19,7 @@ class UserResultController extends Controller
 
     public function indexe()
     {
-    
+
         $userResults= UserResult::where('user_id', Auth::id())->get();
         return view('userResult',compact('userResults'));
     }
@@ -42,7 +42,7 @@ class UserResultController extends Controller
      */
     public function store(Request $request)
     {
-       
+
   // Tableau pour stocker les réponses liées aux questions
   $reponsesParQuestion = [];
 
@@ -68,14 +68,13 @@ class UserResultController extends Controller
         'question_id' => $questionId,
             'answers_id' => $reponseId,
         'user_id' => auth()->user()->id,
-       
+
     ]);
   }
 
   return redirect('user-resultes');
-//   ->with('success', 'Réponses enregistrées avec succès !');
 
-    
+
 
     }
 

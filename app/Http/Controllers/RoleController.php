@@ -43,7 +43,7 @@ class RoleController extends Controller
         ]);
         $category =Role::create($validatedData);
 
-        return redirect('/roles')->with('success', 'Role créée avec succès!');
+        return redirect('/roles');
     }
 
     /**
@@ -82,7 +82,7 @@ class RoleController extends Controller
             'description' => 'nullable',
         ]);
         $role->update($validatedData);
-        return redirect('/roles')->with('success', 'Roles mise à jour avec succès!');
+        return redirect('/roles');
     }
 
     /**

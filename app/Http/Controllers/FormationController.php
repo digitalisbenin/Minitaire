@@ -81,7 +81,7 @@ class FormationController extends Controller
         $formation->user_id= Auth::id();
         $formation->save();
 
-        session()->flash('success', 'La Formation à été bien créée !');
+        // session()->flash('success', 'La Formation à été bien créée !');
 
 
         return redirect('/formations');
@@ -158,7 +158,7 @@ class FormationController extends Controller
 
 
 
-        return redirect('/formations')->with('success', 'Formations mise à jour avec succès!');
+        return redirect('/formations');
     }
 
     /**
@@ -172,6 +172,6 @@ class FormationController extends Controller
         $formation= Formation::findOrfail($id);
         $formation->delete();
 
-        return redirect('/formations')->with('success', 'Formations supprimée avec succès!');
+        return redirect('/formations');
     }
 }

@@ -51,7 +51,7 @@ class DiscutionReponseController extends Controller
         $discution->user_id= Auth::id();
         $discution->save();
 
-        return redirect('/forums')->with('success', ' Réponser envoyé avec succès!');
+        return redirect('/forums');
     }
 
     /**
@@ -94,7 +94,7 @@ class DiscutionReponseController extends Controller
             'user_id' => 'nullable|exists:users,id',
         ]);
         $discutionReponse->update($validatedData);
-        return redirect('/discussions-reponses')->with('success', 'Discussions Réponse  mise à jour avec succès!');
+        return redirect('/discussions-reponses');
     }
 
     /**
@@ -107,6 +107,6 @@ class DiscutionReponseController extends Controller
     {
         $discutionReponse->delete();
 
-        return redirect('/discussions-reponses')->with('success', 'Discussions Réponse supprimée avec succès!');
+        return redirect('/discussions-reponses');
     }
 }

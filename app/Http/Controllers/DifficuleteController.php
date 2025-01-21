@@ -42,7 +42,7 @@ class DifficuleteController extends Controller
         ]);
         $commentaire = Difficulete::create($validatedData);
 
-        return redirect('/difficultes')->with('success', 'Difficultés créée avec succès!');
+        return redirect('/difficultes');
     }
 
     /**
@@ -85,7 +85,7 @@ class DifficuleteController extends Controller
          $difficulte->name = $request->name;
          $difficulte->description = $request->description;
          $difficulte->save();
-         return redirect('/difficultes')->with('success', 'Difficulté mise à jour avec succès!');
+         return redirect('/difficultes');
     }
 
     /**
@@ -98,7 +98,7 @@ class DifficuleteController extends Controller
     {
         $categori = Difficulete::findOrfail($id);
         $categori->delete();
-        session()->flash('success', 'Suppression de la difficulté réussie !');
-        return redirect('/difficultes')->with('success', 'Difficulté supprimée avec succès!');
+        // session()->flash('success', 'Suppression de la difficulté réussie !');
+        return redirect('/difficultes');
     }
 }

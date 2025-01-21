@@ -62,7 +62,7 @@
                             $correctAnswers = 0; // Total de réponses correctes
                         @endphp
                     
-                        @foreach($userResults as $key => $value)
+                        @foreach($userResults->sortByDesc('created_at') as $key => $value) {{-- Tri des résultats par date de création --}}
                             @if(!in_array($value->question->id, $seenQuestions))
                                 @php
                                     $seenQuestions[] = $value->question->id; // Ajouter l'ID de la question au tableau des questions vues
@@ -101,6 +101,8 @@
                             </td>
                         </tr>
                     </tfoot>
+                    
+                    
                     
                 </table>
 
