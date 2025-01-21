@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('note')->nullable();
             $table->string('titre')->nullable();
             $table->string('description')->nullable();
+            $table->enum('status', ['echouer', 'valider'])->nullable();
             $table->unsignedBigInteger('quiz_id')->nullable();
             $table->unsignedBigInteger('formation_id')->nullable();
             $table->unsignedBigInteger('chapitre_id')->nullable();
