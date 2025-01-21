@@ -30,7 +30,7 @@
                         <option value="1" selected>Populaire</option>
                       <option value="1">Latest</option>
                         <option value="1">Trending</option>
-                     
+
                     </select>
                 </div>  --}}
             </div>
@@ -132,7 +132,7 @@
                             <span class=" text-md"><i class="ph ph-plus"></i></span>
                              question
                         </a>
-                          <a href="{{url('create-answers/'. $quizid)}}" class="bg-warning text-white py-2 px-14 rounded-pill hover-bg-success-800 hover-text-white">
+                          <a href="{{url('create-answer/'. $value->id)}}" class="bg-warning text-white py-2 px-14 rounded-pill hover-bg-success-800 hover-text-white">
                             <span class=" text-md"><i class="ph ph-plus"></i></span>
                              Réponse
                         </a>
