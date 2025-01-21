@@ -47,7 +47,17 @@ class QuestionController extends Controller
      */
     public function create($id)
     {
-        $quiz=Quiz::where('formation_id',$id)->get();
+        $quiz=Quiz::where('chapitre_id',$id)->get();
+        return view('admin.question.create',compact('quiz'));
+    }
+    public function creates()
+    {
+        $quiz=Quiz::all();
+        return view('admin.question.create',compact('quiz'));
+    }
+    public function createe($id)
+    {
+        $quiz=Quiz::where('id',$id)->get();
         return view('admin.question.create',compact('quiz'));
     }
 
@@ -75,9 +85,11 @@ class QuestionController extends Controller
      * @param  \App\Models\Question  $question
      * @return \Illuminate\Http\Response
      */
-    public function show(Question $question)
+    public function show( $id)
     {
-        return view('', compact('question'));
+       $question= Question::where('quiz_id',$id)->get();
+       $quizID=$id;
+        return view('admin.question.show', compact('question','quizID'));
     }
 
     /**

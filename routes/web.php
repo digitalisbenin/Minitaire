@@ -343,7 +343,9 @@ Route::get('videos/{id}/destroy', [VideoController::class, 'destroy']);
 
 /*-----------------Ansers --------------------------*/
 Route::get('answers', [AnswersController::class, 'index']);
-Route::get('create-answers/{id}', [AnswersController::class, 'create']);
+Route::get('create-answers', [AnswersController::class, 'create']);
+Route::get('create-answers/{id}', [AnswersController::class, 'creates']);
+Route::get('create-answer/{id}', [AnswersController::class, 'createe']);
 Route::get('answers/{id}', [AnswersController::class, 'show']);
 Route::get('answers/{id}/edit', [AnswersController::class, 'edit']);
 Route::post('answers', [AnswersController::class, 'store']);
@@ -352,7 +354,9 @@ Route::get('answers/{id}/destroy', [AnswersController::class, 'destroy']);
 
 /*-----------------Video--------------------------*/
 Route::get('questions', [QuestionController::class, 'index']);
+Route::get('create-question/{id}', [QuestionController::class, 'createe']);
 Route::get('create-questions/{id}', [QuestionController::class, 'create']);
+Route::get('create-questions', [QuestionController::class, 'creates']);
 Route::get('questions/{id}', [QuestionController::class, 'show']);
 Route::get('questions/{id}/edit', [QuestionController::class, 'edit']);
 Route::post('questions', [QuestionController::class, 'store']);

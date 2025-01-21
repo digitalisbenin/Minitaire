@@ -22,7 +22,7 @@ class QuizController extends Controller
     public function index()
     {
         $user = Auth::user(); // Récupère l'utilisateur connecté
-    
+
         // Vérifie le rôle de l'utilisateur
         if ($user->role->name === 'Administrateurs') {
             // L'utilisateur est un administrateur, récupère tous les chapitres
@@ -33,7 +33,7 @@ class QuizController extends Controller
                 $query->where('user_id', $user->id);
             })->get();
         }
-    
+
         return view('admin.quiz.index',compact('quiz'));
     }
     /**
@@ -85,7 +85,7 @@ class QuizController extends Controller
     {
         // return view('', compact('quiz'));
         $user = Auth::user(); // Récupère l'utilisateur connecté
-    
+
         // Vérifie le rôle de l'utilisateur
         if ($user->role->name === 'Administrateurs') {
             // L'utilisateur est un administrateur, récupère tous les chapitres
@@ -97,7 +97,7 @@ class QuizController extends Controller
             })->where('formation_id', $id)->get();
         }
             $quizid =$id;
-        return view('admin.quiz.index',compact('quiz','quizid'));
+        return view('admin.quiz.show',compact('quiz','quizid'));
     }
 
     /**

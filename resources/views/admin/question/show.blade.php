@@ -8,9 +8,9 @@
         <!-- Breadcrumb Start -->
         <div class="breadcrumb mb-24">
             <ul class="flex-align gap-4">
-                <li><a href="{{url('dashboard')}}" class="text-gray-200 fw-normal text-15 hover-text-main-600">Accueil</a></li>
+                <li><a href="index.html" class="text-gray-200 fw-normal text-15 hover-text-main-600">Accueil</a></li>
                 <li> <span class="text-gray-500 fw-normal d-flex"><i class="ph ph-caret-right"></i></span> </li>
-                <li><span class="text-main-600 fw-normal text-15">Quiz</span></li>
+                <li><span class="text-main-600 fw-normal text-15">Question</span></li>
             </ul>
         </div>
                     <!-- Breadcrumb End -->
@@ -18,9 +18,9 @@
         <!-- Breadcrumb Right Start -->
         <div class="flex-align gap-8 flex-wrap">
             <div class="position-relative text-gray-500 flex-align gap-4 text-13">
-                <a href="{{url('/create-quizs/'. $quizid)}}" class="btn btn-main rounded-pill py-7 flex-align gap-4 fw-normal">
+                <a href="{{url('/create-question/'.$quizID)}}" class="btn btn-main rounded-pill py-7 flex-align gap-4 fw-normal">
                     <span class="d-flex text-md"><i class="ph ph-plus"></i></span>
-                    Ajouter un quiz
+                    Ajouter une question
                 </a>
                 <span class="text-inherit"> </span>
                 {{--  <div class="flex-align text-gray-500 text-13 border border-gray-100 rounded-4 ps-20 focus-border-main-600 bg-white">
@@ -58,21 +58,14 @@
                             </div>
                         </th>
                         <th class="h6 text-gray-300">N°</th>
-                        
-                        <th class="h6 text-gray-300">Titre</th>
-                        <th class="h6 text-gray-300">Statut</th>
-                        {{--  <th class="h6 text-gray-300">Description</th>
-                        <th class="h6 text-gray-300">Chapitre</th>  --}}
-                        <th class="h6 text-gray-300">Formation</th>
-{{--
-                        <th class="h6 text-gray-300">Documents</th>
-                        <th class="h6 text-gray-300">Vidéos</th>  --}}
+                        <th class="h6 text-gray-300">Question</th>
+                        <th class="h6 text-gray-300">titre du quizz</th>
 
                         <th class="h6 text-gray-300">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($quiz as $key => $value)
+                    @foreach($question as $key => $value)
                     <tr>
                         <td class="fixed-width">
                             <div class="form-check">
@@ -83,59 +76,24 @@
                         <td>
                             <span class="h6 mb-0 fw-medium text-gray-300">{{$key + 1}}</span>
                         </td>
-                       
                         <td>
                             <span class="h6 mb-0 fw-medium text-gray-300">{{$value->title}}</span>
                         </td>
-                        <td>
-                            <span class="h6 mb-0 fw-medium text-gray-300">{{$value->status}}</span>
-                        </td>
 
-                        {{--  <td>
-                            <span class="h6 mb-0 fw-medium text-gray-300" 
-    style="
-        display: block;
-        max-width: 30ch; /* Limite à environ trois colonnes (30 caractères) */
-        white-space: normal; /* Autorise les retours à la ligne */
-        overflow: hidden;
-        text-overflow: ellipsis; /* Ajoute les points de suspension (...) */
-        word-wrap: break-word; /* Coupe le texte si nécessaire */
-    ">
-    {{$value->description}}
-</span>
-
-                        </td>  --}}
-                        {{--  <td>
-                            <span class="h6 mb-0 fw-medium text-gray-300">
-
-                                {{$value->chapitre->titre ?? ""}}
-                            </span>
-                        </td>  --}}
                         <td>
                             <span class="h6 mb-0 fw-medium text-gray-300">
 
-                                {{$value->formation->titre ?? ""}}
+                                {{$value->quiz->title}}
                             </span>
                         </td>
-
-
                         <td>
-                           
-                           <a href="{{url('quizs/'.$value->id.'/edit')}}" class="bg-success-600 text-white py-2 px-14 rounded-pill hover-bg-success-800 hover-text-white"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                            <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                            <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
-                          </svg></a>
-                        <a href="{{url('quizs/'.$value->id.'/destroy')}}" class="bg-danger-600 text-white py-2 px-14 rounded-pill hover-bg-danger-800 hover-text-white"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
-                            <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47M8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5"/>
-                          </svg></a>
-                          <a href="{{url('/questions/'.$value->id)}}" class="bg-success-600 text-white py-2 px-14 rounded-pill hover-bg-success-800 hover-text-white">
-                            <span class=" text-md"><i class="ph ph-plus"></i></span>
-                             question
-                        </a>
-                          <a href="{{url('answers')}}" class="bg-warning text-white py-2 px-14 rounded-pill hover-bg-success-800 hover-text-white">
-                            <span class=" text-md"><i class="ph ph-plus"></i></span>
-                             Réponse
-                        </a>
+                            <a href="{{url('questions/'.$value->id.'/edit')}}" class="bg-success-600 text-white py-2 px-14 rounded-pill hover-bg-success-800 hover-text-white"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                                <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
+                              </svg></a>
+                            <a href="{{url('questions/'.$value->id.'/destroy')}}" class="bg-danger-600 text-white py-2 px-14 rounded-pill hover-bg-danger-800 hover-text-white"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+                                <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47M8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5"/>
+                              </svg></a>
                         </td>
 
                     </tr>

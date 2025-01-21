@@ -30,7 +30,7 @@
                         <option value="1" selected>Populaire</option>
                       <option value="1">Latest</option>
                         <option value="1">Trending</option>
-                        <option value="1">Matches</option>
+                     
                     </select>
                 </div>  --}}
             </div>
@@ -58,7 +58,7 @@
                             </div>
                         </th>
                         <th class="h6 text-gray-300">N°</th>
-                        
+
                         <th class="h6 text-gray-300">Titre</th>
                         <th class="h6 text-gray-300">Statut</th>
                         {{--  <th class="h6 text-gray-300">Description</th>
@@ -83,7 +83,7 @@
                         <td>
                             <span class="h6 mb-0 fw-medium text-gray-300">{{$key + 1}}</span>
                         </td>
-                       
+
                         <td>
                             <span class="h6 mb-0 fw-medium text-gray-300">{{$value->title}}</span>
                         </td>
@@ -92,7 +92,7 @@
                         </td>
 
                         {{--  <td>
-                            <span class="h6 mb-0 fw-medium text-gray-300" 
+                            <span class="h6 mb-0 fw-medium text-gray-300"
     style="
         display: block;
         max-width: 30ch; /* Limite à environ trois colonnes (30 caractères) */
@@ -120,7 +120,7 @@
 
 
                         <td>
-                           
+
                            <a href="{{url('quizs/'.$value->id.'/edit')}}" class="bg-success-600 text-white py-2 px-14 rounded-pill hover-bg-success-800 hover-text-white"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                             <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
                             <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
@@ -132,7 +132,7 @@
                             <span class=" text-md"><i class="ph ph-plus"></i></span>
                              question
                         </a>
-                          <a href="{{url('answers')}}" class="bg-warning text-white py-2 px-14 rounded-pill hover-bg-success-800 hover-text-white">
+                          <a href="{{url('create-answers/'. $quizid)}}" class="bg-warning text-white py-2 px-14 rounded-pill hover-bg-success-800 hover-text-white">
                             <span class=" text-md"><i class="ph ph-plus"></i></span>
                              Réponse
                         </a>
