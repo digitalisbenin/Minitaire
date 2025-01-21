@@ -171,7 +171,11 @@
 
 
 </div>
+<div class="text-center">
 <button type="submit" class="btn btn-success">Envoyer</button>
+</div>
+
+
 </form>
     <div class="ms-auto d-flex">
     <!-- Section image et auteur -->
