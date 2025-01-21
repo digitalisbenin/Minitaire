@@ -178,11 +178,18 @@
 
 
 </div>
-@if(auth()->check() && $notequiz && $notequiz->qui_id == $quizID && $notequiz->status == "echouer")
+
+
+@php
+    $filteredNotequiz = $notequiz->where('quiz_id', $quizID)->last(); // Récupère le dernier correspondant
+@endphp
+
+@if(auth()->check() && $filteredNotequiz && $filteredNotequiz->status == "echouer")
     <div class="text-center">
         <button type="submit" class="btn btn-success">Envoyer</button>
     </div>
 @endif
+
 
 
 
