@@ -35,11 +35,11 @@
                     <p class="wow fadeInUp" data-wow-delay=".6s"></p>
                 </div>
             </div>
-        </div>  
+        </div>
         <div class="col">
-          
+
             <div class="col-lg-12 col-md-6 col-12"> <!-- Ajustement pour les tailles moyennes et petites -->
-                
+
                 <table id="studentTable" class="table table-striped">
                     <thead>
                         <tr class="">
@@ -51,7 +51,7 @@
                             <th class="h6 text-gray-300">N°</th>
                             <th class="h6 text-gray-300">Question</th>
                             <th class="h6 text-gray-300">Résultats</th>
-    
+
                             <th class="h6 text-gray-300">Correction</th>
                         </tr>
                     </thead>
@@ -61,7 +61,7 @@
                             $totalQuestions = 0; // Total de questions uniques
                             $correctAnswers = 0; // Total de réponses correctes
                         @endphp
-                    
+
                         @foreach($userResults->sortByDesc('created_at') as $key => $value) {{-- Tri des résultats par date de création --}}
                             @if(!in_array($value->question->id, $seenQuestions))
                                 @php
@@ -95,23 +95,55 @@
                             <td colspan="3" class="text-end fw-bold">Total:</td>
                             <td>
                                 <span class="h6 mb-0 fw-medium text-gray-300">
-                                    {{ $correctAnswers }}/{{ $totalQuestions }} 
+                                    {{ $correctAnswers }}/{{ $totalQuestions }}
                                     ({{ $totalQuestions > 0 ? round(($correctAnswers / $totalQuestions) * 100, 2) : 0 }}%)
                                 </span>
                             </td>
                         </tr>
                     </tfoot>
-                    
-                    
-                    
+
+
+
                 </table>
 
             </div>
-           
+
         </div>
-        
+
     </div>
 </div>
 <!-- End teacher Details -->
 
 @endsection
+@section('scripts')
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        // Écouter l'événement de clic sur les boutons
+        $('.nav-link').on('click', function() {
+            var chapterId = $(this).data('id');
+            var chapterTitle = 100; // Récupérer le titre du chapitre
+
+
+            // Requête AJAX pour envoyer les données au serveur
+            $.ajax({
+                url: '/suivis',           // URL de la route Laravel
+                type: 'POST',
+                data: {
+                    _token: '{{ csrf_token() }}',  // Inclure le token CSRF
+                    chapitreId: chapterId,                 // ID du chapitre
+                    taux: chapterTitle            // Titre du chapitre
+                },
+                success: function(response) {
+
+                    swal("",response.status,"success")
+                },
+                error: function(xhr, status, error) {
+                    // Gestion des erreurs
+                   // alert('Erreur lors de l\'enregistrement de la progression.');
+                    swal("","Erreur lors de l'enregistrement de la progression.","error")
+                }
+            });
+        });
+    });
+</script>

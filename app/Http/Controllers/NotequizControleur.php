@@ -1,9 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Notequiz;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 class NotequizControleur extends Controller
 {
     /**
@@ -13,7 +13,9 @@ class NotequizControleur extends Controller
      */
     public function index()
     {
-        //
+        $notequiz=Notequiz::all();
+        return view('',compact('notequiz'));
+
     }
 
     /**
@@ -23,7 +25,7 @@ class NotequizControleur extends Controller
      */
     public function create()
     {
-        //
+        return view('');
     }
 
     /**
@@ -34,7 +36,37 @@ class NotequizControleur extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $formations_id = $request->input('formation_id');
+        $formations_id = $request->input('formation_id');
+
+        $user_id = Auth::id();
+
+
+
+        if (Auth::check()) {
+
+
+            $formation_check = Formation::find($formations_id);
+
+            if ($formation_check) {
+                if (MesCour::where('formation_id', $formations_id)->where('user_id', Auth::id())->exists()) {
+                    return response()->json(['status'=> $formation_check->titre . " déjà ajouté à mes cours"],200);
+                } else {
+                    $mesCour= new MesCour();
+                    $mesCour->formation_id = $formations_id;
+                    $mesCour->user_id = Auth::id();
+
+
+                    $mesCour->save();
+
+                    return response()->json(['status'=> $formation_check->titre . " ajouté à mes cours"] ,201);
+                }
+            }
+
+        } else {
+            return response()->json(['status'=>"Connectez-vous pour ajouter ce cours"]);
+
+        }
     }
 
     /**

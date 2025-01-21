@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use App\Models\UserResult;
+use App\Models\Answers;
+use App\Models\Notequiz;
 use Illuminate\Http\Request;
 
 class UserResultController extends Controller
@@ -45,6 +47,8 @@ class UserResultController extends Controller
 
   // Tableau pour stocker les réponses liées aux questions
   $reponsesParQuestion = [];
+  $totalQuestions = 0; // Total de questions uniques
+    $correctAnswers = 0; // Total de réponses correctes
 
   // Parcourir toutes les questions pour obtenir leurs réponses
   foreach ($request->input() as $key => $value) {
@@ -63,6 +67,7 @@ class UserResultController extends Controller
   // Exemple d'utilisation du tableau (affichage des réponses récupérées)
   foreach ($reponsesParQuestion as $questionId => $reponseId) {
       // Sauvegarder chaque réponse dans la base de données, ou traiter comme nécessaire
+      $totalQuestions++;
       UserResult::create([
         'quiz_id'=>$request->quiz_id,
         'question_id' => $questionId,
@@ -70,7 +75,33 @@ class UserResultController extends Controller
         'user_id' => auth()->user()->id,
 
     ]);
+
+ $answer = Answers::find($reponseId);
+    if ($answer && $answer->is_correct) {
+        $correctAnswers++; // Incrémentation des bonnes réponses
+    }
+
+
   }
+ $total= $totalQuestions > 0 ? round(($correctAnswers / $totalQuestions) * 100, 2) : 0;
+
+ if ($total == 100) {
+    Notequiz::create([
+        'quiz_id'=>$request->quiz_id,
+        'note' => $total,
+            'status' =>"valider",
+        'user_id' => auth()->user()->id,
+
+    ]);
+} else {
+    Notequiz::create([
+        'quiz_id'=>$request->quiz_id,
+        'note' => $total,
+            'status' =>"echouer",
+        'user_id' => auth()->user()->id,
+
+    ]);
+}
 
   return redirect('user-resultes');
 

@@ -32,8 +32,10 @@ use App\Http\Controllers\VideoController;
 use App\Http\Controllers\VisioConferenceController;
 use App\Http\Controllers\MeetController;
 use App\Http\Controllers\AnswersController;
+use App\Http\Controllers\NotequizControleur;
 use App\Http\Controllers\QuizController;
 use App\Models\Answers;
+use App\Models\Notequiz;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -373,3 +375,16 @@ Route::get('quizs/{id}/edit', [QuizController::class, 'edit']);
 Route::post('quizs', [QuizController::class, 'store']);
 Route::put('quizs/{id}/update', [QuizController::class, 'update']);
 Route::get('quizs/{id}/destroy', [QuizController::class, 'destroy']);
+
+
+
+
+/*-----------------Video--------------------------*/
+Route::get('notequizs', [NotequizControleur::class, 'index']);
+Route::get('create-notequizs/{id}', [NotequizControleur::class, 'create']);
+Route::get('create-notequizs/{id}', [NotequizControleur::class, 'creates']);
+Route::get('notequizs/{id}', [NotequizControleur::class, 'show']);
+Route::get('notequizs/{id}/edit', [NotequizControleur::class, 'edit']);
+Route::post('notequizs', [NotequizControleur::class, 'store']);
+Route::put('notequizs/{id}/update', [NotequizControleur::class, 'update']);
+Route::get('notequizs/{id}/destroy', [NotequizControleur::class, 'destroy']);
