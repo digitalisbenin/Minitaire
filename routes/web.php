@@ -36,6 +36,7 @@ use App\Http\Controllers\NotequizControleur;
 use App\Http\Controllers\QuizController;
 use App\Models\Answers;
 use App\Models\Notequiz;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -86,13 +87,22 @@ Route::get('/contact', function () {
 Route::get('/quiz/{id}', function ($id) {
     $quiz = Quiz::where('formation_id',$id)->get();
     $repose=Answers::all();
-    return view('quiz',compact('quiz','repose'));
+    $user = Auth::user();
+    $notequiz = Notequiz::where('user_id', $user->id)
+    ->latest()
+    ->first();
+
+    return view('quiz',compact('quiz','repose','notequiz'));
 });
 Route::get('/question/{id}', function ($id) {
     $quize = Quiz::all();
     $quiz = Quiz::where('chapitre_id',$id)->with('questions')->get();
     $repose=Answers::all();
-    return view('question',compact('quiz','quize','repose'));
+    $user = Auth::user();
+    $notequiz = Notequiz::where('user_id', $user->id)
+    ->latest()
+    ->first();
+    return view('question',compact('quiz','quize','repose','notequiz'));
 });
 Route::get('/forums', function () {
 

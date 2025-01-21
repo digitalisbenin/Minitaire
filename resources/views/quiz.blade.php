@@ -175,9 +175,23 @@
 
 
 </div>
-<div class="text-center">
+@if(auth()->check() && optional($notequiz)->status == "echouer")
+    <div class="text-center">
+        <button type="submit" class="btn btn-success">Envoyer</button>
+    </div>
+@endif
+
+
+{{--  @if(auth()->check() && $notequiz->status=="echouer")
+    <div class="text-center">
+        <button type="submit" class="btn btn-success">Envoyer</button>
+    </div>
+@endif  --}}
+
+
+{{--  <div class="text-center">
     <button type="submit" class="btn btn-success">Envoyer</button>
-</div>
+</div>  --}}
 
 {{--  <button type="submit" class="btn btn-success">Envoyer</button>  --}}
 </form>
