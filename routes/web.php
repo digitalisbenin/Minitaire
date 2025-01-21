@@ -88,9 +88,7 @@ Route::get('/quiz/{id}', function ($id) {
     $quiz = Quiz::where('formation_id',$id)->get();
     $repose=Answers::all();
     $user = Auth::user();
-    $notequiz = Notequiz::where('user_id', $user->id)
-    ->latest()
-    ->first();
+    $notequiz = Notequiz::where('user_id', $user->id)->get();
 
     return view('quiz',compact('quiz','repose','notequiz'));
 });
@@ -99,9 +97,7 @@ Route::get('/question/{id}', function ($id) {
     $quiz = Quiz::where('chapitre_id',$id)->with('questions')->get();
     $repose=Answers::all();
     $user = Auth::user();
-    $notequiz = Notequiz::where('user_id', $user->id)
-    ->latest()
-    ->first();
+    $notequiz = Notequiz::where('user_id', $user->id)->get();
     return view('question',compact('quiz','quize','repose','notequiz'));
 });
 Route::get('/forums', function () {
