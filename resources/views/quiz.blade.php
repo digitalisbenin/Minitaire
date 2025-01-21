@@ -90,6 +90,9 @@
         <form action="{{ url('user-results') }}" method="post" enctype="multipart/form-data">
         @csrf
         <input type="hidden" name="quiz_id" value="{{$value->id}}">
+        @php
+        $quizID=$value->id;
+        @endphp
       <!-- Texte principal -->
       @foreach( $value->questions as $valus)
 
@@ -175,11 +178,12 @@
 
 
 </div>
-@if(auth()->check() && optional($notequiz)->status == "echouer")
+@if(auth()->check() && $notequiz && $notequiz->qui_id == $quizID && $notequiz->status == "echouer")
     <div class="text-center">
         <button type="submit" class="btn btn-success">Envoyer</button>
     </div>
 @endif
+
 
 
 {{--  @if(auth()->check() && $notequiz->status=="echouer")
