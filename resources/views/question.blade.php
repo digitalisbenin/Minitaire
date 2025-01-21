@@ -176,7 +176,7 @@
 </div>
 
 @php
-    $filteredNotequiz = $notequiz->where('quiz_id', $quizID)->last(); // Récupère le dernier enregistrement du quiz
+    $filteredNotequiz = $notequiz->where('quiz_id', $quizID)->first(); // Récupère le dernier enregistrement du quiz
 @endphp
 
 @if(auth()->check() && $filteredNotequiz && $filteredNotequiz->status == "echouer")
