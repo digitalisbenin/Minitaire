@@ -30,7 +30,7 @@
                         <option value="1" selected>Populaire</option>
                       <option value="1">Latest</option>
                         <option value="1">Trending</option>
-                        <option value="1">Matches</option>
+                     
                     </select>
                 </div>  --}}
             </div>
