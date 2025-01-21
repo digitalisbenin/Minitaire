@@ -21,7 +21,7 @@ class AnswersController extends Controller
     public function index()
     {
         $user = Auth::user(); // Récupère l'utilisateur connecté
-    
+
         // Vérifie le rôle de l'utilisateur
         if ($user->role->name === 'Administrateurs') {
             // L'utilisateur est un administrateur, récupère toutes les réponses
@@ -34,21 +34,34 @@ class AnswersController extends Controller
                 });
             })->get();
         }
-    
+
         return view('admin.answers.index', compact('answers'));
     }
-    
+
 
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($id)
+    public function creates($id)
     {
         $quiz= Question::whereHas('quiz', function ($query) use ($id) {
             $query->where('formation_id', $id);
         })->get();
+        $formationId=$id;
+        return view('admin.answers.create',compact('quiz','formationId'));
+    }
+    public function createe($id)
+    {
+        $quiz= Question::where('quiz_id',$id)->get();
+        $formationId=$id;
+        return view('admin.answers.create',compact('quiz','formationId'));
+    }
+    public function create()
+    {
+        $quiz= Question::all();
+        
         return view('admin.answers.create',compact('quiz'));
     }
 
@@ -103,7 +116,7 @@ class AnswersController extends Controller
      */
     public function update(Request $request, Answers $answers, $id)
     {
-        
+
         $validatedData = $request->validate([
             'title' => 'required|max:255',
             'is_correct' => 'nullable',
