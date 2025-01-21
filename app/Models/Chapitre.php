@@ -33,6 +33,10 @@ class Chapitre extends Model
         return $this->belongsTo('App\Models\Formation');
     }
 
+    public function notequiz()
+    {
+        return $this->hasMany('App\Models\Notequiz');
+    }
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */

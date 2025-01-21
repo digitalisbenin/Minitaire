@@ -71,7 +71,10 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Models\Discution');
     }
-
+    public function notequiz()
+    {
+        return $this->hasMany('App\Models\Notequiz');
+    }
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */

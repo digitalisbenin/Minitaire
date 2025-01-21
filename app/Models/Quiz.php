@@ -32,6 +32,10 @@ class Quiz extends Model
     {
         return $this->hasMany('App\Models\Question');
     }
+    public function notequiz()
+    {
+        return $this->hasMany('App\Models\Notequiz');
+    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

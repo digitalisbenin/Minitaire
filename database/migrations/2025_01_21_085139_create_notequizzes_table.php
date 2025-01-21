@@ -23,6 +23,26 @@ return new class extends Migration
             $table->unsignedBigInteger('chapitre_id')->nullable();
             $table->unsignedBigInteger('user_id')->nullable();
             $table->timestamps();
+
+            $table->foreign('user_id')
+            ->references('id')
+            ->on('users')
+            ->onDelete('cascade');
+
+            $table->foreign('formation_id')
+            ->references('id')
+            ->on('formations')
+            ->onDelete('cascade');
+
+            $table->foreign('chapitre_id')
+            ->references('id')
+            ->on('chapitres')
+            ->onDelete('cascade');
+
+            $table->foreign('quiz_id')
+            ->references('id')
+            ->on('quizzes')
+            ->onDelete('cascade');
         });
     }
 

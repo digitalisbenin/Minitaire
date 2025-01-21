@@ -47,6 +47,11 @@ class Formation extends Model
         return $this->hasMany('App\Models\Chapitre');
     }
 
+    public function notequiz()
+    {
+        return $this->hasMany('App\Models\Notequiz');
+    }
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
