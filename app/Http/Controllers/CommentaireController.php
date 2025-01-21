@@ -62,7 +62,7 @@ class CommentaireController extends Controller
         $commentaire->user_id= Auth::id();
         $commentaire->save();
 
-        return redirect('/formation')->with('success', 'Commentaire envoyer avec succès!');
+        return redirect('/formation');
     }
 
     /**
@@ -103,7 +103,7 @@ class CommentaireController extends Controller
 
         ]);
         $commentaire->update($validatedData);
-        return redirect('/certificates')->with('success', 'Commentaire mise à jour avec succès!');
+        return redirect('/certificates');
     }
 
     /**
@@ -116,6 +116,6 @@ class CommentaireController extends Controller
     {
         $commentaire->delete();
 
-        return redirect('/certificates')->with('success', 'Chapitre supprimée avec succès!');
+        return redirect('/certificates');
     }
 }

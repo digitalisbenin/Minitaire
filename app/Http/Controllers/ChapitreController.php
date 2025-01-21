@@ -219,8 +219,8 @@ class ChapitreController extends Controller
     {
       $chapitr = Chapitre::findOrfail($id);
         $chapitr->delete();
-        session()->flash('success', 'Suppression du chapitre réussie !');
+        // session()->flash('success', 'Suppression du chapitre réussie !');
 
-        return redirect('/chapitres')->with('success', 'Chapitre supprimée avec succès!');
+        return redirect('/chapitres');
     }
 }

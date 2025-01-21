@@ -44,7 +44,7 @@ class EvaluationController extends Controller
         ]);
         $evaluation = Evaluation::create($validatedData);
 
-        return redirect('/evaluations')->with('success', 'Evaluations créée avec succès!');
+        return redirect('/evaluations');
     }
 
     /**
@@ -85,7 +85,7 @@ class EvaluationController extends Controller
             'user_id' => 'nullable|exists:users,id',
         ]);
         $evaluation->update($validatedData);
-        return redirect('/evaluations')->with('success', 'Evaluations mise à jour avec succès!');
+        return redirect('/evaluations');
     }
 
     /**
@@ -98,6 +98,6 @@ class EvaluationController extends Controller
     {
         $evaluation->delete();
 
-        return redirect('/evaluations')->with('success', 'Evaluations supprimée avec succès!');
+        return redirect('/evaluations');
     }
 }

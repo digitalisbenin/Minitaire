@@ -116,7 +116,7 @@ class MesCourController extends Controller
             'user_id' => 'nullable|exists:users,id',
         ]);
         $mesCour->update($validatedData);
-        return redirect('/mes-cours')->with('success', 'Formation  mise à jour avec succès!');
+        return redirect('/mes-cours');
     }
 
     /**
@@ -129,6 +129,6 @@ class MesCourController extends Controller
     {
         $mesCour->delete();
 
-        return redirect('/mes-cours')->with('success', 'Formation  supprimée avec succès!');
+        return redirect('/mes-cours');
     }
 }

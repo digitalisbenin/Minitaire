@@ -71,7 +71,7 @@ class UserResultController extends Controller
     ]);
   }
 
-  return back()->with('success', 'Réponses enregistrées avec succès !');
+  return back();
 
     
 

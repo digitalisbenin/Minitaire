@@ -42,7 +42,7 @@ class CategoryController extends Controller
         ]);
         $category = Category::create($validatedData);
 
-        return redirect('/categories')->with('success', 'Catégories créée avec succès!');
+        return redirect('/categories');
     }
 
     /**
@@ -87,7 +87,7 @@ class CategoryController extends Controller
         $category->name = $request->name;
         $category->description = $request->description;
         $category->save();
-        return redirect('/categories')->with('success', 'Catégorie mise à jour avec succès!');
+        return redirect('/categories');
     }
 
     /**
@@ -101,7 +101,7 @@ class CategoryController extends Controller
 
         $categorie = Category::findOrfail($id);
         $categorie->delete();
-        session()->flash('success', 'Suppression de la catégorie réussie !');
-        return redirect('/categories')->with('success', 'Catégorie supprimée avec succès!');
+        // session()->flash('success', 'Suppression de la catégorie réussie !');
+        return redirect('/categories');
     }
 }

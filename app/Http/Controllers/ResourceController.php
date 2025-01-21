@@ -86,7 +86,7 @@ class ResourceController extends Controller
         $resource->user_id= Auth::id();
         $resource->save();
 
-        return redirect('/ressources')->with('success', 'Resources créée avec succès!');
+        return redirect('/ressources');
 
     }
 
@@ -178,7 +178,7 @@ class ResourceController extends Controller
         $resource->description = $request->description;
        
         $resource->save();
-        return redirect('/ressources')->with('success', 'Resource mise à jour avec succès!');
+        return redirect('/ressources');
     }
 
     /**
@@ -191,6 +191,6 @@ class ResourceController extends Controller
     {
         $resoures = Resource::findOrfail($id);
         $resoures->delete();
-        return redirect('/ressources')->with('success', 'Resources supprimée avec succès!');
+        return redirect('/ressources');
     }
 }

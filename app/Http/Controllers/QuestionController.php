@@ -76,7 +76,7 @@ class QuestionController extends Controller
         ]);
         $question=Question ::create($validatedData);
 
-        return redirect('/questions')->with('success', 'Question créée avec succès!');
+        return redirect('/questions');
     }
 
     /**
@@ -120,7 +120,7 @@ class QuestionController extends Controller
         ]);
         $question= Question::findOrfail($id);
         $question->update($validatedData);
-        return redirect('/questions')->with('success', 'Question mise à jour avec succès!');
+        return redirect('/questions');
     }
 
     /**
@@ -135,6 +135,6 @@ class QuestionController extends Controller
         $question = Question::findOrfail($id);
         $question->delete();
 
-        return redirect('/questions')->with('success', 'Questions supprimée avec succès!');
+        return redirect('/questions');
     }
 }

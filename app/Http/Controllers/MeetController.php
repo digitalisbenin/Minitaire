@@ -69,7 +69,7 @@ class MeetController extends Controller
         $meet->visio_conferences_id = $request->visio_conferences_id;
         $meet->user_id=$request->user_id ;
         $meet->save();
-        return redirect('/meets')->with('success', ' Le participant à été bien ajouter !'); 
+        return redirect('/meets'); 
 
     }
 
@@ -120,6 +120,6 @@ class MeetController extends Controller
         $conference = Meet::findOrfail($id);
         $conference->delete();
         
-        return redirect('meets')->with('success', 'Particitant supprimée avec succès!'); 
+        return redirect('meets'); 
     }
 }

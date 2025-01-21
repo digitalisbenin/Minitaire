@@ -42,7 +42,7 @@ class CertificateController extends Controller
         ]);
         $certificate = Certificate::create($validatedData);
 
-        return redirect('/certificates')->with('success', 'Certificate créée avec succès!');
+        return redirect('/certificates');
     }
 
     /**
@@ -81,7 +81,7 @@ class CertificateController extends Controller
             'user_id' => 'nullable|exists:users,id',
         ]);
         $certificate->update($validatedData);
-        return redirect('/certificates')->with('success', 'Certificate mise à jour avec succès!');
+        return redirect('/certificates');
     }
 
 
@@ -95,6 +95,6 @@ class CertificateController extends Controller
     {
         $certificate->delete();
 
-        return redirect('/certificates')->with('success', 'Certificate supprimée avec succès!');
+        return redirect('/certificates');
     }
 }

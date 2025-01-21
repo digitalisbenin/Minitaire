@@ -80,7 +80,7 @@ class AnswersController extends Controller
         ]);
         $answers=Answers ::create($validatedData);
 
-        return redirect('/answers')->with('success', 'Réponse créée avec succès!');
+        return redirect('/answers');
     }
 
     /**
@@ -124,7 +124,7 @@ class AnswersController extends Controller
         ]);
         $answers= Answers::findOrfail($id);
         $answers->update($validatedData);
-        return redirect('/answers')->with('success', 'Réponse mise à jour avec succès!');
+        return redirect('/answers');
     }
 
     /**
@@ -138,6 +138,6 @@ class AnswersController extends Controller
         $answers = Answers::findOrfail($id);
         $answers->delete();
 
-        return redirect('/answers')->with('success', 'Réponse supprimée avec succès!');
+        return redirect('/answers');
     }
 }

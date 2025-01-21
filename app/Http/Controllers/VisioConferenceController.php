@@ -63,7 +63,7 @@ class VisioConferenceController extends Controller
         $conference->lien_meet = $request->lien_meet;
         $conference->user_id= Auth::id();
         $conference->save(); 
-        return redirect('/visio-conferences')->with('success', 'Réunions créée avec succès!');
+        return redirect('/visio-conferences');
     }
 
     /**
@@ -118,7 +118,7 @@ class VisioConferenceController extends Controller
         $conference->user_id= Auth::id();
         $conference->save();
 
-        return redirect('/visio-conferences')->with('success', 'Réunions mise à jour  avec succès!');
+        return redirect('/visio-conferences');
     }
 
     /**
@@ -132,6 +132,6 @@ class VisioConferenceController extends Controller
         $conference = VisioConference::findOrfail($id);
         $conference->delete();
         
-        return redirect('/visio-conferences')->with('success', 'Visio Conférence supprimée avec succès!');
+        return redirect('/visio-conferences');
     }
 }
