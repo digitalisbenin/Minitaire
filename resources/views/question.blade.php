@@ -171,11 +171,13 @@
 
 
 </div>
-<div class="text-center">
-<button type="submit" class="btn btn-success">Envoyer</button>
-</div>
+@if(auth()->check() && optional($notequiz)->status == "echouer")
+    <div class="text-center">
+        <button type="submit" class="btn btn-success">Envoyer</button>
+    </div>
+@endif
 
-
+{{--  <button type="submit" class="btn btn-success">Envoyer</button>  --}}
 </form>
     <div class="ms-auto d-flex">
     <!-- Section image et auteur -->
