@@ -80,7 +80,7 @@ class AnswersController extends Controller
         ]);
         $answers=Answers ::create($validatedData);
 
-        return redirect('/answers');
+        return back();
     }
 
     /**
@@ -89,9 +89,11 @@ class AnswersController extends Controller
      * @param  \App\Models\Answers  $answers
      * @return \Illuminate\Http\Response
      */
-    public function show(Answers $answers)
+    public function show($id)
     {
-        return view('', compact('answers'));
+        $answers = Answers::where('question_id',$id)->get();
+        $questionID=$id;
+        return view('admin.answers.show', compact('answers','questionID'));
     }
 
     /**
