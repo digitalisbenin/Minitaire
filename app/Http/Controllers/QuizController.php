@@ -99,6 +99,22 @@ class QuizController extends Controller
             $quizid =$id;
         return view('admin.quiz.show',compact('quiz','quizid'));
     }
+    public function shows($id)
+    {
+        // return view('', compact('quiz'));
+        $user = Auth::user(); // Récupère l'utilisateur connecté
+
+        // Vérifie le rôle de l'utilisateur
+        if ($user->role->name === 'Administrateurs') {
+            // L'utilisateur est un administrateur, récupère tous les chapitres
+            $quiz = Quiz::all();
+        } else {
+            // L'utilisateur est un formateur ou autre, récupère les chapitres liés à ses formations
+            $quiz = Quiz::where('chapitre_id', $id)->get();
+        }
+            $quizid =$id;
+        return view('admin.quiz.show',compact('quiz','quizid'));
+    }
 
     /**
      * Show the form for editing the specified resource.

@@ -179,6 +179,7 @@
     $filteredNotequiz = $notequiz->where('quiz_id', $quizID)->sortByDesc('created_at')->first();
 @endphp
 
+
 @if(auth()->check() && $filteredNotequiz && $filteredNotequiz->status == "echouer")
     <div class="text-center">
         <button type="submit" class="btn btn-success">Envoyer</button>

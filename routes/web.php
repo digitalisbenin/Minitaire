@@ -377,6 +377,7 @@ Route::get('quizs', [QuizController::class, 'index']);
 Route::get('create-quizs/{id}', [QuizController::class, 'create']);
 Route::get('create-quizzs/{id}', [QuizController::class, 'creates']);
 Route::get('quizs/{id}', [QuizController::class, 'show']);
+Route::get('quizse/{id}', [QuizController::class, 'shows']);
 Route::get('quizs/{id}/edit', [QuizController::class, 'edit']);
 Route::post('quizs', [QuizController::class, 'store']);
 Route::put('quizs/{id}/update', [QuizController::class, 'update']);
