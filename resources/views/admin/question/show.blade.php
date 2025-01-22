@@ -18,7 +18,12 @@
         <!-- Breadcrumb Right Start -->
         <div class="flex-align gap-8 flex-wrap">
             <div class="position-relative text-gray-500 flex-align gap-4 text-13">
-                <a href="{{url('/create-question/'.$quizID)}}" class="btn btn-main rounded-pill py-7 flex-align gap-4 fw-normal">
+                {{--  <a href="{{url('/create-question/'.$quizID)}}" class="btn btn-main rounded-pill py-7 flex-align gap-4 fw-normal">
+                    <span class="d-flex text-md"><i class="ph ph-plus"></i></span>
+                    Ajouter une question
+                </a>  --}}
+                <span class="text-inherit"> </span>
+                <a href="#" class="btn btn-main rounded-pill py-7 flex-align gap-4 fw-normal" data-bs-toggle="modal" data-bs-target="#myModal" >
                     <span class="d-flex text-md"><i class="ph ph-plus"></i></span>
                     Ajouter une question
                 </a>
@@ -45,7 +50,38 @@
         </div>
         <!-- Breadcrumb Right End -->
     </div>
-
+    
+    
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalLabel">Ajouter une question</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Formulaire -->
+                    <form action="{{ url('questions') }}" method="POST">
+                        @csrf
+                        <div class="mb-3">
+                            {{--  <label for="champ1" class="form-label"> Titre de la question</label>  --}}
+                            <input type="text" class="form-control" id="champ1" name="title" placeholder="Titre de la question" required>
+                        </div>
+                        <div class="mb-3">
+                           
+                            <input type="hidden"  value="{{$quizID}}"name="quiz_id"   class="form-control" id="champ2">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                            <button type="submit" class="btn btn-success">Envoyer</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
 
     <div class="card overflow-hidden">
         <div class="card-body p-0 overflow-x-auto">
@@ -94,6 +130,10 @@
                             <a href="{{url('questions/'.$value->id.'/destroy')}}" class="bg-danger-600 text-white py-2 px-14 rounded-pill hover-bg-danger-800 hover-text-white"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
                                 <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47M8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5"/>
                               </svg></a>
+                              <a href="{{url('create-answer/'. $value->id)}}" class="bg-warning text-white py-2 px-14 rounded-pill hover-bg-success-800 hover-text-white">
+                                <span class=" text-md"><i class="ph ph-plus"></i></span>
+                                 Réponse
+                            </a>
                         </td>
 
                     </tr>

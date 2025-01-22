@@ -38,11 +38,12 @@
         </div>
         <div class="single-head">
             <div class="row">
-               @foreach($formation as $value)
+              
+               @foreach($formation->sortByDesc('created_at') as $value)
                <div class="col-lg-4 col-md-6 col-12">
                 <!-- Start Single Course -->
-                <div class="single-course wow fadeInUp" data-wow-delay=".2s">
-                    <div class="course-image">
+                <div class="single-course wow fadeInUp" data-wow-delay=".2s" >
+                    <div class="course-image" style="height: 300px">
                         <a href="{{url('details-cours/'.$value->id)}}"><img src="{{ asset('assets/uploads/formation_images/'.$value->image_url) }}"
                                 alt="#">
                             </a>
@@ -55,8 +56,10 @@
                         <h5> {{$value->titre}}</h5>
                         <br>
                         <a href="{{url('details-cours/'.$value->id)}}"></a>
-                        <p>{{$value->description}}</p>
-                            <br>
+                        <div class="" >
+                        <p >{{ \Illuminate\Support\Str::words($value->description, 10, '...') }}</p>
+                           
+                        </div>
                         <div>
                             <button class="btn btn-success ajouter-formation" data-id="{{ $value->id }}">Ajouter</button>
                         </div>

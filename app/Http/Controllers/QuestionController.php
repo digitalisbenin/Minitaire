@@ -76,7 +76,7 @@ class QuestionController extends Controller
         ]);
         $question=Question ::create($validatedData);
 
-        return redirect('/questions');
+        return back();
     }
 
     /**
