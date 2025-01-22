@@ -58,7 +58,7 @@
                         <a href="{{url('details-cours/'.$value->id)}}"></a>
                         <div class="" >
                         <p >{{ \Illuminate\Support\Str::words($value->description, 10, '...') }}</p>
-                           
+                        </br>
                         </div>
                         <div>
                             <button class="btn btn-success ajouter-formation" data-id="{{ $value->id }}">Ajouter</button>

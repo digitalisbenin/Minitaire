@@ -85,7 +85,7 @@ class UserResultController extends Controller
   }
  $total= $totalQuestions > 0 ? round(($correctAnswers / $totalQuestions) * 100, 2) : 0;
 
- if ($total == 100) {
+ if ($total >= 60) {
     Notequiz::create([
         'quiz_id'=>$request->quiz_id,
         'note' => $total,

@@ -1108,6 +1108,32 @@
 
 @endsection
 
+@section('scripts')
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('.ajouter-formation').on('click', function() {
+            var formationId = $(this).data('id'); // Récupérer l'ID de la formation
+
+
+            $.ajax({
+                url: '/mes-cours',  // URL de la route Laravel pour ajouter la formation
+                type: 'POST',
+                data: {
+                    _token: '{{ csrf_token() }}',  // CSRF token pour la sécurité
+                    formation_id: formationId     // ID de la formation à envoyer au serveur
+                },
+                success: function(response) {
+                    swal("",response.status,"success")
+                },
+                error: function(xhr, status, error) {
+                    swal("","Erreur lors de l'enregistrement de ce cours.","error")
+                }
+            });
+        });
+    });
+</script>
 {{--  <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>

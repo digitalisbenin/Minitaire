@@ -175,18 +175,23 @@
 
 </div>
 
-{{-- @php
-    $filteredNotequiz = $notequiz->where('quiz_id', $quizID)->first(); // Récupère le dernier enregistrement du quiz
+
+@if (auth()->check())
+@php
+    // Filtrer les Notequiz pour l'utilisateur connecté et le quiz actuellement affiché
+    $filteredNotequiz = $notequiz->where('quiz_id', $value->id);
+
+    // Vérifier si un des statuts est égal à "valider"
+    $hasValidatedStatus = $filteredNotequiz->contains('status', 'valider');
 @endphp
 
-
-@if(auth()->check() && $filteredNotequiz && $filteredNotequiz->status == "echouer")
-
-@if(auth()->check() && $filteredNotequiz && $filteredNotequiz->status == "echouer") --}}
+@if (!$hasValidatedStatus)
     <div class="text-center">
         <button type="submit" class="btn btn-success">Envoyer</button>
     </div>
-{{-- @endif --}}
+@endif
+@endif
+
 
 
 {{--  <button type="submit" class="btn btn-success">Envoyer</button>  --}}
