@@ -113,7 +113,7 @@ class QuizController extends Controller
             $quiz = Quiz::where('chapitre_id', $id)->get();
         }
             $quizid =$id;
-        return view('admin.quiz.show',compact('quiz','quizid'));
+        return view('admin.quiz.shows',compact('quiz','quizid'));
     }
 
     /**
