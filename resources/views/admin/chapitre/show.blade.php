@@ -23,10 +23,10 @@
                     Ajouter un chapitre
                 </a>
 
-                <a href="{{url('/create-quizs/'.$formation)}}" class="btn btn-success rounded-pill py-7 flex-align gap-4 fw-normal">
+                {{-- <a href="{{url('/create-quizs/'.$formation)}}" class="btn btn-success rounded-pill py-7 flex-align gap-4 fw-normal">
                     <span class="d-flex text-md"><i class="ph ph-plus"></i></span>
                     Ajouter un quiz formation
-                </a>
+                </a> --}}
                 
                 <span class="text-inherit"> </span>
                 {{--  <div class="flex-align text-gray-500 text-13 border border-gray-100 rounded-4 ps-20 focus-border-main-600 bg-white">
@@ -139,10 +139,10 @@
                             <span class=" text-md"><i class="ph ph-plus"></i></span>
                              question
                         </a>
-                          <a href="{{url('create-answers/'.$formation)}}" class="bg-warning text-white py-2 px-14 rounded-pill hover-bg-success-800 hover-text-white">
+                          {{-- <a href="{{url('create-answers/'.$formation)}}" class="bg-warning text-white py-2 px-14 rounded-pill hover-bg-success-800 hover-text-white">
                             <span class=" text-md"><i class="ph ph-plus"></i></span>
                              Réponse
-                        </a>
+                        </a> --}}
                         
                         </td>
 
