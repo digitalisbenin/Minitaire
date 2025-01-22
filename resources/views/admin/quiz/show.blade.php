@@ -132,10 +132,10 @@
                             <span class=" text-md"><i class="ph ph-plus"></i></span>
                              question
                         </a>
-                          <a href="{{url('create-answer/'. $value->id)}}" class="bg-warning text-white py-2 px-14 rounded-pill hover-bg-success-800 hover-text-white">
+                          {{-- <a href="{{url('create-answer/'. $value->id)}}" class="bg-warning text-white py-2 px-14 rounded-pill hover-bg-success-800 hover-text-white">
                             <span class=" text-md"><i class="ph ph-plus"></i></span>
                              Réponse
-                        </a>
+                        </a> --}}
                         </td>
 
                     </tr>

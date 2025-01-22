@@ -156,7 +156,7 @@
                <div class="col-lg-4 col-md-6 col-12">
                 <!-- Start Single Course -->
                 <div class="single-course wow fadeInUp" data-wow-delay=".2s">
-                    <div class="course-image">
+                    <div class="course-image" style="height: 300px">
                         <a href="{{url('/details-cours/'.$value->id)}}"><img src="{{ asset('assets/uploads/formation_images/'.$value->image_url) }}"
                                 alt="#"></a>
                         <p class="price">{{$value->difficulete->name}}</p>
@@ -183,7 +183,7 @@
                             <li><i class="lni lni-star-filled"></i></li>
                             <li><i class="lni lni-star-filled"></i></li>
                             <li><i class="lni lni-star-filled"></i></li>  --}}
-
+                            <button class="btn btn-success ajouter-formation" data-id="{{ $value->id }}">Ajouter</button>
                         </ul>
                         <span class="tag">
                             <i class="lni lni-tag"></i>

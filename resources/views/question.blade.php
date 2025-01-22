@@ -175,15 +175,15 @@
 
 </div>
 
-@php
+{{-- @php
     $filteredNotequiz = $notequiz->where('quiz_id', $quizID)->first(); // Récupère le dernier enregistrement du quiz
 @endphp
 
-@if(auth()->check() && $filteredNotequiz && $filteredNotequiz->status == "echouer")
+@if(auth()->check() && $filteredNotequiz && $filteredNotequiz->status == "echouer") --}}
     <div class="text-center">
         <button type="submit" class="btn btn-success">Envoyer</button>
     </div>
-@endif
+{{-- @endif --}}
 
 
 {{--  <button type="submit" class="btn btn-success">Envoyer</button>  --}}
