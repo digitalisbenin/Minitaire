@@ -54,7 +54,7 @@
  
 
 <!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+{{-- <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -90,7 +90,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 
 
     <div class="card overflow-hidden">
@@ -134,11 +134,18 @@
               --}}
 
               <div class="container">
+                <div class="card-header border-bottom border-gray-100 flex-align gap-8">
+                    <h5 class="mb-0">Nouvelle Réponse</h5>
+                    <button type="button" class="text-main-600 text-md d-flex" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Nouveau chapitre">
+                        <i class="ph-fill ph-question"></i>
+                    </button>
+                </div>
+                <div class="col-md-12 py-44">
                 <form action="{{ url('answers') }}" method="POST">
                     @csrf
                     <div class="row d-flex align-items-center">
                         <!-- Champ réponse (4 colonnes) -->
-                        <div class="col-md-4">
+                        <div class="col-md-8">
                             <input type="text" class="form-control" name="title" placeholder="Réponse" required>
                         </div>
             
@@ -146,15 +153,8 @@
                         <input type="hidden" value="{{ $questionID }}" name="question_id">
             
                         <!-- Boutons radio (4 colonnes) -->
-                        <div class="col-md-3 ">
-                            {{--  <div class="  form-check d-flex align-items-center me-3">
-                                <label class="form-check-label me-1" for="vrai">Vrai</label>
-                                <input class="form-check-input" type="radio" name="is_correct" id="vrai" value="1" required>
-                            </div>
-                            <div class="form-check d-flex align-items-center">
-                                <label class="form-check-label me-1" for="faux">Faux</label>
-                                <input class="form-check-input" type="radio" name="is_correct" id="faux" value="0" required>
-                            </div>  --}}
+                        <div class="col-md-2 flex">
+                            
 
                             <div class="form-check form-check-inline ">
                                 <input class="form-check-input" type="radio" name="is_correct" id="vrai" value="1" checked>
@@ -174,10 +174,13 @@
             
                         <!-- Bouton d'envoi (2 colonnes) -->
                         <div class="col-md-2">
-                            <button type="submit" class="btn btn-success w-100">Ajouter une reponse</button>
+                            <button type="submit" class="btn btn-success w-100" style="white-space: nowrap;">
+                                Ajouter une réponse
+                            </button>
                         </div>
                     </div>
                 </form>
+            </div>
             </div>
             
 

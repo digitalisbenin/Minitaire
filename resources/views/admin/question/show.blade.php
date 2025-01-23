@@ -85,27 +85,37 @@
 
     <div class="card overflow-hidden">
         <div class="card-body p-0 overflow-x-auto">
-            <div class="container">
+            <div class="container ">
                 <div class="row">
-                    <div class="col-md-6 offset-md-6">
-                        <form action="{{ url('questions') }}" method="POST" class="d-flex align-items-center gap-2 mt-6">
+                    <div class="card-header border-bottom border-gray-100 flex-align gap-8">
+                        <h5 class="mb-0">Nouvelle Question</h5>
+                        <button type="button" class="text-main-600 text-md d-flex" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Nouveau chapitre">
+                            <i class="ph-fill ph-question"></i>
+                        </button>
+                    </div>
+                    <div class="col-md-12 py-44">
+                        <form action="{{ url('questions') }}" method="POST" class="d-flex align-items-center mt-4">
                             @csrf
                             <!-- Champ titre -->
-                            <input type="text" class="form-control me-8" name="title" placeholder="Titre de la question" required>
-            
+                            <input type="text" class="form-control me-4" name="title" placeholder="Titre de la question" required>
+                    
                             <!-- Champ caché pour quiz_id -->
                             <input type="hidden" value="{{ $quizID }}" name="quiz_id">
-            
+                    
                             <!-- Bouton d'envoi -->
-                            <button type="submit" class="btn btn-main rounded-pill py-7 flex-align gap-4 fw-normal">Ajouter une question</button>
+                            <button type="submit" class="btn btn-main rounded-lg py-9 px-4 fw-normal" style="white-space: nowrap;">
+                                Ajouter une question
+                            </button>
                         </form>
                     </div>
+                    
                 </div>
+            
             </div>
             
-            
+            <hr>
            
-            <table id="studentTable" class="table table-striped">
+            <table id="studentTable" class="table table-striped ">
                 <thead>
                     <tr class="">
                         <th class="fixed-width">
