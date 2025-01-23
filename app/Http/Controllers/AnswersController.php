@@ -140,6 +140,6 @@ class AnswersController extends Controller
         $answers = Answers::findOrfail($id);
         $answers->delete();
 
-        return redirect('/answers');
+        return back();
     }
 }

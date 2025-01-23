@@ -23,10 +23,10 @@
                     Ajouter une question
                 </a>  --}}
                 <span class="text-inherit"> </span>
-                <a href="#" class="btn btn-main rounded-pill py-7 flex-align gap-4 fw-normal" data-bs-toggle="modal" data-bs-target="#myModal" >
+                {{--  <a href="#" class="btn btn-main rounded-pill py-7 flex-align gap-4 fw-normal" data-bs-toggle="modal" data-bs-target="#myModal" >
                     <span class="d-flex text-md"><i class="ph ph-plus"></i></span>
                     Ajouter une question
-                </a>
+                </a>  --}}
                 <span class="text-inherit"> </span>
                 {{--  <div class="flex-align text-gray-500 text-13 border border-gray-100 rounded-4 ps-20 focus-border-main-600 bg-white">
 
@@ -85,6 +85,26 @@
 
     <div class="card overflow-hidden">
         <div class="card-body p-0 overflow-x-auto">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 offset-md-6">
+                        <form action="{{ url('questions') }}" method="POST" class="d-flex align-items-center gap-2 mt-6">
+                            @csrf
+                            <!-- Champ titre -->
+                            <input type="text" class="form-control me-8" name="title" placeholder="Titre de la question" required>
+            
+                            <!-- Champ caché pour quiz_id -->
+                            <input type="hidden" value="{{ $quizID }}" name="quiz_id">
+            
+                            <!-- Bouton d'envoi -->
+                            <button type="submit" class="btn btn-main rounded-pill py-7 flex-align gap-4 fw-normal">Ajouter une question</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            
+           
             <table id="studentTable" class="table table-striped">
                 <thead>
                     <tr class="">

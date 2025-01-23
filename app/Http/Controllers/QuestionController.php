@@ -135,6 +135,6 @@ class QuestionController extends Controller
         $question = Question::findOrfail($id);
         $question->delete();
 
-        return redirect('/questions');
+        return back();
     }
 }
