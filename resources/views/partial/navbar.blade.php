@@ -161,7 +161,9 @@ $difficulte = Difficulete::all();
                                 <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
                                 <circle cx="12" cy="7" r="4"></circle>
                             </svg>
+                           @auth 
                             {{ Auth::user()->name }} {{ Auth::user()->prenom }}
+                           @endauth
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                           {{--  <li><a class="dropdown-item" href="#">{{ Auth::user()->name }} {{ Auth::user()->prenom }}</a></li>  --}}

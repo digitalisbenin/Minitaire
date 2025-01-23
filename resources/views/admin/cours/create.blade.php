@@ -45,7 +45,7 @@
                         </div>
                         
                         <div class="">
-                            <input type="file" name="image_url" id="">
+                            <input type="file" class=" placeholder-13 form-control py-11 pe-76" name="image_url" id="">
                         </div>
                        
                     </div>
@@ -74,7 +74,7 @@
                                     </select>                                            
                                 </div>
                             </div>
-                            <div class="col-sm-3">
+                            <div class="col-sm-6">
                                 <label for="courseLesson" class="h5 mb-8 fw-semibold font-heading">Statut <span class="text-13 text-gray-400 fw-medium">(Requis)</span></label>
                                 <div class="position-relative">
                                     <select id="courseLesson" name="status" class="form-select py-9 placeholder-13 text-15">
@@ -85,7 +85,7 @@
                                     </select>                                            
                                 </div>
                             </div>
-                            <div class="col-sm-3">
+                            <div class="col-sm-6">
                                 <label for="courseLevel" class="h5 mb-8 fw-semibold font-heading">Difficultés <span class="text-13 text-gray-400 fw-medium">(Requis)</span></label>
                                 <div class="position-relative">
                                     <select id="courseLevel" name="difficulte_id" class="form-select py-9 placeholder-13 text-15">
