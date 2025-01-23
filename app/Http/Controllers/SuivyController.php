@@ -59,7 +59,8 @@ class SuivyController extends Controller
 
             if ($suivy_check) {
                 if (Suivy::where('chapitre_id', $chapitres_id)->where('user_id', Auth::id())->exists()) {
-                    return response()->json(['status'=> $suivy_check->titre . " déjà ajouté à ma progression"],200);
+                    // return response()->json(['status'=> $suivy_check->titre . " déjà ajouté à ma progression"],200);
+                    return response();
                 } else {
                     $suivy= new Suivy();
                     $suivy->chapitre_id = $chapitres_id;
@@ -68,13 +69,15 @@ class SuivyController extends Controller
         
                     $suivy->save();
 
-                    return response()->json(['status'=> $suivy_check->titre . "ajouter avec success "] ,201);
+                    // return response()->json(['status'=> $suivy_check->titre . "ajouter avec success "] ,201);
+                    return response();
                 }
             }  
 
 
         } else {
-            return response()->json(['status'=>"Connectez-vous pour ajouter votre progression"]);
+            // return response()->json(['status'=>"Connectez-vous pour ajouter votre progression"]);
+            return response();
 
         }
     }

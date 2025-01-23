@@ -103,7 +103,7 @@
                             <input type="hidden" value="{{ $quizID }}" name="quiz_id">
                     
                             <!-- Bouton d'envoi -->
-                            <button type="submit" class="btn btn-main rounded-lg py-9 px-4 fw-normal" style="white-space: nowrap;">
+                            <button type="submit" class="btn btn-main rounded-lg py-15 px-4 fw-normal" style="white-space: nowrap;">
                                 Ajouter une question
                             </button>
                         </form>

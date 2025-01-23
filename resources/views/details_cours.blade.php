@@ -43,7 +43,7 @@
                     @foreach($chapitre as $index => $chapter)
 
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link {{ $index == 0 ? 'active' : '' }}"
+                            <button class=" {{ $index == 0 ? 'active' : '' }}"
                             id="chapter-{{ $chapter->id }}-tab"
                             data-bs-toggle="tab"
                             data-bs-target="#chapter-{{ $chapter->id }}"
@@ -186,7 +186,7 @@
                             @endforeach
                             {{--  <a href="{{url('question/'.$chapter->id)}}" class="btn btn-primary text-center me-2 ml-3 mb-4">Faire un Quiz</a>  --}}
                             <div class="d-flex justify-content-center">
-                                <a href="{{ url('question/'.$chapter->id) }}" class="btn btn-primary me-2 ml-3 mb-4">Aller au Quiz du chapitre</a>
+                                <a href="{{ url('question/'.$chapter->id) }} " class="btn btn-primary me-2 ml-3 mb-4  nav-link" id="chapter-{{ $chapter->id }}-tab" data-id="{{ $chapter->id }}">Aller au Quiz du chapitre</a>
                             </div>
 
                         </div>
@@ -315,7 +315,7 @@
                 error: function(xhr, status, error) {
                     // Gestion des erreurs
                    // alert('Erreur lors de l\'enregistrement de la progression.');
-                    swal("","Erreur lors de l'enregistrement de la progression.","error")
+                    // swal("","Erreur lors de l'enregistrement de la progression.","error")
                 }
             });
         });
