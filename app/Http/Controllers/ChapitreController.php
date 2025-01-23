@@ -221,6 +221,6 @@ class ChapitreController extends Controller
         $chapitr->delete();
         // session()->flash('success', 'Suppression du chapitre réussie !');
 
-        return redirect('/chapitres');
+        return back();
     }
 }
