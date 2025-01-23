@@ -71,7 +71,7 @@ class QuizController extends Controller
         ]);
         $quiz=Quiz ::create($validatedData);
 
-        return redirect('/formations');
+        return back();
         // ->with('success', 'Quiz créée avec succès!');
     }
 
@@ -96,8 +96,9 @@ class QuizController extends Controller
                 $query->where('user_id', $user->id);
             })->where('formation_id', $id)->get();
         }
+        $formation=Formation::where('id', $id)->get();
             $quizid =$id;
-        return view('admin.quiz.show',compact('quiz','quizid'));
+        return view('admin.quiz.show',compact('quiz','quizid', 'formation'));
     }
     public function shows($id)
     {
@@ -112,8 +113,10 @@ class QuizController extends Controller
             // L'utilisateur est un formateur ou autre, récupère les chapitres liés à ses formations
             $quiz = Quiz::where('chapitre_id', $id)->get();
         }
+        $chapitre=Chapitre::where('id', $id)->get();
+
             $quizid =$id;
-        return view('admin.quiz.shows',compact('quiz','quizid'));
+        return view('admin.quiz.shows',compact('quiz','quizid','chapitre'));
     }
 
     /**
@@ -163,6 +166,6 @@ class QuizController extends Controller
         $quiz = Quiz::findOrfail($id);
         $quiz->delete();
 
-        return redirect('/quizs');
+        return back();
     }
 }

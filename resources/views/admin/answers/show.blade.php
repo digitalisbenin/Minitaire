@@ -22,10 +22,10 @@
                     <span class="d-flex text-md"><i class="ph ph-plus"></i></span>
                     Ajouter une Réponse
                 </a>  --}}
-                <a href="#" class="btn btn-main rounded-pill py-7 flex-align gap-4 fw-normal" data-bs-toggle="modal" data-bs-target="#myModal" >
+                {{--  <a href="#" class="btn btn-main rounded-pill py-7 flex-align gap-4 fw-normal" data-bs-toggle="modal" data-bs-target="#myModal" >
                     <span class="d-flex text-md"><i class="ph ph-plus"></i></span>
                     Ajouter une Réponse
-                </a>
+                </a>  --}}
                 <span class="text-inherit"> </span>
                 {{--  <div class="flex-align text-gray-500 text-13 border border-gray-100 rounded-4 ps-20 focus-border-main-600 bg-white">
 
@@ -95,6 +95,93 @@
 
     <div class="card overflow-hidden">
         <div class="card-body p-0 overflow-x-auto">
+
+            {{--  <div class="container">
+                <div class=" ">
+                    <div class="">
+                        <form action="{{ url('answers') }}" method="POST">
+                            @csrf
+                            <div class="">
+                                <!-- Champ réponse (4 colonnes) -->
+                                <div class="col-md-4">
+                                    <input type="text" class="form-control" name="title" placeholder="Réponse" required>
+                                </div>
+            
+                                <!-- Champ caché pour question_id -->
+                                <input type="hidden" value="{{ $questionID }}" name="question_id">
+            
+                                <!-- Boutons radio (2 colonnes) -->
+                                <div class="col-md-4">
+                                    <div class="form-check me-2">
+                                        <input class="form-check-input" type="radio" name="is_correct" id="vrai" value="1" required>
+                                        <label class="form-check-label" for="vrai">Vrai</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="is_correct" id="faux" value="0" required>
+                                        <label class="form-check-label" for="faux">Faux</label>
+                                    </div>
+                                </div>
+            
+                                <!-- Bouton d'envoi (2 colonnes) -->
+                                <div class="col-md-2">
+                                    <button type="submit" class="btn btn-success w-100">Ajouter</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+              --}}
+
+              <div class="container">
+                <form action="{{ url('answers') }}" method="POST">
+                    @csrf
+                    <div class="row d-flex align-items-center">
+                        <!-- Champ réponse (4 colonnes) -->
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" name="title" placeholder="Réponse" required>
+                        </div>
+            
+                        <!-- Champ caché pour question_id -->
+                        <input type="hidden" value="{{ $questionID }}" name="question_id">
+            
+                        <!-- Boutons radio (4 colonnes) -->
+                        <div class="col-md-3 ">
+                            {{--  <div class="  form-check d-flex align-items-center me-3">
+                                <label class="form-check-label me-1" for="vrai">Vrai</label>
+                                <input class="form-check-input" type="radio" name="is_correct" id="vrai" value="1" required>
+                            </div>
+                            <div class="form-check d-flex align-items-center">
+                                <label class="form-check-label me-1" for="faux">Faux</label>
+                                <input class="form-check-input" type="radio" name="is_correct" id="faux" value="0" required>
+                            </div>  --}}
+
+                            <div class="form-check form-check-inline ">
+                                <input class="form-check-input" type="radio" name="is_correct" id="vrai" value="1" checked>
+                                <label class="form-check-label" for="exampleRadios1">
+                                  Vrai
+                                </label>
+                              </div>
+                              <div class="form-check form-check-inline  ">
+                                <input class="form-check-input" type="radio" name="is_correct" id="faux" value="0"checked>
+                                <label class="form-check-label" for="exampleRadios2">
+                                  Faux
+                                </label>
+                              </div>
+                        </div>
+
+                        
+            
+                        <!-- Bouton d'envoi (2 colonnes) -->
+                        <div class="col-md-2">
+                            <button type="submit" class="btn btn-success w-100">Ajouter une reponse</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            
+
+            <hr>
             <table id="studentTable" class="table table-striped">
                 <thead>
                     <tr class="">
