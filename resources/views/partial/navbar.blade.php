@@ -166,8 +166,8 @@ $difficulte = Difficulete::all();
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                           {{--  <li><a class="dropdown-item" href="#">{{ Auth::user()->name }} {{ Auth::user()->prenom }}</a></li>  --}}
                           <li><a class="dropdown-item" href="#">Profil</a></li>
-                          <li><a class="dropdown-item" href="{{url('mes-cours')}}"> Mes Cours</a></li>
-                          <li><a class="dropdown-item" href="{{url('user-resultes')}}"> Mes resultats</a></li>
+                          <li><a class="dropdown-item" href="{{url('mes-cours#cours')}}"> Mes Cours</a></li>
+                          <li><a class="dropdown-item" href="{{url('user-resultes#resultats')}}"> Mes resultats</a></li>
                           {{--  @if (Auth::user()->role_id == '1' )
                           <li><a class="dropdown-item" href="{{url('dashboard')}}">Tableau de bord</a></li>
                            @endif
@@ -182,7 +182,7 @@ $difficulte = Difficulete::all();
     @endif
 @endauth
 
-                          <li><a class="dropdown-item" href="{{url('mes-reunions')}}">Mes reunions</a></li>
+                          <li><a class="dropdown-item" href="{{url('mes-reunions#reunions')}}">Mes reunions</a></li>
                           <li><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Déconnexion</a></li>
                           <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                               @csrf

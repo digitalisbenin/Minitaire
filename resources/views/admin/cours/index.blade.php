@@ -50,19 +50,25 @@
                                     </a>
                                     <div class="p-8">
                                         <span class="text-13 py-2 px-10 rounded-pill bg-success-50 text-success-600 mb-16">{{$value->titre}}</span>
-                                        <h5 class="mb-0 h-80"><a href="" class="hover-text-main-600">
-                                            {{ \Illuminate\Support\Str::words($value->description, 10, '...') }}
-                                        </a></h5>
-                                        
+                                        <p style="
+                        display: -webkit-box;
+                        -webkit-line-clamp: 3;
+                        -webkit-box-orient: vertical;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                    ">
+                        {{$value->description}}
+                    </p>
+                                        <br>
                                         <span class="text-16  text-gray-600"> catégorie: {{$value->category->name}} </span>
 
-                                        <div class="flex-align gap-8 mt-12">
+                                        {{-- <div class="flex-align gap-8 mt-12">
                                             <span class="text-main-600 flex-shrink-0 text-13 fw-medium">32%</span>
                                             <div class="progress w-100  bg-main-100 rounded-pill h-8" role="progressbar" aria-label="Basic example" aria-valuenow="32" aria-valuemin="0" aria-valuemax="100">
                                                 <div class="progress-bar bg-main-600 rounded-pill" style="width: 32%"></div>
                                             </div>
-                                        </div>
-                                        <span class="text-16  text-gray-600"> Difficulté: {{$value->difficulete->name}} </span>
+                                        </div> --}}
+                                        <span class="text-16  text-gray-600 mt-3"> Difficulté: {{$value->difficulete->name}} </span>
                                         {{--  <div class="flex-align gap-8 flex-wrap mt-16">
                                             <img src="admin/assets/images/thumbs/user-img1.png" class="w-32 h-32 rounded-circle object-fit-cover" alt="User Image">
                                             <div>

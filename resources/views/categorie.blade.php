@@ -39,10 +39,10 @@
         <div class="single-head">
             <div class="row">
                @foreach($formation as $value)
-               <div class="col-lg-4 col-md-6 col-12">
+               <div class="col-lg-3 col-md-6 col-12">
                 <!-- Start Single Course -->
                 <div class="single-course wow fadeInUp" data-wow-delay=".2s">
-                    <div class="course-image">
+                    <div class="course-image" style="height: 200px">
                         <a href="{{url('details-cours/'.$value->id)}}"><img src="{{ asset('assets/uploads/formation_images/'.$value->image_url) }}"
                                 alt="#">
                             </a>
@@ -55,7 +55,15 @@
                         <h5> {{$value->titre}}</h5>
                         <br>
                         <a href="{{url('details-cours/'.$value->id)}}"></a>
-                        <p>{{$value->description}}</p>
+                        <p style="
+                        display: -webkit-box;
+                        -webkit-line-clamp: 3;
+                        -webkit-box-orient: vertical;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                    ">
+                        {{$value->description}}
+                    </p>
                             <br>
                         <div>
                             <button class="btn btn-success ajouter-formation" data-id="{{ $value->id }}">Ajouter</button>

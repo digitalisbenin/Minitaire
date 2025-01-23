@@ -153,10 +153,10 @@
         <div class="single-head">
             <div class="row">
                @foreach( $formation as $value)
-               <div class="col-lg-4 col-md-6 col-12">
+               <div class="col-lg-3 col-md-6 col-12">
                 <!-- Start Single Course -->
                 <div class="single-course wow fadeInUp" data-wow-delay=".2s">
-                    <div class="course-image" style="height: 300px">
+                    <div class="course-image" style="height: 200px">
                         <a href="{{url('/details-cours/'.$value->id)}}"><img src="{{ asset('assets/uploads/formation_images/'.$value->image_url) }}"
                                 alt="#"></a>
                         <p class="price">{{$value->difficulete->name}}</p>
@@ -964,10 +964,10 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-4 col-md-6 col-12">
+            <div class="col-lg-3 col-md-6 col-12">
                 <!-- Single News -->
                 <div class="single-news custom-shadow-hover wow fadeInUp" data-wow-delay=".2s">
-                    <div class="image">
+                    <div class="image" style="height: 200px">
                         <a href="#"><img class="thumb"
                                 src="assets/images/blog/blog-grid1.jpg" alt="#"></a>
                     </div>
@@ -986,9 +986,7 @@
                         </div>
                         <h4 class="title"><a href="#">Gestion administrative
                                 </a></h4>
-                        <p>La gestion administrative est un ensemble de processus et d'activités visant à organiser,
-                             coordonner et superviser les opérations d'une organisation. Elle joue un rôle crucial
-                             dans le bon fonctionnement de toute organisation.</p>
+                        <p>La gestion administrative est un ensemble de processus et d'activités visant à organiser...</p>
                         <div class="button">
                             <a href="#" class="btn">Voir plus</a>
                         </div>
@@ -996,10 +994,10 @@
                 </div>
                 <!-- End Single News -->
             </div>
-            <div class="col-lg-4 col-md-6 col-12">
+            <div class="col-lg-3 col-md-6 col-12">
                 <!-- Single News -->
                 <div class="single-news custom-shadow-hover wow fadeInUp" data-wow-delay=".4s">
-                    <div class="image">
+                    <div class="image" style="height: 200px">
                         <a href="#"><img class="thumb"
                                 src="assets/images/blog/blog-grid2.jpg" alt="#"></a>
                     </div>
@@ -1019,8 +1017,7 @@
                         <h4 class="title"><a href="#">Logistique
                                 </a></h4>
                         <p>La logistique est le processus de planification, de mise en œuvre et de
-                            contrôle du flux et du stockage efficaces des biens, des services et des
-                             informations depuis le point d'origine jusqu'au point de consommation.</p>
+                            contrôle du flux et du ...</p>
                         <div class="button">
                             <a href="#" class="btn">Voir plus</a>
                         </div>
@@ -1028,10 +1025,10 @@
                 </div>
                 <!-- End Single News -->
             </div>
-            <div class="col-lg-4 col-md-6 col-12">
+            <div class="col-lg-3 col-md-6 col-12">
                 <!-- Single News -->
                 <div class="single-news custom-shadow-hover wow fadeInUp" data-wow-delay=".6s">
-                    <div class="image">
+                    <div class="image" style="height: 200px">
                         <a href="#"><img class="thumb"
                                 src="assets/images/blog/blog-grid3.jpg" alt="#"></a>
                     </div>
@@ -1051,9 +1048,7 @@
                         <h4 class="title"><a href="#">Renseignement
                                 </a></h4>
                         <p>Le renseignement fait référence à la collecte,
-                            l'analyse et l'utilisation d'informations pour soutenir la prise de décision,
-                             principalement dans les contextes de sécurité nationale, de défense, et
-                              parfois dans le secteur privé.</p>
+                            l'analyse et l'utilisation d'informations pour soutenir la ...</p>
                         <div class="button">
                             <a href="#" class="btn">Voir plus</a>
                         </div>

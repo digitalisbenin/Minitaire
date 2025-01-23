@@ -5,7 +5,7 @@
 @include ('partial.navbar')
 
 <!-- Start Breadcrumbs -->
-<div class="breadcrumbs overlay">
+<div class="breadcrumbs overlay" >
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-8 offset-lg-2 col-md-12 col-12">
@@ -25,8 +25,8 @@
 
 
 <!-- Teacher Details -->
-<div class="teacher-details-area section">
-    <div class="container">
+<div class="teacher-details-area section" >
+    <div class="container" id="resultats">
           <div class="row">
             <div class="col-12">
                 <div class="section-title align-center gray-bg">

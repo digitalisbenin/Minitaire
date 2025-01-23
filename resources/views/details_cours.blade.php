@@ -27,14 +27,17 @@
     <div class="container">
         <div class="row">
             <!-- Course Details Wrapper Start -->
-
+            @if($chapitre->isNotEmpty()) {{-- Vérifie si la liste des chapitres n'est pas vide --}}
+            <h3 class="title text-center mb-5"> {{ $chapitre->first()->formation->titre }}</h3>
+        @endif
             <div class="col-lg-12 col-12">
                 @if(!$quiz->isEmpty())
                 <a href="{{url('quiz/'.$formationId)}}" class="btn btn-primary float-end me-2 ml-3 mb-4">Faire un Quiz</a>
                 @endif
 
                 
-
+              
+            
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
 
                     @foreach($chapitre as $index => $chapter)
@@ -69,12 +72,12 @@
                 <div class="tab-content" id="myTabContent">
             @foreach($chapitre as $index => $chapter)
 
-
+            
 
                         <div class="tab-pane fade {{ $index == 0 ? 'show active' : '' }}" id="chapter-{{ $chapter->id }}" role="tabpanel"
                             aria-labelledby="chapter-{{ $chapter->id }}-tab">
                             <div class="course-content">
-                                <h3 class="title">Titre de la formation: {{ $chapter->formation->titre }}</h3>
+                                
                                 <br>
 
                                 <div class="course-overview">
@@ -90,7 +93,7 @@
                                     </p>
                                    
 
-                                    <p><a target="bank" href="/assets/uploads/chapitre_documents/{{$chapter->document_url}}">lien du document</a>
+                                    <p class="text-2xl"><a target="bank" href="/assets/uploads/chapitre_documents/{{$chapter->document_url}}">Télécharger le cours</a>
                                     </p>
 
                                   <div class="col-4">

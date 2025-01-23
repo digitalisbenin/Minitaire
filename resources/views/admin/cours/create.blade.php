@@ -61,13 +61,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-6">
-                                <label for="courseTitle" class="h5 mb-8 fw-semibold font-heading">Description <span class="text-13 text-gray-400 fw-medium"></span> </label>
-                                <div class="position-relative">
-                                    <textarea type="text" class="text-counte placeholder-13 form-control py-11 pe-76" name="description" maxlength="300" id="course" placeholder=""  style="height: 100px;"></textarea>
-                                    
-                                </div>
-                            </div>
+                            
                             <div class="col-sm-6">
                                 <label for="courseCategory" class="h5 mb-8 fw-semibold font-heading">Catégorie <span class="text-13 text-gray-400 fw-medium">(Requis)</span></label>
                                 <div class="position-relative">
@@ -103,6 +97,13 @@
                                 </div>
                             </div>
                            
+                        </div>
+                        <div class="col-sm-12 mt-3">
+                            <label for="courseTitle" class="h5 mb-8 fw-semibold font-heading mt-3">Description <span class="text-13 text-gray-400 fw-medium"></span> </label>
+                            <div class="position-relative">
+                                <textarea type="text" class="text-counte placeholder-13 form-control py-11 pe-76" name="description" maxlength="300" id="course" placeholder=""  style="height: 100px;"></textarea>
+                                
+                            </div>
                         </div>
                     </div>
                     <div class="flex-align justify-content-end gap-8">
