@@ -103,7 +103,7 @@ class UserResultController extends Controller
     ]);
 }
 
-  return redirect('user-resultes');
+  return redirect('user-resultes#resultats');
 
 
 
