@@ -15,7 +15,7 @@
     {{-- <script src="{{ URL::asset('admin_assets/tinymce/tinymce.min.js') }}"></script>
 
     <script type="text/javascript">
-       
+
                 tinymce.init({
                     selector: "textarea",
                     height: 300,
@@ -33,7 +33,7 @@
                         'removeformat | help',
                     content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:16px }'
                 });
-            
+
     </script> --}}
 </head>
 <body>
@@ -63,13 +63,13 @@
 <!-- Buttons End -->
     </div>
 
-     
+
 <!-- Create Course Step List End -->
 
     <!-- Course Tab Start -->
     <div class="card">
         <div class="card-header border-bottom border-gray-100 flex-align gap-8">
-            <h5 class="mb-0">Nouveau chapitre</h5>        
+            <h5 class="mb-0">Nouveau chapitre</h5>
             <button type="button" class="text-main-600 text-md d-flex" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Nouveau chapitre">
                 <i class="ph-fill ph-question"></i>
             </button>
@@ -82,11 +82,11 @@
                         <div class="mb-20">
                             <label class="h5 fw-semibold font-heading mb-0">Image du chapitre <span class="text-13 text-gray-400 fw-medium">(Requis)</span> </label>
                         </div>
-                        
+
                         <div class="">
-                            <input type="file" name="image_url" id="">
+                            <input type="file" class=" placeholder-13 form-control py-11 pe-76" name="image_url" id="">
                         </div>
-                       
+
                     </div>
                     <div class="col-xxl-9 col-md-8 col-sm-7">
                         <div class="row g-20">
@@ -100,46 +100,46 @@
                                     </div>
                                 </div>
                             </div>
-                           
+
                             <div class="col-sm-6">
                                 <label for="courseCategory" class="h5 mb-8 fw-semibold font-heading">Formation <span class="text-13 text-gray-400 fw-medium">(Requis)</span></label>
                                 <div class="position-relative">
                                     <select id="courseCategory" name="formation_id" class="form-select py-9 placeholder-13 text-15" disabled>
-                                      
+
                                        @foreach($formation as $value)
-                                       <option value="{{$value->id}}">{{$value->titre}} </option> 
+                                       <option value="{{$value->id}}">{{$value->titre}} </option>
                                        <input type="hidden" name="formation_id" value="{{ $formation->first()->id ?? '' }}">
                                        @endforeach
-                                        
-                                    </select>                                            
+
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <label for="courseLesson" class="h5 mb-8 fw-semibold font-heading">Documents <span class="text-13 text-gray-400 fw-medium"></span></label>
                                 <div class="position-relative">
-                                    <input type="file" name="document_url" id="">                                           
+                                    <input type="file"class=" placeholder-13 form-control py-11 pe-76" name="document_url" id="">
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <label for="courseLevel" class="h5 mb-8 fw-semibold font-heading">Vidéo <span class="text-13 text-gray-400 fw-medium"></span></label>
                                 <div class="position-relative">
-                                    <input type="file" name="video_url" id="">                                          
+                                    <input type="file" class=" placeholder-13 form-control py-11 pe-76" name="video_url" id="">
                                 </div>
                             </div>
-                           
+
                         </div>
 
-                        
+
                     </div>
                     <div class="col-sm-12">
                         <label for="courseTitle" class="h5 mb-8 fw-semibold font-heading">Description <span class="text-13 text-gray-400 fw-medium"></span> </label>
                         <div class="position-relative">
                             <textarea  class="text-counte placeholder-13 form-control py-11 pe-76" name="description" maxlength="300" id="course" placeholder=""> </textarea>
-                           
-                        </div>
-                      
 
-                       
+                        </div>
+
+
+
                     </div>
                     <div class="flex-align justify-content-end gap-8">
                         <a href="" class="btn btn-outline-main rounded-pill py-9">Cancel</a>
@@ -149,7 +149,7 @@
             </form>
         </div>
     </div>
-   
+
 </div>
 @endsection
 </body>
