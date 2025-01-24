@@ -120,7 +120,7 @@ class QuestionController extends Controller
         ]);
         $question= Question::findOrfail($id);
         $question->update($validatedData);
-        return redirect('/questions');
+        return redirect('/formations');
     }
 
     /**

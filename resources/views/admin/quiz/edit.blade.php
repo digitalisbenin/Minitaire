@@ -45,7 +45,7 @@
 
                     <div class="col-xxl-12 col-md-12 col-sm-7">
                         <div class="row g-20">
-                            <div class="col-sm-6">
+                            <div class="col-sm-12">
                                 <label for="courseTitle" class="h5 mb-8 fw-semibold font-heading">Titre <span class="text-13 text-gray-400 fw-medium">(Requis)</span> </label>
                                 <div class="position-relative">
                                     <input type="text" class="text-counter placeholder-13 form-control py-11 pe-77" name="title"value="{{ old('title', $quiz->title) }}"   maxlength="100" id="courseTitle" placeholder="">
@@ -55,13 +55,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-6">
-                                <label for="courseTitle" class="h5 mb-8 fw-semibold font-heading">Description <span class="text-13 text-gray-400 fw-medium"></span> </label>
-                                <div class="position-relative">
-                                    <input type="text" class="text-counte placeholder-13 form-control py-11 pe-76" value="{{ old('description', $quiz->description) }}"  name="description" maxlength="300" id="course" placeholder="">
-                                   
-                                </div>
-                            </div>
+                            
                             <div class="col-sm-6">
                                 <label for="courseCategory" class="h5 mb-8 fw-semibold font-heading">Formation <span class="text-13 text-gray-400 fw-medium">(Requis)</span></label>
                                 <div class="position-relative">

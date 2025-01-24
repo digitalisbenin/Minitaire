@@ -152,7 +152,7 @@ class QuizController extends Controller
         $quiz = Quiz::findOrfail($id);
         $quiz->update($validatedData);
 
-        return redirect('/quizs');
+        return redirect('/formations');
     }
 
     /**
