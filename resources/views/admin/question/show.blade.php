@@ -22,6 +22,10 @@
                     <span class="d-flex text-md"><i class="ph ph-plus"></i></span>
                     Ajouter une question
                 </a>  --}}
+                {{--  <a href="{{ url()->previous() }}" class="btn btn-secondary">
+                    ⬅ Retour
+                </a>  --}}
+                
                 <span class="text-inherit"> </span>
                 {{--  <a href="#" class="btn btn-main rounded-pill py-7 flex-align gap-4 fw-normal" data-bs-toggle="modal" data-bs-target="#myModal" >
                     <span class="d-flex text-md"><i class="ph ph-plus"></i></span>

@@ -24,13 +24,13 @@
 <!-- Buttons End -->
     </div>
 
- 
+
 <!-- Create Course Step List End -->
 
     <!-- Course Tab Start -->
     <div class="card">
         <div class="card-header border-bottom border-gray-100 flex-align gap-8">
-            <h5 class="mb-0">Question</h5>        
+            <h5 class="mb-0">Question</h5>
             <button type="button" class="text-main-600 text-md d-flex" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Question">
                 <i class="ph-fill ph-question"></i>
             </button>
@@ -40,10 +40,10 @@
                         @csrf
                         @method('PUT')
                 <div class="row gy-20">
-                  
+
                     <div class="col-xxl-12 col-md-12 col-sm-7">
                         <div class="row g-20 mb-6">
-                            <div class="col-sm-6">
+                            <div class="col-sm-12">
                                 <label for="courseTitle" class="h5 mb-8 fw-semibold font-heading">Question <span class="text-13 text-gray-400 fw-medium">(Requis)</span> </label>
                                 <div class="position-relative">
                                     <input type="text" class="text-counter placeholder-13 form-control py-11 pe-76" name="title" value="{{ old('title', $question->title) }}"  maxlength="200" id="courseTitle" placeholder="">
@@ -53,24 +53,24 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-6">
+                            {{--  <div class="col-sm-6">
                                 <label for="courseCategory" class="h5 mb-8 fw-semibold font-heading">Quizz <span class="text-13 text-gray-400 fw-medium">(Requis)</span></label>
                                 <div class="position-relative">
                                     <select id="courseCategory" name="quiz_id" class="form-select py-9 placeholder-13 text-15">
                                         <option value="" selected>Aucune</option>
-                                      
+
 
                                        @foreach($quiz as $value)
                                        <option
                                            value="{{ $value -> id }}"@if($value->id == $question->quiz_id) selected @endif>{{ $value -> title }}</option>
                                    @endforeach
-                                        
-                                    </select>                                            
+
+                                    </select>
                                 </div>
-                            </div>
-                           
-                        
-                        
+                            </div>  --}}
+
+
+
                     </div>
                     <div class="flex-align justify-content-end gap-8">
                         <a href="{{url('create-questions')}}" class="btn btn-outline-main rounded-pill py-9">Cancel</a>
