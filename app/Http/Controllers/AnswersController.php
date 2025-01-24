@@ -91,9 +91,10 @@ class AnswersController extends Controller
      */
     public function show($id)
     {
+        $question = Question::where('id',$id)->first();
         $answers = Answers::where('question_id',$id)->get();
         $questionID=$id;
-        return view('admin.answers.show', compact('answers','questionID'));
+        return view('admin.answers.show', compact('answers','questionID','question'));
     }
 
     /**

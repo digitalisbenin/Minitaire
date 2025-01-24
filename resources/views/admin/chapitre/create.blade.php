@@ -84,7 +84,7 @@
                         </div>
 
                         <div class="">
-                            <input type="file" class=" placeholder-13 form-control py-11 pe-76" name="image_url" id="">
+                            <input type="file" class=" placeholder-13 form-control py-11 pe-76" name="image_url" id="" required>
                         </div>
 
                     </div>
@@ -93,15 +93,15 @@
                             <div class="col-sm-6">
                                 <label for="courseTitle" class="h5 mb-8 fw-semibold font-heading">Titre <span class="text-13 text-gray-400 fw-medium">(Requis)</span> </label>
                                 <div class="position-relative">
-                                    <input type="text" class="text-counter placeholder-13 form-control py-11 pe-77" name="titre" maxlength="100" id="courseTitle" placeholder="">
-                                    <div class="text-gray-400 position-absolute inset-inline-end-0 top-50 translate-middle-y me-16">
+                                    <input type="text" class=" placeholder-13 form-control py-11 pe-77" name="titre" maxlength="100" id="courseTitle" placeholder="" required>
+                                    {{--  <div class="text-gray-400 position-absolute inset-inline-end-0 top-50 translate-middle-y me-16">
                                         <span id="current">3</span>
                                         <span id="maximum">/ 100</span>
-                                    </div>
+                                    </div>  --}}
                                 </div>
                             </div>
 
-                            <div class="col-sm-6">
+                            {{--  <div class="col-sm-6">
                                 <label for="courseCategory" class="h5 mb-8 fw-semibold font-heading">Formation <span class="text-13 text-gray-400 fw-medium">(Requis)</span></label>
                                 <div class="position-relative">
                                     <select id="courseCategory" name="formation_id" class="form-select py-9 placeholder-13 text-15" disabled>
@@ -112,6 +112,22 @@
                                        @endforeach
 
                                     </select>
+                                </div>
+                            </div>  --}}
+                            <div class="col-sm-6">
+                                <label for="courseCategory" class="h5 mb-8 fw-semibold font-heading">Formation <span class="text-13 text-gray-400 fw-medium">(Requis)</span></label>
+                                <div class="position-relative">
+                                   
+
+                                       @foreach($formation as $value)
+                                       {{--  <option value="{{$value->id}}">{{$value->titre}} </option>  --}}
+                                       <input type="hidden" name="formation_id" value="{{ $formation->first()->id ?? '' }}">
+                                       <input type="text"  name="" class="form-control py-9 placeholder-13 text-15"  style=" background-color: #d6d6d6;"  disabled value="{{ $formation->first()->titre ?? '' }}">
+
+                                       {{--  <input type="text" name=""class="form-control py-9 placeholder-13 text-15" readonly  value="{{ $formation->first()->titre ?? '' }}">  --}}
+                                       @endforeach
+
+                                  
                                 </div>
                             </div>
                             <div class="col-sm-6">
@@ -134,7 +150,7 @@
                     <div class="col-sm-12">
                         <label for="courseTitle" class="h5 mb-8 fw-semibold font-heading">Description <span class="text-13 text-gray-400 fw-medium"></span> </label>
                         <div class="position-relative">
-                            <textarea  class="text-counte placeholder-13 form-control py-11 pe-76" name="description" maxlength="300" id="course" placeholder=""> </textarea>
+                            <textarea  class=" placeholder-13 form-control py-11 pe-76" name="description" id="course" placeholder=""> </textarea>
 
                         </div>
 

@@ -100,16 +100,31 @@
                                 <div class="col-sm-6">
                                     <label for="courseCategory" class="h5 mb-8 fw-semibold font-heading">Chapitre <span class="text-13 text-gray-400 fw-medium">(Requis)</span></label>
                                     <div class="position-relative">
+                  
+    
+                                           @foreach($chapitre as $value)
+                                         
+                                           <input type="hidden" name="chapitre_id" value="{{ $chapitre->first()->id ?? '' }}">
+                                           <input type="text" class="form-control py-9 placeholder-13 text-15" disabled name="" value="{{ $chapitre->first()->titre ?? '' }}  -  {{ $chapitre->first()->formation->titre ?? '' }} ">
+                                           @endforeach
+    
+                                   
+                                    </div>
+                                </div>
+                                {{--  <div class="col-sm-6">
+                                    <label for="courseCategory" class="h5 mb-8 fw-semibold font-heading">Chapitre <span class="text-13 text-gray-400 fw-medium">(Requis)</span></label>
+                                    <div class="position-relative">
                                         <select id="courseCategory" name="chapitre_id" class="form-select py-9 placeholder-13 text-15" disabled>
     
                                            @foreach($chapitre as $value)
                                            <option value="{{$value->id}}">{{$value->titre}} - {{$value->formation->titre}} </option>
                                            <input type="hidden" name="chapitre_id" value="{{ $chapitre->first()->id ?? '' }}">
+                                           <input type="text" class="form-control py-9 placeholder-13 text-15" disabled name="" value="{{ $chapitre->first()->titre ?? '' }}  -  {{ $chapitre->first()->formation->titre ?? '' }} ">
                                            @endforeach
     
                                         </select>
                                     </div>
-                                </div>
+                                </div>  --}}
                                 <input type="hidden" name="status" value="question">
                                 {{--  <div class="col-sm-6">
                                     <label for="courseCategory" class="h5 mb-8 fw-semibold font-heading">Statut <span class="text-13 text-gray-400 fw-medium">(Requis)</span></label>

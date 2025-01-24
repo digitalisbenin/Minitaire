@@ -134,6 +134,7 @@
               --}}
 
               <div class="container">
+                <h5 class="mb-0 text-center">{{$question->title}}</h5>
                 <div class="card-header border-bottom border-gray-100 flex-align gap-8">
                     <h5 class="mb-0">Nouvelle Réponse</h5>
                     <button type="button" class="text-main-600 text-md d-flex" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Nouveau chapitre">

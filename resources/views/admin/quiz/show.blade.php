@@ -51,11 +51,14 @@
         <div class="card-body p-0 overflow-x-auto">
             <div class="card">
                 <div class="card-header border-bottom border-gray-100 flex-align gap-8">
-                    <h5 class="mb-0">Nouveau Quizz</h5>        
+                    <h5 class="mb-0">Nouveau Quizz: </h5>
                     <button type="button" class="text-main-600 text-md d-flex" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Nouveau chapitre">
                         <i class="ph-fill ph-question"></i>
                     </button>
+
+
                 </div>
+               
                 <div class="card-body">
                     <form action="{{ url('quizs') }}" method="post" enctype="multipart/form-data">
                                 @csrf
@@ -64,7 +67,7 @@
                                 <div class="mb-20">
                                     <label class="h5 fw-semibold font-heading mb-0">Image du chapitre <span class="text-13 text-gray-400 fw-medium">(Requis)</span> </label>
                                 </div>
-                                
+
                                 <div class="col-sm-6">
                                     <label for="courseTitle" class="h5 mb-8 fw-semibold font-heading">Titre <span class="text-13 text-gray-400 fw-medium">(Requis)</span> </label>
                                     <div class="position-relative">
@@ -75,7 +78,7 @@
                                         </div>
                                     </div>
                                 </div>
-                               
+
                             </div>  --}}
                             <div class="col-xxl-12 col-md-12 col-sm-7">
                                 <div class="row g-20">
@@ -93,39 +96,54 @@
                                         <label for="courseTitle" class="h5 mb-8 fw-semibold font-heading">Description <span class="text-13 text-gray-400 fw-medium"></span> </label>
                                         <div class="position-relative">
                                             <input type="text" class="text-counte placeholder-13 form-control py-11 pe-76" name="description" maxlength="300" id="course" placeholder="">
-                                           
+
                                         </div>
                                     </div>  --}}
                                     <div class="col-sm-6">
                                         <label for="courseCategory" class="h5 mb-8 fw-semibold font-heading">Formation <span class="text-13 text-gray-400 fw-medium">(Requis)</span></label>
                                         <div class="position-relative">
-                                            <select id="courseCategory" name="formation_id" class="form-select py-9 placeholder-13 text-15" disabled>
-                                                
+
+
                                                @foreach($formation as $value)
-                                               <option value="{{$value->id}}">{{$value->titre}} </option> 
-                                               <input type="hidden" name="formation_id" value="{{ $formation->first()->id ?? '' }}">  
+
+                                               <input type="hidden" name="formation_id" value="{{ $formation->first()->id ?? '' }}">
+                                               <input type="text" class="form-control py-9 placeholder-13 text-15" disabled  name="" value="{{ $formation->first()->titre ?? '' }}">
                                                @endforeach
-                                                
-                                            </select>                                            
+
+                                            </select>
                                         </div>
                                     </div>
+                                    {{--  <div class="col-sm-6">
+                                        <label for="courseCategory" class="h5 mb-8 fw-semibold font-heading">Formation <span class="text-13 text-gray-400 fw-medium">(Requis)</span></label>
+                                        <div class="position-relative">
+                                            <select id="courseCategory" name="formation_id" class="form-control py-9 placeholder-13 text-15" disabled>
+
+                                               @foreach($formation as $value)
+                                               <option value="{{$value->id}}">{{$value->titre}} </option>
+                                               <input type="hidden" name="formation_id" value="{{ $formation->first()->id ?? '' }}">
+                                               <input type="text" class="form-control py-9 placeholder-13 text-15" disabled  name="" value="{{ $formation->first()->titre ?? '' }}">
+                                               @endforeach
+
+                                            </select>
+                                        </div>
+                                    </div>  --}}
                                     <input type="hidden" name="status" value="question">
                                     {{--  <div class="col-sm-6">
                                         <label for="courseCategory" class="h5 mb-8 fw-semibold font-heading">Statut <span class="text-13 text-gray-400 fw-medium">(Requis)</span></label>
                                         <div class="position-relative">
                                             <select id="courseCategory" name="status" class="form-select py-9 placeholder-13 text-15">
                                                 <option value="" selected>Aucune</option>
-                                              
-                                               <option value="question">Question </option>    
-                                               <option value="reponse"> Reponse</option>    
-                                            
-                                                
-                                            </select>                                            
+
+                                               <option value="question">Question </option>
+                                               <option value="reponse"> Reponse</option>
+
+
+                                            </select>
                                         </div>
                                     </div>  --}}
-                                   
-                                   
-                                   
+
+
+
                                 </div>
                             </div>
                             <div class="flex-align justify-content-end gap-8">

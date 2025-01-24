@@ -87,9 +87,10 @@ class QuestionController extends Controller
      */
     public function show( $id)
     {
+       $quiz= Quiz::where('id',$id)->first();
        $question= Question::where('quiz_id',$id)->get();
        $quizID=$id;
-        return view('admin.question.show', compact('question','quizID'));
+        return view('admin.question.show', compact('question','quizID','quiz'));
     }
 
     /**

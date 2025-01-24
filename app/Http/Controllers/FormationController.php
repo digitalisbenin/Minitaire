@@ -55,7 +55,7 @@ class FormationController extends Controller
 
         $validatedData = $request->validate([
             'titre' => 'required|max:255|unique:formations,titre',
-            'description' => 'required|max:255',
+            'description' => 'required',
             'image_url' => 'required|max:255',
              'status' => 'required|max:255',
             'categorie_id' => 'nullable|exists:categories,id',
