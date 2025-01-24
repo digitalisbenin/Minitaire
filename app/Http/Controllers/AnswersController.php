@@ -127,7 +127,9 @@ class AnswersController extends Controller
         ]);
         $answers= Answers::findOrfail($id);
         $answers->update($validatedData);
-        return redirect('/answers');
+        return redirect('/formations');
+        //return redirect('/questions/' . $id);
+
     }
 
     /**

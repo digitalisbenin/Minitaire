@@ -45,7 +45,7 @@
 
                     <div class="col-xxl-12 col-md-12 col-sm-7">
                         <div class="row g-20">
-                            <div class="col-sm-6">
+                            <div class="col-sm-12">
                                 <label for="courseTitle" class="h5 mb-8 fw-semibold font-heading">Titre <span class="text-13 text-gray-400 fw-medium">(Requis)</span> </label>
                                 <div class="position-relative">
                                     <input type="text" class="text-counter placeholder-13 form-control py-11 pe-77" name="title"value="{{ old('title', $quiz->title) }}"   maxlength="100" id="courseTitle" placeholder="">
@@ -55,39 +55,43 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-6">
-                                <label for="courseTitle" class="h5 mb-8 fw-semibold font-heading">Description <span class="text-13 text-gray-400 fw-medium"></span> </label>
+                            
+                            {{-- <div class="col-sm-6">
+                                <label for="courseCategory" class="h5 mb-8 fw-semibold font-heading">Formation 
+                                    <span class="text-13 text-gray-400 fw-medium">(Requis)</span>
+                                </label>
                                 <div class="position-relative">
-                                    <input type="text" class="text-counte placeholder-13 form-control py-11 pe-76" value="{{ old('description', $quiz->description) }}"  name="description" maxlength="300" id="course" placeholder="">
-                                   
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <label for="courseCategory" class="h5 mb-8 fw-semibold font-heading">Formation <span class="text-13 text-gray-400 fw-medium">(Requis)</span></label>
-                                <div class="position-relative">
-                                    <select id="courseCategory" name="formation_id" class="form-select py-9 placeholder-13 text-15">
+                                    <!-- Champ visible mais désactivé -->
+                                    <select id="courseCategory" name="formation_id_display" class="form-select py-9 placeholder-13 text-15" disabled>
                                         <option value="" selected>Aucune</option>
-                                      
                                         @foreach($formation as $value)
-                                        <option
-                                            value="{{ $value -> id }}"@if($value->id == $quiz->formation_id) selected @endif>{{ $value -> titre }}</option>
-                                    @endforeach
-                                    </select>                                            
+                                            <option value="{{ $value->id }}" 
+                                                @if($value->id == $quiz->formation_id) selected @endif>
+                                                {{ $value->titre }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                    <!-- Champ caché qui transmet les données -->
+                                    <input type="hidden" name="formation_id" value="{{ $quiz->formation_id }}">
                                 </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <label for="courseCategory" class="h5 mb-8 fw-semibold font-heading">Statut <span class="text-13 text-gray-400 fw-medium">(Requis)</span></label>
+                            </div> --}}
+                            
+                            <div class="col-sm-12">
+                                <label for="courseCategoryStatus" class="h5 mb-8 fw-semibold font-heading">Statut 
+                                    <span class="text-13 text-gray-400 fw-medium">(Requis)</span>
+                                </label>
                                 <div class="position-relative">
-                                    <select id="courseCategory" name="status" class="form-select py-9 placeholder-13 text-15">
-                                        <option value="{{ $quiz->status }}" >{{$quiz->status}}</option>
-                                      
-                                       <option value="question">Question </option>    
-                                       <option value="reponse"> Reponse</option>    
-                                    
-                                        
-                                    </select>                                            
+                                    <!-- Champ visible mais désactivé -->
+                                    <select id="courseCategoryStatus" name="status_display" class="form-select py-9 placeholder-13 text-15" disabled>
+                                        <option value="{{ $quiz->status }}" selected>{{ $quiz->status }}</option>
+                                        <option value="question">Question</option>
+                                        <option value="reponse">Réponse</option>
+                                    </select>
+                                    <!-- Champ caché qui transmet les données -->
+                                    <input type="hidden" name="status" value="{{ $quiz->status }}">
                                 </div>
                             </div>
+                            
                            
                            
                            

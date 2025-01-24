@@ -44,9 +44,9 @@
                         <div class="col-lg-5 col-md-4 col-12">
                             <div class="image">
                                 <img src="{{ asset('assets/uploads/resource_images/'.$value->image_url) }}" alt="#">
-                                <h4 class="name">{{$value->titre}}
-                                    {{--  <span>Graphics Design</span>  --}}
-                                </h4>
+                                {{-- <h4 class="name">{{$value->titre}}
+                                   
+                                </h4> --}}
                             </div>
                         </div>
                         <div class="col-lg-7 col-md-8 col-12">

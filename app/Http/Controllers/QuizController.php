@@ -143,6 +143,7 @@ class QuizController extends Controller
     public function update(Request $request,$id)
     {
 
+        
         $validatedData = $request->validate([
 
             'title' => 'required|max:255',
@@ -152,7 +153,7 @@ class QuizController extends Controller
         $quiz = Quiz::findOrfail($id);
         $quiz->update($validatedData);
 
-        return redirect('/quizs');
+        return redirect('/formations');
     }
 
     /**
