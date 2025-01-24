@@ -122,7 +122,7 @@ class AnswersController extends Controller
         $validatedData = $request->validate([
             'title' => 'required|max:255',
             'is_correct' => 'nullable',
-            'question_id' => 'required|exists:questions,id',
+            'question_id' => 'nullable|exists:questions,id',
         ]);
         $answers= Answers::findOrfail($id);
         $answers->update($validatedData);

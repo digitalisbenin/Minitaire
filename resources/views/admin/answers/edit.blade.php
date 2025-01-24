@@ -45,7 +45,7 @@
                         <div class="row g-20 mb-6">
                          
                            
-                            <div class="col-sm-12">
+                            <div class="col-sm-6">
                                 <label for="courseTitle" class="h5 mb-8 fw-semibold font-heading">Réponse <span class="text-13 text-gray-400 fw-medium">(Requis)</span> </label>
                                 <div class="position-relative">
                                     <input type="text" class="text-counter placeholder-13 form-control py-11 pe-76" name="title"value="{{ old('title', $answers->title) }}"  maxlength="200" id="courseTitle" placeholder="">
@@ -58,12 +58,14 @@
                             {{--  <div class="col-sm-6">
                                 <label for="courseCategory" class="h5 mb-8 fw-semibold font-heading">Question <span class="text-13 text-gray-400 fw-medium">(Requis)</span></label>
                                 <div class="position-relative">
-                                    <select id="courseCategory" name="question_id" class="form-select py-9 placeholder-13 text-15">
+                                    <select id="courseCategory" name="question_id" class="form-select py-9 placeholder-13 text-15" disabled>
                                         <option value="" selected>Aucune</option>
                                       
                                        @foreach($question as $value)
                                        <option
                                            value="{{ $value -> id }}"@if($value->id == $answers->question_id) selected @endif>{{ $value -> title }}</option>
+                                           <input type="hidden" name="question_id" value="{{ $question->first()->id ?? '' }}">             
+
                                    @endforeach
                                         
                                     </select>                                            
