@@ -75,7 +75,7 @@
             </button>
         </div>
         <div class="card-body">
-            <form action="{{ url('chapitres') }}" method="post" enctype="multipart/form-data">
+            <form  id="uploadForm" action="{{ url('chapitres') }}" method="post" enctype="multipart/form-data">
                         @csrf
                 <div class="row gy-20">
                     <div class="col-xxl-3 col-md-4 col-sm-5">
@@ -117,7 +117,7 @@
                             <div class="col-sm-6">
                                 <label for="courseCategory" class="h5 mb-8 fw-semibold font-heading">Formation <span class="text-13 text-gray-400 fw-medium">(Requis)</span></label>
                                 <div class="position-relative">
-                                   
+
 
                                        @foreach($formation as $value)
                                        {{--  <option value="{{$value->id}}">{{$value->titre}} </option>  --}}
@@ -127,19 +127,19 @@
                                        {{--  <input type="text" name=""class="form-control py-9 placeholder-13 text-15" readonly  value="{{ $formation->first()->titre ?? '' }}">  --}}
                                        @endforeach
 
-                                  
+
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <label for="courseLesson" class="h5 mb-8 fw-semibold font-heading">Documents <span class="text-13 text-gray-400 fw-medium"></span></label>
                                 <div class="position-relative">
-                                    <input type="file"class=" placeholder-13 form-control py-11 pe-76" name="document_url" id="">
+                                    <input type="file"class=" placeholder-13 form-control py-11 pe-76" name="document_url" id="document_url" >
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <label for="courseLevel" class="h5 mb-8 fw-semibold font-heading">Vidéo <span class="text-13 text-gray-400 fw-medium"></span></label>
                                 <div class="position-relative">
-                                    <input type="file" class=" placeholder-13 form-control py-11 pe-76" name="video_url" id="">
+                                    <input type="file" class=" placeholder-13 form-control py-11 pe-76" name="video_url" id="video_url">
                                 </div>
                             </div>
 
@@ -168,5 +168,32 @@
 
 </div>
 @endsection
+
+
 </body>
 </html>
+@section('scripts')
+{{--  <script>
+    document.getElementById("uploadForm").addEventListener("submit", function(event) {
+        let documentInput = document.getElementById("document_url").files.length;
+        let videoInput = document.getElementById("video_url").files.length;
+
+        if (documentInput === 0 && videoInput === 0) {
+            event.preventDefault();
+            alert("Veuillez télécharger au moins un fichier (Document ou Vidéo).");
+        }
+    });
+</script>  --}}
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        document.getElementById("uploadForm").addEventListener("submit", function (event) {
+            let documentInput = document.getElementById("document_url").files.length;
+            let videoInput = document.getElementById("video_url").files.length;
+
+            if (documentInput === 0 && videoInput === 0) {
+                event.preventDefault(); // Empêche l'envoi du formulaire
+                alert("Veuillez télécharger au moins un fichier (Document ou Vidéo).");
+            }
+        });
+    });
+</script>
