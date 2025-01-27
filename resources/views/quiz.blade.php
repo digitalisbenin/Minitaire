@@ -70,22 +70,37 @@
 
 
 
-
                 @if (auth()->check())
                 @php
                     // Filtrer les Notequiz pour l'utilisateur connecté et le quiz actuellement affiché
                     $filteredNotequiz = $notequiz->where('quiz_id', $value->id);
-            
-                    // Vérifier si un des statuts est égal à "valider"
                     $hasValidatedStatus = $filteredNotequiz->contains('status', 'valider');
-                @endphp
+                    
+                    $filteredNoteChapitre = $notequiz->whereNotNull('chapitre_id');
+                    // dd($filteredNoteChapitre->count());
+
             
-                @if (!$hasValidatedStatus)
-                    <div class="text-center">
-                        <button type="submit" class="btn btn-success">Envoyer</button>
-                    </div>
-                @endif
+                   
+                @endphp
+              
+              @if ($filteredNoteChapitre->count() == 0)
+              <div class="text-center">
+                  <span class="text-danger fw-bold">Aller terminer le quiz du chapitre 1</span>
+              </div> 
+          @elseif (!$hasValidatedStatus)
+              <div class="text-center">
+                  <button type="submit" class="btn btn-success">Envoyer</button>
+              </div>
+          @else
+              <div class="text-center">
+                  <span class="text-success">Quiz terminé et validé !</span>
+              </div>
+          @endif
+          
             @endif
+            
+            
+            
             
 
 
@@ -94,21 +109,7 @@
             
                 </form>
                 <div class="ms-auto d-flex">
-                    <!-- Section image et auteur -->
-                    {{--  <div class="d-flex ms-auto me-4"> <!-- Ajout de me-4 pour la marge à droite -->
-        <div class="me-13" style="text-align: right;">
-            <h5>Réponses :</h5>
-              @php
-                $reponses = $repose->where('discution_id', $value->id);
-            @endphp
-
-            @foreach ($reponses as $reponse)
-                <p style="font-size: 20px;">
-                    {{ $reponse->titre }} :  {{ $reponse->user->name }} {{ $reponse->user->prenom }}
-                </p>
-            @endforeach
-        </div>
-    </div>  --}}
+                    
                 </div>
 
         </div>

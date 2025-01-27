@@ -87,7 +87,7 @@
                     <!-- Start Single Feature -->
                     <div class="single-feature">
                         <h3><a href="javascript:void(0)">Cours actuel </a></h3>
-                        <p>Les cours actuel sont des formations éducatives qui répondent aux besoins et intérêts
+                        <p style="text-align: justify;">Les cours actuel sont des formations éducatives qui répondent aux besoins et intérêts
                              actuels des apprenants. Ces cours reflètent les évolutions et innovations
                               dans divers domaines, offrant des compétences et connaissances recherchées.</p>
                         <div class="button">
@@ -100,7 +100,7 @@
                     <!-- Start Single Feature -->
                     <div class="single-feature">
                         <h3><a href="javascript:void(0)">Instructeurs certifiés</a></h3>
-                        <p>Les professeurs certifiés sont des éducateurs ayant obtenu une certification officielle attestant
+                        <p style="text-align: justify;">Les professeurs certifiés sont des éducateurs ayant obtenu une certification officielle attestant
                             de leurs compétences et qualifications dans un domaine spécifique. Cette certification, délivrée
                              par des organismes reconnus.</p>
 
@@ -114,7 +114,7 @@
                     <!-- Start Single Feature -->
                     <div class="single-feature last">
                         <h3><a href="javascript:void(0)">Documents</a></h3>
-                        <p>Les documents laissés à la portée des stagiaires sont des ressources
+                        <p style="text-align: justify;">Les documents laissés à la portée des stagiaires sont des ressources
                              éducatives mises à disposition pour soutenir leur apprentissage et
                               approfondir leurs connaissances. Ces documents peuvent inclure une
                                variété de matériaux pédagogiques.</p>
@@ -158,7 +158,7 @@
                 <div class="single-course wow fadeInUp" data-wow-delay=".2s">
                     <div class="course-image" style="height: 200px">
                         <a href="{{url('/details-cours/'.$value->id)}}"><img src="{{ asset('assets/uploads/formation_images/'.$value->image_url) }}"
-                                alt="#"></a>
+                                alt="#" style="height: 200px; width: 350px;"></a>
                         <p class="price">{{$value->difficulete->name}}</p>
                     </div>
                     <div class="content">
@@ -171,6 +171,7 @@
                                         -webkit-box-orient: vertical;
                                         overflow: hidden;
                                         text-overflow: ellipsis;
+                                        text-align: justify;
                                     ">
                                         {{$value->description}}
                                     </p>
@@ -986,7 +987,7 @@
                         </div>
                         <h4 class="title"><a href="#">Gestion administrative
                                 </a></h4>
-                        <p>La gestion administrative est un ensemble de processus et d'activités visant à organiser...</p>
+                        <p style="text-align: justify;">La gestion administrative est un ensemble de processus et d'activités visant à organiser...</p>
                         <div class="button">
                             <a href="#" class="btn">Voir plus</a>
                         </div>
@@ -1016,7 +1017,7 @@
                         </div>
                         <h4 class="title"><a href="#">Logistique
                                 </a></h4>
-                        <p>La logistique est le processus de planification, de mise en œuvre et de
+                        <p style="text-align: justify;">La logistique est le processus de planification, de mise en œuvre et de
                             contrôle du flux et du ...</p>
                         <div class="button">
                             <a href="#" class="btn">Voir plus</a>
@@ -1047,7 +1048,7 @@
                         </div>
                         <h4 class="title"><a href="#">Renseignement
                                 </a></h4>
-                        <p>Le renseignement fait référence à la collecte,
+                        <p style="text-align: justify;">Le renseignement fait référence à la collecte,
                             l'analyse et l'utilisation d'informations pour soutenir la ...</p>
                         <div class="button">
                             <a href="#" class="btn">Voir plus</a>

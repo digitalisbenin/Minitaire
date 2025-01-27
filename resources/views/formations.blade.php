@@ -45,7 +45,7 @@
                 <div class="single-course wow fadeInUp" data-wow-delay=".2s" >
                     <div class="course-image" style="height: 200px">
                         <a href="{{url('details-cours/'.$value->id)}}"><img src="{{ asset('assets/uploads/formation_images/'.$value->image_url) }}"
-                                alt="#">
+                                alt="#" style="height: 200px; width: 350px;">
                             </a>
                             {{--  <p class="price">Categorie</p>     --}}
                     </div>
@@ -63,6 +63,7 @@
                             -webkit-box-orient: vertical;
                             overflow: hidden;
                             text-overflow: ellipsis;
+                            text-align: justify;
                         ">
                             {{$value->description}}
                         </p>

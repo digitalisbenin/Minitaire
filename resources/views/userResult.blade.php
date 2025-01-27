@@ -25,8 +25,8 @@
 
 
 <!-- Teacher Details -->
-<div class="teacher-details-area section" >
-    <div class="container" id="resultats">
+<div class="teacher-details-area section" id="resultats">
+    <div class="container" >
           <div class="row">
             <div class="col-12">
                 <div class="section-title align-center gray-bg">
@@ -61,9 +61,9 @@
                             $quizzes = $userResults->groupBy('quiz_id');
                         @endphp
                     
-                        @foreach($quizzes as $quizId => $results) {{-- Parcourir chaque quiz --}}
+                        @foreach($quizzes as $quizId => $results) 
                             @php
-                                $quizName = $results->first()->question->quiz->name; // Obtenir le nom du quiz
+                                $quizName = $results->first()->question->quiz->title; // Obtenir le nom du quiz
                                 $recentQuestions = $results
                                     ->groupBy('question_id') // Grouper les réponses par question_id
                                     ->map(function ($group) {
@@ -75,14 +75,14 @@
                                 })->count();
                             @endphp
                     
-                            {{-- Afficher le nom du quiz --}}
+                           
                             <tr>
                                 <td colspan="4" class="h5 text-center fw-bold text-gray-300" >
                                     {{ $quizName }}
                                 </td>
                             </tr>
                     
-                            {{-- Parcourir les questions récentes --}}
+                           
                             @foreach($recentQuestions as $index => $value)
                                 <tr>
                                     <td>
@@ -102,7 +102,7 @@
                                 </tr>
                             @endforeach
                     
-                            {{-- Ajouter le total pour ce quiz --}}
+                          
                             <tr>
                                 <td colspan="3" class="text-end fw-bold">Total :</td>
                                 <td>
@@ -113,9 +113,11 @@
                                 </td>
                             </tr>
                     
-                            {{-- Ajouter une ligne vide pour séparer les quiz --}}
+                           
                             <tr><td colspan="4" style="height: 10px;"></td></tr>
                         @endforeach
+
+                        
                     </tbody>
                     
                     
@@ -124,7 +126,10 @@
                     
                     
                 </table>
-
+                <div class="col-lg-6 offset-lg-6 text-end">
+                    <a href="/recapulatives#recap" class="btn btn-success">Recapulative</a>
+                </div>
+                
             </div>
            
         </div>

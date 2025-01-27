@@ -18,6 +18,13 @@ class NotequizControleur extends Controller
 
     }
 
+    public function indexe()
+    {
+
+        $notequiz= Notequiz::where('user_id', Auth::id())->get();
+        return view('recapulative',compact('notequiz'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *

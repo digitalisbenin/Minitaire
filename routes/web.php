@@ -166,6 +166,7 @@ Route::middleware('auth')->group(function () {
 
     Route::post('user-results', [UserResultController::class, 'store']);
     Route::get('user-resultes', [UserResultController::class, 'indexe']);
+    Route::get('recapulatives', [NotequizControleur::class, 'indexe']);
 
     Route::post('commentaires', [CommentaireController::class, 'store']);
 

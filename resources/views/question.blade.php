@@ -67,13 +67,19 @@
                     <div class="col-12 ">
                         <div class="section-title">
 
-                            <h2 class="wow fadeInUp" data-wow-delay=".4s">Quizz par chapitre</h2>
-                            <p class="wow fadeInUp" data-wow-delay=".6s">{{ $value->titre }}</p>
+                            <h2 class="wow fadeInUp" data-wow-delay=".4s">{{ $value->title }}</h2>
+                            {{-- <p class="wow fadeInUp" data-wow-delay=".6s">{{ $value->chapitre->id }}</p> --}}
                         </div>
                     </div>
                 </div>
 
+                @php
+                // Filtrer les Notequiz pour l'utilisateur connecté et le quiz actuellement affiché
+                $chapitreID = $value->chapitre->id
+               
 
+        
+            @endphp
                 {{-- <div
         class="flex ml-32 mr-32 mt-9  rounded-lg text-black px-4 py-2"
       >
@@ -86,6 +92,7 @@
                     <form action="{{ url('user-results') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <input type="hidden" name="quiz_id" value="{{ $value->id }}">
+                        <input type="hidden" name="chapitre_id" value="{{ $chapitreID }}">
                         @php
                             $quizID = $value->id;
                         @endphp
@@ -190,7 +197,11 @@ $hasValidatedStatus = $filteredNotequiz->contains('status', 'valider');
                         <div class="text-center">
                             <button type="submit" class="btn btn-success">Envoyer</button>
                         </div>
-                    @endif
+                     @else
+              <div class="text-center">
+                  <span class="text-success">Quiz terminé et validé !</span>
+              </div>
+          @endif
                 @endif
 
 

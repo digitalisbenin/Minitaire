@@ -88,6 +88,7 @@ class UserResultController extends Controller
  if ($total >= 60) {
     Notequiz::create([
         'quiz_id'=>$request->quiz_id,
+        'chapitre_id'=>$request->chapitre_id,
         'note' => $total,
             'status' =>"valider",
         'user_id' => auth()->user()->id,
@@ -96,6 +97,7 @@ class UserResultController extends Controller
 } else {
     Notequiz::create([
         'quiz_id'=>$request->quiz_id,
+        'chapitre_id'=>$request->chapitre_id,
         'note' => $total,
             'status' =>"echouer",
         'user_id' => auth()->user()->id,
