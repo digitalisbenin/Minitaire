@@ -40,7 +40,7 @@
                 <div class="tab-content" id="pills-tabContent">
                     <div class="tab-pane fade show active" id="pills-onGoing" role="tabpanel" aria-labelledby="pills-onGoing-tab" tabindex="0">
                         <div class="row g-20">
-                           @foreach($formation as $value)
+                           @foreach($formation->sortByDesc('created_at') as $value)
                            <div class="col-xxl-3 col-lg-4 col-sm-6">
                             <div class="card border border-gray-100">
                                 <div class="card-body p-8">
