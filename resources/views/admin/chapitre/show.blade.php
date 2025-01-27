@@ -22,6 +22,8 @@
                     <span class="d-flex text-md"><i class="ph ph-plus"></i></span>
                     Ajouter un chapitre
                 </a>
+                <button onclick="window.history.back()" class="btn btn-secondary">Retour</button>
+
 
                 {{-- <a href="{{url('/create-quizs/'.$formation)}}" class="btn btn-success rounded-pill py-7 flex-align gap-4 fw-normal">
                     <span class="d-flex text-md"><i class="ph ph-plus"></i></span>

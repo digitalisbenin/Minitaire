@@ -18,6 +18,8 @@
         <!-- Breadcrumb Right Start -->
         <div class="flex-align gap-8 flex-wrap">
             <div class="position-relative text-gray-500 flex-align gap-4 text-13">
+                <button onclick="window.history.back()" class="btn btn-secondary">Retour</button>
+
                 {{--  <a href="{{url('/create-question/'.$quizID)}}" class="btn btn-main rounded-pill py-7 flex-align gap-4 fw-normal">
                     <span class="d-flex text-md"><i class="ph ph-plus"></i></span>
                     Ajouter une question
@@ -130,7 +132,7 @@
                         </th>
                         <th class="h6 text-gray-300">N°</th>
                         <th class="h6 text-gray-300">Question</th>
-                        <th class="h6 text-gray-300">titre du quizz</th>
+                        {{--  <th class="h6 text-gray-300">titre du quizz</th>  --}}
 
                         <th class="h6 text-gray-300">Actions</th>
                     </tr>
@@ -151,12 +153,12 @@
                             <span class="h6 mb-0 fw-medium text-gray-300">{{$value->title}}</span>
                         </td>
 
-                        <td>
+                        {{--  <td>
                             <span class="h6 mb-0 fw-medium text-gray-300">
 
                                 {{$value->quiz->title}}
                             </span>
-                        </td>
+                        </td>  --}}
                         <td>
                             <a href="{{url('questions/'.$value->id.'/edit')}}" class="bg-success-600 text-white py-2 px-14 rounded-pill hover-bg-success-800 hover-text-white"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                                 <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>

@@ -18,6 +18,9 @@
         <!-- Breadcrumb Right Start -->
         <div class="flex-align gap-8 flex-wrap">
             <div class="position-relative text-gray-500 flex-align gap-4 text-13">
+
+                <button onclick="window.history.back()" class="btn btn-secondary">Retour</button>
+
                 {{--  <a href="{{url('/create-answers')}}" class="btn btn-main rounded-pill py-7 flex-align gap-4 fw-normal">
                     <span class="d-flex text-md"><i class="ph ph-plus"></i></span>
                     Ajouter une Réponse
@@ -195,7 +198,7 @@
                             </div>
                         </th>
                         <th class="h6 text-gray-300">N°</th>
-                        <th class="h6 text-gray-300">Question</th>
+                        {{--  <th class="h6 text-gray-300">Question</th>  --}}
                         <th class="h6 text-gray-300">Titre</th>
                         <th class="h6 text-gray-300">Réponse</th>
 
@@ -214,9 +217,9 @@
                         <td>
                             <span class="h6 mb-0 fw-medium text-gray-300">{{$key + 1}}</span>
                         </td>
-                        <td>
+                        {{--  <td>
                             <span class="h6 mb-0 fw-medium text-gray-300">{{$value->question->title}}</span>
-                        </td>
+                        </td>  --}}
                         <td>
                             <span class="h6 mb-0 fw-medium text-gray-300">{{$value->title}}</span>
                         </td>

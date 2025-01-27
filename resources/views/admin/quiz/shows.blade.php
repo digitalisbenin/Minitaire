@@ -18,6 +18,8 @@
         <!-- Breadcrumb Right Start -->
         <div class="flex-align gap-8 flex-wrap">
             <div class="position-relative text-gray-500 flex-align gap-4 text-13">
+                <button onclick="window.history.back()" class="btn btn-secondary">Retour</button>
+                
                 {{--  <a href="{{url('/create-quizzs/'. $quizid)}}" class="btn btn-main rounded-pill py-7 flex-align gap-4 fw-normal">
                     <span class="d-flex text-md"><i class="ph ph-plus"></i></span>
                     Ajouter un quiz
