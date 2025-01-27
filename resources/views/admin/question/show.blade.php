@@ -25,7 +25,7 @@
                 {{--  <a href="{{ url()->previous() }}" class="btn btn-secondary">
                     ⬅ Retour
                 </a>  --}}
-                
+
                 <span class="text-inherit"> </span>
                 {{--  <a href="#" class="btn btn-main rounded-pill py-7 flex-align gap-4 fw-normal" data-bs-toggle="modal" data-bs-target="#myModal" >
                     <span class="d-flex text-md"><i class="ph ph-plus"></i></span>
@@ -54,8 +54,8 @@
         </div>
         <!-- Breadcrumb Right End -->
     </div>
-    
-    
+
+
     <!-- Modal -->
     <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -73,7 +73,7 @@
                             <input type="text" class="form-control" id="champ1" name="title" placeholder="Titre de la question" required>
                         </div>
                         <div class="mb-3">
-                           
+
                             <input type="hidden"  value="{{$quizID}}"name="quiz_id"   class="form-control" id="champ2">
                         </div>
                         <div class="modal-footer">
@@ -85,13 +85,13 @@
             </div>
         </div>
     </div>
-    
+
 
     <div class="card overflow-hidden">
         <div class="card-body p-0 overflow-x-auto">
             <div class="container ">
                 <div class="row">
-                    <h5 class="mb-0 text-center"> {{$quiz->title}} </h5>
+                    <h5 class="mb-0 text-center py-8"> {{$quiz->title}} </h5>
                     <div class="card-header border-bottom border-gray-100 flex-align gap-8">
                         <h5 class="mb-0">Nouvelle Question</h5>
                         <button type="button" class="text-main-600 text-md d-flex" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Nouveau chapitre">
@@ -103,23 +103,23 @@
                             @csrf
                             <!-- Champ titre -->
                             <input type="text" class="form-control me-4" name="title" placeholder="Titre de la question" required>
-                    
+
                             <!-- Champ caché pour quiz_id -->
                             <input type="hidden" value="{{ $quizID }}" name="quiz_id">
-                    
+
                             <!-- Bouton d'envoi -->
                             <button type="submit" class="btn btn-main rounded-lg py-15 px-4 fw-normal" style="white-space: nowrap;">
                                 Ajouter une question
                             </button>
                         </form>
                     </div>
-                    
+
                 </div>
-            
+
             </div>
-            
+
             <hr>
-           
+
             <table id="studentTable" class="table table-striped ">
                 <thead>
                     <tr class="">

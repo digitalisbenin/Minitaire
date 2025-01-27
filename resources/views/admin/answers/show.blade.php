@@ -13,7 +13,7 @@
                 <li><span class="text-main-600 fw-normal text-15">Réponse</span></li>
             </ul>
         </div>
-            
+
 
         <!-- Breadcrumb Right Start -->
         <div class="flex-align gap-8 flex-wrap">
@@ -51,7 +51,7 @@
     </div>
 
 
- 
+
 
 <!-- Modal -->
 {{-- <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
@@ -66,7 +66,7 @@
                 <form action="{{ url('answers') }}" method="POST">
                     @csrf
                     <div class="mb-3">
-                      
+
                         <input type="text" class="form-control" id="champ1" name="title"  placeholder="Réponse" required>
                     </div>
                     <div class="mb-3">
@@ -75,12 +75,12 @@
                     <div class="mb-3">
                         <select id="courseCategory" name="is_correct" class="form-select py-9 placeholder-13 text-15">
                             <option value="" selected>Répondre par vrai ou faux</option>
-                          
-                           <option value="1">Vrai </option>    
-                           <option value="0">Faux </option>    
-                        
-                            
-                        </select> 
+
+                           <option value="1">Vrai </option>
+                           <option value="0">Faux </option>
+
+
+                        </select>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
@@ -106,10 +106,10 @@
                                 <div class="col-md-4">
                                     <input type="text" class="form-control" name="title" placeholder="Réponse" required>
                                 </div>
-            
+
                                 <!-- Champ caché pour question_id -->
                                 <input type="hidden" value="{{ $questionID }}" name="question_id">
-            
+
                                 <!-- Boutons radio (2 colonnes) -->
                                 <div class="col-md-4">
                                     <div class="form-check me-2">
@@ -121,7 +121,7 @@
                                         <label class="form-check-label" for="faux">Faux</label>
                                     </div>
                                 </div>
-            
+
                                 <!-- Bouton d'envoi (2 colonnes) -->
                                 <div class="col-md-2">
                                     <button type="submit" class="btn btn-success w-100">Ajouter</button>
@@ -134,7 +134,7 @@
               --}}
 
               <div class="container">
-                <h5 class="mb-0 text-center">{{$question->title}}</h5>
+                <h5 class="mb-0 text-center py-8">{{$question->title}}</h5>
                 <div class="card-header border-bottom border-gray-100 flex-align gap-8">
                     <h5 class="mb-0">Nouvelle Réponse</h5>
                     <button type="button" class="text-main-600 text-md d-flex" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Nouveau chapitre">
@@ -149,13 +149,13 @@
                         <div class="col-md-8">
                             <input type="text" class="form-control" name="title" placeholder="Réponse" required>
                         </div>
-            
+
                         <!-- Champ caché pour question_id -->
                         <input type="hidden" value="{{ $questionID }}" name="question_id">
-            
+
                         <!-- Boutons radio (4 colonnes) -->
                         <div class="col-md-2 flex">
-                            
+
 
                             <div class="form-check form-check-inline ">
                                 <input class="form-check-input" type="radio" name="is_correct" id="vrai" value="1" checked>
@@ -171,8 +171,8 @@
                               </div>
                         </div>
 
-                        
-            
+
+
                         <!-- Bouton d'envoi (2 colonnes) -->
                         <div class="col-md-2">
                             <button type="submit" class="btn btn-success w-100" style="white-space: nowrap;">
@@ -183,7 +183,7 @@
                 </form>
             </div>
             </div>
-            
+
 
             <hr>
             <table id="studentTable" class="table table-striped">
@@ -229,7 +229,7 @@
                             @else
                                 Faux
                             @endif
-                            
+
                             </span>
                         </td>
                         <td>
