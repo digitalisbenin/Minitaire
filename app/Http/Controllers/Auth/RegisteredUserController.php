@@ -34,7 +34,7 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        
+
         $request->validate([
             "role_id" => ['required'],
             "user_categorie_id" => ['required'],
@@ -57,13 +57,14 @@ class RegisteredUserController extends Controller
             "prenom" => $request->prenom,
             "telephone" => $request->telephone,
             "post" => $request->post,
-            
+
         ]);
 
         event(new Registered($user));
 
         Auth::login($user);
 
-        return redirect(RouteServiceProvider::HOME);
+        return redirect('verify-email') ;
+        // return redirect(RouteServiceProvider::HOME);
     }
 }
