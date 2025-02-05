@@ -25,7 +25,7 @@
 
                         <div class="toolbar-text">
                             <p class="mb-0 text-white montserrat fw-bold"
-                                style="text-transform: uppercase; font-size: 18px;">
+                                style="text-transform: uppercase; font-size: 18px; margin-left: -70px !important;">
                                 Direction du Service du Commissariat des Armées
                             </p>
                         </div>
