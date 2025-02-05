@@ -1,9 +1,8 @@
-
 @php
-use App\Models\Category;
-use App\Models\Difficulete;
-$category = Category::all();
-$difficulte = Difficulete::all();
+    use App\Models\Category;
+    use App\Models\Difficulete;
+    $category = Category::all();
+    $difficulte = Difficulete::all();
 
 @endphp
 
@@ -17,7 +16,8 @@ $difficulte = Difficulete::all();
                     <div class="d-flex justify-content-between align-items-center">
                         <!-- Section du texte à gauche -->
                         <div class="toolbar-text">
-                            <p class="mb-0 text-white" style="text-transform: uppercase;">Direction du Service de l'Intendence des Armées</p>
+                            <p class="mb-0 text-white" style="text-transform: uppercase;">Direction du Service de
+                                l'Intendence des Armées</p>
                         </div>
 
                         <!-- Section des icônes sociales et du bouton Connexion à droite -->
@@ -36,9 +36,9 @@ $difficulte = Difficulete::all();
                             <!-- Section du bouton Connexion -->
                             <div class="toolbar-login">
                                 @guest
-                                <div class="button">
-                                    <a href="/login" class="btn">Connexion</a>
-                                </div>
+                                    <div class="button">
+                                        <a href="/login" class="btn">Connexion</a>
+                                    </div>
                                 @endguest
                             </div>
                         </div>
@@ -53,66 +53,65 @@ $difficulte = Difficulete::all();
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-12">
-            <div class="nav-inner">
-                <nav class="navbar navbar-expand-lg">
-                    <a class="navbar-brand" href="{{url('/')}}">
-                        <img src="{{asset('assets/images/logo/Logos.png')}}" alt="Logo">
-                    </a>
-                    <button class="navbar-toggler mobile-menu-btn" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="toggler-icon"></span>
-                        <span class="toggler-icon"></span>
-                        <span class="toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
+                <div class="nav-inner">
+                    <nav class="navbar navbar-expand-lg">
+                        <a class="navbar-brand mr-9" href="{{ url('/') }}">
+                            <img src="{{ asset('assets/images/logo/Logos.png') }}" alt="Logo">
+                        </a>
+                        <button class="navbar-toggler mobile-menu-btn" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="toggler-icon"></span>
+                            <span class="toggler-icon"></span>
+                            <span class="toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
 
-                        <ul id="nav" class="navbar-nav ms-auto me-3">
+                            <ul id="nav" class="navbar-nav ms-auto me-3">
 
-                                                 <li class="nav-item">
-    <a class="page-scroll dd-menu collapsed" href="javascript:void(0)"
-        data-bs-toggle="collapse" data-bs-target="#submenu-1-4"
-        aria-controls="navbarSupportedContent" aria-expanded="false"
-        aria-label="Toggle navigation">Catalogue</a>
-    <ul class="sub-menu collapse" id="submenu-1-4">
+                                <li class="nav-item">
+                                    <a class="page-scroll dd-menu collapsed" href="javascript:void(0)"
+                                        data-bs-toggle="collapse" data-bs-target="#submenu-1-4"
+                                        aria-controls="navbarSupportedContent" aria-expanded="false"
+                                        aria-label="Toggle navigation">Catalogue</a>
+                                    <ul class="sub-menu collapse" id="submenu-1-4">
 
 
-        <!-- Deuxième niveau du sous-menu -->
-       @foreach($category as $value)
+                                        <!-- Deuxième niveau du sous-menu -->
+                                        @foreach ($category as $value)
+                                            <li class="nav-item">
+                                                <a class="collapsed" href="{{ url('categorie/' . $value->id) }}"
+                                                    data-bs-toggle="collapse" data-bs-target="#submenu-1-4-1"
+                                                    aria-expanded="false">{{ $value->name }}</a>
+                                                <ul class="sub-menu collapse" id="submenu-1-4-1">
+                                                    @foreach ($difficulte as $valus)
+                                                        <li class="nav-item"><a
+                                                                href="{{ url('categorie/' . $value->id . '/' . $valus->id) }}">{{ $valus->name }}</a>
+                                                        </li>
+                                                    @endforeach
 
-        <li class="nav-item">
-            <a class="collapsed" href="{{ url('categorie/'.$value->id) }}" data-bs-toggle="collapse" data-bs-target="#submenu-1-4-1"
-                aria-expanded="false">{{$value->name}}</a>
-            <ul class="sub-menu collapse" id="submenu-1-4-1">
-                @foreach($difficulte as $valus)
-                <li class="nav-item"><a href="{{ url('categorie/'.$value->id.'/'.$valus->id) }}">{{$valus->name}}</a></li>
-                @endforeach
+                                                </ul>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="" href="{{ url('/') }}" aria-expanded="false">Accueil</a>
 
-            </ul>
-        </li>
-       @endforeach
-    </ul>
-</li>
-                            <li class="nav-item">
-                                <a class="" href="{{url('/')}}"
-
-                                    aria-expanded="false"
-                                    >Accueil</a>
-
-                            </li>
-                            {{--  <li class="nav-item">
+                                </li>
+                                {{--  <li class="nav-item">
                                 <a class=" " href="{{url('/cours')}}"
 
                                     aria-controls="navbarSupportedContent" aria-expanded="false"
                                    >Cours</a>
 
                             </li>  --}}
-                            <li class="nav-item"><a href="{{url('/formation')}}">Formations</a></li>
-                            <li class="nav-item"><a href="{{url('/forums')}}">Forum</a></li>
+                                <li class="nav-item"><a href="{{ url('/formation') }}">Formations</a></li>
+                                <li class="nav-item"><a href="{{ url('/forums') }}">Forum</a></li>
 
 
 
-                            {{--  <li class="nav-item">
+                                {{--  <li class="nav-item">
                                 <a class="page-scroll dd-menu collapsed" href="javascript:void(0)"
                                     data-bs-toggle="collapse" data-bs-target="#submenu-1-4"
                                     aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -122,7 +121,7 @@ $difficulte = Difficulete::all();
 
                                 </ul>
                             </li>  --}}
-                            {{--  <li class="nav-item">
+                                {{--  <li class="nav-item">
                                 <a class="page-scroll dd-menu collapsed" href="javascript:void(0)"
                                     data-bs-toggle="collapse" data-bs-target="#submenu-1-5"
                                     aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -135,71 +134,83 @@ $difficulte = Difficulete::all();
                             </li>  --}}
 
 
-                            <li class="nav-item"><a href="{{url('/documents')}}">Documents</a></li>
-                            <li class="nav-item"><a href="{{url('/video')}}">Videos</a></li>
+                                <li class="nav-item"><a href="{{ url('/documents') }}">Documents</a></li>
+                                <li class="nav-item"><a href="{{ url('/video') }}">Videos</a></li>
 
-                            <li class="nav-item"><a href="{{url('/contact')}}">Contacts</a></li>
-                        </ul>
+                                <li class="nav-item"><a href="{{ url('/contact') }}">Contacts</a></li>
+                            </ul>
 
 
-                        {{--  <div class="toolbar-login">
+                            {{--  <div class="toolbar-login">
                             <div class="button ">
                                 {{--  <a href="registration.html">Create an Account</a>
                                 <a href="login.html" class="btn">Connexion</a>
                             </div>
                         </div>  --}}
-                        {{--  <form class="d-flex search-form">
+                            {{--  <form class="d-flex search-form">
                             <input class="form-control me-2" type="search" placeholder="Search"
                                 aria-label="Search">
                             <button class="btn btn-outline-success" type="submit"><i
                                     class="lni lni-search-alt"></i></button>
                         </form>  --}}
-                      @auth
-                      <div class="dropdown ">
-                        <a class=" dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user">
-                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                                <circle cx="12" cy="7" r="4"></circle>
-                            </svg>
-                           @auth 
-                            {{ Auth::user()->name }} {{ Auth::user()->prenom }}
-                           @endauth
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                          {{--  <li><a class="dropdown-item" href="#">{{ Auth::user()->name }} {{ Auth::user()->prenom }}</a></li>  --}}
-                          <li><a class="dropdown-item" href="#">Profil</a></li>
-                          @if (Auth::user()->role_id == '3')
-                          <li><a class="dropdown-item" href="{{url('mes-cours#cours')}}"> Mes Cours</a></li>
-                          <li><a class="dropdown-item" href="{{url('user-resultes#resultats')}}"> Mes resultats</a></li>
-                          @endif
-                          {{--  @if (Auth::user()->role_id == '1' )
+                            @auth
+                                <div class="dropdown ">
+                                    <a class=" dropdown-toggle" type="button" id="dropdownMenuButton1"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round" class="feather feather-user">
+                                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                            <circle cx="12" cy="7" r="4"></circle>
+                                        </svg>
+                                        @auth
+                                            {{ Auth::user()->name }} {{ Auth::user()->prenom }}
+                                        @endauth
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                        {{--  <li><a class="dropdown-item" href="#">{{ Auth::user()->name }} {{ Auth::user()->prenom }}</a></li>  --}}
+                                        <li><a class="dropdown-item" href="#">Profil</a></li>
+                                        @if (Auth::user()->role_id == '3')
+                                            <li><a class="dropdown-item" href="{{ url('mes-cours#cours') }}"> Mes
+                                                    Cours</a></li>
+                                            <li><a class="dropdown-item" href="{{ url('user-resultes#resultats') }}"> Mes
+                                                    resultats</a></li>
+                                        @endif
+                                        {{--  @if (Auth::user()->role_id == '1')
                           <li><a class="dropdown-item" href="{{url('dashboard')}}">Tableau de bord</a></li>
                            @endif
-                           @if (Auth::user()->role_id == '2' )
+                           @if (Auth::user()->role_id == '2')
                            <li><a class="dropdown-item" href="{{url('formations')}}">Tableau de bord</a></li>
                             @endif  --}}
-                            @auth
-    @if (Auth::user()->role_id == '1')
-        <li><a class="dropdown-item" href="{{ url('dashboard') }}">Tableau de bord</a></li>
-    @elseif (Auth::user()->role_id == '2')
-        <li><a class="dropdown-item" href="{{ url('formations') }}">Tableau de bord</a></li>
-    @endif
-@endauth
-@if (Auth::user()->role_id == '3')
-                          <li><a class="dropdown-item" href="{{url('mes-reunions#reunions')}}">Mes reunions</a></li>  @endif
-                          <li><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Déconnexion</a></li>
-                          <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                              @csrf
-                          </form>
-                        </ul>
-                      </div>
+                                        @auth
+                                            @if (Auth::user()->role_id == '1')
+                                                <li><a class="dropdown-item" href="{{ url('dashboard') }}">Tableau de
+                                                        bord</a></li>
+                                            @elseif (Auth::user()->role_id == '2')
+                                                <li><a class="dropdown-item" href="{{ url('formations') }}">Tableau de
+                                                        bord</a></li>
+                                            @endif
+                                        @endauth
+                                        @if (Auth::user()->role_id == '3')
+                                            <li><a class="dropdown-item" href="{{ url('mes-reunions#reunions') }}">Mes
+                                                    reunions</a></li>
+                                        @endif
+                                        <li><a class="dropdown-item" href="{{ route('logout') }}"
+                                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Déconnexion</a>
+                                        </li>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                            class="d-none">
+                                            @csrf
+                                        </form>
+                                    </ul>
+                                </div>
+                            </div>
+                        @endauth
+
+
+                        <!-- navbar collapse -->
+                    </nav> <!-- navbar -->
                 </div>
-                      @endauth
-
-
-                    <!-- navbar collapse -->
-                </nav> <!-- navbar -->
-            </div>
             </div>
         </div> <!-- row -->
     </div> <!-- container -->
