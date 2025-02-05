@@ -1,0 +1,417 @@
+<?php
+use App\Models\User;
+use App\Models\Certificate;
+use App\Models\Commentaire;
+use App\Models\Formation;
+use App\Models\Resource;
+use App\Models\Chapitre;
+use App\Models\Discution;
+use App\Models\DiscutionReponse;
+use App\Models\Video;
+use App\Models\Difficulete;
+use App\Models\Quiz;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CertificateController;
+use App\Http\Controllers\ChapitreController;
+use App\Http\Controllers\CommentaireController;
+use App\Http\Controllers\DifficuleteController;
+use App\Http\Controllers\DiscutionController;
+use App\Http\Controllers\DiscutionReponseController;
+use App\Http\Controllers\EvaluationController;
+use App\Http\Controllers\FormationController;
+use App\Http\Controllers\MesCourController;
+use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\ResourceController;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\SuivyController;
+use App\Http\Controllers\UserCategoryController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\UserResultController;
+use App\Http\Controllers\VideoController;
+use App\Http\Controllers\VisioConferenceController;
+use App\Http\Controllers\MeetController;
+use App\Http\Controllers\AnswersController;
+use App\Http\Controllers\NotequizControleur;
+use App\Http\Controllers\QuizController;
+use App\Models\Answers;
+use App\Models\Notequiz;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider and all of them will
+| be assigned to the "web" middleware group. Make something great!
+|
+*/
+
+Route::get('/', function () {
+    $formation=Formation::orderBy('created_at', 'desc')->take(9)->get();
+    return view('welcome',compact('formation'));
+});
+Route::get('/cours', function () {
+    return view('cours');
+});
+// Route::get('/admin-cours', function () {
+//     return view('admin.cours.index');
+// });
+Route::get('/admin-cours-detail', function () {
+    return view('admin.cours.details');
+});
+// Route::get('/admin-create', function () {
+//     return view('admin.cours.create');
+// });
+Route::get('/details-cours/{id}', function ($id) {
+    $chapitre = Chapitre::where('formation_id',$id)->get();
+    $formationId = $id;
+    $quiz = Quiz::where('formation_id',$id)->get();
+    $quizz = Quiz::all();
+    $commentaire=Commentaire::all();
+    $repose=Answers::all();
+    return view('details_cours',compact('chapitre','formationId','commentaire' ,'quiz','quizz','repose'));
+});
+Route::get('/video', function () {
+    $video= Video::all();
+    return view('video',compact('video'));
+});
+
+Route::get('/contact', function () {
+    return view('contact');
+});
+
+Route::get('/quiz/{id}', function ($id) {
+    $quiz = Quiz::where('formation_id',$id)->get();
+    $repose=Answers::all();
+    $user = Auth::user();
+    $notequiz = Notequiz::where('user_id', $user->id)->get();
+
+    return view('quiz',compact('quiz','repose','notequiz'));
+});
+Route::get('/question/{id}', function ($id) {
+    $quize = Quiz::all();
+    $quiz = Quiz::where('chapitre_id',$id)->with('questions')->get();
+    $repose=Answers::all();
+    $user = Auth::user();
+    $notequiz = Notequiz::where('user_id', $user->id)->get();
+    return view('question',compact('quiz','quize','repose','notequiz'));
+});
+Route::get('/forums', function () {
+
+    $discution=Discution::with('reponses')->get();
+    $repose=DiscutionReponse::all();
+
+    return view('forum', compact('discution','repose'));
+});
+Route::get('/formateurs', function () {
+    $formateurs=User::where('role_id',2)->get();
+    return view('formateurs', compact('formateurs'));
+});
+Route::get('/formation', function () {
+    $formation=Formation::all();
+    return view('formations',compact('formation'));
+});
+// Route::get('/categorie/{id}', function ($id) {
+//     $formation=Formation::where('categorie_id',$id)->get();
+//     return view('categorie',compact('formation'));
+// });
+Route::get('/categorie/{id}', function ($id, Request $request) {
+    $difficultes = Difficulete::all(); // Récupérer toutes les difficultés
+
+    $query = Formation::where('categorie_id', $id);
+
+    if ($request->has('difficulte_id') && $request->difficulte_id != '') {
+        $query->where('difficulte_id', $request->difficulte_id);
+    }
+
+    $formation = $query->get(); // Exécuter la requête
+
+    return view('categorie', compact('formation', 'difficultes', 'id'));
+});
+
+
+
+
+
+Route::get('/categorie/{id}/{difficulte}', function ($id, $difficulte) {
+    $formation = Formation::where('categorie_id', $id)
+                           ->where('difficulte_id', $difficulte)
+                           ->get();
+    return view('categorie', compact('formation'));
+});
+Route::get('/documents', function () {
+    $resource=Resource::all();
+    return view('documents',compact('resource'));
+});
+
+
+
+Route::get('/dashboard', function () {
+    $formation=Formation::all();
+    $formations = Formation::orderBy('created_at', 'desc')->take(3)->get();
+    $apprenants=User::where('role_id',3)->get();
+    $formateurs=User::where('role_id',2)->get();
+    $certificate=Certificate::all();
+    $ressource=Resource::all();
+    return view('dashboard', compact('formation','formations','apprenants','formateurs','certificate','ressource'));
+
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::get('/apprenants', function () {
+        $apprenants=User::where('role_id',3)->get();
+        return view('admin.student',compact('apprenants'));
+    });
+    Route::get('/admin-formateurs', function () {
+        $formateurs=User::where('role_id',2)->get();
+        return view('admin.formateurs',compact('formateurs'));
+    });
+    // Route::get('/cours', function () {
+    //     return view('admin.cours');
+    // });
+    Route::get('/categories', function () {
+        return view('admin.type');
+    });
+
+
+    Route::post('user-results', [UserResultController::class, 'store']);
+    Route::get('user-resultes', [UserResultController::class, 'indexe']);
+    Route::get('recapulatives', [NotequizControleur::class, 'indexe']);
+    Route::get('/certificate/download/{chapterId}', [CertificateController::class, 'download'])->name('certificate.download');
+    Route::post('commentaires', [CommentaireController::class, 'store']);
+
+});
+
+require __DIR__.'/auth.php';
+/*-----------------Categorie--------------------------*/
+Route::get('categories', [CategoryController::class, 'index']);
+Route::get('create-categories', [CategoryController::class, 'create']);
+Route::get('categories/{id}', [CategoryController::class, 'show']);
+Route::get('categories/{id}/edit', [CategoryController::class, 'edit'])->name('categories.edit');
+Route::post('categories', [CategoryController::class, 'store']);
+Route::put('categories/{id}/update', [CategoryController::class, 'update']);
+Route::get('categories/{id}/destroy', [CategoryController::class, 'destroy']);
+
+
+/*-----------------Certificate--------------------------*/
+Route::get('certificates', [CertificateController::class, 'index']);
+Route::get('create-certificates', [CertificateController::class, 'create']);
+Route::get('certificates/{id}', [CertificateController::class, 'show']);
+Route::get('certificates/{id}', [CertificateController::class, 'edit']);
+Route::post('certificates', [CertificateController::class, 'store']);
+Route::put('certificates/{id}', [CertificateController::class, 'update']);
+Route::get('certificates/{id}', [CertificateController::class, 'destroy']);
+
+
+/*-----------------Chapitre--------------------------*/
+Route::get('chapitres', [ChapitreController::class, 'index']);
+Route::get('chapitres/{id}', [ChapitreController::class, 'indexe']);
+Route::get('create-chapitres/{id}', [ChapitreController::class, 'create']);
+Route::get('chapitres/{id}', [ChapitreController::class, 'show']);
+Route::get('chapitres/{id}/edit', [ChapitreController::class, 'edit']);
+Route::post('chapitres', [ChapitreController::class, 'store']);
+Route::put('chapitres/{id}/update', [ChapitreController::class, 'update']);
+Route::get('chapitres/{id}/destroy', [ChapitreController::class, 'destroy']);
+
+/*-----------------Commentaire--------------------------*/
+Route::get('commentaires', [CommentaireController::class, 'index']);
+Route::get('create-commentaires', [CommentaireController::class, 'create']);
+Route::get('commentaires/{id}', [CommentaireController::class, 'show']);
+Route::get('commentaires/{id}', [CommentaireController::class, 'edit']);
+
+Route::put('commentaires/{id}', [CommentaireController::class, 'update']);
+Route::get('commentaires/{id}', [CommentaireController::class, 'destroy']);
+
+/*-----------------Difficulte--------------------------*/
+Route::get('difficultes', [DifficuleteController::class, 'index']);
+Route::get('create-difficultes', [DifficuleteController::class, 'create']);
+Route::get('difficultes/{id}/edit', [DifficuleteController::class, 'edit']);
+Route::post('difficultes', [DifficuleteController::class, 'store']);
+Route::put('difficultes/{id}/update', [DifficuleteController::class, 'update']);
+Route::get('difficultes/{id}/destroy', [DifficuleteController::class, 'destroy']);
+
+/*-----------------Discussion--------------------------*/
+Route::get('discussions', [DiscutionController::class, 'index']);
+Route::get('create-discussions', [DiscutionController::class, 'create']);
+Route::get('discussions/{id}', [DiscutionController::class, 'show']);
+Route::get('discussions/{id}', [DiscutionController::class, 'edit']);
+Route::post('discussions', [DiscutionController::class, 'store']);
+Route::put('discussions/{id}', [DiscutionController::class, 'update']);
+Route::get('discussions/{id}', [DiscutionController::class, 'destroy']);
+
+/*-----------------Meet--------------------------*/
+Route::get('mes-reunions', [MeetController::class, 'indexe']);
+Route::get('meets', [MeetController::class, 'index']);
+Route::get('create-meets', [MeetController::class, 'create']);
+Route::get('meets/{id}', [MeetController::class, 'show']);
+Route::get('meets/{id}/edit', [MeetController::class, 'edit']);
+Route::post('meets', [MeetController::class, 'store']);
+Route::put('meets/{id}/update', [MeetController::class, 'update']);
+Route::get('meets/{id}/destroy', [MeetController::class, 'destroy']);
+
+/*-----------------Discussion Reponse--------------------------*/
+Route::get('discussions-reponses', [DiscutionReponseController::class, 'index']);
+Route::get('create-discussions-reponses', [DiscutionReponseController::class, 'create']);
+Route::get('discussions-reponses/{id}', [DiscutionReponseController::class, 'show']);
+Route::get('discussions-reponses/{id}', [DiscutionReponseController::class, 'edit']);
+Route::post('discussions-reponses', [DiscutionReponseController::class, 'store']);
+Route::put('discussions-reponses/{id}', [DiscutionReponseController::class, 'update']);
+Route::get('discussions-reponses/{id}', [DiscutionReponseController::class, 'destroy']);
+
+/*-----------------Visio conference--------------------------*/
+Route::get('visio-conferences', [VisioConferenceController::class, 'index']);
+Route::get('create-visio-conferences', [VisioConferenceController::class, 'create']);
+Route::get('visio-conferences/{id}', [VisioConferenceController::class, 'show']);
+Route::get('visio-conferences/{id}/edit', [VisioConferenceController::class, 'edit']);
+Route::post('visio-conferences', [VisioConferenceController::class, 'store']);
+Route::put('visio-conferences/{id}/update', [VisioConferenceController::class, 'update']);
+Route::get('visio-conferences/{id}/destroy', [VisioConferenceController::class, 'destroy']);
+
+
+/*-----------------Evaluation--------------------------*/
+Route::get('evaluations', [EvaluationController::class, 'index']);
+Route::get('create-evaluations', [EvaluationController::class, 'create']);
+Route::get('evaluations/{id}', [EvaluationController::class, 'show']);
+Route::get('evaluations/{id}', [EvaluationController::class, 'edit']);
+Route::post('evaluations', [EvaluationController::class, 'store']);
+Route::put('evaluations/{id}', [EvaluationController::class, 'update']);
+Route::get('evaluations/{id}', [EvaluationController::class, 'destroy']);
+
+
+/*-----------------Formation--------------------------*/
+Route::get('formations', [FormationController::class, 'index']);
+Route::get('create-formations', [FormationController::class, 'create']);
+Route::get('formations/{id}', [FormationController::class, 'show']);
+Route::get('formations/{id}/edit', [FormationController::class, 'edit']);
+Route::post('formations', [FormationController::class, 'store']);
+Route::put('formations/{id}/update', [FormationController::class, 'update']);
+Route::get('formations/{id}/destroy', [FormationController::class, 'destroy']);
+
+/*-----------------Mes cours--------------------------*/
+Route::get('mes-cours', [MesCourController::class, 'index']);
+Route::get('create-mes-cours', [MesCourController::class, 'create']);
+Route::get('mes-cours/{id}', [MesCourController::class, 'show']);
+Route::get('mes-cours/{id}', [MesCourController::class, 'edit']);
+Route::post('mes-cours', [MesCourController::class, 'store']);
+Route::put('mes-cours/{id}', [MesCourController::class, 'update']);
+Route::get('mes-cours/{id}', [MesCourController::class, 'destroy']);
+
+/*-----------------Notification--------------------------*/
+Route::get('notifications', [NotificationController::class, 'index']);
+Route::get('create-notifications', [NotificationController::class, 'create']);
+Route::get('notifications/{id}', [NotificationController::class, 'show']);
+Route::get('notifications/{id}', [NotificationController::class, 'edit']);
+Route::post('notifications', [NotificationController::class, 'store']);
+Route::put('notifications/{id}', [NotificationController::class, 'update']);
+Route::get('notifications/{id}', [NotificationController::class, 'destroy']);
+
+/*-----------------Resource--------------------------*/
+Route::get('ressources', [ResourceController::class, 'index']);
+Route::get('create-ressources', [ResourceController::class, 'create']);
+Route::get('ressources/{id}', [ResourceController::class, 'show']);
+Route::get('ressources/{id}/edit', [ResourceController::class, 'edit']);
+Route::post('ressources', [ResourceController::class, 'store']);
+Route::put('ressources/{id}/update', [ResourceController::class, 'update']);
+Route::get('ressources/{id}/destroy', [ResourceController::class, 'destroy']);
+
+/*-----------------Role--------------------------*/
+Route::get('roles', [RoleController::class, 'index']);
+Route::get('create-roles', [RoleController::class, 'create']);
+Route::get('roles/{id}', [RoleController::class, 'show']);
+Route::get('roles/{id}', [RoleController::class, 'edit']);
+Route::post('roles', [RoleController::class, 'store']);
+Route::put('roles/{id}', [RoleController::class, 'update']);
+Route::get('roles/{id}', [RoleController::class, 'destroy']);
+
+/*-----------------Suivi--------------------------*/
+Route::get('suivis', [SuivyController::class, 'index']);
+Route::get('create-suivis', [SuivyController::class, 'create']);
+Route::get('suivis/{id}', [SuivyController::class, 'show']);
+Route::get('suivis/{id}', [SuivyController::class, 'edit']);
+Route::post('suivis', [SuivyController::class, 'store']);
+Route::put('suivis/{id}', [SuivyController::class, 'update']);
+Route::get('suivis/{id}', [SuivyController::class, 'destroy']);
+
+/*-----------------User--------------------------*/
+Route::get('users', [UserController::class, 'index']);
+Route::get('create-users', [UserController::class, 'create']);
+Route::get('users/{id}', [UserController::class, 'show']);
+Route::get('users/{id}', [UserController::class, 'edit']);
+Route::post('users', [UserController::class, 'store']);
+Route::put('users/{id}', [UserController::class, 'update']);
+Route::get('users/{id}', [UserController::class, 'destroy']);
+
+/*-----------------User categories--------------------------*/
+Route::get('user-categories', [UserCategoryController::class, 'index']);
+Route::get('create-user-categories', [UserCategoryController::class, 'create']);
+Route::get('user-categories/{id}', [UserCategoryController::class, 'show']);
+Route::get('user-categories/{id}', [UserCategoryController::class, 'edit']);
+Route::post('user-categories', [UserCategoryController::class, 'store']);
+Route::put('user-categories/{id}', [UserCategoryController::class, 'update']);
+Route::get('user-categories/{id}', [UserCategoryController::class, 'destroy']);
+
+/*-----------------Video--------------------------*/
+Route::get('videos', [VideoController::class, 'index']);
+Route::get('create-videos', [VideoController::class, 'create']);
+Route::get('videos/{id}', [VideoController::class, 'show']);
+Route::get('videos/{id}/edit', [VideoController::class, 'edit']);
+Route::post('videos', [VideoController::class, 'store']);
+Route::put('videos/{id}/update', [VideoController::class, 'update']);
+Route::get('videos/{id}/destroy', [VideoController::class, 'destroy']);
+
+
+/*-----------------Ansers --------------------------*/
+Route::get('answers', [AnswersController::class, 'index']);
+Route::get('create-answers', [AnswersController::class, 'create']);
+Route::get('create-answers/{id}', [AnswersController::class, 'creates']);
+Route::get('create-answer/{id}', [AnswersController::class, 'createe']);
+Route::get('answers/{id}', [AnswersController::class, 'show']);
+Route::get('answers/{id}/edit', [AnswersController::class, 'edit']);
+Route::post('answers', [AnswersController::class, 'store']);
+Route::put('answers/{id}/update', [AnswersController::class, 'update']);
+Route::get('answers/{id}/destroy', [AnswersController::class, 'destroy']);
+
+/*-----------------Video--------------------------*/
+Route::get('questions', [QuestionController::class, 'index']);
+Route::get('create-question/{id}', [QuestionController::class, 'createe']);
+Route::get('create-questions/{id}', [QuestionController::class, 'create']);
+Route::get('create-questions', [QuestionController::class, 'creates']);
+Route::get('questions/{id}', [QuestionController::class, 'show']);
+Route::get('questions/{id}/edit', [QuestionController::class, 'edit']);
+Route::post('questions', [QuestionController::class, 'store']);
+Route::put('questions/{id}/update', [QuestionController::class, 'update']);
+Route::get('questions/{id}/destroy', [QuestionController::class, 'destroy']);
+
+
+/*-----------------Video--------------------------*/
+Route::get('quizs', [QuizController::class, 'index']);
+Route::get('create-quizs/{id}', [QuizController::class, 'create']);
+Route::get('create-quizzs/{id}', [QuizController::class, 'creates']);
+Route::get('quizs/{id}', [QuizController::class, 'show']);
+Route::get('quizse/{id}', [QuizController::class, 'shows']);
+Route::get('quizs/{id}/edit', [QuizController::class, 'edit']);
+Route::post('quizs', [QuizController::class, 'store']);
+Route::put('quizs/{id}/update', [QuizController::class, 'update']);
+Route::get('quizs/{id}/destroy', [QuizController::class, 'destroy']);
+
+
+
+
+/*-----------------Video--------------------------*/
+Route::get('notequizs', [NotequizControleur::class, 'index']);
+Route::get('create-notequizs/{id}', [NotequizControleur::class, 'create']);
+Route::get('create-notequizs/{id}', [NotequizControleur::class, 'creates']);
+Route::get('notequizs/{id}', [NotequizControleur::class, 'show']);
+Route::get('notequizs/{id}/edit', [NotequizControleur::class, 'edit']);
+Route::post('notequizs', [NotequizControleur::class, 'store']);
+Route::put('notequizs/{id}/update', [NotequizControleur::class, 'update']);
+Route::get('notequizs/{id}/destroy', [NotequizControleur::class, 'destroy']);

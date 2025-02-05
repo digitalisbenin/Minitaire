@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+    <script src="{{ URL::asset('admin_assets/tinymce/tinymce.min.js') }}"></script>
+    <script>
+      tinymce.init({
+        selector: 'textarea',
+        plugins: 'link image media',
+        toolbar: 'undo redo | formatselect | bold italic | alignleft aligncenter alignright | link image media',
+      });
+    </script>
+    {{-- <script src="{{ URL::asset('admin_assets/tinymce/tinymce.min.js') }}"></script>
+
+    <script type="text/javascript">
+
+                tinymce.init({
+                    selector: "textarea",
+                    height: 300,
+                    relative_urls: false,
+                    remove_script_host: false,
+                    file_picker_callback: elFinderBrowser,
+                    plugins: [
+                        'advlist', 'autolink', 'lists', 'link', 'image', 'charmap', 'preview',
+                        'anchor', 'searchreplace', 'visualblocks', 'code', 'fullscreen',
+                        'insertdatetime', 'media', 'table', 'help', 'wordcount'
+                    ],
+                    toolbar: 'undo redo | blocks | ' +
+                        'bold italic backcolor | alignleft aligncenter ' +
+                        'alignright alignjustify | bullist numlist outdent indent | ' +
+                        'removeformat | help',
+                    content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:16px }'
+                });
+
+    </script> --}}
+</head>
+<body>
+@extends('layouts.admin')
+
+@section('content')
+@include ('partial.sidebar')
+
+
+<div class="dashboard-body">
+
+    <div class="breadcrumb-with-buttons mb-24 flex-between flex-wrap gap-8">
+        <!-- Breadcrumb Start -->
+<div class="breadcrumb mb-24">
+<ul class="flex-align gap-4">
+<li><a href="index.html" class="text-gray-200 fw-normal text-15 hover-text-main-600">Accueil</a></li>
+<li> <span class="text-gray-500 fw-normal d-flex"><i class="ph ph-caret-right"></i></span> </li>
+<li><span class="text-main-600 fw-normal text-15">Créer un chapitre</span></li>
+</ul>
+</div>
+<!-- Breadcrumb End -->
+
+        <!-- Buttons Start -->
+<div class="flex-align justify-content-end gap-8">
+
+</div>
+<!-- Buttons End -->
+    </div>
+
+
+<!-- Create Course Step List End -->
+
+    <!-- Course Tab Start -->
+    <div class="card">
+        <div class="card-header border-bottom border-gray-100 flex-align gap-8">
+            <h5 class="mb-0">Nouveau chapitre</h5>
+            <button type="button" class="text-main-600 text-md d-flex" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Nouveau chapitre">
+                <i class="ph-fill ph-question"></i>
+            </button>
+        </div>
+        <div class="card-body">
+            <form  id="uploadForm" action="{{ url('chapitres') }}" method="post" enctype="multipart/form-data">
+                        @csrf
+                <div class="row gy-20">
+                    <div class="col-xxl-3 col-md-4 col-sm-5">
+                        <div class="mb-20">
+                            <label class="h5 fw-semibold font-heading mb-0">Image du chapitre <span class="text-13 text-gray-400 fw-medium">(Requis)</span> </label>
+                        </div>
+
+                        <div class="">
+                            <input type="file" class=" placeholder-13 form-control py-11 pe-76" name="image_url" id="" required>
+                        </div>
+
+                    </div>
+                    <div class="col-xxl-9 col-md-8 col-sm-7">
+                        <div class="row g-20">
+                            <div class="col-sm-6">
+                                <label for="courseTitle" class="h5 mb-8 fw-semibold font-heading">Titre <span class="text-13 text-gray-400 fw-medium">(Requis)</span> </label>
+                                <div class="position-relative">
+                                    <input type="text" class=" placeholder-13 form-control py-11 pe-77" name="titre" maxlength="100" id="courseTitle" placeholder="" required>
+                                    {{--  <div class="text-gray-400 position-absolute inset-inline-end-0 top-50 translate-middle-y me-16">
+                                        <span id="current">3</span>
+                                        <span id="maximum">/ 100</span>
+                                    </div>  --}}
+                                </div>
+                            </div>
+
+                            {{--  <div class="col-sm-6">
+                                <label for="courseCategory" class="h5 mb-8 fw-semibold font-heading">Formation <span class="text-13 text-gray-400 fw-medium">(Requis)</span></label>
+                                <div class="position-relative">
+                                    <select id="courseCategory" name="formation_id" class="form-select py-9 placeholder-13 text-15" disabled>
+
+                                       @foreach($formation as $value)
+                                       <option value="{{$value->id}}">{{$value->titre}} </option>
+                                       <input type="hidden" name="formation_id" value="{{ $formation->first()->id ?? '' }}">
+                                       @endforeach
+
+                                    </select>
+                                </div>
+                            </div>  --}}
+                            <div class="col-sm-6">
+                                <label for="courseCategory" class="h5 mb-8 fw-semibold font-heading">Formation <span class="text-13 text-gray-400 fw-medium">(Requis)</span></label>
+                                <div class="position-relative">
+
+
+                                       @foreach($formation as $value)
+                                       {{--  <option value="{{$value->id}}">{{$value->titre}} </option>  --}}
+                                       <input type="hidden" name="formation_id" value="{{ $formation->first()->id ?? '' }}">
+                                       <input type="text"  name="" class="form-control py-9 placeholder-13 text-15"  style=" background-color: #d6d6d6;"  disabled value="{{ $formation->first()->titre ?? '' }}">
+
+                                       {{--  <input type="text" name=""class="form-control py-9 placeholder-13 text-15" readonly  value="{{ $formation->first()->titre ?? '' }}">  --}}
+                                       @endforeach
+
+
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="courseLesson" class="h5 mb-8 fw-semibold font-heading">Documents <span class="text-13 text-gray-400 fw-medium"></span></label>
+                                <div class="position-relative">
+                                    <input type="file"class=" placeholder-13 form-control py-11 pe-76" name="document_url" id="document_url" >
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="courseLevel" class="h5 mb-8 fw-semibold font-heading">Vidéo <span class="text-13 text-gray-400 fw-medium"></span></label>
+                                <div class="position-relative">
+                                    <input type="file" class=" placeholder-13 form-control py-11 pe-76" name="video_url" id="video_url">
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                    <div class="col-sm-12">
+                        <label for="courseTitle" class="h5 mb-8 fw-semibold font-heading">Description <span class="text-13 text-gray-400 fw-medium"></span> </label>
+                        <div class="position-relative">
+                            <textarea  class=" placeholder-13 form-control py-11 pe-76" name="description" id="course" placeholder=""> </textarea>
+
+                        </div>
+
+
+
+                    </div>
+                    <div class="flex-align justify-content-end gap-8">
+                        <a href="" class="btn btn-outline-main rounded-pill py-9">Cancel</a>
+                        <button type="submit" class="btn btn-success rounded-pill py-9">Envoyer</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+@endsection
+
+
+</body>
+</html>
+@section('scripts')
+{{--  <script>
+    document.getElementById("uploadForm").addEventListener("submit", function(event) {
+        let documentInput = document.getElementById("document_url").files.length;
+        let videoInput = document.getElementById("video_url").files.length;
+
+        if (documentInput === 0 && videoInput === 0) {
+            event.preventDefault();
+            alert("Veuillez télécharger au moins un fichier (Document ou Vidéo).");
+        }
+    });
+</script>  --}}
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        document.getElementById("uploadForm").addEventListener("submit", function (event) {
+            let documentInput = document.getElementById("document_url").files.length;
+            let videoInput = document.getElementById("video_url").files.length;
+
+            if (documentInput === 0 && videoInput === 0) {
+                event.preventDefault(); // Empêche l'envoi du formulaire
+                alert("Veuillez télécharger au moins un fichier (Document ou Vidéo).");
+            }
+        });
+    });
+</script>

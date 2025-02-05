@@ -1,0 +1,226 @@
+
+@php
+use App\Models\Category;
+use App\Models\Difficulete;
+$category = Category::all();
+$difficulte = Difficulete::all();
+
+@endphp
+
+<!-- Start Header Area -->
+<header class="header navbar-area">
+    <!-- Toolbar Start -->
+    <div class="toolbar-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-12">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <!-- Section du texte à gauche -->
+                        <div class="toolbar-text">
+                            <p class="mb-0 text-white montserrat fw-bold " style="text-transform: uppercase; font-size: 18px;">Direction du Service de l'Intendence des Armées</p>
+                        </div>
+
+                        <!-- Section des icônes sociales et du bouton Connexion à droite -->
+                        <div class="d-flex justify-content-end align-items-center">
+                            <!-- Section des icônes sociales -->
+                            <div class="toolbar-social me-3">
+                                <ul class="d-flex">
+                                    <li><a href="javascript:void(0)"><i class="lni lni-facebook-original" style="font-size: 18px;"></i></a></li>
+                                    <li><a href="javascript:void(0)"><i class="lni lni-twitter-original" style="font-size: 18px;"></i></a></li>
+                                    <li><a href="javascript:void(0)"><i class="lni lni-instagram" style="font-size: 18px;"></i></a></li>
+                                    <li><a href="javascript:void(0)"><i class="lni lni-linkedin-original" style="font-size: 18px;" ></i></a></li>
+                                    <li><a href="javascript:void(0)"><i class="lni lni-google" style="font-size: 18px;"></i></a></li>
+                                </ul>
+                            </div>
+
+                            <!-- Section du bouton Connexion -->
+                            <div class="toolbar-login">
+                                @guest
+                                <div class="button">
+                                    <a href="/login" class="btn montserrat fw-bold" style="font-size: 18px;" >Connexion</a>
+                                </div>
+                                @endguest
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Toolbar End -->
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-12">
+            <div class="nav-inner">
+                <nav class="navbar navbar-expand-lg">
+                    <a class="navbar-brand" href="{{url('/')}}">
+                        <img src="{{asset('assets/images/logo/Logos.png')}}" alt="Logo">
+                    </a>
+                    <button class="navbar-toggler mobile-menu-btn" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="toggler-icon"></span>
+                        <span class="toggler-icon"></span>
+                        <span class="toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
+
+                        <ul id="nav" class="navbar-nav ms-auto me-3">
+                            <li class="nav-item">
+                                <a href="{{url('/')}}"class=" montserrat fw-bold  {{ Request::is('/') ? 'active' : '' }}" style="font-size: 18px;"
+
+                                    aria-expanded="false"
+                                    >ACCUEIL</a>
+
+                            </li>
+
+                                                 <li class="nav-item">
+    <a class="page-scroll dd-menu collapsed  montserrat fw-bold " href="javascript:void(0)"
+        data-bs-toggle="collapse" data-bs-target="#submenu-1-4"
+        aria-controls="navbarSupportedContent" aria-expanded="false"
+        aria-label="Toggle navigation" style="font-size: 18px;">CATALOGUE</a>
+    <ul class="sub-menu collapse" id="submenu-1-4">
+
+
+        <!-- Deuxième niveau du sous-menu -->
+       @foreach($category as $value)
+
+        <li class="nav-item">
+            <a href="{{ url('categorie/'.$value->id) }}" class=" montserrat fw-bold  {{ Request::is('categorie') ? 'active' : '' }}" style="font-size: 18px;"
+                aria-expanded="false">{{$value->name}}</a>
+
+        </li>
+       @endforeach
+    </ul>
+</li>
+                                                 {{--  <li class="nav-item">
+    <a class="page-scroll dd-menu collapsed  montserrat fw-bold " href="javascript:void(0)"
+        data-bs-toggle="collapse" data-bs-target="#submenu-1-4"
+        aria-controls="navbarSupportedContent" aria-expanded="false"
+        aria-label="Toggle navigation" style="font-size: 18px;">CATALOGUE</a>
+    <ul class="sub-menu collapse" id="submenu-1-4">
+
+
+        <!-- Deuxième niveau du sous-menu -->
+       @foreach($category as $value)
+
+        <li class="nav-item">
+            <a href="{{ url('categorie/'.$value->id) }}" class=" montserrat fw-bold  {{ Request::is('categorie') ? 'active' : '' }}" style="font-size: 18px;"   data-bs-toggle="collapse" data-bs-target="#submenu-1-4-1"
+                aria-expanded="false">{{$value->name}}</a>
+          <ul class="sub-menu collapse" id="submenu-1-4-1">
+                @foreach($difficulte as $valus)
+                <li class="nav-item"><a href="{{ url('categorie/'.$value->id.'/'.$valus->id) }}">{{$valus->name}}</a></li>
+                @endforeach
+
+            </ul>
+        </li>
+       @endforeach
+    </ul>
+</li>  --}}
+                            
+                            {{--  <li class="nav-item">
+                                <a class=" " href="{{url('/cours')}}"
+
+                                    aria-controls="navbarSupportedContent" aria-expanded="false"
+                                   >Cours</a>
+
+                            </li>  --}}
+                            <li class="nav-item"><a href="{{url('/formation')}}"class=" montserrat fw-bold  {{ Request::is('formation') ? 'active' : '' }}" style="font-size: 18px;"  >FORMATIONS</a></li>
+                            <li class="nav-item"><a href="{{url('/forums')}}"class=" montserrat fw-bold  {{ Request::is('forums') ? 'active' : '' }}" style="font-size: 18px;"  >FORUM</a></li>
+
+
+
+                            {{--  <li class="nav-item">
+                                <a class="page-scroll dd-menu collapsed" href="javascript:void(0)"
+                                    data-bs-toggle="collapse" data-bs-target="#submenu-1-4"
+                                    aria-controls="navbarSupportedContent" aria-expanded="false"
+                                    aria-label="Toggle navigation">Catalogue</a>
+                                <ul class="sub-menu collapse" id="submenu-1-4">
+                                    <li class="nav-item"><a href="about-us.html">About Us</a></li>
+
+                                </ul>
+                            </li>  --}}
+                            {{--  <li class="nav-item">
+                                <a class="page-scroll dd-menu collapsed" href="javascript:void(0)"
+                                    data-bs-toggle="collapse" data-bs-target="#submenu-1-5"
+                                    aria-controls="navbarSupportedContent" aria-expanded="false"
+                                    aria-label="Toggle navigation">Documents</a>
+                                <ul class="sub-menu collapse" id="submenu-1-5">
+                                    <li class="nav-item"><a href="blog-grid-sidebar.html">Blog Grid Sidebar</a></li>
+                                    <li class="nav-item"><a href="blog-single.html">Blog Single</a></li>
+                                    <li class="nav-item"><a href="blog-single-sidebar.html">Blog Single Sibebar</a></li>
+                                </ul>
+                            </li>  --}}
+
+
+                            <li class="nav-item"><a href="{{url('/documents')}}"class=" montserrat fw-bold  {{ Request::is('documents') ? 'active' : '' }}" style="font-size: 18px;"  >DOCUMENTS</a></li>
+                            <li class="nav-item"><a href="{{url('/video')}}" class=" montserrat fw-bold  {{ Request::is('video') ? 'active' : '' }}" style="font-size: 18px;" >VIDEOS</a></li>
+
+                            <li class="nav-item"><a href="{{url('/contact')}}"class=" montserrat fw-bold  {{ Request::is('contact') ? 'active' : '' }}" style="font-size: 18px;"  >CONTACTS</a></li>
+                        </ul>
+
+
+                        {{--  <div class="toolbar-login">
+                            <div class="button ">
+                                {{--  <a href="registration.html">Create an Account</a>
+                                <a href="login.html" class="btn">Connexion</a>
+                            </div>
+                        </div>  --}}
+                        {{--  <form class="d-flex search-form">
+                            <input class="form-control me-2" type="search" placeholder="Search"
+                                aria-label="Search">
+                            <button class="btn btn-outline-success" type="submit"><i
+                                    class="lni lni-search-alt"></i></button>
+                        </form>  --}}
+                      @auth
+                      <div class="dropdown ">
+                        <a class=" dropdown-toggle  montserrat fw-bold  {{ Request::is('mes-cours') ? 'active' : '' }}"  style="font-size: 18px;"  type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"  >
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="12" cy="7" r="4"></circle>
+                            </svg>
+                           @auth
+                             {{ Auth::user()->prenom }}
+                           @endauth
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                          {{--  <li><a class="dropdown-item" href="#">{{ Auth::user()->name }} {{ Auth::user()->prenom }}</a></li>  --}}
+                          <li><a class="dropdown-item" href="#">Profil</a></li>
+                          {{-- @if (Auth::user()->role_id == '3') --}}
+                          <li><a class="dropdown-item" href="{{url('mes-cours#cours')}}"> Mes Cours</a></li>
+                          <li><a class="dropdown-item" href="{{url('user-resultes#resultats')}}"> Mes resultats</a></li>
+                          {{-- @endif --}}
+                          {{--  @if (Auth::user()->role_id == '1' )
+                          <li><a class="dropdown-item" href="{{url('dashboard')}}">Tableau de bord</a></li>
+                           @endif
+                           @if (Auth::user()->role_id == '2' )
+                           <li><a class="dropdown-item" href="{{url('formations')}}">Tableau de bord</a></li>
+                            @endif  --}}
+                            @auth
+    @if (Auth::user()->role_id == '1')
+        <li><a class="dropdown-item" href="{{ url('dashboard') }}">Tableau de bord</a></li>
+    @elseif (Auth::user()->role_id == '2')
+        <li><a class="dropdown-item" href="{{ url('formations') }}">Tableau de bord</a></li>
+    @endif
+@endauth
+@if (Auth::user()->role_id == '3')
+                          <li><a class="dropdown-item" href="{{url('mes-reunions#reunions')}}">Mes reunions</a></li>  @endif
+                          <li><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Déconnexion</a></li>
+                          <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                              @csrf
+                          </form>
+                        </ul>
+                      </div>
+                </div>
+                      @endauth
+
+
+                    <!-- navbar collapse -->
+                </nav> <!-- navbar -->
+            </div>
+            </div>
+        </div> <!-- row -->
+    </div> <!-- container -->
+</header>
