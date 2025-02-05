@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use App\Models\UserResult;
 use App\Models\Answers;
+use App\Models\Certificate;
 use App\Models\Notequiz;
 use Illuminate\Http\Request;
 
@@ -87,6 +88,7 @@ class UserResultController extends Controller
 
  if ($total >= 60) {
     Notequiz::create([
+        'formation_id'=>$request->formation_id,
         'quiz_id'=>$request->quiz_id,
         'chapitre_id'=>$request->chapitre_id,
         'note' => $total,
@@ -94,8 +96,20 @@ class UserResultController extends Controller
         'user_id' => auth()->user()->id,
 
     ]);
+   if($request->formation_id)
+   {
+    Certificate::create([
+        
+        'formation_id'=>$request->formation_id,
+        'note' => $total,
+          
+        'user_id' => auth()->user()->id,
+
+    ]);
+   }
 } else {
     Notequiz::create([
+        'formation_id'=>$request->formation_id,
         'quiz_id'=>$request->quiz_id,
         'chapitre_id'=>$request->chapitre_id,
         'note' => $total,

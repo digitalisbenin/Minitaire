@@ -5,7 +5,7 @@
 @include ('partial.navbar')
 
 <!-- Start Breadcrumbs -->
-<div class="breadcrumbs overlay">
+<div class="breadcrumbs">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-8 offset-lg-2 col-md-12 col-12">
@@ -31,7 +31,7 @@
             <div class="col-12 ">
                 <div class="section-title">
                     {{--  <span class="wow zoomIn" data-wow-delay="0.2s"></span>  --}}
-                    <h2 class="wow fadeInUp" data-wow-delay=".4s">Formation</h2>
+                    <h2 class="wow fadeInUp" data-wow-delay=".4s">Formations</h2>
                     <p class="wow fadeInUp" data-wow-delay=".6s"></p>
                 </div>
             </div>

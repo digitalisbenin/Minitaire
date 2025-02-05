@@ -4,7 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Certificate;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 
+use App\Models\Chapitre;
+use App\Models\Formation;
+use Illuminate\Support\Facades\Auth;
 class CertificateController extends Controller
 {
     /**
@@ -97,4 +101,32 @@ class CertificateController extends Controller
 
         return redirect('/certificates');
     }
+    public function download($chapterId)
+    {
+        $user = Auth::user();
+        // $certificate = Certificate::where('user_id', $user->id)
+        //     ->where('formation_id', $chapterId)
+        //     ->first();
+        $certificate = Certificate::where('user_id', $user->id)
+    ->where('formation_id', $chapterId)
+    ->orderBy('created_at', 'desc')
+    ->first();
+
+        if (!$certificate) {
+            return redirect()->back()->with('error', 'Certificat non disponible.');
+        }
+
+        $chapter = Formation::find($chapterId);
+
+        $data = [
+            'user' => $user,
+            'chapter' => $chapter,
+            'certificate' => $certificate,
+        ];
+
+        $pdf = PDF::loadView('certificate.pdf', $data);
+
+        return $pdf->download('certificate.pdf');
+    }
+
 }

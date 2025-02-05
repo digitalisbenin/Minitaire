@@ -18,7 +18,7 @@ class Certificate extends Model
     /**
      * @var array
      */
-    protected $fillable = ['formation_id', 'user_id', 'created_at', 'updated_at'];
+    protected $fillable = ['formation_id', 'user_id','note', 'created_at', 'updated_at'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

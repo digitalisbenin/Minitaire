@@ -25,7 +25,7 @@
 
 
 <!-- Teacher Details -->
-<div class="teacher-details-area section" id="recap">
+<div class="teacher-details-area section" id="resultats">
     <div class="container" >
           <div class="row">
             <div class="col-12">
@@ -47,6 +47,7 @@
                             <th class="h6 text-gray-300">Formation / Chapitre</th>
                             <th class="h6 text-gray-300">Note</th>
                             <th class="h6 text-gray-300">Appréciation</th>
+                            <th class="h6 text-gray-300">Certificat</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -91,6 +92,16 @@
                                         {{ $appreciation }}
                                     </span>
                                 </td>
+                                  <td class="{{ $appreciationClass }}">
+                                            <span class="h6 mb-0 fw-medium">
+                                               @if( $isSuccess)
+                                               @if($formation)
+                                                <a href="{{ route('certificate.download', $formation->id) }}" class="btn btn-primary">Télécharger le certificat</a>
+                                                @endif
+                                               @endif
+
+                                            </span>
+                                        </td>
                             </tr>
                         @endforeach
                     </tbody>

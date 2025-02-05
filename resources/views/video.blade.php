@@ -6,7 +6,7 @@
 
 
 <!-- Start Breadcrumbs -->
-<div class="breadcrumbs overlay">
+<div class="breadcrumbs ">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-8 offset-lg-2 col-md-12 col-12">

@@ -46,7 +46,7 @@ class MeetController extends Controller
      */
     public function create()
     {
-        $users=User::all();
+        $users=User::where('role_id',3)->get();
         $conference=VisioConference::all();
         return view('admin.meet.create',compact('users','conference'));
     }

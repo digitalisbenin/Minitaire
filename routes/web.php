@@ -8,6 +8,7 @@ use App\Models\Chapitre;
 use App\Models\Discution;
 use App\Models\DiscutionReponse;
 use App\Models\Video;
+use App\Models\Difficulete;
 use App\Models\Quiz;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\QuestionController;
@@ -38,7 +39,7 @@ use App\Models\Answers;
 use App\Models\Notequiz;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -115,10 +116,28 @@ Route::get('/formation', function () {
     $formation=Formation::all();
     return view('formations',compact('formation'));
 });
-Route::get('/categorie/{id}', function ($id) {
-    $formation=Formation::where('categorie_id',$id)->get();
-    return view('categorie',compact('formation'));
+// Route::get('/categorie/{id}', function ($id) {
+//     $formation=Formation::where('categorie_id',$id)->get();
+//     return view('categorie',compact('formation'));
+// });
+Route::get('/categorie/{id}', function ($id, Request $request) {
+    $difficultes = Difficulete::all(); // Récupérer toutes les difficultés
+
+    $query = Formation::where('categorie_id', $id);
+
+    if ($request->has('difficulte_id') && $request->difficulte_id != '') {
+        $query->where('difficulte_id', $request->difficulte_id);
+    }
+
+    $formation = $query->get(); // Exécuter la requête
+
+    return view('categorie', compact('formation', 'difficultes', 'id'));
 });
+
+
+
+
+
 Route::get('/categorie/{id}/{difficulte}', function ($id, $difficulte) {
     $formation = Formation::where('categorie_id', $id)
                            ->where('difficulte_id', $difficulte)
@@ -167,7 +186,7 @@ Route::middleware('auth')->group(function () {
     Route::post('user-results', [UserResultController::class, 'store']);
     Route::get('user-resultes', [UserResultController::class, 'indexe']);
     Route::get('recapulatives', [NotequizControleur::class, 'indexe']);
-
+    Route::get('/certificate/download/{chapterId}', [CertificateController::class, 'download'])->name('certificate.download');
     Route::post('commentaires', [CommentaireController::class, 'store']);
 
 });

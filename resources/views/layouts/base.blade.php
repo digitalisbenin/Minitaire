@@ -55,7 +55,7 @@
         <div class="footer-middle">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-3 col-md-6 col-12">
+                    <div class="col-lg-4 col-md-6 col-12">
                         <!-- Single Widget -->
                         <div class="f-about single-footer">
                             <div class="logo">
@@ -74,52 +74,33 @@
                         </div>
                         <!-- End Single Widget -->
                     </div>
-                    <div class="col-lg-3 col-md-6 col-12">
+                   
+                    <div class="col-lg-4 col-md-6 col-12 text-center">
                         <!-- Single Widget -->
-                        <div class="single-footer sm-custom-border recent-blog">
-                            <h3>Cours Terminé</h3>
+                        <div class="single-footer sm-custom-border f-link ">
+                            <h3>Lien Rapide</h3>
                             <ul>
-                                <li>
-                                    <a href="#"><img src="{{asset('assets/images/blog/footer-news1.jpg')}}" alt="#">
-                                        Gestion administrative
-                                    </a>
-                                    <span class="date"><i class="lni lni-calendar"></i>15 Juin 2023</span>
-                                </li>
-                                <li>
-                                    <a href="#"><img src="{{asset('assets/images/blog/footer-news2.jpg')}}" alt="#">
-                                        Logistique 
-                                    </a>
-                                    <span class="date"><i class="lni lni-calendar"></i> 1 Juillet 2023</span>
-                                </li>
+                                <li><a href="/">ACCUEIL</a></li>
+                                <li><a href="formation">FORMATIONS</a></li>
+                                <li><a href="documents">DOCUMENTS</a></li>
+                                
+                                <li><a href="video">VIDEOS</a></li>
+                                <li><a href="contact">CONTACTS</a></li>
                             </ul>
                         </div>
                         <!-- End Single Widget -->
                     </div>
-                    <div class="col-lg-3 col-md-6 col-12">
-                        <!-- Single Widget -->
-                        <div class="single-footer sm-custom-border f-link">
-                            <h3>Cours</h3>
-                            <ul>
-                                <li><a href="javascript:void(0)">Pilote de chasse</a></li>
-                                <li><a href="javascript:void(0)">Officier expert télécoms</a></li>
-                                <li><a href="javascript:void(0)">Mécanicien</a></li>
-                                <li><a href="javascript:void(0)">Pilote d'hélicoptère</a></li>
-                                <li><a href="javascript:void(0)">Médecin militaire</a></li>
-                            </ul>
-                        </div>
-                        <!-- End Single Widget -->
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-12">
+                    <div class="col-lg-4 col-md-6 col-12">
                         <!-- Single Widget -->
                         <div class="single-footer footer-newsletter">
-                            <h3>Le bulletin d'information</h3>
+                            <h3 class="text-center">Le bulletin d'information</h3>
                             <p>Abonnez-vous pour toujours rester en contact avec nous et recevoir les dernières nouvelles sur notre entreprise et toutes nos activités !</p>
                             <form action="https://demo.graygrids.com/themes/edugrids/mail/mail.php" method="get" target="_blank" class="newsletter-form">
                                 <input name="EMAIL" placeholder="Votre mail" class="common-input"
                                     onfocus="this.placeholder = ''"
                                     onblur="this.placeholder = 'Your email address'" required="" type="email">
-                                <div class="button">
-                                    <button class="btn">Abonnez-vous Maintenant !</button>
+                                <div class="button text-center">
+                                    <button class="btn ">Abonnez-vous Maintenant !</button>
                                 </div>
                             </form>
                         </div>

@@ -53,7 +53,7 @@
                             <!-- Info Box -->
                             <div class="info-box">
                                 <span class="designation">Pilote</span>
-                                <h4 class="name"><a href={{  }}me}}     {{$value->prenom}} </a></h4>
+                                <h4 class="name"><a href={{ $value->name }}     {{$value->prenom}} </a></h4>
                                 <p> Je suis un formateurs de qualité</p>
                             </div>
                             <!-- End Info Box -->

@@ -6,12 +6,12 @@
 
 
 <!-- Start Breadcrumbs -->
-<div class="breadcrumbs overlay">
+<div class="breadcrumbs">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-8 offset-lg-2 col-md-12 col-12">
                 <div class="breadcrumbs-content">
-                    <h1 class="page-title">Contact </h1>
+                    <h1 class="page-title">Contacts </h1>
                     <p>Contacter-nous</p>
                 </div>
                 <ul class="breadcrumb-nav">

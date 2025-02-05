@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Title -->
-    <title>Admin</title>
+    <title>Tableau de bord</title>
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{ asset('admin/assets/images/logo/favicon.png') }}">
     <!-- Bootstrap -->

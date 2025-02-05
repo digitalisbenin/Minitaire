@@ -34,7 +34,7 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-
+        //dd($request);
         $request->validate([
             "role_id" => ['required'],
             "user_categorie_id" => ['required'],

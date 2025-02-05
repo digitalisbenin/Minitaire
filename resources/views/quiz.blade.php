@@ -32,6 +32,7 @@
                     <form action="{{ url('user-results') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <input type="hidden" name="quiz_id" value="{{ $value->id }}">
+                        <input type="hidden" name="formation_id" value="{{ $value->formation->id }}">
                         @php
                             $quizID = $value->id;
                         @endphp

@@ -6,25 +6,35 @@
 <section class="hero-area">
     <div class="hero-slider">
         <!-- Single Slider -->
-        <div class="hero-inner overlay" style="background-image: url('assets/images/hero/slider1.jpg');">
+        <div class="hero-inner d-flex align-items-center" style="background-color: #f8f9fa; padding: 20px;">
             <div class="container">
-                <div class="row ">
-                    <div class="col-lg-8 offset-lg-2 col-md-12 co-12">
-                        <div class="home-slider">
-                            <div class="hero-text">
-                                {{--  <h5 class="wow fadeInUp" data-wow-delay=".3s">Start to Learning Today</h5>  --}}
-                                <h1 class="wow fadeInUp" data-wow-delay=".5s">Bienvenue sur la plateforme <br> E-learning de la DSIA</h1>
-                                <p class="wow fadeInUp" data-wow-delay=".7s"> <br> .</p>
-                                <div class="button wow fadeInUp" data-wow-delay=".9s">
-                                    {{--  <a href="about-us.html" class="btn">Learn More</a>
-                                    <a href="courses-grid.html" class="btn alt-btn">Our Courses</a>  --}}
-                                </div>
+                <div class="row align-items-center">
+                    <!-- Image à gauche -->
+                    <div class="col-lg-6 col-md-6 col-12">
+                        <img 
+                            src="assets/images/hero/slider.jpeg" 
+                            alt="Hero Image" 
+                            class="img-fluid rounded"
+                            style="max-width: 100%; height: auto;"
+                        />
+                    </div>
+                    
+                    <!-- Texte à droite -->
+                    <div class="col-lg-6 col-md-6 col-12">
+                        <div class="hero-text" style="color: #000; margin-top: 200px;">
+                            <h1 class="wow fadeInUp" data-wow-delay=".5s" style="color: #000;">Bienvenue sur la plateforme <br> E-learning de la DSCA</h1>
+                            <p class="wow fadeInUp" data-wow-delay=".7s" style="color: #000;">Explorez une nouvelle façon d'apprendre et développez vos compétences.</p>
+                            <div class="button wow fadeInUp" data-wow-delay=".9s">
+                                <a href="#about" class="btn btn-primary">En savoir plus</a>
+                                <a href="#courses" class="btn btn-outline-secondary">Nos cours</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        
+        
         <!--/ End Single Slider -->
         <!-- Single Slider -->
         {{--  <div class="hero-inner overlay" style="background-image: url('assets/images/hero/slider-bg2.jpg');">
@@ -86,7 +96,7 @@
                 <div class="col-lg-4 col-md-4 col-12 padding-zero">
                     <!-- Start Single Feature -->
                     <div class="single-feature">
-                        <h3><a href="javascript:void(0)">Cours actuel </a></h3>
+                        <h3><a href="javascript:void(0)">Cours actuels </a></h3>
                         <p style="text-align: justify;">Les cours actuel sont des formations éducatives qui répondent aux besoins et intérêts
                              actuels des apprenants. Ces cours reflètent les évolutions et innovations
                               dans divers domaines, offrant des compétences et connaissances recherchées.</p>
@@ -105,7 +115,7 @@
                              par des organismes reconnus.</p>
 
                         <div class="button">
-                            <a href="{{url('/formateurs')}}" class="btn">Voir plus <i class="lni lni-arrow-right"></i></a>
+                            <a href="#" class="btn">Voir plus <i class="lni lni-arrow-right"></i></a>
                         </div>
                     </div>
                     <!-- End Single Feature -->
@@ -152,7 +162,7 @@
         </div>
         <div class="single-head">
             <div class="row">
-               @foreach( $formation as $value)
+               @foreach( $formation->sortByDesc('created_at') as $value)
                <div class="col-lg-3 col-md-6 col-12">
                 <!-- Start Single Course -->
                 <div class="single-course wow fadeInUp" data-wow-delay=".2s">
@@ -951,7 +961,7 @@
 <!-- /End Call To Action Area -->
 
 <!-- Start Latest News Area -->
-<div class="latest-news-area section">
+{{--  <div class="latest-news-area section">
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -1026,7 +1036,7 @@
                 </div>
                 <!-- End Single News -->
             </div>
-            <div class="col-lg-3 col-md-6 col-12">
+            <div class="col-lg-4 col-md-6 col-12">
                 <!-- Single News -->
                 <div class="single-news custom-shadow-hover wow fadeInUp" data-wow-delay=".6s">
                     <div class="image" style="height: 200px">
@@ -1059,45 +1069,11 @@
             </div>
         </div>
     </div>
-</div>
+</div>  --}}
 <!-- End Latest News Area -->
 
 <!-- Start Clients Area -->
-{{--  <div class="client-logo-section">
-    <div class="container">
-        <div class="client-logo-wrapper">
-            <div class="client-logo-carousel d-flex align-items-center justify-content-between">
-                <div class="client-logo">
-                    <img src="assets/images/clients/client1.svg" alt="">
-                </div>
-                <div class="client-logo">
-                    <img src="assets/images/clients/client2.svg" alt="">
-                </div>
-                <div class="client-logo">
-                    <img src="assets/images/clients/client3.svg" alt="">
-                </div>
-                <div class="client-logo">
-                    <img src="assets/images/clients/client4.svg" alt="">
-                </div>
-                <div class="client-logo">
-                    <img src="assets/images/clients/client5.svg" alt="">
-                </div>
-                <div class="client-logo">
-                    <img src="assets/images/clients/client2.svg" alt="">
-                </div>
-                <div class="client-logo">
-                    <img src="assets/images/clients/client3.svg" alt="">
-                </div>
-                <div class="client-logo">
-                    <img src="assets/images/clients/client4.svg" alt="">
-                </div>
-                <div class="client-logo">
-                    <img src="assets/images/clients/client5.svg" alt="">
-                </div>
-            </div>
-        </div>
-    </div>
-</div>  --}}
+
 <!-- End Clients Area -->
 
 

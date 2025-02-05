@@ -44,7 +44,7 @@ class NotequizControleur extends Controller
     public function store(Request $request)
     {
         $formations_id = $request->input('formation_id');
-        $formations_id = $request->input('formation_id');
+       
 
         $user_id = Auth::id();
 
