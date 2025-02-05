@@ -45,14 +45,14 @@
                         </div>
                         
                         <div class="">
-                            <input type="file" name="image_url" id="">
+                            <input type="file" class=" placeholder-13 form-control py-11 pe-76" name="image_url" id="">
                         </div>
                        
                     </div>
                     <div class="col-xxl-9 col-md-8 col-sm-7">
                         <div class="row g-20">
-                            <div class="col-sm-6">
-                                <label for="courseTitle" class="h5 mb-8 fw-semibold font-heading">Titre de la ressource <span class="text-13 text-gray-400 fw-medium">(Requis)</span> </label>
+                            <div class="col-sm-12">
+                                <label for="courseTitle" class="h5 mb-8 fw-semibold font-heading text-center">Titre <span class="text-13 text-gray-400 fw-medium">(Requis)</span> </label>
                                 <div class="position-relative">
                                     <input type="text" class="text-counter placeholder-13 form-control py-11 pe-77" name="titre" maxlength="100" id="courseTitle" placeholder="">
                                     <div class="text-gray-400 position-absolute inset-inline-end-0 top-50 translate-middle-y me-16">
@@ -61,24 +61,25 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-6">
-                                <label for="courseTitle" class="h5 mb-8 fw-semibold font-heading">Description <span class="text-13 text-gray-400 fw-medium"></span> </label>
-                                <div class="position-relative">
-                                    <input type="text" class="text-counte placeholder-13 form-control py-11 pe-76" name="description" maxlength="300" id="course" placeholder="">
-                                   
-                                </div>
-                            </div>
+                            
                          
                             <div class="col-sm-6">
                                 <label for="courseLesson" class="h5 mb-8 fw-semibold font-heading">Documents <span class="text-13 text-gray-400 fw-medium"></span></label>
                                 <div class="position-relative">
-                                    <input type="file" name="document_url" id="">                                           
+                                    <input type="file" class=" placeholder-13 form-control py-11 pe-76"  name="document_url" id="">                                           
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <label for="courseLevel" class="h5 mb-8 fw-semibold font-heading">Vidéo <span class="text-13 text-gray-400 fw-medium"></span></label>
                                 <div class="position-relative">
-                                    <input type="file" name="video_url" id="">                                          
+                                    <input type="file" class=" placeholder-13 form-control py-11 pe-76" name="video_url" id="">                                          
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <label for="courseTitle" class="h5 mb-8 fw-semibold font-heading">Description <span class="text-13 text-gray-400 fw-medium"></span> </label>
+                                <div class="position-relative">
+                                    <textarea type="text" class="text-counte placeholder-13 form-control py-11 pe-76" name="description" maxlength="300" id="course" placeholder="" rows="6"></textarea>
+                                   
                                 </div>
                             </div>
                            

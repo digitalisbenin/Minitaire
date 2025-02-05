@@ -79,9 +79,9 @@
                                 <div class="position-relative">
                                     <select id="courseLesson" name="status" class="form-select py-9 placeholder-13 text-15">
                                         <option value="1" selected>Aucune</option>
-                                        <option value="abandonné">abandonné</option>
-                                        <option value="valider">valider</option>
-                                        <option value="terminer">terminer</option>
+                                        <option value="abandonné">Abandonné</option>
+                                        <option value="valider">Valider</option>
+                                        <option value="terminer">Terminer</option>
                                     </select>
                                 </div>
                             </div>

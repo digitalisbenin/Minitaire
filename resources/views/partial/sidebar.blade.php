@@ -64,6 +64,34 @@
                 </a>
             </li>
             @endif
+
+            <li class="sidebar-menu__item">
+                <a href="{{url('suivis')}}" class="sidebar-menu__link">
+                    <span class="icon"><i class="ph ph-calendar-dots"></i></span>
+                    <span class="text">Suivi de Progression </span>
+                </a>
+            </li>
+
+ <li class="sidebar-menu__item">
+                <a href="{{url('commentaires')}}" class="sidebar-menu__link">
+                    <span class="icon"><i class="ph ph-chart-bar"></i></span>
+                    <span class="text">Commentaire</span>
+                </a>
+            </li>
+            <hr>
+            <li class="sidebar-menu__item">
+                <a href="{{url('visio-conferences')}}" class="sidebar-menu__link">
+                    <span class="icon"><i class="ph ph-calendar-dots"></i></span>
+                    <span class="text">Visio Conférence</span>
+                </a>
+            </li>
+            <li class="sidebar-menu__item">
+                <a href="{{url('meets')}}" class="sidebar-menu__link">
+                    <span class="icon"><i class="ph ph-calendar-dots"></i></span>
+                    <span class="text">Meet</span>
+                </a>
+            </li>
+           <hr>
             <li class="sidebar-menu__item">
                 <a href="{{url('ressources')}}" class="sidebar-menu__link">
                     <span class="icon"><i class="ph ph-books"></i></span>
@@ -94,30 +122,7 @@
                     <span class="text">Réponse</span>
                 </a>
             </li> --}}
-            <li class="sidebar-menu__item">
-                <a href="{{url('commentaires')}}" class="sidebar-menu__link">
-                    <span class="icon"><i class="ph ph-chart-bar"></i></span>
-                    <span class="text">Commentaire</span>
-                </a>
-            </li>
-            <li class="sidebar-menu__item">
-                <a href="{{url('suivis')}}" class="sidebar-menu__link">
-                    <span class="icon"><i class="ph ph-calendar-dots"></i></span>
-                    <span class="text">Suivi</span>
-                </a>
-            </li>
-            <li class="sidebar-menu__item">
-                <a href="{{url('visio-conferences')}}" class="sidebar-menu__link">
-                    <span class="icon"><i class="ph ph-calendar-dots"></i></span>
-                    <span class="text">Visio Conférence</span>
-                </a>
-            </li>
-            <li class="sidebar-menu__item">
-                <a href="{{url('meets')}}" class="sidebar-menu__link">
-                    <span class="icon"><i class="ph ph-calendar-dots"></i></span>
-                    <span class="text">Meet</span>
-                </a>
-            </li>
+           
             {{--  <li class="sidebar-menu__item">
                 <a href="message.html" class="sidebar-menu__link">
                     <span class="icon"><i class="ph ph-chats-teardrop"></i></span>

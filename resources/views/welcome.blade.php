@@ -13,7 +13,7 @@
                         <div class="home-slider">
                             <div class="hero-text">
                                 {{--  <h5 class="wow fadeInUp" data-wow-delay=".3s">Start to Learning Today</h5>  --}}
-                                <h1 class="wow fadeInUp" data-wow-delay=".5s">Bienvenue sur la plateforme <br> E-learning de la DSIA</h1>
+                                <h1 class="wow fadeInUp" data-wow-delay=".5s">Bienvenue sur la plateforme <br> E-learning de la DSCA</h1>
                                 <p class="wow fadeInUp" data-wow-delay=".7s"> <br> .</p>
                                 <div class="button wow fadeInUp" data-wow-delay=".9s">
                                     {{--  <a href="about-us.html" class="btn">Learn More</a>
@@ -86,7 +86,7 @@
                 <div class="col-lg-4 col-md-4 col-12 padding-zero">
                     <!-- Start Single Feature -->
                     <div class="single-feature">
-                        <h3><a href="javascript:void(0)">Cours actuel </a></h3>
+                        <h3><a href="javascript:void(0)">Cours actuels </a></h3>
                         <p style="text-align: justify;">Les cours actuel sont des formations éducatives qui répondent aux besoins et intérêts
                              actuels des apprenants. Ces cours reflètent les évolutions et innovations
                               dans divers domaines, offrant des compétences et connaissances recherchées.</p>
@@ -105,7 +105,7 @@
                              par des organismes reconnus.</p>
 
                         <div class="button">
-                            <a href="{{url('/formateurs')}}" class="btn">Voir plus <i class="lni lni-arrow-right"></i></a>
+                            <a href="#" class="btn">Voir plus <i class="lni lni-arrow-right"></i></a>
                         </div>
                     </div>
                     <!-- End Single Feature -->

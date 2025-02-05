@@ -17,9 +17,19 @@ $difficulte = Difficulete::all();
                 <div class="col-lg-12 col-md-12 col-12">
                     <div class="d-flex justify-content-between align-items-center">
                         <!-- Section du texte à gauche -->
-                        <div class="toolbar-text">
-                            <p class="mb-0 text-white montserrat fw-bold " style="text-transform: uppercase; font-size: 18px;">Direction du Service de l'Intendence des Armées</p>
-                        </div>
+                        <style>
+                            @media (max-width: 768px) {
+                              .toolbar-text {
+                                display: none;
+                              }
+                            }
+                          </style>
+
+                          <div class="toolbar-text">
+                              <p class="mb-0 text-white montserrat fw-bold" style="text-transform: uppercase; font-size: 18px;">
+                                Direction du Service du Commissariat des Armées
+                              </p>
+                          </div>
 
                         <!-- Section des icônes sociales et du bouton Connexion à droite -->
                         <div class="d-flex justify-content-end align-items-center">
@@ -68,7 +78,7 @@ $difficulte = Difficulete::all();
                     </button>
                     <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
 
-                        <ul id="nav" class="navbar-nav ms-auto me-3">
+                        <ul id="nav" class="navbar-nav ">
                             <li class="nav-item">
                                 <a href="{{url('/')}}"class=" montserrat fw-bold  {{ Request::is('/') ? 'active' : '' }}" style="font-size: 18px;"
 
@@ -188,7 +198,7 @@ $difficulte = Difficulete::all();
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                           {{--  <li><a class="dropdown-item" href="#">{{ Auth::user()->name }} {{ Auth::user()->prenom }}</a></li>  --}}
-                          <li><a class="dropdown-item" href="#">Profil</a></li>
+                          <li><a class="dropdown-item" href="{{url('profile')}}">Profil</a></li>
                          @if (Auth::user()->role_id == '3')
                           <li><a class="dropdown-item" href="{{url('mes-cours#cours')}}"> Mes Cours</a></li>
                           <li><a class="dropdown-item" href="{{url('user-resultes#resultats')}}"> Mes resultats</a></li>

@@ -38,7 +38,7 @@
                             </div>
                         </th>
                         <th class="h6 text-gray-300">N°</th>
-                        <th class="h6 text-gray-300">Titre du chapitre</th>
+                        <th class="h6 text-gray-300">Formation</th>
                         <th class="h6 text-gray-300">Utilisateur</th>
                         <th class="h6 text-gray-300">taux de progression</th>
                        
@@ -60,7 +60,7 @@
                             </div>
                         </td>
                         <td>
-                            <span class="h6 mb-0 fw-medium text-gray-300">{{$value->chapitre->titre}}</span>
+                            <span class="h6 mb-0 fw-medium text-gray-300">{{$value->chapitre->formation->titre}}</span>
                         </td>
                         <td>
                             <span class="h6 mb-0 fw-medium text-gray-300">{{$value->user->name}}  {{$value->user->prenom}}</span>

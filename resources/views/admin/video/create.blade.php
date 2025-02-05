@@ -39,32 +39,32 @@
             <form action="{{ url('videos') }}" method="post" enctype="multipart/form-data">
                         @csrf
                 <div class="row gy-20">
-                    <div class="col-xxl-3 col-md-4 col-sm-5">
-                        <div class="mb-20">
+                    <div class="col-xxl-4 col-md-4 col-sm-5">
+                        <div class="mb-3">
                             <label class="h5 fw-semibold font-heading mb-0">Video <span class="text-13 text-gray-400 fw-medium">(Requis)</span> </label>
                         </div>
 
                         <div class="">
-                            <input type="file" name="video_url" id="">
+                            <input type="file" class=" placeholder-13 form-control py-11 pe-76"  name="video_url" id="">
                         </div>
 
                     </div>
-                    <div class="col-xxl-9 col-md-8 col-sm-7">
+                    <div class="col-xxl-8 col-md-8 col-sm-7">
                         <div class="row g-20">
-                            <div class="col-sm-6">
-                                <label for="courseTitle" class="h5 mb-8 fw-semibold font-heading">Titre de la video <span class="text-13 text-gray-400 fw-medium">(Requis)</span> </label>
+                            <div class="col-sm-12">
+                                <label for="courseTitle" class="h5 mb-2 fw-semibold font-heading">Titre de la video <span class="text-13 text-gray-400 fw-medium">(Requis)</span> </label>
                                 <div class="position-relative">
-                                    <input type="text" class="text-counter placeholder-13 form-control py-11 pe-77" name="titre" maxlength="100" id="courseTitle" placeholder="">
+                                    <input type="text" class="text-counter placeholder-13 form-control py-11 pe-76" name="titre" maxlength="100" id="courseTitle" placeholder="">
                                     <div class="text-gray-400 position-absolute inset-inline-end-0 top-50 translate-middle-y me-16">
                                         <span id="current">3</span>
                                         <span id="maximum">/ 100</span>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-6">
+                            <div class="col-sm-12">
                                 <label for="courseTitle" class="h5 mb-8 fw-semibold font-heading">Description <span class="text-13 text-gray-400 fw-medium"></span> </label>
                                 <div class="position-relative">
-                                    <input type="text" class="text-counte placeholder-13 form-control py-11 pe-76" name="description" maxlength="300" id="course" placeholder="">
+                                    <textarea type="text" class="text-counte placeholder-13 form-control py-11 pe-76" name="description" maxlength="300" id="course" placeholder="" rows="6"></textarea>
 
                                 </div>
                             </div>
