@@ -168,10 +168,10 @@ $difficulte = Difficulete::all();
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                           {{--  <li><a class="dropdown-item" href="#">{{ Auth::user()->name }} {{ Auth::user()->prenom }}</a></li>  --}}
                           <li><a class="dropdown-item" href="#">Profil</a></li>
-                          {{-- @if (Auth::user()->role_id == '3') --}}
+                          @if (Auth::user()->role_id == '3')
                           <li><a class="dropdown-item" href="{{url('mes-cours#cours')}}"> Mes Cours</a></li>
                           <li><a class="dropdown-item" href="{{url('user-resultes#resultats')}}"> Mes resultats</a></li>
-                          {{-- @endif --}}
+                          @endif
                           {{--  @if (Auth::user()->role_id == '1' )
                           <li><a class="dropdown-item" href="{{url('dashboard')}}">Tableau de bord</a></li>
                            @endif

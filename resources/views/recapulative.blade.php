@@ -25,7 +25,7 @@
 
 
 <!-- Teacher Details -->
-<div class="teacher-details-area section" id="resultats">
+<div class="teacher-details-area section" id="recap">
     <div class="container" >
           <div class="row">
             <div class="col-12">
